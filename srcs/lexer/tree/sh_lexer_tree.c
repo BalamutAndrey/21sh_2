@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 21:33:42 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/03 21:55:07 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@
 **                  |              term separator +
 **                  | newline_list term separator +
 **                  ;
-** term             : term separator and_or
-**                  |                and_or
+** term             : term separator and_or +
+**                  |                and_or +
 **                  ;
 ** for_clause       : For name linebreak                            do_group
 **                  | For name linebreak in          sequential_sep do_group

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 21:32:43 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/03 21:54:54 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,12 @@ t_node	*sh_compoundlist_term(t_main *main);
 t_node	*sh_compoundlist_newlinelist_term(t_main *main);
 t_node	*sh_compoundlist_term_separator(t_main *main);
 t_node	*sh_compoundlist_newlinelist_term_separator(t_main *main);
+
+/*
+** sh_term.c
+*/
+t_node	*sh_term(t_main *main);
+t_node	*sh_term_term_separator_andor(t_main *main);
+t_node	*sh_term_andor(t_main *main);
 
 #endif
