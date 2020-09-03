@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 17:13:27 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/03 17:59:51 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 ** complete_command : list separator +
 **                  | list +
 **                  ;
-** list             : list separator_op and_or
-**                  |                   and_or
+** list             : list separator_op and_or +
+**                  |                   and_or +
 **                  ;
-** and_or           :                         pipeline
-**                  | and_or AND_IF linebreak pipeline
-**                  | and_or OR_IF  linebreak pipeline
+** and_or           :                         pipeline +
+**                  | and_or AND_IF linebreak pipeline +
+**                  | and_or OR_IF  linebreak pipeline +
 **                  ;
-** pipeline         :      pipe_sequence
-**                  | Bang pipe_sequence
+** pipeline         :      pipe_sequence +
+**                  | Bang pipe_sequence +
 **                  ;
 ** pipe_sequence    :                             command
 **                  | pipe_sequence '|' linebreak command
