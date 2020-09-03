@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 18:25:47 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/03 19:24:02 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,21 @@ t_node	*sh_command_simplecommand(t_main *main);
 t_node	*sh_command_compoundcommand(t_main *main);
 t_node	*sh_command_compoundcommand_redirectlist(t_main *main);
 t_node	*sh_command_functiondefinition(t_main *main);
+
+/*
+** sh_compound_command.c
+*/
+t_node	*sh_compoundcommand(t_main *main);
+t_node	*sh_compoundcommand_bracegroup(t_main *main);
+t_node	*sh_compoundcommand_subshell(t_main *main);
+
+/*
+** sh_compound_command_clause.c
+*/
+t_node	*sh_compoundcommand_forclause(t_main *main);
+t_node	*sh_compoundcommand_caseclause(t_main *main);
+t_node	*sh_compoundcommand_ifclause(t_main *main);
+t_node	*sh_compoundcommand_whileclause(t_main *main);
+t_node	*sh_compoundcommand_untilclause(t_main *main);
 
 #endif

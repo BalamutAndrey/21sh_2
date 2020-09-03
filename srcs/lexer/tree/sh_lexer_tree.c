@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 18:26:29 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/03 19:28:49 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@
 **                  | compound_command redirect_list +
 **                  | function_definition			 +
 **                  ;
-** compound_command : brace_group
-**                  | subshell
-**                  | for_clause
-**                  | case_clause
-**                  | if_clause
-**                  | while_clause
-**                  | until_clause
+** compound_command : brace_group  +
+**                  | subshell	   +
+**                  | for_clause   +
+**                  | case_clause  +
+**                  | if_clause    +
+**                  | while_clause +
+**                  | until_clause +
 **                  ;
 ** subshell         : '(' compound_list ')'
 **                  ;
