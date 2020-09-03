@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 23:00:38 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/03 23:27:03 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@
 **                  ;
 ** name             : NAME                     !! Apply rule 5 !!	+
 **                  ;
-** in               : In                       !! Apply rule 6 !!
+** in               : In                       !! Apply rule 6 !!	+
 **                  ;
 ** wordlist         : wordlist WORD
 **                  |          WORD
