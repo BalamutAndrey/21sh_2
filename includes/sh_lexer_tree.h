@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 17:58:07 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/03 18:08:41 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,12 @@ t_node	*sh_andor_andor_orif_linebreak_pipeline(t_main *main);
 t_node	*sh_pipeline(t_main *main);
 t_node	*sh_pipeline_pipesequence(t_main *main);
 t_node	*sh_pipeline_bang_pipesequence(t_main *main);
+
+/*
+** sh_pipe_sequence.c
+*/
+t_node	*sh_pipesequence(t_main *main);
+t_node	*sh_pipesequence_command(t_main *main);
+t_node	*sh_pipesequence_pipesequence_pipe_linebreak_command(t_main *main);
 
 #endif

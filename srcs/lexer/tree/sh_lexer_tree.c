@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 17:59:51 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/03 18:08:47 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 ** pipeline         :      pipe_sequence +
 **                  | Bang pipe_sequence +
 **                  ;
-** pipe_sequence    :                             command
-**                  | pipe_sequence '|' linebreak command
+** pipe_sequence    :                             command +
+**                  | pipe_sequence '|' linebreak command +
 **                  ;
 ** command          : simple_command
 **                  | compound_command
