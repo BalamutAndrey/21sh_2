@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 19:28:49 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/03 21:19:58 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 **                  | while_clause +
 **                  | until_clause +
 **                  ;
-** subshell         : '(' compound_list ')'
+** subshell         : '(' compound_list ')' +
 **                  ;
 ** compound_list    :              term
 **                  | newline_list term

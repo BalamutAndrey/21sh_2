@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 19:24:02 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/03 21:19:51 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,11 @@ t_node	*sh_compoundcommand_caseclause(t_main *main);
 t_node	*sh_compoundcommand_ifclause(t_main *main);
 t_node	*sh_compoundcommand_whileclause(t_main *main);
 t_node	*sh_compoundcommand_untilclause(t_main *main);
+
+/*
+** sh_subshell.c
+*/
+t_node	*sh_subshell(t_main *main);
+t_node	*sh_subshell_bracket_compoundlist_bracket(t_main *main);
 
 #endif
