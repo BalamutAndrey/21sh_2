@@ -1,0 +1,40 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "clang build active file",
+            "command": "/usr/bin/clang",
+            "args": [
+                "-g",
+                "~/work/21sh/libft/sources/*.c",
+                "~/work/21sh/src/*.c",
+                "~/work/21sh/src/func/*.c",
+                "~/work/21sh/src/structs/*.c",
+                "~/work/21sh/src/term/*.c",
+                "~/work/21sh/src/signal/*.c",
+                "~/work/21sh/src/errors/*.c",
+                "~/work/21sh/src/read/*.c",
+                "~/work/21sh/src/read/keys/*.c",
+                "~/work/21sh/src/lexer/*.c",
+                "~/work/21sh/src/parcer/*.c",
+                "~/work/21sh/src/execute/*.c",
+                "~/work/21sh/src/execute/builtin/*.c",
+                "-I",
+                "~/work/21sh/inc",
+                "-I",
+                "~/work/21sh/libft/includes",
+                "-Wall",
+                "-Wextra",
+                "-Werror",
+                "-lncurses",
+                "-ltermcap",
+                "-o",
+                "~/work/21sh/21sh"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            }
+        }
+    ],
+    "version": "2.0.0"
+}
