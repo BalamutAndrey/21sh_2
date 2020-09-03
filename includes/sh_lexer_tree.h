@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 22:41:51 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/03 22:59:49 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,11 @@ t_node	*sh_forclause_for_name_linebreak_dogroup(t_main *main);
 t_node	*sh_forclause_for_name_linebreak_in_sequentialsep_dogroup(t_main *main);
 t_node	*sh_forclause_for_name_linebreak_in_wordlist_sequentialsep_dogroup
 	(t_main *main);
+
+/*
+** sh_name.c
+*/
+t_node	*sh_name(t_main *main);
+t_node	*sh_name_name(t_main *main);
 
 #endif

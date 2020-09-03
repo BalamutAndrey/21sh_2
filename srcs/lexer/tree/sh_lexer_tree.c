@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 22:43:13 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/03 23:00:38 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@
 **                  | For name linebreak in          sequential_sep do_group +
 **                  | For name linebreak in wordlist sequential_sep do_group +
 **                  ;
-** name             : NAME                     !! Apply rule 5 !!
+** name             : NAME                     !! Apply rule 5 !!	+
 **                  ;
 ** in               : In                       !! Apply rule 6 !!
 **                  ;
