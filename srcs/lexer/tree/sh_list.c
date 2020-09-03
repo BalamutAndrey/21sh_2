@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:15:17 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 17:19:35 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/03 17:44:17 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ t_node	*sh_list(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
-	if ((temp = sh_list_separatorop_andor) != NULL)
+	if ((temp = sh_list_separatorop_andor(main)) != NULL)
 	{
 		return (temp);
 	}
-	else if ((temp = sh_list_andor) != NULL)
+	else if ((temp = sh_list_andor(main)) != NULL)
 	{
 		return (temp);
 	}
@@ -46,7 +46,7 @@ t_node	*sh_list_separatorop_andor(t_main *main)
 }
 
 /*
-** list             |                   and_or
+** list             :                   and_or
 */
 
 t_node	*sh_list_andor(t_main *main)
