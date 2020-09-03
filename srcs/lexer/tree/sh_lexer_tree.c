@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 18:08:47 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/03 18:26:29 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** %start  complete_command
 ** %%
 ** complete_command : list separator +
-**                  | list +
+**                  | list			 +
 **                  ;
 ** list             : list separator_op and_or +
 **                  |                   and_or +
@@ -31,10 +31,10 @@
 ** pipe_sequence    :                             command +
 **                  | pipe_sequence '|' linebreak command +
 **                  ;
-** command          : simple_command
-**                  | compound_command
-**                  | compound_command redirect_list
-**                  | function_definition
+** command          : simple_command 				 +
+**                  | compound_command				 +
+**                  | compound_command redirect_list +
+**                  | function_definition			 +
 **                  ;
 ** compound_command : brace_group
 **                  | subshell

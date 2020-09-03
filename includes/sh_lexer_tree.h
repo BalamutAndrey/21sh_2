@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 18:08:41 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/03 18:25:47 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_node	*sh_list_separatorop_andor(t_main *main);
 t_node	*sh_list_andor(t_main *main);
 
 /*
-** sh_andor.c
+** sh_and_or.c
 */
 t_node	*sh_andor(t_main *main);
 t_node	*sh_andor_pipeline(t_main *main);
@@ -52,5 +52,14 @@ t_node	*sh_pipeline_bang_pipesequence(t_main *main);
 t_node	*sh_pipesequence(t_main *main);
 t_node	*sh_pipesequence_command(t_main *main);
 t_node	*sh_pipesequence_pipesequence_pipe_linebreak_command(t_main *main);
+
+/*
+** sh_command.c
+*/
+t_node	*sh_command(t_main *main);
+t_node	*sh_command_simplecommand(t_main *main);
+t_node	*sh_command_compoundcommand(t_main *main);
+t_node	*sh_command_compoundcommand_redirectlist(t_main *main);
+t_node	*sh_command_functiondefinition(t_main *main);
 
 #endif
