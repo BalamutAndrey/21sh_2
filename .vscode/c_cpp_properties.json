@@ -3,10 +3,10 @@
         {
             "name": "Mac",
             "includePath": [
-                "~/work/21sh/**",
-                "~/work/21sh/libft/includes/**",
-                "~/work/21sh/inc/**",
-                "~/work/21sh/**"
+                "~/work/21sh_2/**",
+                "~/work/21sh_2/libft/includes/**",
+                "~/work/21sh_2/includes/**",
+                "~/work/21sh_2/**"
             ],
             "defines": [],
             "macFrameworkPath": [

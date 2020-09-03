@@ -8,13 +8,13 @@
             "name": "clang - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "~/work/21sh/21sh",
+            "program": "/~/work/21sh_2/21sh",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "~/work/21sh/",
+            "cwd": "/~/work/21sh_2/",
             "environment": [],
-            "externalConsole": true,
-            "MIMode": "lldb",
+            "externalConsole": false,
+            "MIMode": "gdb",
             "preLaunchTask": "clang build active file"
         }
     ]
