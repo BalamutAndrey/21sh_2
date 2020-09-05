@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/05 18:01:02 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/05 18:15:13 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,5 +151,15 @@ t_node	*sh_caselistns_caseitemns(t_main *main);
 t_node	*sh_caselist(t_main *main);
 t_node	*sh_caselist_caselist_caseitem(t_main *main);
 t_node	*sh_caselist_caseitem(t_main *main);
+
+/*
+** sh_case_item_ns.c
+*/
+t_node	*caseitemns(t_main *main);
+t_node	*caseitemns_pattern_bracket_linebreak(t_main *main);
+t_node	*caseitemns_pattern_bracket_compoundlist_linebreak(t_main *main);
+t_node	*caseitemns_bracket_pattern_bracket_linebreak(t_main *main);
+t_node	*caseitemns_bracket_pattern_bracket_compoundlist_linebreak
+	(t_main *main);
 
 #endif
