@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/05 18:38:21 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/05 18:45:13 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,5 +179,13 @@ t_node	*sh_caseitem_bracket_pattern_bracket_compoundlist_dsemi_linebreak
 t_node	*sh_pattern(t_main *main);
 t_node	*sh_pattern_word(t_main *main);
 t_node	*sh_pattern_pattern_pipe_word(t_main *main);
+
+/*
+** sh_if_clause.c
+*/
+t_node	*sh_ifclause(t_main *main);
+t_node	*sh_ifclause_if_compoundlist_then_compoundlist_elsepart_fi
+	(t_main *main);
+t_node	*sh_ifclause_if_compoundlist_then_compoundlist_fi(t_main *main);
 
 #endif

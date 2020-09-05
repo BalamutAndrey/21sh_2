@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/05 18:38:47 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/05 18:45:27 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@
 ** pattern          :             WORD         !! Apply rule 4 !!		 +
 **                  | pattern '|' WORD         !! Do not apply rule 4 !! +
 **                  ;
-** if_clause        : If compound_list Then compound_list else_part Fi
-**                  | If compound_list Then compound_list           Fi
+** if_clause        : If compound_list Then compound_list else_part Fi +
+**                  | If compound_list Then compound_list           Fi +
 **                  ;
 ** else_part        : Elif compound_list Then else_part
 **                  | Else compound_list
