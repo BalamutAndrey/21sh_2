@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/05 18:15:31 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/05 18:28:59 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@
 **                  | '(' pattern ')'               linebreak +
 **                  | '(' pattern ')' compound_list linebreak +
 **                  ;
-** case_item        :     pattern ')' linebreak     DSEMI linebreak
-**                  |     pattern ')' compound_list DSEMI linebreak
-**                  | '(' pattern ')' linebreak     DSEMI linebreak
-**                  | '(' pattern ')' compound_list DSEMI linebreak
+** case_item        :     pattern ')' linebreak     DSEMI linebreak +
+**                  |     pattern ')' compound_list DSEMI linebreak +
+**                  | '(' pattern ')' linebreak     DSEMI linebreak +
+**                  | '(' pattern ')' compound_list DSEMI linebreak +
 **                  ;
 ** pattern          :             WORD         !! Apply rule 4 !!
 **                  | pattern '|' WORD         !! Do not apply rule 4 !!
