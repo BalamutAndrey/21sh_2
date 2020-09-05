@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/05 16:57:37 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/05 17:03:54 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@
 **                  | Case WORD linebreak in linebreak case_list_ns Esac +
 **                  | Case WORD linebreak in linebreak              Esac +
 **                  ;
-** case_list_ns     : case_list case_item_ns
-**                  |           case_item_ns
+** case_list_ns     : case_list case_item_ns +
+**                  |           case_item_ns +
 **                  ;
 ** case_list        : case_list case_item
 **                  |           case_item
