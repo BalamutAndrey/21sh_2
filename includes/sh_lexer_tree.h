@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/05 17:03:40 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/05 18:01:02 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,5 +144,12 @@ t_node	*sh_caseclause_case_word_linebreak_in_linebreak_esac(t_main *main);
 t_node	*sh_caselistns(t_main *main);
 t_node	*sh_caselistns_caselist_caseitemns(t_main *main);
 t_node	*sh_caselistns_caseitemns(t_main *main);
+
+/*
+** sh_case_list.c
+*/
+t_node	*sh_caselist(t_main *main);
+t_node	*sh_caselist_caselist_caseitem(t_main *main);
+t_node	*sh_caselist_caseitem(t_main *main);
 
 #endif

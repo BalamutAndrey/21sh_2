@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/05 17:03:54 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/05 18:01:10 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@
 ** case_list_ns     : case_list case_item_ns +
 **                  |           case_item_ns +
 **                  ;
-** case_list        : case_list case_item
-**                  |           case_item
+** case_list        : case_list case_item +
+**                  |           case_item +
 **                  ;
 ** case_item_ns     :     pattern ')'               linebreak
 **                  |     pattern ')' compound_list linebreak
