@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_lexer.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 16:38:41 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 17:30:48 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/05 18:47:16 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,21 @@ typedef enum    e_type {
     SEPARATOR,
 
     WORD,
-    OR_IF,          //  ||
-    AND_IF,         //  &&
-    PIPE,           // |
-    AMPER,            // &
-    SEMI            // ;
+    NEWLINE,
+	IO_NUMBER,
+	AND_IF,			// &&
+	OR_IF,			// ||
+	DSEMI,			// ;;
+	DLESS,			// <<
+	DGREAT,			// >>
+	LESSAND,		// <&
+	GREATAND,		// >&
+	LESSGREAT,		// <>
+	DLESSDASH,		// <<-
+	CLOBBER,		// >|
+	LBRACE,			// {
+	RBRACE,			// }
+	BANG			// !
 }               t_type;
 
 
@@ -50,5 +60,14 @@ typedef struct      s_node {
     struct s_node   *left;
     struct s_node   *right;
 }                   t_node;
+
+int		sh_lexer(t_main *main);
+
+int		ft_find_closing_single_quotes(int i, char *str);
+int		ft_find_closing_double_quotes(int i, char *str);
+
+int		ft_is_operator(char *str);
+
+void	ft_check_type_and_add_token(t_list *data, char *str, int i, int io_nbr_flag);
 
 #endif

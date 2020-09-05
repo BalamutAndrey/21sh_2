@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_parser.h                                        :+:      :+:    :+:   */
+/*   sh_lexer_find_quotes.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/05 16:06:56 by geliz             #+#    #+#             */
-/*   Updated: 2020/09/05 17:50:54 by geliz            ###   ########.fr       */
+/*   Created: 2020/09/05 18:21:26 by geliz             #+#    #+#             */
+/*   Updated: 2020/09/05 18:47:38 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_PARSER_H
-# define SH_PARSER_H
+#include "sh_main.h"
 
-/*
-** sh_parser.c
-*/
-void	sh_parser(t_main *main);
-/*
-** sh_check_quotes.c
-*/
-void	sh_check_quotes(t_main *main);
-void	sh_check_dquotes(t_main *main);
+int		ft_find_closing_single_quotes(int i, char *str)
+{
+	i++;
+	while (str[i] != '\0' && str[i] != '\'')
+		i++;
+	return (i);
+}
 
-#endif
+int		ft_find_closing_double_quotes(int i, char *str)
+{
+	i++;
+	while (str[i] != '\0' && str[i] != '"')
+	{
+		i++;
+		if (i - 1 >= 0 && str[i] == '"' && str[i - 1] == '\\')
+			i++;
+	}
+	return (i);
+}
