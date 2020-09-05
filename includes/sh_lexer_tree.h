@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 23:26:43 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/05 16:35:07 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,12 @@ t_node	*sh_name_name(t_main *main);
 */
 t_node	*sh_in(t_main *main);
 t_node	*sh_in_in(t_main *main);
+
+/*
+** sh_wordlist.c
+*/
+t_node	*sh_wordlist(t_main *main);
+t_node	*sh_wordlist_wordlist_word(t_main *main);
+t_node	*sh_wordlist_word(t_main *main);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 23:27:03 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/05 16:35:15 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@
 **                  ;
 ** in               : In                       !! Apply rule 6 !!	+
 **                  ;
-** wordlist         : wordlist WORD
-**                  |          WORD
+** wordlist         : wordlist WORD +
+**                  |          WORD +
 **                  ;
 ** case_clause      : Case WORD linebreak in linebreak case_list    Esac
 **                  | Case WORD linebreak in linebreak case_list_ns Esac
