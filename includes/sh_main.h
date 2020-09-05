@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_main.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:57:23 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 17:27:36 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/05 16:08:02 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include "sh_structs.h"
+# include "sh_parcer.h"
 # include "sh_lexer.h"
 # include "sh_lexer_tree.h"
 
