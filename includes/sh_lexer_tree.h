@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/05 18:45:13 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/05 18:51:56 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,5 +187,12 @@ t_node	*sh_ifclause(t_main *main);
 t_node	*sh_ifclause_if_compoundlist_then_compoundlist_elsepart_fi
 	(t_main *main);
 t_node	*sh_ifclause_if_compoundlist_then_compoundlist_fi(t_main *main);
+
+/*
+** sh_else_part.c
+*/
+t_node	*sh_elsepart(t_main *main);
+t_node	*sh_elsepart_elif_compoundlist_then_elsepart(t_main *main);
+t_node	*sh_elsepart_elif_compoundlist(t_main *main);
 
 #endif
