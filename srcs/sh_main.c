@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:58:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/05 16:05:54 by geliz            ###   ########.fr       */
+/*   Updated: 2020/09/05 16:52:19 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int main(int argc, char **argv, char **env)
 	if (argc > 1)
 	{
 		main->ks = argv[1];
-		sh_parcer(main);
+		main->prompt = NULL;
+		sh_parser(main);
 	}
     (void)argc;
     (void)*argv;

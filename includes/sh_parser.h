@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_parcer.c                                        :+:      :+:    :+:   */
+/*   sh_parser.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/09/05 16:09:21 by geliz            ###   ########.fr       */
+/*   Created: 2020/09/05 16:06:56 by geliz             #+#    #+#             */
+/*   Updated: 2020/09/05 16:52:50 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh_main.h"
+#ifndef SH_PARSER_H
+# define SH_PARSER_H
 
-int		sh_parcer(t_main *main)
-{
-	sh_check_quotes(str);
-	sh_check_dquotes(str);
-	sh_check_braces(str);
-	sh_check_fbraces(str);
-}
+/*
+** sh_parser.c
+*/
+void	sh_parser(t_main *main);
+void	sh_check_quotes(t_main *main);
+void	sh_check_dquotes(t_main *main);
+
+#endif
