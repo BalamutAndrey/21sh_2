@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/06 13:39:52 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/06 14:13:48 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@
 **                  ;
 ** function_definition : fname '(' ')' linebreak function_body +
 **                  ;
-** function_body    : compound_command                !! Apply rule 9 !!
-**                  | compound_command redirect_list  !! Apply rule 9 !!
+** function_body    : compound_command                !! Apply rule 9 !! +
+**                  | compound_command redirect_list  !! Apply rule 9 !! +
 **                  ;
 ** fname            : NAME                            !! Apply rule 8 !!
 **                  ;

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/06 13:40:56 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/06 14:13:39 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,5 +213,12 @@ t_node	*sh_untilclause_until_compoundlist_dogroup(t_main *main);
 t_node	*sh_functiondefinition(t_main *main);
 t_node	*sh_functiondefinition_fname_bracket_bracket_linebreak_functionbody
 	(t_main *main);
+
+/*
+** sh_function_body.c
+*/
+t_node	*sh_functionbody(t_main *main);
+t_node	*sh_functionbody_compoundcommand(t_main *main);
+t_node	*sh_functionbody_compoundcommand_redirectlist(t_main *main);
 
 #endif
