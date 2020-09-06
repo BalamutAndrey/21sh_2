@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/06 13:27:38 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/06 13:35:08 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,5 +200,11 @@ t_node	*sh_elsepart_elif_compoundlist(t_main *main);
 */
 t_node	*sh_whileclause(t_main *main);
 t_node	*sh_whileclause_while_compoundlist_dogroup(t_main *main);
+
+/*
+** sh_until_clause.c
+*/
+t_node	*sh_untilclause(t_main *main);
+t_node	*sh_untilclause_until_compoundlist_dogroup(t_main *main);
 
 #endif
