@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:13:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/06 16:30:03 by geliz            ###   ########.fr       */
+/*   Updated: 2020/09/06 17:20:53 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int		sh_check_end_of_token_position(char *str, int *io_nbr_flag)
 			i++;
 		if (sh_is_it_io_redirect_operator(&str[i]) > 0)
 			*io_nbr_flag = 1;
-//		i = ft_find_end_of_token(i, str, cont_read);
 	}
 	else if ((i = sh_is_operator(str)) > 0)
 		return (i);
@@ -59,11 +58,10 @@ int		sh_check_end_of_token_position(char *str, int *io_nbr_flag)
 	return (i);
 }
 
-int		sh_lexer_hub(t_main *main, t_list *data)
+int		sh_lexer_hub(t_main *main, t_token *token)
 {
 	int		i;
 	int		io_nbr_flag;
-	t_list	*nextlist;
 
 	i = 0;
 	while (*main->ks)
@@ -74,13 +72,12 @@ int		sh_lexer_hub(t_main *main, t_list *data)
 		i = sh_check_end_of_token_position(main->ks, &io_nbr_flag);
 		if (i != 0)
 		{
-			if (data->content)
+			if (token->content)
 			{
-				nextlist = ft_lstnew(NULL, 0);
-				data->next = nextlist;
-				data = data->next;
+				token->next = sh_new_token(0, NULL, main);
+				token = token->next;
 			}
-			sh_check_type_and_add_token(data, main->ks, i, io_nbr_flag);
+			sh_check_type_and_add_token(token, main->ks, i, io_nbr_flag);
 		}
 		main->ks = main->ks + i;
 	}
@@ -88,27 +85,25 @@ int		sh_lexer_hub(t_main *main, t_list *data)
 }
 
 //TEMPORARY FUNC, delete it later :)
-void	ft_print_test(t_list *first)
+void	ft_print_test(t_token *first)
 {
-	t_token	*t;
-	t_list 	*print;
-
-	print = first;
-	while (print)
+	while (first)
 	{
-		t = print->content;
-		ft_printf("%s\n", t->content);
-		ft_printf("***%i***\n", t->type);
-		print = print->next;
+		ft_printf("%s\n", first->content);
+		ft_printf("***%i***\n", first->type);
+		first = first->next;
 	}
 }
 
 int		sh_lexer(t_main *main)
 {
-	t_list	*first;
+	t_token	*first;
 
-	first = ft_lstnew(NULL, 0);
+	first = sh_new_token(0, NULL, main);
 	sh_lexer_hub(main, first);
+	if (main->prompt)
+		sh_remove_token_list(first);
+//	main->token_list = token;
 	ft_print_test(first);
 	return (0); 
 }

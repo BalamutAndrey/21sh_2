@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 16:33:42 by geliz             #+#    #+#             */
-/*   Updated: 2020/09/06 16:34:14 by geliz            ###   ########.fr       */
+/*   Updated: 2020/09/06 17:21:51 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,8 @@ void	sh_add_operator_token_part_two(t_token *token, char *str, int i)
 		token->type = NONE;
 }
 
-void	sh_add_operator_token(t_list *data, char *str, int i)
+void	sh_add_operator_token(t_token *token, char *str, int i)
 {
-	t_token		*token;
-
-	token = ft_memalloc(sizeof(t_token));
 	token->content = ft_strsub(str, 0, i);
 	if (!ft_strcmp(token->content, "<<-"))
 		token->type = DLESSDASH;
@@ -55,5 +52,4 @@ void	sh_add_operator_token(t_list *data, char *str, int i)
 		token->type = LESSGREAT;
 	else
 		sh_add_operator_token_part_two(token, str, i);
-	data->content = token;
 }
