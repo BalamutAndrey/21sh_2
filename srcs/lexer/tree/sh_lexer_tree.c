@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/06 14:51:25 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/06 14:55:04 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@
 **                  ;
 ** brace_group      : Lbrace compound_list Rbrace +
 **                  ;
-** do_group         : Do compound_list Done           !! Apply rule 6 !!
+** do_group         : Do compound_list Done           !! Apply rule 6 !! +
 **                  ;
 ** simple_command   : cmd_prefix cmd_word cmd_suffix
 **                  | cmd_prefix cmd_word
