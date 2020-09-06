@@ -6,13 +6,13 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 18:21:26 by geliz             #+#    #+#             */
-/*   Updated: 2020/09/05 18:47:38 by geliz            ###   ########.fr       */
+/*   Updated: 2020/09/06 16:29:31 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
 
-int		ft_find_closing_single_quotes(int i, char *str)
+int		sh_find_closing_single_quotes(int i, char *str)
 {
 	i++;
 	while (str[i] != '\0' && str[i] != '\'')
@@ -20,7 +20,7 @@ int		ft_find_closing_single_quotes(int i, char *str)
 	return (i);
 }
 
-int		ft_find_closing_double_quotes(int i, char *str)
+int		sh_find_closing_double_quotes(int i, char *str)
 {
 	i++;
 	while (str[i] != '\0' && str[i] != '"')
