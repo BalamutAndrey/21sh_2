@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/06 14:55:04 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/06 15:11:38 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,11 @@
 **                  ;
 ** do_group         : Do compound_list Done           !! Apply rule 6 !! +
 **                  ;
-** simple_command   : cmd_prefix cmd_word cmd_suffix
-**                  | cmd_prefix cmd_word
-**                  | cmd_prefix
-**                  | cmd_name cmd_suffix
-**                  | cmd_name
+** simple_command   : cmd_prefix cmd_word cmd_suffix +
+**                  | cmd_prefix cmd_word			 +
+**                  | cmd_prefix					 +
+**                  | cmd_name cmd_suffix			 +
+**                  | cmd_name						 +
 **                  ;
 ** cmd_name         : WORD                   !! Apply rule 7a !!
 **                  ;
