@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/06 14:47:23 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/06 14:51:07 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,5 +226,11 @@ t_node	*sh_functionbody_compoundcommand_redirectlist(t_main *main);
 */
 t_node	*sh_fname(t_main main);
 t_node	*sh_fname_name(t_main main);
+
+/*
+** sh_brace_group.c
+*/
+t_node	*sh_bracegroup(t_main *main);
+t_node	*sh_bracegroup_lbrace_compoundlist_rbrace(t_main *main);
 
 #endif
