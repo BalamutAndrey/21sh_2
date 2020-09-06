@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/05 18:51:39 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/06 13:27:44 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@
 ** else_part        : Elif compound_list Then else_part +
 **                  | Else compound_list				+
 **                  ;
-** while_clause     : While compound_list do_group
+** while_clause     : While compound_list do_group +
 **                  ;
 ** until_clause     : Until compound_list do_group
 **                  ;
