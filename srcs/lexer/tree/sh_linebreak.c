@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 17:57:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 17:58:42 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/07 18:00:40 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_node	*sh_linebreak(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
-	if ((temp = sh_linebreak_newline_list(main)) != NULL)
+	if ((temp = sh_linebreak_newlinelist(main)) != NULL)
 	{
 		return (temp);
 	}
@@ -37,7 +37,7 @@ t_node	*sh_linebreak(t_main *main)
 ** linebreak        : newline_list
 */
 
-t_node	*sh_linebreak_newline_list(t_main *main)
+t_node	*sh_linebreak_newlinelist(t_main *main)
 {
 	t_node	*temp;
 
