@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 16:39:49 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/07 16:53:30 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -298,5 +298,21 @@ t_node	*sh_ioredirect_iofile(t_main *main);
 t_node	*sh_ioredirect_ionumber_iofile(t_main *main);
 t_node	*sh_ioredirect_iohere(t_main *main);
 t_node	*sh_ioredirect_ionumber_iohere(t_main *main);
+
+/*
+** sh_io_file.c
+*/
+t_node	*sh_iofile(t_main *main);
+t_node	*sh_iofile_greatleft_filename(t_main *main);
+t_node	*sh_iofile_lessand_filename(t_main *main);
+t_node	*sh_iofile_greatright_filename(t_main *main);
+t_node	*sh_iofile_greatand_filename(t_main *main);
+
+/*
+** sh_io_file_greats.c
+*/
+t_node	*sh_iofile_dgreat_filename(t_main *main);
+t_node	*sh_iofile_lessgreat_filename(t_main *main);
+t_node	*sh_iofile_clobber_filename(t_main *main);
 
 #endif
