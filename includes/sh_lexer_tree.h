@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 17:27:50 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/07 17:44:50 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -333,5 +333,12 @@ t_node	*sh_iohere_dlessdash_hereend(t_main *main);
 */
 t_node	*sh_hereend(t_main *main);
 t_node	*sh_hereend_word(t_main *main);
+
+/*
+** sh_newline_list.c
+*/
+t_node	*sh_newlinelist(t_main *main);
+t_node	*sh_newlinelist_newline(t_main *main);
+t_node	*sh_newlinelist_newlinelist_newline(t_main *main);
 
 #endif
