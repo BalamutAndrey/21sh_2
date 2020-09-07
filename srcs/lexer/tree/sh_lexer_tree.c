@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 18:10:26 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/07 18:13:52 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@
 ** separator        : separator_op linebreak +
 **                  | newline_list			 +
 **                  ;
-** sequential_sep   : ';' linebreak
-**                  | newline_list
+** sequential_sep   : ';' linebreak +
+**                  | newline_list  +
 **                  ;
 */
