@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "/~/work/21sh_2/21sh",
-            "args": [],
+            "args": ["1>2 0>&1 ls -l -a -F | wc -c"],
             "stopAtEntry": false,
             "cwd": "/~/work/21sh_2/",
             "environment": [],
