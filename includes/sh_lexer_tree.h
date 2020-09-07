@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 16:06:28 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/07 16:25:18 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -273,5 +273,14 @@ t_node	*sh_cmdprefix_ioredirect(t_main *main);
 t_node	*sh_cmdprefix_cmdprefix_ioredirect(t_main *main);
 t_node	*sh_cmdprefix_assignment_word(t_main *main);
 t_node	*sh_cmdprefix_cmdprefix_assignment_word(t_main *main);
+
+/*
+** sh_cmd_suffix.c
+*/
+t_node	*sh_cmdsuffix(t_main *main);
+t_node	*sh_cmdsuffix_ioredirect(t_main *main);
+t_node	*sh_cmdsuffix_cmdsuffix_ioredirect(t_main *main);
+t_node	*sh_cmdsuffix_word(t_main *main);
+t_node	*sh_cmdsuffix_cmdsuffix_word(t_main *main);
 
 #endif

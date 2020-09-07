@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 16:05:21 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/07 16:24:38 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,10 @@
 **                  |            ASSIGNMENT_WORD +
 **                  | cmd_prefix ASSIGNMENT_WORD +
 **                  ;
-** cmd_suffix       :            io_redirect
-**                  | cmd_suffix io_redirect
-**                  |            WORD
-**                  | cmd_suffix WORD
+** cmd_suffix       :            io_redirect +
+**                  | cmd_suffix io_redirect +
+**                  |            WORD		 +
+**                  | cmd_suffix WORD		 +
 **                  ;
 ** redirect_list    :               io_redirect
 **                  | redirect_list io_redirect
