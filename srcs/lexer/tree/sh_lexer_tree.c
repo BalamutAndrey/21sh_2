@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 16:52:02 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/07 17:20:31 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@
 **                  | LESSGREAT filename +
 **                  | CLOBBER   filename +
 **                  ;
-** filename         : WORD                      !! Apply rule 2 !!
+** filename         : WORD                      !! Apply rule 2 !! +
 **                  ;
 ** io_here          : DLESS     here_end
 **                  | DLESSDASH here_end
