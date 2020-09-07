@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 18:06:36 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/07 18:10:15 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -354,5 +354,12 @@ t_node	*sh_linebreak_empty(t_main *main);
 t_node	*sh_separatorop(t_main *main);
 t_node	*sh_separatorop_ampersand(t_main *main);
 t_node	*sh_separatorop_semicolon(t_main *main);
+
+/*
+** sh_separator.c
+*/
+t_node	*sh_separator(t_main *main);
+t_node	*sh_separator_separatorop_linebreak(t_main *main);
+t_node	*sh_separator_newlinelist(t_main *main);
 
 #endif
