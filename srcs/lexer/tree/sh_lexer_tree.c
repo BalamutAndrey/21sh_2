@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/06 15:11:38 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/07 15:52:43 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@
 **                  | cmd_name cmd_suffix			 +
 **                  | cmd_name						 +
 **                  ;
-** cmd_name         : WORD                   !! Apply rule 7a !!
+** cmd_name         : WORD                   !! Apply rule 7a !! +
 **                  ;
 ** cmd_word         : WORD                   !! Apply rule 7b !!
 **                  ;
