@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 17:20:55 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/07 17:24:44 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -320,5 +320,12 @@ t_node	*sh_iofile_clobber_filename(t_main *main);
 */
 t_node	*sh_filename(t_main *main);
 t_node	*sh_filename_word(t_main *main);
+
+/*
+** sh_io_here.c
+*/
+t_node	*sh_iohere(t_main *main);
+t_node	*sh_iohere_dless_hereend(t_main *main);
+t_node	*sh_iohere_dlessdash_hereend(t_main *main);
 
 #endif
