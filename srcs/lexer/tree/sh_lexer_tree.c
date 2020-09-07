@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 17:24:52 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/07 17:27:17 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@
 ** io_here          : DLESS     here_end +
 **                  | DLESSDASH here_end +
 **                  ;
-** here_end         : WORD                      !! Apply rule 3 !!
+** here_end         : WORD                      !! Apply rule 3 !! +
 **                  ;
 ** newline_list     :              NEWLINE
 **                  | newline_list NEWLINE
