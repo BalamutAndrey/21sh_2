@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:29:43 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 16:31:54 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/07 16:39:34 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@
 **                  | redirect_list io_redirect
 */
 
-t_node	*redirectlist(t_main *main)
+t_node	*sh_redirectlist(t_main *main)
 {
 	t_node	*temp;
 
 	temp = NULL;
-	if ((temp = redirectlist_ioredirect(main)) != NULL)
+	if ((temp = sh_redirectlist_ioredirect(main)) != NULL)
 	{
 		return (temp);
 	}
-	else if ((temp = redirectlist_redirectlist_ioredirect(main)) != NULL)
+	else if ((temp = sh_redirectlist_redirectlist_ioredirect(main)) != NULL)
 	{
 		return (temp);
 	}
@@ -37,7 +37,7 @@ t_node	*redirectlist(t_main *main)
 ** redirect_list    :               io_redirect
 */
 
-t_node	*redirectlist_ioredirect(t_main *main)
+t_node	*sh_redirectlist_ioredirect(t_main *main)
 {
 	t_node	*temp;
 
@@ -49,7 +49,7 @@ t_node	*redirectlist_ioredirect(t_main *main)
 ** redirect_list    : redirect_list io_redirect
 */
 
-t_node	*redirectlist_redirectlist_ioredirect(t_main *main)
+t_node	*sh_redirectlist_redirectlist_ioredirect(t_main *main)
 {
 	t_node	*temp;
 
