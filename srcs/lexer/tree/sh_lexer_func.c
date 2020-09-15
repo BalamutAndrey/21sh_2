@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 16:07:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/15 16:17:40 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/15 16:20:34 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_node	*sh_lexer_create_node(t_main *main, t_token *token)
 		new->left = NULL;
 		new->right = NULL;
 		return (new);
-	}	
+	}
 }
 
 void	*sh_lexer_add_node(t_node *node, t_node *left, t_node *right)

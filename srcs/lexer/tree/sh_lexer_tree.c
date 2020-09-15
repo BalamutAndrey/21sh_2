@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 18:13:52 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/15 17:22:14 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,3 +168,28 @@
 **                  | newline_list  +
 **                  ;
 */
+
+void	sh_lexer_tree_new(t_main *main)
+{
+	t_node	*node;
+	t_node	*end;
+
+	node = sh_lexer_create_node(main, NULL);
+	end = sh_complete_command(main, node);
+	if ((end == NULL) || (node == end))
+	{
+		//Syntax Error near: %s\n
+	}
+	else
+	{
+		//Делаем связный список
+		sh_lexer_tree_print(node);
+	}
+}
+
+// Темп! Удалить
+
+void	sh_lexer_tree_print(t_node *node)
+{
+	//
+}

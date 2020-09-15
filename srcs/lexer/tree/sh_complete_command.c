@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 16:37:32 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 16:54:03 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/15 17:18:29 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 **                  | list
 */
 
-t_node	*sh_complete_command(t_main *main)
+t_node	*sh_complete_command(t_main *main, t_node *node)
 {
 	t_node	*temp;
 
-	temp = NULL;
+	temp = node;
 	if ((temp = sh_complete_command_list_separator(main)) != NULL)
 	{
 		return (temp);
