@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 18:14:34 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/15 16:18:04 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 /*
 ** sh_lexer_tree.c
 */
+
+/*
+** sh_lexer_func.c
+*/
+t_node	*sh_lexer_create_node(t_main *main, t_token *token);
+void	*sh_lexer_add_node(t_node *node, t_node *left, t_node *right);
+void	sh_lexer_del_node(t_node **node);
 
 /*
 ** sh_complete_command.c

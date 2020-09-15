@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_lexer.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 16:38:41 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/06 17:19:51 by geliz            ###   ########.fr       */
+/*   Updated: 2020/09/15 16:06:23 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef enum    e_type {
 //
 typedef struct      s_token {
     t_type          type;
-    char*           content;
+    char            *content;
     struct s_token	*next;
 }                   t_token;
 
@@ -56,7 +56,7 @@ typedef struct      s_token {
 //      AST_TREE
 //
 typedef struct      s_node {
-    t_type          node_type;
+//    t_type          node_type;
     t_token         *token;
     struct s_node   *left;
     struct s_node   *right;
