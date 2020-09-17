@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:13:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/06 17:20:53 by geliz            ###   ########.fr       */
+/*   Updated: 2020/09/17 18:13:09 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int		sh_find_end_of_token(int i, char *str)
 	{
 		if (str[i] == '\\')
 			i++;
-		else if (str[i] == '\'' && i - 1 >= 0 && str[i - 1] != '\\')
+		else if (str[i] == '\'' && (i == 0 || str[i - 1] != '\\'))
 			i = sh_find_closing_single_quotes(i, str);
-		else if (str[i] == '"' && i - 1 >= 0 && str[i - 1] != '\\')
+		else if (str[i] == '"' && (i == 0 || str[i - 1] != '\\'))
 			i = sh_find_closing_double_quotes(i, str);
 		if (str[i] != '\0')
 			i++;
@@ -103,7 +103,8 @@ int		sh_lexer(t_main *main)
 	sh_lexer_hub(main, first);
 	if (main->prompt)
 		sh_remove_token_list(first);
-//	main->token_list = token;
+	main->token = first;
 	ft_print_test(first);
+//	sh_lexer_tree_new(main);
 	return (0); 
 }

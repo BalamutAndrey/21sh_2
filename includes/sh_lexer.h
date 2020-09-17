@@ -6,13 +6,18 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 16:38:41 by eboris            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/09/15 16:06:23 by eboris           ###   ########.fr       */
+=======
+/*   Updated: 2020/09/17 18:10:58 by geliz            ###   ########.fr       */
+>>>>>>> 80722f1fc9a0992835af7c9b6dd39e44953d98ff
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH_LEXER_H
 # define SH_LEXER_H
 
+<<<<<<< HEAD
 typedef enum    e_type {
     NONE,
     COMPLETE_COMMAND,
@@ -62,6 +67,8 @@ typedef struct      s_node {
     struct s_node   *right;
 }                   t_node;
 
+=======
+>>>>>>> 80722f1fc9a0992835af7c9b6dd39e44953d98ff
 /*
 ** sh_lexer.c
 */

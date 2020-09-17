@@ -6,168 +6,11 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/15 17:22:14 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/17 17:47:29 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
-
-/*
-** %start  complete_command
-** %%
-** complete_command : list separator +
-**                  | list			 +
-**                  ;
-** list             : list separator_op and_or +
-**                  |                   and_or +
-**                  ;
-** and_or           :                         pipeline +
-**                  | and_or AND_IF linebreak pipeline +
-**                  | and_or OR_IF  linebreak pipeline +
-**                  ;
-** pipeline         :      pipe_sequence +
-**                  | Bang pipe_sequence +
-**                  ;
-** pipe_sequence    :                             command +
-**                  | pipe_sequence '|' linebreak command +
-**                  ;
-** command          : simple_command 				 +
-**                  | compound_command				 +
-**                  | compound_command redirect_list +
-**                  | function_definition			 +
-**                  ;
-** compound_command : brace_group  +
-**                  | subshell	   +
-**                  | for_clause   +
-**                  | case_clause  +
-**                  | if_clause    +
-**                  | while_clause +
-**                  | until_clause +
-**                  ;
-** subshell         : '(' compound_list ')' +
-**                  ;
-** compound_list    :              term			  +
-**                  | newline_list term			  +
-**                  |              term separator +
-**                  | newline_list term separator +
-**                  ;
-** term             : term separator and_or +
-**                  |                and_or +
-**                  ;
-** for_clause       : For name linebreak                            do_group +
-**                  | For name linebreak in          sequential_sep do_group +
-**                  | For name linebreak in wordlist sequential_sep do_group +
-**                  ;
-** name             : NAME                     !! Apply rule 5 !!	+
-**                  ;
-** in               : In                       !! Apply rule 6 !!	+
-**                  ;
-** wordlist         : wordlist WORD +
-**                  |          WORD +
-**                  ;
-** case_clause      : Case WORD linebreak in linebreak case_list    Esac +
-**                  | Case WORD linebreak in linebreak case_list_ns Esac +
-**                  | Case WORD linebreak in linebreak              Esac +
-**                  ;
-** case_list_ns     : case_list case_item_ns +
-**                  |           case_item_ns +
-**                  ;
-** case_list        : case_list case_item +
-**                  |           case_item +
-**                  ;
-** case_item_ns     :     pattern ')'               linebreak +
-**                  |     pattern ')' compound_list linebreak +
-**                  | '(' pattern ')'               linebreak +
-**                  | '(' pattern ')' compound_list linebreak +
-**                  ;
-** case_item        :     pattern ')' linebreak     DSEMI linebreak +
-**                  |     pattern ')' compound_list DSEMI linebreak +
-**                  | '(' pattern ')' linebreak     DSEMI linebreak +
-**                  | '(' pattern ')' compound_list DSEMI linebreak +
-**                  ;
-** pattern          :             WORD         !! Apply rule 4 !!		 +
-**                  | pattern '|' WORD         !! Do not apply rule 4 !! +
-**                  ;
-** if_clause        : If compound_list Then compound_list else_part Fi +
-**                  | If compound_list Then compound_list           Fi +
-**                  ;
-** else_part        : Elif compound_list Then else_part +
-**                  | Else compound_list				+
-**                  ;
-** while_clause     : While compound_list do_group +
-**                  ;
-** until_clause     : Until compound_list do_group +
-**                  ;
-** function_definition : fname '(' ')' linebreak function_body +
-**                  ;
-** function_body    : compound_command                !! Apply rule 9 !! +
-**                  | compound_command redirect_list  !! Apply rule 9 !! +
-**                  ;
-** fname            : NAME                            !! Apply rule 8 !! +
-**                  ;
-** brace_group      : Lbrace compound_list Rbrace +
-**                  ;
-** do_group         : Do compound_list Done           !! Apply rule 6 !! +
-**                  ;
-** simple_command   : cmd_prefix cmd_word cmd_suffix +
-**                  | cmd_prefix cmd_word			 +
-**                  | cmd_prefix					 +
-**                  | cmd_name cmd_suffix			 +
-**                  | cmd_name						 +
-**                  ;
-** cmd_name         : WORD                   !! Apply rule 7a !! +
-**                  ;
-** cmd_word         : WORD                   !! Apply rule 7b !! +
-**                  ;
-** cmd_prefix       :            io_redirect	 +
-**                  | cmd_prefix io_redirect	 +
-**                  |            ASSIGNMENT_WORD +
-**                  | cmd_prefix ASSIGNMENT_WORD +
-**                  ;
-** cmd_suffix       :            io_redirect +
-**                  | cmd_suffix io_redirect +
-**                  |            WORD		 +
-**                  | cmd_suffix WORD		 +
-**                  ;
-** redirect_list    :               io_redirect +
-**                  | redirect_list io_redirect +
-**                  ;
-** io_redirect      :           io_file +
-**                  | IO_NUMBER io_file +
-**                  |           io_here +
-**                  | IO_NUMBER io_here +
-**                  ;
-** io_file          : '<'       filename +
-**                  | LESSAND   filename +
-**                  | '>'       filename +
-**                  | GREATAND  filename +
-**                  | DGREAT    filename +
-**                  | LESSGREAT filename +
-**                  | CLOBBER   filename +
-**                  ;
-** filename         : WORD                      !! Apply rule 2 !! +
-**                  ;
-** io_here          : DLESS     here_end +
-**                  | DLESSDASH here_end +
-**                  ;
-** here_end         : WORD                      !! Apply rule 3 !! +
-**                  ;
-** newline_list     :              NEWLINE +
-**                  | newline_list NEWLINE +
-**                  ;
-** linebreak        : newline_list  +
-**                  | !!! empty !!! +
-**                  ;
-** separator_op     : '&' +
-**                  | ';' +
-**                  ;
-** separator        : separator_op linebreak +
-**                  | newline_list			 +
-**                  ;
-** sequential_sep   : ';' linebreak +
-**                  | newline_list  +
-**                  ;
-*/
 
 void	sh_lexer_tree_new(t_main *main)
 {
@@ -176,20 +19,61 @@ void	sh_lexer_tree_new(t_main *main)
 
 	node = sh_lexer_create_node(main, NULL);
 	end = sh_complete_command(main, node);
-	if ((end == NULL) || (node == end))
+	if ((end == NULL) || (node == NULL) ||
+		((node->left = NULL) && (node->right == NULL)))
 	{
-		//Syntax Error near: %s\n
+		if (node->token != NULL)
+		{
+			//Syntax Error near: %s\n
+		}
+		else
+		{
+			//malloc error
+		}
 	}
 	else
 	{
 		//Делаем связный список
-		sh_lexer_tree_print(node);
+		ft_printf("\n*** START printing tree... ***\n");
+		sh_lexer_tree_print(node, 0);
+		ft_printf("\n***  END  printing tree... ***\n");
 	}
 }
 
 // Темп! Удалить
 
-void	sh_lexer_tree_print(t_node *node)
+void	sh_lexer_tree_print(t_node *node, int a)
 {
-	//
+	int		i;
+
+	i = -1;
+	ft_printf("\n");
+	while (a <= ++i)
+		ft_printf(" ");
+	ft_printf("TOKEN TYPE    = ");
+	if (node->token != NULL)
+		ft_printf("%i", node->token->type);
+	else
+		ft_printf("NULL\n");
+	i = -1;
+	while (a <= ++i)
+		ft_printf(" ");
+	ft_printf("TOKEN CONTENT = ");
+	if ((node->token != NULL) && (node->token->content != NULL))
+		ft_printf("%s", node->token->content);
+	else
+		ft_printf("NULL\n");
+	i = -1;
+	while (a <= ++i)
+		ft_printf(" ");	
+	ft_printf("LEFT         = %p\n", node->left);
+	i = -1;
+	while (a <= ++i)
+		ft_printf(" ");	
+	ft_printf("RIGHT        = %p\n", node->right);
+	ft_printf("\n");
+	if (node->right != NULL)
+		sh_lexer_tree_print(node->right, a + 1);
+	if (node->left != NULL)
+		sh_lexer_tree_print(node->left, a + 1);
 }
