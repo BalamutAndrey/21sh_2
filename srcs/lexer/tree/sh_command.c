@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 18:19:08 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 18:24:34 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/17 18:57:23 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ t_node	*sh_command_simplecommand(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	if ((temp = sh_simplecommand(main)) != NULL)
+		return (temp);
 	return (NULL);
 }
 

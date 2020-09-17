@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/17 18:23:22 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/17 18:57:41 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 ** %start  complete_command
 ** %%
 ** complete_command : list separator +
-**                  | list			 +
+**                  | list			 ++
 **                  ;
 ** list             : list separator_op and_or +
-**                  |                   and_or +
+**                  |                   and_or ++
 **                  ;
 ** and_or           :                         pipeline +
 **                  | and_or AND_IF linebreak pipeline +
@@ -116,7 +116,7 @@
 **                  | cmd_name cmd_suffix			 +
 **                  | cmd_name						 +
 **                  ;
-** cmd_name         : WORD                   !! Apply rule 7a !! +
+** cmd_name         : WORD                   !! Apply rule 7a !! ++
 **                  ;
 ** cmd_word         : WORD                   !! Apply rule 7b !! +
 **                  ;
@@ -417,7 +417,7 @@ t_node	*sh_simplecommand_cmdprefix_cmdword_cmdsuffix(t_main *main);
 t_node	*sh_simplecommand_cmdprefix_cmdword(t_main *main);
 t_node	*sh_simplecommand_cmdprefix(t_main *main);
 t_node	*sh_simplecommand_cmdname_cmdsuffix(t_main *main);
-t_node	*sh_simplecommand__cmdname(t_main *main);
+t_node	*sh_simplecommand_cmdname(t_main *main);
 
 /*
 ** sh_cmd_name.c

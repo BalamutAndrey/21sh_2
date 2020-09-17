@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:15:17 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 17:44:17 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/17 18:56:03 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ t_node	*sh_list_andor(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	if ((temp = sh_andor(main)) != NULL)
+		return (temp);
 	return (NULL);
 }

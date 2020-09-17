@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:35:36 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/03 18:17:55 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/17 18:56:35 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ t_node	*sh_andor_pipeline(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	if ((temp = sh_pipeline(main)) != NULL)
+		return (temp);
 	return (NULL);
 }
 

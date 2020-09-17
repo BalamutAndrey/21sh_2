@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/17 18:10:56 by geliz            ###   ########.fr       */
+/*   Updated: 2020/09/17 18:43:47 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ typedef struct	s_main
     char		*ks;
     char        *prompt;
     t_token		*token;
+    t_token     *token_curr;
+    t_node      *tree_first;
+    t_node      *tree_curr;
 }				t_main;
 
 #endif
