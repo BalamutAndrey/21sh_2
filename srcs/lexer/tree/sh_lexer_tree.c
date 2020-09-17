@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/17 18:59:46 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/17 19:23:07 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,32 +51,37 @@ void	sh_lexer_tree_print(t_node *node, int a)
 
 	i = -1;
 	ft_printf("\n");
-	while (a <= ++i)
+	while (++i < a)
+		ft_printf(" ");
+	ft_printf("NODE ADRESS   = %p\n", node);
+	i = -1;
+	while (++i < a)
 		ft_printf(" ");
 	ft_printf("TOKEN TYPE    = ");
 	if (node->token != NULL)
-		ft_printf("%i", node->token->type);
+		ft_printf("%i\n", node->token->type);
 	else
 		ft_printf("NULL\n");
 	i = -1;
-	while (a <= ++i)
+	while (++i < a)
 		ft_printf(" ");
 	ft_printf("TOKEN CONTENT = ");
 	if ((node->token != NULL) && (node->token->content != NULL))
-		ft_printf("%s", node->token->content);
+		ft_printf("%s\n", node->token->content);
 	else
 		ft_printf("NULL\n");
 	i = -1;
-	while (a <= ++i)
+	while (++i < a)
 		ft_printf(" ");	
 	ft_printf("LEFT         = %p\n", node->left);
 	i = -1;
-	while (a <= ++i)
+	while (++i < a)
 		ft_printf(" ");	
 	ft_printf("RIGHT        = %p\n", node->right);
 	ft_printf("\n");
 	if (node->right != NULL)
 		sh_lexer_tree_print(node->right, a + 1);
+	ft_printf("\n");
 	if (node->left != NULL)
 		sh_lexer_tree_print(node->left, a + 1);
 }

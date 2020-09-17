@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:58:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/17 19:15:13 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/17 19:16:56 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int argc, char **argv, char **env)
 		if (!main->prompt)
 			sh_lexer(main);
 	}
-//	sh_lexer_tree_new(main);
+	sh_lexer_tree_new(main);
     (void)argc;
     (void)*argv;
     (void)*env;
