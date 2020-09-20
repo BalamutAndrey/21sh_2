@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 18:43:26 by geliz             #+#    #+#             */
-/*   Updated: 2020/09/17 19:13:38 by geliz            ###   ########.fr       */
+/*   Updated: 2020/09/20 14:39:19 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 void	sh_check_slash(t_main *main)
 {
 	int		i;
+	int		j;
 	
 	i = 0;
-	while (*main->ks)
-		main->ks++;
-	--main->ks;
-	while (*main->ks == '\\')
+	j = ft_strlen(main->ks);
+	while (main->ks[j] == '\\')
 	{
-		--main->ks;
+		j--;
 		i++;
 	}
 	if (i % 2 != 0)
