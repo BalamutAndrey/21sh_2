@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:58:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/17 19:16:56 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/20 17:10:02 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main(int argc, char **argv, char **env)
     t_main	*main;
 
 	main = malloc(sizeof(t_main));
+	main->heredoc = NULL;
 	ft_printf("Starting 21sh...\n");
 	if (argc > 1)
 	{

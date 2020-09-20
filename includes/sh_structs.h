@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/17 18:43:47 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/20 17:09:37 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH_STRUCTS_H
 # define SH_STRUCTS_H
+
+typedef struct			s_heredoc {
+	int					str_end;
+	char				*delim;
+	int					here_start;
+	int					here_end;
+	struct s_heredoc	*next;
+}						t_heredoc;
 
 typedef enum    e_type {
     NONE,
@@ -66,6 +74,7 @@ typedef struct	s_main
 {
     char		*ks;
     char        *prompt;
+	t_heredoc	*heredoc;
     t_token		*token;
     t_token     *token_curr;
     t_node      *tree_first;
