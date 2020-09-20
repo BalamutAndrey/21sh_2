@@ -6,13 +6,13 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 16:07:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/17 17:38:22 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/20 17:21:54 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
 
-t_node	*sh_lexer_create_node(t_main *main, t_token *token)
+t_node	*sh_lexer_create_node(t_main *main, t_token *token, t_type type)
 {
 	t_node	*new;
 
@@ -24,6 +24,7 @@ t_node	*sh_lexer_create_node(t_main *main, t_token *token)
 	}
 	else
 	{
+		new->node_type = type;
 		new->token = token;
 		new->left = NULL;
 		new->right = NULL;

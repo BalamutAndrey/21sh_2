@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:21:03 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 16:24:16 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/20 18:58:49 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,16 @@ t_node	*sh_cmdsuffix_word(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
-	return (NULL);
+	if ((main->token_curr == NULL) || (main->token_curr->type != WORD))
+		return (NULL);
+	if ((main->token_curr->next != NULL) &&
+		(main->token_curr->next->type != SEPARATOR))
+	{
+		return (NULL);
+	}
+	temp = sh_lexer_create_node(main, main->token_curr, CMDSUFFIX);
+	main->token_curr = main->token_curr->next;
+	return (temp);
 }
 
 /*
@@ -85,8 +94,31 @@ t_node	*sh_cmdsuffix_word(t_main *main)
 
 t_node	*sh_cmdsuffix_cmdsuffix_word(t_main *main)
 {
+	t_token	*token;
+	t_token	*first_token;
+	t_node	*first;
 	t_node	*temp;
+	t_node	*curr;
 
-	temp = NULL;
-	return (NULL);
+	if (main->token_curr == NULL)
+		return (NULL);
+	first_token = main->token_curr;
+	token = main->token_curr->next;
+	main->token_curr->next = NULL;
+	first = sh_cmdsuffix(main);
+	if (first == NULL)
+		return (NULL);
+	main->token_curr = token;
+	curr = first;
+	while (main->token_curr != NULL)
+	{
+		token = main->token_curr->next;
+		if ((temp = sh_cmdsuffix(main)) != NULL)
+		{
+			sh_lexer_add_node(curr, NULL, temp);
+			curr = temp;
+		}
+		main->token_curr = token;
+	}
+	return (first);
 }

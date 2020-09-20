@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/17 19:23:07 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/20 17:57:13 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	sh_lexer_tree_new(t_main *main)
 	t_node	*node;
 	t_node	*end;
 
-	node = sh_lexer_create_node(main, NULL);
+	node = sh_lexer_create_node(main, NULL, SEPARATOR);
 	main->tree_first = node;
 	main->tree_curr = node;
 	main->token_curr = main->token;
@@ -38,7 +38,7 @@ void	sh_lexer_tree_new(t_main *main)
 	{
 		//Делаем связный список
 		ft_printf("\n*** START printing tree... ***\n");
-		sh_lexer_tree_print(node, 0);
+		sh_lexer_tree_print(main->tree_first, 0);
 		ft_printf("\n***  END  printing tree... ***\n");
 	}
 }
@@ -58,8 +58,8 @@ void	sh_lexer_tree_print(t_node *node, int a)
 	while (++i < a)
 		ft_printf(" ");
 	ft_printf("TOKEN TYPE    = ");
-	if (node->token != NULL)
-		ft_printf("%i\n", node->token->type);
+	if (node != NULL)
+		ft_printf("%i\n", node->node_type);
 	else
 		ft_printf("NULL\n");
 	i = -1;

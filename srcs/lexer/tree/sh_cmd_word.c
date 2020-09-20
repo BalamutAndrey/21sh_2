@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 15:55:08 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 15:56:43 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/20 17:39:54 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,9 @@ t_node	*sh_cmdword_word(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
-	return (NULL);
+	if (main->token_curr->type != WORD)
+		return (NULL);
+	temp = sh_lexer_create_node(main, main->token_curr, CMDNAME);
+	main->token_curr = main->token_curr->next;
+	return (temp);
 }
