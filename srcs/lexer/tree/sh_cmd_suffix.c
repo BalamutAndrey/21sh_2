@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:21:03 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/20 18:58:49 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/21 17:39:56 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,16 +108,23 @@ t_node	*sh_cmdsuffix_cmdsuffix_word(t_main *main)
 	first = sh_cmdsuffix(main);
 	if (first == NULL)
 		return (NULL);
+	main->token_curr = first_token;
+	main->token_curr->next = token;
 	main->token_curr = token;
 	curr = first;
-	while (main->token_curr != NULL)
+	while ((main->token_curr != NULL) && (main->token_curr->type != SEPARATOR))
 	{
+		temp = NULL;
+		first_token = main->token_curr;
 		token = main->token_curr->next;
+		main->token_curr->next = NULL;
 		if ((temp = sh_cmdsuffix(main)) != NULL)
 		{
 			sh_lexer_add_node(curr, NULL, temp);
 			curr = temp;
 		}
+		main->token_curr = first_token;
+		main->token_curr->next = token;
 		main->token_curr = token;
 	}
 	return (first);
