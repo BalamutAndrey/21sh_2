@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 18:01:13 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 18:06:49 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/21 17:53:12 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,11 @@ t_node	*sh_separatorop_semicolon(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	if ((main->token_curr != NULL) && (main->token_curr->type == SEPARATOR) &&
+	(main->token_curr->content[0] == ';'))
+	{
+		temp = sh_lexer_create_node(main, main->token_curr, SEPARATOR);
+		return (temp);
+	}
 	return (NULL);
 }
