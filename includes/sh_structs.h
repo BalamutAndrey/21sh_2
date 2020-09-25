@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/20 17:46:49 by geliz            ###   ########.fr       */
+/*   Updated: 2020/09/25 17:59:39 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef enum    e_type {
     WORD,
     NEWLINE,
 	IO_NUMBER,
+    LESS,           // <
+    GREAT,          // >
 	AND_IF,			// &&
 	OR_IF,			// ||
 	DSEMI,			// ;;

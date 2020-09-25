@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 15:03:57 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/20 18:31:51 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/25 18:29:32 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_node	*sh_simplecommand_cmdname_cmdsuffix(t_main *main)
 	sh_lexer_add_node(main->tree_curr, NULL, cmd);
 	main->tree_curr = main->tree_curr->right;
 	sh_lexer_add_node(main->tree_curr, NULL, suffix);
-	return (suffix);
+	return (cmd);
 }
 
 /*

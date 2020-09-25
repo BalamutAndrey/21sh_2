@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:42:30 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 16:51:47 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/25 18:52:25 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,36 @@ t_node	*sh_iofile(t_main *main)
 t_node	*sh_iofile_greatleft_filename(t_main *main)
 {
 	t_node	*temp;
+	t_node	*first;
+	t_token	*token;
 
 	temp = NULL;
+	token = main->token_curr;
+	if ((main->token_curr != NULL) && (main->token_curr->type == NONE) &&
+	(main->token_curr->content[0] == '<'))
+	{
+		first = sh_lexer_create_node(main, main->token_curr, LESS);
+		main->token_curr = main->token_curr->next;
+		if ((temp = sh_filename(main)) != NULL)
+		{
+			sh_lexer_add_node(first, NULL, temp);
+			main->token_curr = main->token_curr->next;
+			if ((main->token_curr != NULL) && (main->token_curr->type != SEPARATOR))
+			{
+				main->token_curr = token;
+				sh_lexer_del_node(&first);
+				sh_lexer_del_node(&temp);
+				return (NULL);
+			}
+			return (first);
+		}
+		else
+		{
+			sh_lexer_del_node(&first);
+			main->token_curr = token;
+			return (NULL);
+		}
+	}
 	return (NULL);
 }
 

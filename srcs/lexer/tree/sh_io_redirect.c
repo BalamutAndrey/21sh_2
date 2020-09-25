@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:34:08 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 16:37:14 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/25 17:56:07 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ t_node	*sh_ioredirect_iofile(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	if ((temp = sh_iofile(main)) != NULL)
+	{
+		return (temp);
+	}
 	return (NULL);
 }
 
