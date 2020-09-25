@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:15:17 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/17 18:56:03 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/25 16:40:53 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,27 @@ t_node	*sh_list(t_main *main)
 t_node	*sh_list_separatorop_andor(t_main *main)
 {
 	t_node	*temp;
+	t_node	*sep;
+	t_token	*find;
+	t_token	*first;
 
+	find = main->token_curr;
+	first = main->token_curr;
+	while (find != NULL)
+	{
+		if ((find->next != NULL) && (find->next->type == SEPARATOR))
+		{
+			first = find->next;
+			find->next = NULL;
+			temp = sh_list_andor(main);
+			main->token_curr = first->next;
+			sep = sh_lexer_create_node(main, NULL, SEPARATOR);
+			sh_lexer_add_node(main->tree_curr, sep, temp);
+			main->tree_curr = sep;
+			return (sh_list(main));
+		}
+		find = find->next;
+	}
 	temp = NULL;
 	return (NULL);
 }
@@ -55,6 +75,13 @@ t_node	*sh_list_andor(t_main *main)
 
 	temp = NULL;
 	if ((temp = sh_andor(main)) != NULL)
+	{
+		if ((main->token_curr != NULL) && (main->token_curr->next != NULL))
+		{
+			//free temp
+			return (NULL);
+		}
 		return (temp);
+	}
 	return (NULL);
 }

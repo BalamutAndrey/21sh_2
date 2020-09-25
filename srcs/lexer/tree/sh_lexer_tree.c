@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/20 17:57:13 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/25 16:46:28 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	sh_lexer_tree_new(t_main *main)
 	main->token_curr = main->token;
 	end = sh_complete_command(main, node);
 	if ((end == NULL) || (node == NULL) ||
-		((node->left = NULL) && (node->right == NULL)))
+		((node->left == NULL) && (node->right == NULL)))
 	{
 		if (node->token != NULL)
 		{
