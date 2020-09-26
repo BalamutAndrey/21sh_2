@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:58:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/20 17:10:02 by geliz            ###   ########.fr       */
+/*   Updated: 2020/09/26 18:30:33 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main(int argc, char **argv, char **env)
 
 	main = malloc(sizeof(t_main));
 	main->heredoc = NULL;
+	main->token = NULL;
 	ft_printf("Starting 21sh...\n");
 	if (argc > 1)
 	{

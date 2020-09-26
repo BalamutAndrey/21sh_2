@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:13:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/26 18:21:23 by geliz            ###   ########.fr       */
+/*   Updated: 2020/09/26 18:34:58 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int		sh_check_end_of_token_position(char *str, int *io_nbr_flag)
 	if (ft_isdigit(str[i]) == 1)
 	{
 		while (ft_isdigit(str[i]) == 1)
+			i++;
+		while (sh_is_whitespace_or_tab(str[i]) == 1)
 			i++;
 		if (sh_is_it_io_redirect_operator(&str[i]) > 0)
 			*io_nbr_flag = 1;
