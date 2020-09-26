@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:42:30 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/25 18:52:25 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/26 16:12:31 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,11 @@ t_node	*sh_iofile_greatleft_filename(t_main *main)
 		{
 			sh_lexer_add_node(first, NULL, temp);
 			main->token_curr = main->token_curr->next;
-			if ((main->token_curr != NULL) && (main->token_curr->type != SEPARATOR))
-			{
-				main->token_curr = token;
-				sh_lexer_del_node(&first);
-				sh_lexer_del_node(&temp);
-				return (NULL);
-			}
 			return (first);
 		}
 		else
 		{
+			// Ошибка лексемы?
 			sh_lexer_del_node(&first);
 			main->token_curr = token;
 			return (NULL);
