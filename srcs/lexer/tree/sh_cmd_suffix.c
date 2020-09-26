@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:21:03 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/26 17:01:27 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/26 18:10:45 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ t_node	*sh_cmdsuffix_ioredirect(t_main *main)
 	{
 		return (NULL);
 	}
+	if ((main->token_curr == NULL) || (main->token_curr->next == NULL))
+		return (NULL);
+	if ((main->token_curr->next->next != NULL) && (main->token_curr->next->next->type != SEPARATOR))
+		return (NULL);
 	if ((temp = sh_ioredirect(main)) != NULL)
 	{
 		return (temp);
@@ -76,16 +80,37 @@ t_node	*sh_cmdsuffix_cmdsuffix_ioredirect(t_main *main)
 	t_node	*temp;
 	t_node	*curr;
 
-
-	return (NULL);
-	// if ((main->token_curr != NULL) && (main->token_curr->next != NULL) &&
-	// (main->token_curr->next->type != WORD) && (main->token_curr->next->next != SEPARATOR) &&
-	// (main->token_curr->next->next != NULL))
-	// 	return (NULL);
-	if ((main->token_curr == NULL) || (main->token_curr->next == NULL) ||
+	if ((main->token_curr == NULL) || (main->token_curr->type == WORD) ||
+	(main->token_curr->next == NULL) ||
 	(main->token_curr->next->type != WORD) || (main->token_curr->next->next == NULL) ||
 	(main->token_curr->next->next->type == SEPARATOR))
 		return (NULL);
+	first_token = main->token_curr;
+	token = main->token_curr->next->next;
+	main->token_curr->next->next = NULL;
+	temp = sh_cmdsuffix(main);
+	first = temp;
+	// main->token_curr = first_token;
+	// main->token_curr->next->next = token;
+	if (temp == NULL)
+	{
+		main->token_curr = first_token;
+		return (NULL);
+	}
+	// main->token_curr = main->token_curr->next->next;
+	main->token_curr = token;
+	// sh_lexer_add_node(main->tree_curr, NULL, temp);
+	// main->tree_curr = main->tree_curr->right;
+	// temp = sh_cmdsuffix(main);
+	while ((curr = sh_cmdsuffix(main)) != NULL)
+	{
+		while (temp->right != NULL)
+		{
+			temp = temp->right;
+		}
+		sh_lexer_add_node(temp, NULL, curr);
+	}
+	return (first);
 }
 
 /*
