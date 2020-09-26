@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/25 17:59:39 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/26 17:06:28 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SH_STRUCTS_H
 
 typedef struct			s_heredoc {
-	int					str_end;
 	char				*delim;
+    char                *content;
 	int					delim_start;
 	int					here_start;
 	int					here_end;

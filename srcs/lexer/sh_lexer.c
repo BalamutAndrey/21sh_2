@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:13:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/17 18:56:15 by geliz            ###   ########.fr       */
+/*   Updated: 2020/09/26 18:21:23 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		sh_is_whitespace_or_tab(char c)
 {
-	if (c == ' ' || c == '\t')
+	if (c == ' ' || c == '\t' || c == '\n')
 		return (1);
 	return (0);
 }
@@ -41,10 +41,10 @@ int		sh_check_end_of_token_position(char *str, int *io_nbr_flag)
 	int		i;
 
 	i = 0;
-	if (str[i] == '\n')
+/*	if (str[i] == '\n')
 		while (str[i] == '\n')
-			i++;
-	else if (ft_isdigit(str[i]) == 1)
+			i++;*/
+	if (ft_isdigit(str[i]) == 1)
 	{
 		while (ft_isdigit(str[i]) == 1)
 			i++;
@@ -61,15 +61,19 @@ int		sh_check_end_of_token_position(char *str, int *io_nbr_flag)
 int		sh_lexer_hub(t_main *main, t_token *token)
 {
 	int		i;
+	int		j;
 	int		io_nbr_flag;
+	int		fin;
 
 	i = 0;
-	while (*main->ks)
+	j = 0;
+	fin = main->heredoc ? main->heredoc->here_start - 1 : ft_strlen(main->ks);
+	while (j < fin)
 	{
-		while (sh_is_whitespace_or_tab(*main->ks))
-			main->ks++;
+		while (sh_is_whitespace_or_tab(main->ks[j]))
+			j++;
 		io_nbr_flag = 0;
-		i = sh_check_end_of_token_position(main->ks, &io_nbr_flag);
+		i = sh_check_end_of_token_position(&main->ks[j], &io_nbr_flag);
 		if (i != 0)
 		{
 			if (token->content)
@@ -77,9 +81,9 @@ int		sh_lexer_hub(t_main *main, t_token *token)
 				token->next = sh_new_token(0, NULL, main);
 				token = token->next;
 			}
-			sh_check_type_and_add_token(token, main->ks, i, io_nbr_flag);
+			sh_check_type_and_add_token(token, &main->ks[j], i, io_nbr_flag);
 		}
-		main->ks = main->ks + i;
+		j += i;
 	}
 	return (0);
 }
@@ -104,6 +108,7 @@ int		sh_lexer(t_main *main)
 	if (main->prompt)
 		sh_remove_token_list(first);
 	main->token = first;
+	sh_add_heredoc_content(main);
 	ft_print_test(first);
 //	sh_lexer_tree_new(main);
 	return (0); 

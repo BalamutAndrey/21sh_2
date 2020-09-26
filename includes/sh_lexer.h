@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 16:38:41 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/17 18:22:39 by geliz            ###   ########.fr       */
+/*   Updated: 2020/09/26 17:43:25 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ int		sh_is_it_io_redirect_operator(char *str);
 ** sh_check_and_add_token.c
 */
 void	sh_check_type_and_add_token(t_token *token, char *str, int i, int io_nbr_flag);
-void	sh_add_io_number_token(t_token *token, char *str, int i);
-void	sh_add_newline_token(t_token *token);
-void	sh_add_word_token(t_token *token, char *str, int i);
 /*
 **  sh_add_operator_token.c
 */
@@ -48,5 +45,8 @@ void	sh_add_operator_token_part_two(t_token *token, char *str, int i);
 */
 t_token	*sh_new_token(int type, char *content, t_main *main);
 void	sh_remove_token_list(t_token *token);
-
+/*
+** sh_add_heredoc_content.c
+*/
+void	sh_add_heredoc_content(t_main *main);
 #endif
