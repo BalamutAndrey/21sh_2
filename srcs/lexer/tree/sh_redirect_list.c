@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:29:43 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 16:39:34 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/27 16:28:41 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,17 @@ t_node	*sh_redirectlist_redirectlist_ioredirect(t_main *main)
 
 	temp = NULL;
 	return (NULL);
+}
+
+bool	sh_is_a_redirect(t_token *token)
+{
+	if (token == NULL)
+		return (false);
+	if ((token->type == LESS) || (token->type == GREAT) ||
+	(token->type == LESSAND) || (token->type == GREATAND) ||
+	(token->type == DGREAT) || (token->type == IO_NUMBER))
+	{
+		return (true);
+	}
+	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:42:30 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/26 16:12:31 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/27 16:31:03 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ t_node	*sh_iofile_greatleft_filename(t_main *main)
 
 	temp = NULL;
 	token = main->token_curr;
-	if ((main->token_curr != NULL) && (main->token_curr->type == NONE) &&
-	(main->token_curr->content[0] == '<'))
+	if ((main->token_curr != NULL) && (main->token_curr->type == LESS))
 	{
 		first = sh_lexer_create_node(main, main->token_curr, LESS);
 		main->token_curr = main->token_curr->next;

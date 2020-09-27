@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:34:08 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/25 17:56:07 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/27 16:17:35 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,46 @@
 
 t_node	*sh_ioredirect(t_main *main)
 {
+	t_node	*first;
+	t_node	*curr;
 	t_node	*temp;
 
 	temp = NULL;
-	if ((temp = sh_ioredirect_iofile(main)) != NULL)
+	if (sh_is_a_redirect(main->token_curr) == false)
+		return (NULL);
+	if (((first = sh_ioredirect_iofile(main)) != NULL) ||
+	((first = sh_ioredirect_ionumber_iofile(main)) != NULL) ||
+	((first = sh_ioredirect_iohere(main)) != NULL) ||
+	((first = sh_ioredirect_ionumber_iohere(main)) != NULL))
 	{
-		return (temp);
+		curr = first;
+		while (curr->right != NULL)
+			curr = curr->right;
 	}
-	else if ((temp = sh_ioredirect_ionumber_iofile(main)) != NULL)
+	else
 	{
-		return (temp);
+		// Ошибка синтаксиса!
+		return (NULL);
 	}
-	else if ((temp = sh_ioredirect_iohere(main)) != NULL)
+	while (sh_is_a_redirect(main->token_curr) == true)
 	{
-		return (temp);
+		if (((temp = sh_ioredirect_iofile(main)) != NULL) ||
+		((temp = sh_ioredirect_ionumber_iofile(main)) != NULL) ||
+		((temp = sh_ioredirect_iohere(main)) != NULL) ||
+		((temp = sh_ioredirect_ionumber_iohere(main)) != NULL))
+		{
+			sh_lexer_add_node(curr, NULL, temp);
+			curr = temp;
+			while (curr->right != NULL)
+				curr = curr->right;
+		}
+		else
+		{
+			// Ошибка синтаксиса!
+			return (NULL);
+		}
 	}
-	else if ((temp = sh_ioredirect_ionumber_iohere(main)) != NULL)
-	{
-		return (temp);
-	}
-	return (NULL);
+	return (first);
 }
 
 /*
