@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:43:56 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 16:48:29 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/27 16:42:14 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,29 @@
 t_node	*sh_iofile_dgreat_filename(t_main *main)
 {
 	t_node	*temp;
+	t_node	*first;
+	t_token	*token;
 
 	temp = NULL;
+	token = main->token_curr;
+	if ((main->token_curr != NULL) && (main->token_curr->type == DGREAT))
+	{
+		first = sh_lexer_create_node(main, main->token_curr, DGREAT);
+		main->token_curr = main->token_curr->next;
+		if ((temp = sh_filename(main)) != NULL)
+		{
+			sh_lexer_add_node(first, NULL, temp);
+			main->token_curr = main->token_curr->next;
+			return (first);
+		}
+		else
+		{
+			// Ошибка лексемы?
+			sh_lexer_del_node(&first);
+			main->token_curr = token;
+			return (NULL);
+		}
+	}
 	return (NULL);
 }
 

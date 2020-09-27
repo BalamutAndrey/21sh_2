@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:42:30 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/27 16:31:03 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/27 16:41:27 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,29 @@ t_node	*sh_iofile_greatleft_filename(t_main *main)
 t_node	*sh_iofile_lessand_filename(t_main *main)
 {
 	t_node	*temp;
+	t_node	*first;
+	t_token	*token;
 
 	temp = NULL;
+	token = main->token_curr;
+	if ((main->token_curr != NULL) && (main->token_curr->type == LESSAND))
+	{
+		first = sh_lexer_create_node(main, main->token_curr, LESSAND);
+		main->token_curr = main->token_curr->next;
+		if ((temp = sh_filename(main)) != NULL)
+		{
+			sh_lexer_add_node(first, NULL, temp);
+			main->token_curr = main->token_curr->next;
+			return (first);
+		}
+		else
+		{
+			// Ошибка лексемы?
+			sh_lexer_del_node(&first);
+			main->token_curr = token;
+			return (NULL);
+		}
+	}
 	return (NULL);
 }
 
@@ -98,8 +119,29 @@ t_node	*sh_iofile_lessand_filename(t_main *main)
 t_node	*sh_iofile_greatright_filename(t_main *main)
 {
 	t_node	*temp;
+	t_node	*first;
+	t_token	*token;
 
 	temp = NULL;
+	token = main->token_curr;
+	if ((main->token_curr != NULL) && (main->token_curr->type == GREAT))
+	{
+		first = sh_lexer_create_node(main, main->token_curr, GREAT);
+		main->token_curr = main->token_curr->next;
+		if ((temp = sh_filename(main)) != NULL)
+		{
+			sh_lexer_add_node(first, NULL, temp);
+			main->token_curr = main->token_curr->next;
+			return (first);
+		}
+		else
+		{
+			// Ошибка лексемы?
+			sh_lexer_del_node(&first);
+			main->token_curr = token;
+			return (NULL);
+		}
+	}
 	return (NULL);
 }
 
@@ -110,7 +152,28 @@ t_node	*sh_iofile_greatright_filename(t_main *main)
 t_node	*sh_iofile_greatand_filename(t_main *main)
 {
 	t_node	*temp;
+	t_node	*first;
+	t_token	*token;
 
 	temp = NULL;
+	token = main->token_curr;
+	if ((main->token_curr != NULL) && (main->token_curr->type == GREATAND))
+	{
+		first = sh_lexer_create_node(main, main->token_curr, GREATAND);
+		main->token_curr = main->token_curr->next;
+		if ((temp = sh_filename(main)) != NULL)
+		{
+			sh_lexer_add_node(first, NULL, temp);
+			main->token_curr = main->token_curr->next;
+			return (first);
+		}
+		else
+		{
+			// Ошибка лексемы?
+			sh_lexer_del_node(&first);
+			main->token_curr = token;
+			return (NULL);
+		}
+	}
 	return (NULL);
 }
