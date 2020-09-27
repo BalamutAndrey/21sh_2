@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/27 15:28:30 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/27 17:31:07 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ void	sh_lexer_tree_new(t_main *main)
 void	sh_lexer_tree_print(t_node *node, int a)
 {
 	int		i;
+	char* type[] = {"NONE", "COMPLETE_COMMAND", "LIST", "PIPELINE", "AND_OR",
+                    "COMMAND", "CMDNAME", "CMDSUFFIX", "SEPARATOR", "WORD",
+                    "NEWLINE", "IO_NUMBER", "LESS", "GREAT", "AND_IF",
+                    "OR_IF", "DSEMI", "DLESS", "DGREAT", "LESSAND",
+                    "GREATAND", "LESSGREAT", "DLESSDASH", "CLOBBER","LBRACE",
+					"RBRACE", "BANG"};
 
 	i = -1;
 	ft_printf("\n");
@@ -59,7 +65,7 @@ void	sh_lexer_tree_print(t_node *node, int a)
 		ft_printf(" ");
 	ft_printf("TOKEN TYPE    = ");
 	if (node != NULL)
-		ft_printf("%i\n", node->node_type);
+		ft_printf("%s (%i)\n", type[node->node_type], node->node_type);
 	else
 		ft_printf("NULL\n");
 	i = -1;

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 15:03:57 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/25 18:29:32 by eboris           ###   ########.fr       */
+/*   Updated: 2020/09/27 17:31:40 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,12 @@ t_node	*sh_simplecommand_cmdname(t_main *main)
 	temp = NULL;
 	if ((temp = sh_cmdname(main)) == NULL)
 		return (NULL);
+	if ((main->token_curr->next != NULL) && (main->token_curr->next->type != SEPARATOR))
+	{
+		// Ошибка лексемы !!!
+		sh_lexer_del_node(&temp);
+		return (NULL);
+	}
 	sh_lexer_add_node(main->tree_curr, NULL, temp);
 	return (temp);
 }
