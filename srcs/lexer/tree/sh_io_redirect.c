@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:34:08 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/27 17:09:10 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/02 16:44:46 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,10 @@ t_node	*sh_ioredirect_iohere(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	if ((temp = sh_iohere(main)) != NULL)
+	{
+		return (temp);
+	}
 	return (NULL);
 }
 
@@ -126,8 +130,25 @@ t_node	*sh_ioredirect_iohere(t_main *main)
 
 t_node	*sh_ioredirect_ionumber_iohere(t_main *main)
 {
+	t_node	*first;
 	t_node	*temp;
+	t_token	*first_token;
 
 	temp = NULL;
+	if ((main->token_curr == NULL) || (main->token_curr->type != IO_NUMBER))
+		return (NULL);
+	first_token = main->token_curr;
+	first = sh_lexer_create_node(main, main->token_curr, IO_NUMBER);
+	main->token_curr = main->token_curr->next;
+	if ((temp = sh_ioredirect_iohere(main)) != NULL)
+	{
+		sh_lexer_add_node(first, NULL, temp);
+		return (first);
+	}
+	else
+	{
+		sh_lexer_del_node(&first);
+		main->token_curr = first_token;
+	}
 	return (NULL);
 }
