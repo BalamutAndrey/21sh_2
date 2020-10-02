@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/02 16:54:18 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/02 19:19:58 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,11 @@ void	sh_parser(t_main *main)
 	// 	sh_check_braces(main);
 	// if (!main->prompt)
 	// 	sh_check_fbraces(main);
+
 	if (!main->prompt)
 	{
 		sh_lexer(main);
 		sh_lexer_tree_new(main);
 	}
+	// 										UPPER FUNC FOR LEXER->TREE
 }

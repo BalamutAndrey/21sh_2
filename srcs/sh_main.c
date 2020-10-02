@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:58:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/02 14:50:41 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/02 18:23:34 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ int main(int argc, char **argv, char **env)
 		sh_term_restore(main);
 		sh_remove_struct(&main);
 	}
-	
+	main->opfds = NULL;
+	sh_exec(main);
 	//sh_lexer_tree_new(main);
     (void)argc;
     (void)*argv;

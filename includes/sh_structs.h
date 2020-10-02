@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/02 16:16:30 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/02 18:09:49 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 # define MAX_KS_LEN		256
 # define MAX_DIR_LEN	256
+
+typedef	struct			s_fds {
+	int					nbr;
+	struct s_fds		*next;
+}						t_fds;
 
 typedef struct			s_heredoc {
 	char				*delim;
@@ -91,7 +96,7 @@ typedef struct      s_node {
 typedef struct      	s_redirect {
 	int					io_num;
 	t_type				type;
-	int					to;
+	char				*filename;
 	struct s_redirect	*next;
 }						t_redirect;
 
@@ -142,6 +147,7 @@ typedef struct		s_main
     t_node      	*tree_curr;
 	t_exec			*exec_first;
 	t_exec			*exec_curr;
+	t_fds			*opfds;
 }					t_main;
 
 /*
