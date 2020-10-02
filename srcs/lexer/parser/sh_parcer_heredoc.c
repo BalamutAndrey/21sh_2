@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 16:42:46 by geliz             #+#    #+#             */
-/*   Updated: 2020/09/26 18:13:30 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/02 15:52:36 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	sh_check_heredoc(t_main *main)
 {
 	if (!main->heredoc)
 		sh_create_heredoc_structs(main);
+	sh_print_heredoc(main);////TEMP FUNC
+	ft_printf("******str = %s\n", main->ks);
 	if (main->heredoc)
 	{
 		if (sh_is_heredoc_finished(main) == 0)

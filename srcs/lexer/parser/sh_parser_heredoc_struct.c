@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:08:02 by geliz             #+#    #+#             */
-/*   Updated: 2020/09/26 18:13:19 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/02 16:02:06 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sh_get_heredoc_info(t_main *main, t_heredoc *here)
 		sh_is_operator(&main->ks[i]) == 0 && main->ks[i] != '\n')
 		i++;
 	here->delim = ft_strsub(main->ks, here->delim_start, i - here->delim_start);
-	here->delim = ft_strjoin_arg("%s %f %s", "\n", here->delim, "\n");
+	here->delim = ft_strjoin_arg("%s %f", "\n", here->delim);
 }
 
 int		sh_find_heredoc(t_main *main, int i)
@@ -52,6 +52,7 @@ t_heredoc	*sh_create_heredoc_list(int i)
 	tmp = ft_memalloc(sizeof(t_heredoc));
 	tmp->next = NULL;
 	tmp->delim = NULL;
+	tmp->content = NULL;
 	tmp->delim_start = i;
 	tmp->here_end = -1;
 	tmp->here_start = -1;

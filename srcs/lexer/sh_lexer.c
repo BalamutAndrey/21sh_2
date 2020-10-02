@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_lexer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:13:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/02 14:43:06 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/02 15:46:51 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,8 @@ int		sh_lexer(t_main *main)
 	if (main->prompt)
 		sh_remove_token_list(first);
 	main->token = first;
-	// sh_add_heredoc_content(main);
+	if (main->heredoc)
+		sh_add_heredoc_content(main);
 	ft_print_test(first);
 //	sh_lexer_tree_new(main);
 	return (0); 

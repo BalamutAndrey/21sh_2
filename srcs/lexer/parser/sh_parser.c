@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/02 15:34:41 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/02 16:13:46 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,12 @@ void	sh_parser(t_main *main)
 		sh_check_quotes(main);
 	if (!main->prompt)
 		sh_check_dquotes(main);
-	if (!main->prompt)
-	 	sh_check_slash(main); 
+//	if (!main->prompt)
+//	 	sh_check_slash(main); 
 	if (!main->prompt || !ft_strcmp(main->prompt, "Heredoc"))
 	 	sh_check_heredoc(main);
 	if (main->prompt)
-		ft_printf("READ MORE -- %s\n", main->prompt);
-/*	main->ks = ft_strdup("cat EOF  cat EODF\n");
-	sh_check_heredoc(main);
-	main->ks = ft_strjoin_arg("%f %s", main->ks, "12345678901234567890\n099887654321END\n");
-	sh_check_heredoc(main);
-	main->ks = ft_strjoin_arg("%f %s", main->ks, "EOF\n");
-	sh_check_heredoc(main);
-	main->ks = ft_strjoin_arg("%f %s", main->ks, "kjasdlkfkjlkasdkkasjdkfjas;kdfs;dkfkj\n");
-	sh_check_heredoc(main);
-	main->ks = ft_strjoin_arg("%f %s", main->ks, "sdjfkjaskfkjadskjfkkajsldfsadfjksEND\n");
-	sh_check_heredoc(main);
-	main->ks = ft_strjoin_arg("%f %s", main->ks, "EODF\n");
-	sh_check_heredoc(main); */
+		ft_printf("************READ MORE -- %s\n", main->prompt);
 	// if (!main->prompt)
 	// 	sh_check_braces(main);
 	// if (!main->prompt)
