@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/02 14:14:12 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/02 14:50:14 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ bool	sh_parser(t_main *main)
 	// 	sh_check_braces(main);
 	// if (!main->prompt)
 	// 	sh_check_fbraces(main);
-	sh_lexer(main);
-	sh_lexer_tree_new(main);
+	if (!main->prompt)
+	{
+		sh_lexer(main);
+		sh_lexer_tree_new(main);
+	}
 	return (true);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:58:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/02 14:07:46 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/02 14:50:41 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ int main(int argc, char **argv, char **env)
 		main->ks = argv[1];
 		main->prompt = NULL;
 		sh_parser(main);
-		if (!main->prompt)
+	/*	if (!main->prompt)
+		{
 			sh_lexer(main);
-		sh_lexer_tree_new(main);
+			sh_lexer_tree_new(main);
+		}*/
 	}
 	else
 	{
