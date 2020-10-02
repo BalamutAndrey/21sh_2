@@ -3,16 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   sh_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/09/26 18:25:05 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/02 14:14:12 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
 
-void	sh_parser(t_main *main)
+bool	sh_lexer_start(t_main *main)
+{
+	if ((ft_strncmp(main->ks, "exit ", 5) == 0) ||
+			(ft_strncmp(main->ks, "exit\0", 5) == 0))
+	{
+		sh_term_restore(main);
+		sh_remove_struct(&main);
+	}
+	while (main->cursor_line_curr < main->cursor_line)
+	{
+		ft_putstr_fd(tgoto(tgetstr("do", NULL), 0, 5), main->fd);
+		main->cursor_line_curr++;
+	}
+	ft_putstr_fd("Your bunny wrote: ", main->fd);
+	ft_putstr_fd(main->ks, main->fd);
+	ft_putstr_fd(tgetstr("do", NULL), main->fd);
+	ft_putstr_fd(tgetstr("cr", NULL), main->fd);
+	//if (main->ks[0] != '\0')
+	sh_parser(main);
+	//main->prompt = ft_strdup("test");
+	return (true);
+}
+
+bool	sh_parser(t_main *main)
 {
 	ft_printf("str = %s\n", main->ks);
 	if (!main->prompt)
@@ -41,4 +64,7 @@ void	sh_parser(t_main *main)
 	// 	sh_check_braces(main);
 	// if (!main->prompt)
 	// 	sh_check_fbraces(main);
+	sh_lexer(main);
+	sh_lexer_tree_new(main);
+	return (true);
 }

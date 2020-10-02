@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_parser.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:06:56 by geliz             #+#    #+#             */
-/*   Updated: 2020/09/26 17:11:35 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/02 14:11:17 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 /*
 ** sh_parser.c
 */
-void	sh_parser(t_main *main);
+bool	sh_lexer_start(t_main *main);
+bool	sh_parser(t_main *main);
 /*
 ** sh_check_quotes.c
 */

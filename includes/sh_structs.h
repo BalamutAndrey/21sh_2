@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/26 17:06:28 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/02 13:22:25 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH_STRUCTS_H
 # define SH_STRUCTS_H
+
+# define MAX_KS_LEN		256
+# define MAX_DIR_LEN	256
 
 typedef struct			s_heredoc {
 	char				*delim;
@@ -53,6 +56,18 @@ typedef enum    e_type {
 	BANG			// !
 }               t_type;
 
+typedef struct		s_path
+{
+	char			*path;
+	struct s_path	*next;
+}					t_path;
+
+typedef struct		s_hist
+{
+	char			*com;
+	struct s_hist	*next;
+	struct s_hist	*prev;
+}					t_hist;
 
 //
 //      TOKEN
@@ -73,15 +88,58 @@ typedef struct      s_node {
     struct s_node   *right;
 }                   t_node;
 
-typedef struct	s_main
+typedef struct		s_main
 {
-    char		*ks;
-    char        *prompt;
-	t_heredoc	*heredoc;
-    t_token		*token;
-    t_token     *token_curr;
-    t_node      *tree_first;
-    t_node      *tree_curr;
-}				t_main;
+	char			*term_name;
+	int64_t			fd;
+	uint64_t		term_col;
+	uint64_t		term_row;
+	struct termios	t_start;
+	struct termios	t_curr;
+	char			**envp;
+	char			**envp_curr;
+	t_path			*path;
+	t_hist			*hist;
+	t_hist			*hist_curr;
+	t_hist			*hist_end;
+	char			*user;
+	char			*home;
+	char			*dir;
+	char			*ks;
+	char			*ks_temp;
+	uint64_t		ks_len;
+	uint64_t		cursor;
+	uint64_t		cursor_line;
+	uint64_t		cursor_curr;
+	uint64_t		cursor_line_curr;
+	bool			cursor_sel;
+	uint64_t		cursor_sel_start;
+	uint64_t		cursor_sel_end;
+	char			*cursor_sel_text;
+	char			*prompt;
+	uint64_t		prompt_len;
+	t_heredoc	    *heredoc;
+    t_token			*token;
+    t_token     	*token_curr;
+    t_node      	*tree_first;
+    t_node      	*tree_curr;
+}					t_main;
+
+/*
+** sh_structs.c
+*/
+t_main				*sh_add_main_struct(char **env);
+void				sh_copy_envp(t_main *main);
+void				sh_write_struct(t_main *new);
+void				sh_remove_struct(t_main **main);
+// Добавить чистку енв при выходе!
+
+/*
+** sh_path.c
+*/
+void				sh_path(t_main *main);
+void				sh_path_del(t_main *main);
+t_path				*sh_path_write(char *param);
+t_path				*sh_path_write_struct(t_path *prev, t_path **first, char *str);
 
 #endif
