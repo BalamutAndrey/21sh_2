@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 16:33:42 by geliz             #+#    #+#             */
-/*   Updated: 2020/09/26 17:20:06 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/02 13:05:09 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	sh_add_operator_token_part_two(t_token *token, char *str, int i)
 		token->type = LBRACE;
 	else if (!ft_strcmp(token->content, "}"))
 		token->type = RBRACE;
+	else if (!ft_strcmp(token->content, "|"))
+		token->type = PIPELINE;
 	else if (!ft_strcmp(token->content, "(") || !ft_strcmp(token->content, ")"))
 		token->type = NONE;
 	else if (!ft_strcmp(token->content, "<"))
