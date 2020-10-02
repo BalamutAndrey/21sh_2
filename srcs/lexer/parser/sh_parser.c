@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/02 16:43:40 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/02 16:54:18 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	sh_parser(t_main *main)
 //	 	sh_check_slash(main); 
 	if (!main->prompt || !ft_strcmp(main->prompt, "Heredoc"))
 	 	sh_check_heredoc(main);
-	if (main->prompt)
+	if (main->prompt)//tmp!!!!!!!!!!!
 		ft_printf("************READ MORE -- %s\n", main->prompt);
 	// if (!main->prompt)
 	// 	sh_check_braces(main);

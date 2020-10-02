@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:08:02 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/02 16:02:06 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/02 17:32:22 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ int		sh_find_heredoc(t_main *main, int i)
 	{
 		if (main->ks[i] == '<' && main->ks[i + 1] == '<')
 		{
-			if (main->ks[i + 2] == '\0' || sh_is_operator(&main->ks[i + 2]) || main->ks[i + 2] == '\n')
-				ft_fprintf(2, "Heredoc error, no DELIM_WORD\n");
 			i += 2;
+			while (main->ks[i] == '\t' || main->ks[i] == ' ')
+				i++;
+			if (main->ks[i] == '\0' || sh_is_operator(&main->ks[i]) || main->ks[i] == '\n')
+				ft_fprintf(2, "Heredoc error, no DELIM_WORD\n");
 			while (main->ks[i] == '\t' || main->ks[i] == ' ')
 				i++;
 			return (i);
