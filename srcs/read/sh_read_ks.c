@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 15:20:40 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/02 14:37:11 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/02 15:20:43 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,30 +22,31 @@ void	sh_read_ks(t_main *main)
 	fin = true;
 	while (fin == true)
 	{
+		main->ks_len = 0;
+		main->ks_temp_len = 0;
+		main->cursor = 0;
+		main->cursor_sel = false;
+		main->cursor_sel_start = 0;
+		main->cursor_sel_end = 0;
 		if (main->prompt == NULL)
 		{
 			sh_ks_and_dir(main);
 		}
 		else
 		{
-			main->ks_len = ft_strlen(main->ks);
+			main->ks_temp_len = ft_strlen(main->ks);
 			main->ks_temp = ft_strdup(main->ks);
-			ft_strdel(&main->ks);
-			main->ks_temp[main->ks_len] = '\n';
+			ft_bzero(main->ks, MAX_KS_LEN);
+			main->ks_temp[main->ks_temp_len] = '\n';
 		}
 		sh_print_prompt(main);
-		main->ks_len = 0;
-		main->cursor = 0;
-		main->cursor_sel = false;
-		main->cursor_sel_start = 0;
-		main->cursor_sel_end = 0;
 	
 		sh_cursor_math(main);
 		while (fin == true)
 		{
 			buf = 0;
 			read(0, &buf, 8);
-			if ((main->ks_len < MAX_KS_LEN) && (sh_isprint(buf) == true))
+			if (((main->ks_len + main->ks_temp_len) < MAX_KS_LEN) && (sh_isprint(buf) == true))
 			{
 				main->cursor_sel = false;
 				main->cursor_sel_start = 0;
@@ -84,7 +85,11 @@ void	sh_read_ks(t_main *main)
 		}
 		if (main->ks_temp != NULL)
 		{
-			main->ks = ft_strjoin_arg("%f %f", main->ks_temp, main->ks);
+			main->ks_temp = ft_strjoin_arg("%f %f", main->ks_temp, main->ks);
+			main->ks = ft_strnew(MAX_KS_LEN);
+			ft_strcpy(main->ks, main->ks_temp);
+			ft_strdel(&main->ks_temp);
+			ft_strdel(&main->prompt);
 		}
 		fin = sh_lexer_start(main);
 		// fin = sh_parser(main);
