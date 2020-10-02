@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:14:02 by geliz             #+#    #+#             */
-/*   Updated: 2020/09/17 18:47:49 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/02 16:28:12 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	sh_check_dquotes(t_main *main)
 		if (!main->prompt)
 			ft_fprintf(2, "Malloc error\n");
 	}
+	else
+		ft_strdel(&main->prompt);
 }
 
 void	sh_check_quotes(t_main *main)
@@ -58,4 +60,6 @@ void	sh_check_quotes(t_main *main)
 		if (!main->prompt)
 			ft_fprintf(2, "Malloc error\n");
 	}
+	else
+		ft_strdel(&main->prompt);
 }

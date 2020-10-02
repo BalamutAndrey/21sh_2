@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 16:42:46 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/02 15:52:36 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/02 16:47:45 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	sh_get_heredoc_content(t_main *main)
 	if (ft_strstr(&main->ks[tmp->here_start], tmp->delim))
 	{
 		tmp->here_end = ft_strlen(main->ks);
-		tmp->content = ft_strsub(main->ks, tmp->here_start, 
-			ft_strlen(main->ks) - tmp->here_start - ft_strlen(tmp->delim));
+		tmp->content = ft_strsub(main->ks, tmp->here_start + 1, 
+			ft_strlen(main->ks) - tmp->here_start - ft_strlen(tmp->delim) - 1);
 	}
 //	ft_erase_delims?? OR in LEXER
 }
@@ -72,8 +72,6 @@ void	sh_check_heredoc(t_main *main)
 {
 	if (!main->heredoc)
 		sh_create_heredoc_structs(main);
-	sh_print_heredoc(main);////TEMP FUNC
-	ft_printf("******str = %s\n", main->ks);
 	if (main->heredoc)
 	{
 		if (sh_is_heredoc_finished(main) == 0)

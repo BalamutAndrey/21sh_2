@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/02 16:13:46 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/02 16:43:40 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ bool	sh_lexer_start(t_main *main)
 
 void	sh_parser(t_main *main)
 {
-	ft_printf("str = %s\n", main->ks);
-	if (!main->prompt)
+	ft_printf("str = % 50s\n", main->ks);
+	if (!main->prompt || !ft_strcmp(main->prompt, "quote"))
 		sh_check_quotes(main);
-	if (!main->prompt)
+	if (!main->prompt || !ft_strcmp(main->prompt, "dquote"))
 		sh_check_dquotes(main);
 //	if (!main->prompt)
 //	 	sh_check_slash(main); 

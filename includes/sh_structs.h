@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/02 15:31:28 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/02 16:16:30 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,12 @@ typedef struct      s_node {
     struct s_node   *right;
 }                   t_node;
 
-typedef struct      s_redirect {
-	int				io_num;
-	t_type			type;
-	int				to;
-}					t_redirect;
+typedef struct      	s_redirect {
+	int					io_num;
+	t_type				type;
+	int					to;
+	struct s_redirect	*next;
+}						t_redirect;
 
 typedef struct      s_exec {
 	char			*cmd;
