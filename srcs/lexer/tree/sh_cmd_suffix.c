@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 15:29:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/27 16:26:59 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/02 18:50:07 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ t_node	*sh_cmdsuffix(t_main *main)
 	t_node	*curr;
 	t_node	*temp;
 	
-	if ((main->token_curr == NULL) || (main->token_curr->type == SEPARATOR))
+	if ((main->token_curr == NULL) || (main->token_curr->type == SEPARATOR) ||
+	(main->token_curr->type == PIPELINE))
 		return (NULL);
 	if ((sh_is_a_redirect(main->token_curr) == false) && (main->token_curr->type != WORD))
 	{
@@ -43,7 +44,8 @@ t_node	*sh_cmdsuffix(t_main *main)
 		// Ошибка синтаксиса!
 		return (NULL);
 	}
-	while ((main->token_curr != NULL) && (main->token_curr->type != SEPARATOR))
+	while ((main->token_curr != NULL) && (main->token_curr->type != SEPARATOR) &&
+	(main->token_curr->type != PIPELINE))
 	{
 		if ((sh_is_a_redirect(main->token_curr) == false) && (main->token_curr->type != WORD))
 		{

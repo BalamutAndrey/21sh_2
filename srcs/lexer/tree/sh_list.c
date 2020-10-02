@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:15:17 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/25 16:53:19 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/02 19:01:41 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ t_node	*sh_list_andor(t_main *main)
 			//free temp
 			return (NULL);
 		}
+		sh_lexer_add_node(main->tree_curr, NULL, temp);
 		return (temp);
 	}
 	return (NULL);

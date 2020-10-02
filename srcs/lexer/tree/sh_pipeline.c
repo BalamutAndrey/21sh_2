@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:53:53 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/17 18:56:59 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/02 17:45:47 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_node	*sh_pipeline_pipesequence(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
-	if ((temp = sh_command(main)) != NULL)
+	if ((temp = sh_pipesequence(main)) != NULL)
 		return (temp);
 	return (NULL);
 }

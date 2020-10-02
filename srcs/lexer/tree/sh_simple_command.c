@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 15:02:26 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/20 18:34:02 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/02 18:18:12 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ t_node	*sh_simplecommand(t_main *main)
 	else if ((temp = sh_simplecommand_cmdname(main)) != NULL)
 	{
 		if ((main->token_curr->next != NULL) &&
-		(main->token_curr->next->type != SEPARATOR))
+		(main->token_curr->next->type != SEPARATOR) &&
+		(main->token_curr->next->type != PIPELINE))
 		{
 			sh_lexer_del_node(&temp);
 			return (NULL);

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 15:03:57 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/27 17:31:40 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/02 19:06:10 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,10 @@ t_node	*sh_simplecommand_cmdname_cmdsuffix(t_main *main)
 		main->token_curr = temp;
 		return (NULL);
 	}
-	sh_lexer_add_node(main->tree_curr, NULL, cmd);
-	main->tree_curr = main->tree_curr->right;
-	sh_lexer_add_node(main->tree_curr, NULL, suffix);
+//	sh_lexer_add_node(main->tree_curr, NULL, cmd);
+//	main->tree_curr = main->tree_curr->right;
+//	sh_lexer_add_node(main->tree_curr, NULL, suffix);
+	sh_lexer_add_node(cmd, NULL, suffix);
 	return (cmd);
 }
 
@@ -87,12 +88,17 @@ t_node	*sh_simplecommand_cmdname(t_main *main)
 	temp = NULL;
 	if ((temp = sh_cmdname(main)) == NULL)
 		return (NULL);
-	if ((main->token_curr->next != NULL) && (main->token_curr->next->type != SEPARATOR))
+	if ((main->token_curr->next == NULL) || (main->token_curr->next->type == SEPARATOR) ||
+	(main->token_curr->next->type == PIPELINE))
+	{
+//		sh_lexer_add_node(main->tree_curr, NULL, temp);
+		return (temp);
+	}
+	else
 	{
 		// Ошибка лексемы !!!
 		sh_lexer_del_node(&temp);
 		return (NULL);
 	}
-	sh_lexer_add_node(main->tree_curr, NULL, temp);
-	return (temp);
+	return (NULL);
 }
