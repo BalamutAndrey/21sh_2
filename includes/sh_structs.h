@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/03 14:03:56 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/03 18:21:01 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ typedef struct      s_exec {
 	char			**env;
 	t_redirect		*redir;
 	bool			pipe;
+	int				pipefd[2];
 	struct s_exec	*next;
 }					t_exec;
 

@@ -5,110 +5,93 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/02 17:36:57 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/03 15:32:54 by geliz            ###   ########.fr       */
+/*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
+/*   Updated: 2020/10/03 18:20:59 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
 
-t_redirect	*temp_create_redir_list(void)
+void	temp_fill_exec2(t_exec *tmp, char **argv, bool pipe)
 {
-	t_redirect	*new;
-	t_redirect	*first;
-
-	first = ft_memalloc(sizeof(t_redirect));
-	first->io_num = 1;
-	first->type = GREAT;
-//	first->filename = ft_strdup("Here is heredoc content :)\nmuch more\nii");
-	first->filename = ft_strdup("../test_here/POWER_OEW_1");
-	new = ft_memalloc(sizeof(t_redirect));
-	first->next = new;
-	new->io_num = 1;
-	new->type = GREAT;
-	new->filename = ft_strdup("../test_here/POWER_OEW_2");
-	new->next = ft_memalloc(sizeof(t_redirect));
-	new = new->next;
-	new->io_num = 1;
-	new->type = DGREAT;
-	new->filename = ft_strdup("../test_here/POWER_OEW_3");
-	return (first);
+	tmp->cmd = argv[0];
+	tmp->argv = argv;
+	tmp->env = NULL;
+	tmp->redir = NULL;
+	tmp->pipe = pipe;
+	tmp->next = NULL;
 }
 
-void	temp_exec(void)
+void	temp_add_redirection(t_exec *exec, int io, t_type type, char *filename)
 {
-	int		cpid;
-	char	*t[] = {"/bin/ls", NULL};
-	char	*y[] = {"/bin/cat", "poqewooqweoqweoqoeq", NULL};
+	t_redirect	*red;
 
-	cpid = fork();
-	if (cpid == 0)
+	if (!exec->redir)
 	{
-		execv(t[0], t);
-	}
-/*	else
-	{
-		cpid = fork();
-		if (cpid == 0)
-			execv(y[0], y);
-	}*/
-}
-
-void	sh_add_opened_fd(t_main *main, int nbr)
-{
-	t_fds	*last;
-	
-	if (!main->opfds)
-	{
-		main->opfds = ft_memalloc(sizeof(t_fds));
-		main->opfds->nbr = nbr;
-		main->opfds->next = NULL;
+		exec->redir = ft_memalloc(sizeof(t_redirect));
+		red = exec->redir;
 	}
 	else
 	{
-		last = main->opfds;
-		while (last->next)
-			last = last->next;
-		last->next = ft_memalloc(sizeof(t_fds));
-		last->next->nbr = nbr;
-		last->next->next = NULL;
-		last = NULL;
+		red = exec->redir;
+		while (red->next)
+			red = red->next;
+		red->next = ft_memalloc(sizeof(t_redirect));
+		red = red->next;
 	}
+	red->io_num = io;
+	red->type = type;
+	red->filename = filename;
 }
 
-void	sh_redirect_from_heredoc(t_redirect *new, t_main *main)
+
+/*
+чистить фдшники после каждой команды, проверить с редиректом в начале и середине!!!
+на данный момент при редиректе в начале не работает
+*/
+t_exec	*temp_fill_exec(void)
 {
-	ft_fprintf(new->io_num, "%s", new->filename);
+	t_exec	*first;
+	t_exec	*tmp;
+	
+	tmp = ft_memalloc(sizeof(t_exec));
+	first = tmp;
+	temp_fill_exec2(tmp, ft_strsplit("/bin/ls -la", ' '), false);
+	tmp->next = ft_memalloc(sizeof(t_exec));
+	tmp = tmp->next;
+	temp_fill_exec2(tmp, ft_strsplit("/usr/bin/grep o", ' '), true);
+	tmp->next = ft_memalloc(sizeof(t_exec));
+	tmp = tmp->next;
+	temp_fill_exec2(tmp, ft_strsplit("/usr/bin/grep der", ' '), true);
+	tmp->next = ft_memalloc(sizeof(t_exec));
+	tmp = tmp->next;
+	temp_fill_exec2(tmp, ft_strsplit("/usr/bin/wc -c", ' '), true);
+	tmp->next = ft_memalloc(sizeof(t_exec));
+	tmp = tmp->next;
+	temp_fill_exec2(tmp, ft_strsplit("/usr/bin/sum", ' '), true);
+//	temp_add_redirection(tmp, 1, GREAT, "../test_here/NEW_FILE");
+	temp_add_redirection(tmp, 1, DGREAT, "../test_here/NEW_FILE");
+	return (first);
 }
 
-void	sh_set_default_io_value(t_main *main)
+void	sh_standart_exec(t_exec *exec, t_main *main)
 {
-	main->defio[0] = 0;
-	main->defio[1] = 1;
-	main->defio[2] = 2;
+	execv(exec->argv[0], exec->argv);
 }
 
 void	sh_exec(t_main *main)
 {
-	t_redirect	*new;
+	t_exec	*exec;
 
-	sh_set_default_io_value(main);
-	new = temp_create_redir_list();
-	while (new)
+	exec = temp_fill_exec();//тут должно быть exec = main->exec, но его пока нет
+	while (exec)
 	{
-		if (new->type == GREAT)
-			sh_redirect_to_file(new, main);
-		else if (new->type == GREATAND)
-			sh_redirect_to_ionumber(new, main);
-		else if (new->type == DGREAT)
-			sh_redirect_to_file_append(new, main);
-		else if (new->type == LESS)
-			sh_redirect_from_file(new, main);
-		else if (new->type == DLESS)
-			sh_redirect_from_heredoc(new, main);
-//		else if (new->type == LESSAND)
-//			sh_redirect_from_ionumber(new, main);
-		new = new->next;
+		if (exec->redir)
+			sh_redirects_hub(exec, main);
+		if (exec->pipe == true || (exec->next && exec->next->pipe == true))
+			sh_exec_piped_commands(exec, main);
+		else
+			sh_standart_exec(exec, main);
+		exec = exec->next;
 	}
-	temp_exec();
 }
