@@ -6,14 +6,11 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 17:36:57 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/02 19:18:08 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/03 15:32:54 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
-
-void	sh_add_opened_fd(t_main *main, int nbr);
-void	sh_redirect_to_file(t_redirect *new, t_main *main);
 
 t_redirect	*temp_create_redir_list(void)
 {
@@ -23,46 +20,38 @@ t_redirect	*temp_create_redir_list(void)
 	first = ft_memalloc(sizeof(t_redirect));
 	first->io_num = 1;
 	first->type = GREAT;
-	first->filename = ft_strdup("POWER_OEW");
-//	first->filename = ft_strdup("TEMP_REDIRECT_FILE");
-	first->next = NULL;
+//	first->filename = ft_strdup("Here is heredoc content :)\nmuch more\nii");
+	first->filename = ft_strdup("../test_here/POWER_OEW_1");
+	new = ft_memalloc(sizeof(t_redirect));
+	first->next = new;
+	new->io_num = 1;
+	new->type = GREAT;
+	new->filename = ft_strdup("../test_here/POWER_OEW_2");
+	new->next = ft_memalloc(sizeof(t_redirect));
+	new = new->next;
+	new->io_num = 1;
+	new->type = DGREAT;
+	new->filename = ft_strdup("../test_here/POWER_OEW_3");
 	return (first);
 }
 
-void	sh_redirect_to_ionumber(t_redirect *new, t_main *main)
+void	temp_exec(void)
 {
-	int		i;
-	int		fd;
+	int		cpid;
+	char	*t[] = {"/bin/ls", NULL};
+	char	*y[] = {"/bin/cat", "poqewooqweoqweoqoeq", NULL};
 
-	i = 0;
-	if (ft_strcmp("-", new->filename) == 0)
-		close(new->io_num);
-	else if (ft_isdigit(new->filename[i] == 1))
-	{	
-		while (ft_isdigit(new->filename[i]) == 1)
-			i++;
-	}
-	if (new->filename[i] == '\0')
+	cpid = fork();
+	if (cpid == 0)
 	{
-		{
-			fd = ft_atoi(new->filename);
-			sh_add_opened_fd(main, fd);
-			dup2(fd, new->io_num);
-		}
+		execv(t[0], t);
 	}
-	else
-		sh_redirect_to_file(new, main);
-	// сильно туплю, перепиши всё это утром!!! :)
-}
-
-void	sh_redirect_to_file(t_redirect *new, t_main *main)
-{
-	int		fd;
-
-	//sh_check_directory_chmod(new->filename) STAT/LSTAT директорию, где будет файл, куда идет редир, да и сам файл
-	fd = open(new->filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	sh_add_opened_fd(main, fd);
-	dup2(fd, new->io_num);
+/*	else
+	{
+		cpid = fork();
+		if (cpid == 0)
+			execv(y[0], y);
+	}*/
 }
 
 void	sh_add_opened_fd(t_main *main, int nbr)
@@ -87,22 +76,23 @@ void	sh_add_opened_fd(t_main *main, int nbr)
 	}
 }
 
-void	temp_exec(void)
+void	sh_redirect_from_heredoc(t_redirect *new, t_main *main)
 {
-	int		cpid;
-	char	*t[] = {"/bin/ls", NULL};
+	ft_fprintf(new->io_num, "%s", new->filename);
+}
 
-	cpid = fork();
-	if (cpid == 0)
-	{
-		execv(t[0], t);
-	}
+void	sh_set_default_io_value(t_main *main)
+{
+	main->defio[0] = 0;
+	main->defio[1] = 1;
+	main->defio[2] = 2;
 }
 
 void	sh_exec(t_main *main)
 {
 	t_redirect	*new;
 
+	sh_set_default_io_value(main);
 	new = temp_create_redir_list();
 	while (new)
 	{
@@ -110,6 +100,14 @@ void	sh_exec(t_main *main)
 			sh_redirect_to_file(new, main);
 		else if (new->type == GREATAND)
 			sh_redirect_to_ionumber(new, main);
+		else if (new->type == DGREAT)
+			sh_redirect_to_file_append(new, main);
+		else if (new->type == LESS)
+			sh_redirect_from_file(new, main);
+		else if (new->type == DLESS)
+			sh_redirect_from_heredoc(new, main);
+//		else if (new->type == LESSAND)
+//			sh_redirect_from_ionumber(new, main);
 		new = new->next;
 	}
 	temp_exec();
