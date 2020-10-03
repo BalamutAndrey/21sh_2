@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 18:04:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/02 18:57:00 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/03 17:55:15 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ t_node	*sh_pipesequence_pipesequence_pipe_linebreak_command(t_main *main)
 		left = sh_pipesequence(main);
 		if (left == NULL)
 		{
+			// Ошибка синтаксиса!!!
+			ft_printf("\n21sh: syntax error near unexpected token `%s'\n", main->token_curr->content);
 			sh_lexer_del_node(&pipe);
 			sh_lexer_del_node(&right);
 			return (NULL);
