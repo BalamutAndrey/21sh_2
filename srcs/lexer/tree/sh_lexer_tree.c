@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/27 17:31:07 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/03 16:06:03 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ void	sh_lexer_tree_print(t_node *node, int a)
 	i = -1;
 	while (++i < a)
 		ft_printf(" ");	
-	ft_printf("LEFT          = %p\n", node->left);
+	ft_printf("RIGHT         = %p\n", node->right);
 	i = -1;
 	while (++i < a)
 		ft_printf(" ");	
-	ft_printf("RIGHT         = %p\n", node->right);
+	ft_printf("LEFT          = %p\n", node->left);
 	ft_printf("\n");
 	if (node->right != NULL)
 		sh_lexer_tree_print(node->right, a + 1);

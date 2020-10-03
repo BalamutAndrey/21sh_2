@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_lexer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:13:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/02 17:39:01 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/03 16:18:30 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,21 @@ int		sh_lexer_hub(t_main *main, t_token *token)
 //TEMPORARY FUNC, delete it later :)
 void	ft_print_test(t_token *first)
 {
+	char* type[] = {"NONE", "COMPLETE_COMMAND", "LIST", "PIPELINE", "AND_OR",
+                    "COMMAND", "CMDNAME", "CMDSUFFIX", "SEPARATOR", "WORD",
+                    "NEWLINE", "IO_NUMBER", "LESS", "GREAT", "AND_IF",
+                    "OR_IF", "DSEMI", "DLESS", "DGREAT", "LESSAND",
+                    "GREATAND", "LESSGREAT", "DLESSDASH", "CLOBBER","LBRACE",
+					"RBRACE", "BANG"};
+	int	i = 1;
+	
 	while (first)
 	{
-		ft_printf("%s\n", first->content);
-		ft_printf("***%i***\n", first->type);
+		//ft_printf("%s\n", first->content);
+		//ft_printf("***%i***\n", first->type);
+		ft_printf("%2i. %s - %i: %s\n", i, first->content, first->type, type[first->type]);
 		first = first->next;
+		i++;
 	}
 }
 
@@ -112,7 +122,7 @@ int		sh_lexer(t_main *main)
 	main->token = first;
 	if (main->heredoc)
 		sh_add_heredoc_content(main);
-//	ft_print_test(first); // PRINT_IS_HERE!!!
+	ft_print_test(first); // PRINT_IS_HERE!!!
 //	sh_lexer_tree_new(main);
 	return (0); 
 }

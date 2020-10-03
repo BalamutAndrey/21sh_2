@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 15:59:55 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/07 16:05:07 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/03 17:20:46 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,15 @@ t_node	*sh_cmdprefix_ioredirect(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	if ((main->token_curr == NULL) || (main->token_curr->type == WORD) ||
+	(sh_is_a_redirect(main->token_curr) == false))
+		return (NULL);
+	if ((temp = sh_ioredirect(main)) != NULL)
+	{
+		// while (temp->right != NULL)
+		// 	temp = temp->right;
+		return (temp);
+	}
 	return (NULL);
 }
 
