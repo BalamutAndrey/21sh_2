@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 15:03:57 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/02 19:06:10 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/03 17:30:47 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,26 @@
 
 t_node	*sh_simplecommand_cmdprefix_cmdword_cmdsuffix(t_main *main)
 {
-	t_node	*temp;
+	t_node	*prf_cmd;
+	t_node	*suff;
+	t_node	*for_suff;
+	t_token	*temp;
 
-	temp = NULL;
-	return (NULL);
+	temp = main->token_curr;
+	if ((prf_cmd = sh_simplecommand_cmdprefix_cmdword(main)) == NULL)
+		return (NULL);
+	if ((suff = sh_cmdsuffix(main)) == NULL)
+	{
+		sh_lexer_del_node(&suff);
+		main->token_curr = temp;
+		return (NULL);	
+	}
+	for_suff = prf_cmd;
+	while (for_suff->right != NULL)
+		for_suff = for_suff->right;
+	sh_lexer_add_node(for_suff, NULL, suff);
+//	main->token_curr = main->token_curr->next;
+	return (prf_cmd);
 }
 
 /*
@@ -32,10 +48,32 @@ t_node	*sh_simplecommand_cmdprefix_cmdword_cmdsuffix(t_main *main)
 
 t_node	*sh_simplecommand_cmdprefix_cmdword(t_main *main)
 {
-	t_node	*temp;
+	t_node	*cmd;
+	t_node	*prefix;
+	t_node	*for_cmd;
+	t_token	*temp;
 
-	temp = NULL;
-	return (NULL);
+	temp = main->token_curr;
+	if ((prefix = sh_cmdprefix(main)) == NULL)
+		return (NULL);
+	if (main->token_curr == NULL)
+	{
+		sh_lexer_del_node(&prefix);
+		main->token_curr = temp;
+		return (NULL);
+	}
+	if ((cmd = sh_cmdname(main)) == NULL)
+	{
+		sh_lexer_del_node(&prefix);
+		main->token_curr = temp;
+		return (NULL);
+	}
+	for_cmd = prefix;
+	while (for_cmd->right != NULL)
+		for_cmd = for_cmd->right;
+	sh_lexer_add_node(for_cmd, NULL, cmd);
+	main->token_curr = main->token_curr->next;
+	return (prefix);
 }
 
 /*
@@ -47,6 +85,8 @@ t_node	*sh_simplecommand_cmdprefix(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	if ((temp = sh_cmdprefix(main)) != NULL)
+		return (temp);
 	return (NULL);
 }
 
