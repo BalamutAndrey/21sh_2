@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_main.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:57:23 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/02 17:36:47 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/04 17:27:27 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # include "sh_parser.h"
 # include "sh_lexer.h"
 # include "sh_lexer_tree.h"
+# include "sh_lexer_exec.h"
 # include "sh_exec.h"
 
 #endif
