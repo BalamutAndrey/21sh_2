@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 14:51:20 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/04 18:13:13 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/11 16:01:34 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,15 @@ void	sh_exec_struct_create(t_main *main)
 	first = sh_exec_struct_new(main);
 	main->exec_first = first;
 	main->exec_curr = first;
-	main->tree_curr = main->tree_first->right;
+//	main->tree_curr = main->tree_first->right;
+	main->tree_curr = main->tree_first;
 	sh_exec_struct_go(main, false);
-	temp_print_exec(main);
+	if (main->exec_first->next != NULL)
+	{
+		main->exec_first = main->exec_first->next;
+		temp_print_exec(main);
+	}
+	// Удалить фирст! 
 }
 
 void	sh_exec_struct_go(t_main *main, bool pipe)
@@ -71,40 +77,43 @@ void	sh_exec_struct_go(t_main *main, bool pipe)
 	t_node	*temp;
 
 	temp = main->tree_curr;
-	if (temp->right != NULL)
+//	if ((temp->right != NULL) || (temp->node_type != SEPARATOR) || (temp->node_type != PIPELINE))
+	if (temp != NULL)
 	{
-		if (temp->right->node_type == SEPARATOR)
+//		if (temp->right->node_type == SEPARATOR)
+		if ((temp->node_type == SEPARATOR) && (temp->right != NULL))
 		{
 			main->tree_curr = temp->right;
 			sh_exec_struct_go(main, false);
 		}
-		else if (temp->right->node_type == PIPELINE)
+//		else if (temp->right->node_type == PIPELINE)
+		else if ((temp->node_type == PIPELINE) && (temp->right != NULL))
 		{
 			main->tree_curr = temp->right;
 			sh_exec_struct_go(main, true);
 		}
 		else
 		{
-			main->tree_curr = temp->right;
+//			main->tree_curr = temp->right;
 			sh_exec_struct_write(main, pipe);
 		}
 	}
 	main->tree_curr = temp;
 	if (temp->left != NULL)
 	{
-		if (temp->left->node_type == SEPARATOR)
+		if (temp->node_type == SEPARATOR)
 		{
 			main->tree_curr = temp->left;
 			sh_exec_struct_go(main, false);
 		}
-		else if (temp->left->node_type == PIPELINE)
+		else if (temp->node_type == PIPELINE)
 		{
 			main->tree_curr = temp->left;
 			sh_exec_struct_go(main, true);
 		}
 		else
 		{
-			main->tree_curr = temp->right;
+			main->tree_curr = temp->left;
 			sh_exec_struct_write(main, pipe);
 		}
 	}
