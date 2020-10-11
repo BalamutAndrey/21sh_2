@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:03:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/03 16:06:03 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/11 18:56:04 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	sh_lexer_tree_new(t_main *main)
 	else
 	{
 		//Делаем связный список
-		ft_printf("\n*** START printing tree... ***\n");
-		sh_lexer_tree_print(main->tree_first, 0);
-		ft_printf("\n***  END  printing tree... ***\n");
+		// ft_printf("\n*** START printing tree... ***\n");
+		// sh_lexer_tree_print(main->tree_first, 0);
+		// ft_printf("\n***  END  printing tree... ***\n");
 	}
 }
 
