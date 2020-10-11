@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 17:36:57 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/03 18:20:58 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/11 16:00:54 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	sh_add_opened_fd(t_main *main, int nbr)
 
 void	sh_redirect_from_heredoc(t_redirect *new, t_main *main)
 {
-	ft_fprintf(new->io_num, "%s", new->filename);
+	ft_printf("Doesn't work yet =(\n");
+//	ft_fprintf(fd[1], "%s", new->filename);
 }
 
 void	sh_set_default_io_value(t_main *main)

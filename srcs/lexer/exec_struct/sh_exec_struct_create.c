@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec_struct_create.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 14:51:20 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/11 16:01:34 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/11 16:23:49 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	sh_exec_struct_create(t_main *main)
 	if (main->exec_first->next != NULL)
 	{
 		main->exec_first = main->exec_first->next;
-		temp_print_exec(main);
+//		temp_print_exec(main);
 	}
 	// Удалить фирст! 
 }

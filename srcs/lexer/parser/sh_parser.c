@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/04 17:22:30 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/11 16:10:37 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	sh_parser(t_main *main)
 		sh_lexer(main);
 		sh_lexer_tree_new(main);
 		sh_exec_struct_create(main);
+		sh_exec(main);
 	}
 	// 										UPPER FUNC FOR LEXER->TREE
 }

@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/03 18:20:59 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/11 16:24:45 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ t_exec	*temp_fill_exec(void)
 	
 	tmp = ft_memalloc(sizeof(t_exec));
 	first = tmp;
-	temp_fill_exec2(tmp, ft_strsplit("/bin/ls -la", ' '), false);
-	tmp->next = ft_memalloc(sizeof(t_exec));
+	temp_fill_exec2(tmp, ft_strsplit("/bin/cat", ' '), false);
+	temp_add_redirection(tmp, 0, DLESS, "../test_here/NEW_FILE");
+/*	tmp->next = ft_memalloc(sizeof(t_exec));
 	tmp = tmp->next;
 	temp_fill_exec2(tmp, ft_strsplit("/usr/bin/grep o", ' '), true);
 	tmp->next = ft_memalloc(sizeof(t_exec));
@@ -68,26 +69,46 @@ t_exec	*temp_fill_exec(void)
 	temp_fill_exec2(tmp, ft_strsplit("/usr/bin/wc -c", ' '), true);
 	tmp->next = ft_memalloc(sizeof(t_exec));
 	tmp = tmp->next;
-	temp_fill_exec2(tmp, ft_strsplit("/usr/bin/sum", ' '), true);
+	temp_fill_exec2(tmp, ft_strsplit("/usr/bin/sum", ' '), true);*/
 //	temp_add_redirection(tmp, 1, GREAT, "../test_here/NEW_FILE");
-	temp_add_redirection(tmp, 1, DGREAT, "../test_here/NEW_FILE");
+//	temp_add_redirection(tmp, 1, GREAT, "../test_here/NEW_FILE");
 	return (first);
 }
 
 void	sh_standart_exec(t_exec *exec, t_main *main)
 {
-	execv(exec->argv[0], exec->argv);
+	pid_t	cpid;
+	
+	if (exec->pipe == true || (exec->next && exec->next->pipe == true))
+	{
+		if (exec->redir)
+			sh_redirects_hub(exec, main);
+		execv(exec->argv[0], exec->argv);
+	}
+	else
+	{
+		cpid = fork();
+		if (cpid == 0)
+		{
+			if (exec->redir)
+				sh_redirects_hub(exec, main);
+			execv(exec->argv[0], exec->argv);
+		}
+		else
+			waitpid(cpid, NULL, 0);
+	}
 }
 
 void	sh_exec(t_main *main)
 {
 	t_exec	*exec;
 
-	exec = temp_fill_exec();//тут должно быть exec = main->exec, но его пока нет
+//	exec = temp_fill_exec();//тут должно быть exec = main->exec, но его пока нет
+	exec = main->exec_first;
 	while (exec)
 	{
-		if (exec->redir)
-			sh_redirects_hub(exec, main);
+//		if (exec->redir)
+//			sh_redirects_hub(exec, main);
 		if (exec->pipe == true || (exec->next && exec->next->pipe == true))
 			sh_exec_piped_commands(exec, main);
 		else
