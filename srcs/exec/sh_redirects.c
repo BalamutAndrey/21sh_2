@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 15:25:36 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/03 15:27:23 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/12 17:34:00 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	sh_redirect_to_ionumber(t_redirect *new, t_main *main)
 	i = 0;
 	if (ft_strcmp("-", new->filename) == 0)
 		close(new->io_num);
-	else if (ft_isdigit(new->filename[i] == 1))
+	else if (ft_isdigit(new->filename[i]) == 1)
 	{	
 		while (ft_isdigit(new->filename[i]) == 1)
 			i++;
