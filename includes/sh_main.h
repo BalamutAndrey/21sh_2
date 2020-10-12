@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:57:23 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/04 17:27:27 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/12 16:29:39 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@
 # include "sh_lexer_tree.h"
 # include "sh_lexer_exec.h"
 # include "sh_exec.h"
+# include "sh_builtin.h"
 
 #endif

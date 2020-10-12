@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 17:36:00 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/12 14:57:19 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/12 16:27:01 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,13 @@ void	sh_std_in_out_pipe(t_exec *exec, int fd[2], int fd2[2], t_main *main);
 int		sh_run_access(char *str);
 bool	sh_is_builtin(char *str);
 bool	sh_is_builtin_fork(char *str);
+
+/*
+** sh_access_file.c 
+*/
+void	sh_path_add(t_main *main, t_exec *temp);
+void	sh_run_write_string_point(t_main *main, t_exec *temp);
+void	sh_run_write_string_home(t_main *main, t_exec *temp);
+void	sh_find_path(t_main *main, t_exec *exec);
 
 #endif

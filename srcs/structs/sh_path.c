@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_path.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 17:19:22 by eboris            #+#    #+#             */
-/*   Updated: 2020/07/10 17:28:44 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/12 15:46:19 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,10 @@ t_path	*sh_path_write(char *param)
 		param = ft_strmancpy(param, (i + 1));
 		if (new)
 			prev = new;
-		new = sh_path_write_struct(prev, &first, str);
+		new = sh_path_write_struct(prev, &first, str);	
 	}
-	ft_strdel(&param);
+	if (param != NULL)
+		ft_strdel(&param);
 	return (first);
 }
 
