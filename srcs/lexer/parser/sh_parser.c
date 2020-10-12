@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/12 18:47:27 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/12 18:54:04 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,24 @@ bool	sh_lexer_start(t_main *main)
 
 // сделать функцию is_is_protected проверяющую экранирование! Нужно во всех дочитках!!
 // функции возвращают позицию, где нашли препятствие - для определения очередности 
+
+int		sh_is_it_protected(char *str)
+{
+	int		i;
+	int		j;
+
+	i = ft_strlen(str);
+	j = 0;
+	while (i > 0 && str[i - 1] == '\\')
+	{
+		i--;
+		j++;
+	}
+	if (j % 2 == 0)
+		return (0);
+	else
+		return (1);
+}
 
 void	sh_parser(t_main *main)
 {
