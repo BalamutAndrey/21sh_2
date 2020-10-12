@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/11 18:56:05 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/12 18:47:27 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,23 @@ bool	sh_lexer_start(t_main *main)
 	return (true);
 }
 
+// сделать функцию is_is_protected проверяющую экранирование! Нужно во всех дочитках!!
+// функции возвращают позицию, где нашли препятствие - для определения очередности 
+
 void	sh_parser(t_main *main)
 {
-	ft_printf("str = % 50s\n", main->ks);
-	if (!main->prompt || !ft_strcmp(main->prompt, "quote"))
+	if (!main->prompt)
 		sh_check_quotes(main);
-	if (!main->prompt || !ft_strcmp(main->prompt, "dquote"))
+	if (!main->prompt)
 		sh_check_dquotes(main);
-//	if (!main->prompt)
-//	 	sh_check_slash(main); 
+	if (!main->prompt)
+	 	sh_check_slash(main); 
 	if (!main->prompt || !ft_strcmp(main->prompt, "Heredoc"))
 	 	sh_check_heredoc(main);
-	if (main->prompt)//tmp!!!!!!!!!!!
-		ft_printf("************READ MORE -- %s\n", main->prompt);
+	if (!main->prompt)
+	 	sh_check_pipe(main); 
+//	if (main->prompt)//tmp!!!!!!!!!!!
+//		ft_printf("************READ MORE -- %s\n", main->prompt);
 	// if (!main->prompt)
 	// 	sh_check_braces(main);
 	// if (!main->prompt)

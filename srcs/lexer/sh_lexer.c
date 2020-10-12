@@ -6,11 +6,12 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:13:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/12 17:33:14 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/12 18:11:54 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
+#include <signal.h>
 
 int		sh_is_whitespace_or_tab(char c)
 {

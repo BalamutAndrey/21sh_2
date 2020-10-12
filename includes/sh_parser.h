@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_parser.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:06:56 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/02 15:34:25 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/12 18:40:21 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,9 @@ void		sh_create_heredoc_structs(t_main *main);
 t_heredoc	*sh_create_heredoc_list(int i);
 int			sh_find_heredoc(t_main *main, int i);
 void		sh_get_heredoc_info(t_main *main, t_heredoc *here);
+/*
+** sh_parser_pipe.c
+*/
+void	sh_check_pipe(t_main *main);
 
 #endif

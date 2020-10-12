@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_parser_slash.c                                  :+:      :+:    :+:   */
+/*   sh_parser_pipe.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/17 18:43:26 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/12 18:34:47 by geliz            ###   ########.fr       */
+/*   Created: 2020/10/12 18:36:28 by geliz             #+#    #+#             */
+/*   Updated: 2020/10/12 18:43:46 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
 
-void	sh_check_slash(t_main *main)
+void	sh_check_pipe(t_main *main)
 {
-	int		i;
 	int		j;
 	
-	i = 0;
-	j = ft_strlen(main->ks);
-	while (j > 0 && main->ks[j - 1] == '\\')
-	{
-		j--;
-		i++;
-	}
-	if (i % 2 != 0)
-	{
-		main->prompt = ft_strdup("slash");
+	j = ft_strlen(main->ks) - 1;
+	if (j > 0 && main->ks[j] == '|' && main->ks[j - 1] != '\\')
+	{	
+		main->prompt = ft_strdup("pipe");
 		if (!main->prompt)
 			ft_fprintf(2, "Malloc error\n");
 	}
