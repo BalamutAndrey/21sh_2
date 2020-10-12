@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 15:20:40 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/02 15:20:43 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/12 14:54:07 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,12 @@ void	sh_read_ks(t_main *main)
 		else
 		{
 			main->ks_temp_len = ft_strlen(main->ks);
-			main->ks_temp = ft_strdup(main->ks);
+			//main->ks_temp = ft_strdup(main->ks);
+			main->ks_temp = ft_strnew(MAX_KS_LEN);
+			ft_strcpy(main->ks_temp, main->ks);
 			ft_bzero(main->ks, MAX_KS_LEN);
 			main->ks_temp[main->ks_temp_len] = '\n';
+			//main->ks_temp[main->ks_temp_len + 1] = '\0';
 		}
 		sh_print_prompt(main);
 	
