@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:58:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/03 14:00:26 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/13 16:15:19 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,16 @@ int main(int argc, char **argv, char **env)
 	ft_printf("Starting 21sh...\n");
 	if (argc > 1)
 	{
-		main = malloc(sizeof(t_main));
-		main->heredoc = NULL;
-		main->token = NULL;
-		main->ks = argv[1];
-		main->prompt = NULL;
+		// main = malloc(sizeof(t_main));
+		// main->heredoc = NULL;
+		// main->token = NULL;
+		// main->ks = argv[1];
+		// main->prompt = NULL;
+
+		main_struct = sh_add_main_struct(env);
+		main = main_struct;
+		sh_copy_envp(main);
+		sh_path(main);
 		sh_parser(main);
 	/*	if (!main->prompt)
 		{

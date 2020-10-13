@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/12 18:16:59 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/13 18:22:50 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,18 @@ t_exec	*temp_fill_exec(void)
 void	sh_standart_exec(t_exec *exec, t_main *main)
 {
 	pid_t	cpid;
+	int16_t	error;
 	
 	if (exec->pipe == true || (exec->next && exec->next->pipe == true))
 	{
 		if (exec->redir)
 			sh_redirects_hub(exec, main);
-		execv(exec->argv[0], exec->argv);
+		// execv(exec->argv[0], exec->argv);
+		if ((error = sh_exec_prog(exec, main)) != -1)
+		{
+			sh_exec_print_error(error);
+			exit(0);
+		}
 	}
 	else
 	{
@@ -92,7 +98,12 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 		{
 			if (exec->redir)
 				sh_redirects_hub(exec, main);
-			execv(exec->argv[0], exec->argv);
+			// execv(exec->argv[0], exec->argv);
+			if ((error = sh_exec_prog(exec, main)) != -1)
+			{
+				sh_exec_print_error(error);
+				exit(0);
+			}
 		}
 		else
 			waitpid(cpid, NULL, 0);
@@ -105,6 +116,10 @@ void	sh_exec(t_main *main)
 
 //	exec = temp_fill_exec();//тут должно быть exec = main->exec, но его пока нет
 	exec = main->exec_first;
+
+	//For test only:
+	// sh_exec_prog(exec, main);
+	
 	while (exec)
 	{
 //		if (exec->redir)
@@ -114,5 +129,43 @@ void	sh_exec(t_main *main)
 		else
 			sh_standart_exec(exec, main);
 		exec = exec->next;
+	}
+}
+
+int16_t	sh_exec_prog(t_exec *exec, t_main *main)
+{
+	int16_t	error;
+
+	error = -1;
+	// ft_printf("Add path\n");
+	sh_path_add(main, exec);
+	ft_printf("argv[0] = %s\n", exec->argv[0]);
+	// ft_printf("check access\n");
+	if ((sh_run_access(exec->argv[0]) == 0) &&
+		(sh_is_builtin(exec->argv[0]) == false))
+	{
+		// ft_printf("aceess Ok\n");
+		execve(exec->argv[0], exec->argv, main->envp_curr);
+	}
+	return (error);
+}
+
+void	sh_exec_print_error(int16_t error)
+{
+	if (error == 1)
+	{
+		ft_fprintf(STDERR_FILENO, "\n21sh: Access 0 error. Command not found.\n");
+	}
+	else if (error == 2)
+	{
+		ft_fprintf(STDERR_FILENO, "\n21sh: Access 1 error.\n");
+	}
+	else if (error == 3)
+	{
+		ft_fprintf(STDERR_FILENO, "\n21sh: Not a file of link.\n");
+	}
+	else if (error == 4)
+	{
+		ft_fprintf(STDERR_FILENO, "\n21sh: Unknown error.\n");
 	}
 }

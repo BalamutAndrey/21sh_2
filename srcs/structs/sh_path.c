@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 17:19:22 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/12 15:46:19 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/13 17:31:57 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,20 @@ void	sh_path(t_main *main)
 		if ((temp) && (temp[0] != '\0'))
 			main->path = sh_path_write(temp);
 	}
+
+	// t_path	*temp_path;
+	// temp_path = main->path;
+	// ft_printf("Print path:\n");
+	// if (temp_path)
+	// {
+	// 	while (temp_path)
+	// 	{
+	// 		ft_printf("%s\n", temp_path->path);
+	// 		temp_path = temp_path->next;
+	// 	}
+	// }
+	// else
+	// 	ft_printf("No path :-(\n");
 }
 
 void	sh_path_del(t_main *main)

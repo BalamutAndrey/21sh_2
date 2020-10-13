@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 17:10:08 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/12 16:02:55 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/12 16:36:21 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	sh_cd(t_exec *exec, t_main *main)
 	}
 	if (i > 2)
 	{
-		ft_fprintf(main->fd, "21sh: cd: too many arguments\n");
+		ft_fprintf(2, "21sh: cd: too many arguments\n");
 		sh_cd_error(main);
 	}
 	else if (i == 2)
@@ -41,7 +41,7 @@ void	sh_cd(t_exec *exec, t_main *main)
 
 void	sh_cd_error(t_main *main)
 {
-	ft_fprintf(main->fd, "Usage: cd [-L | -P] directory\n");
+	ft_fprintf(2, "Usage: cd [-L | -P] directory\n");
 }
 
 void	sh_cd_check_param(t_exec *exec, t_main *main)
@@ -58,7 +58,7 @@ void	sh_cd_check_param(t_exec *exec, t_main *main)
 	}
 	else
 	{
-		ft_fprintf(main->fd, "21sh: cd: string not in pwd: %s\n", exec->argv[1]);
+		ft_fprintf(2, "21sh: cd: string not in pwd: %s\n", exec->argv[1]);
 		sh_cd_error(main);
 	}
 }
@@ -106,13 +106,13 @@ void	sh_chdir_finish(t_exec *exec, t_main *main, bool param, int p)
 
 	if ((access(exec->argv[p], 0) == 0) && (access(exec->argv[p], 1) == -1))
 	{
-		ft_printf("21sh: cd: permission denied: %s\n", exec->argv[p]);
+		ft_fprintf(2, "21sh: cd: permission denied: %s\n", exec->argv[p]);
 	}
 	else
 	{
 		fin = chdir(exec->argv[p]);
 		if (fin != 0)
-			ft_printf("21sh: cd: no such file or directory: %s\n", exec->argv[p]);
+			ft_fprintf(2, "21sh: cd: no such file or directory: %s\n", exec->argv[p]);
 		else
 		{
 			temp1 = ft_strdup("OLDPWD");

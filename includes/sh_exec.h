@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 17:36:00 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/12 16:27:01 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/13 18:05:07 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 */
 void	sh_exec(t_main *main);
 void	sh_standart_exec(t_exec *exec, t_main *main);
+int16_t	sh_exec_prog(t_exec *exec, t_main *main);
+void	sh_exec_print_error(int16_t error);
 
 /*
 ** sh_redirects_hub.c

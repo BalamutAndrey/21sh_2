@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 15:35:21 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/12 15:00:11 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/13 17:31:30 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ int		sh_run_access(char *str)
 		return (0);
 	if (access(str, 0) != 0)
 	{
-//		ft_printf("\n Access 0 error \n");
+		// ft_printf("\n Access 0 error \n");
 		return (1);
 	}
 	if (access(str, 1) != 0)
 	{
-//		ft_printf("\n Access 1 error \n");
+		// ft_printf("\n Access 1 error \n");
 		return (2);
 	}
 	lstat(str, &buff);
 	if (!(S_ISLNK(buff.st_mode)) && !(S_ISREG(buff.st_mode)))
 	{
-//		ft_printf("\n Not a file of link \n");
+		// ft_printf("\n Not a file of link \n");
 		return (3);
 	}
 	if (!(S_ISLNK(buff.st_mode)))
@@ -41,7 +41,7 @@ int		sh_run_access(char *str)
 	if ((buff.st_mode & S_IXUSR) || (buff.st_mode & S_IXGRP) ||
 			(buff.st_mode & S_IXOTH))
 		return (0);
-//	ft_printf("\n End error \n");
+	// ft_printf("\n End error \n");
 	return (4);
 }
 
