@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:58:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/13 16:15:19 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/15 17:37:44 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int main(int argc, char **argv, char **env)
 		// sh_signal_set();
 		sh_copy_envp(main);
 		sh_path(main);
-		sh_read_ks(main);
+		//sh_read_ks(main);
+		sh_readline(main);
 		sh_term_restore(main);
 		sh_remove_struct(&main);
 	}

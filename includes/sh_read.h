@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_read.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 15:21:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/07/11 14:21:28 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/15 17:40:54 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,23 @@
 # define SH_READ_H
 
 /*
-** sh_read_ks.c
+** sh_readline.c
 */
-void	sh_read_ks(t_main *main);
-void	sh_ks_and_dir(t_main *main);
-void	sh_print_prompt(t_main *main);
+void	sh_readline(t_main *main);
+void	sh_rl_reset_line(t_main *main);
+void	sh_rl_check_prompt_start(t_main *main);
+void	sh_rl_print_prompt(t_main *main);
+
+/*
+* sh_readline_readkey.c
+*/
+bool	sh_readline_readkey(t_main *main);
+void	sh_readline_readkey_add(t_main *main, uint64_t buf);
+
+/*
+* sh_readline_end.c
+*/
+bool	sh_readline_end(t_main *main);
 
 /*
 ** sh_isprint.c
