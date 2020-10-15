@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/15 14:47:59 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/15 15:01:29 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 		if (exec->redir)
 			sh_redirects_hub(exec, main);
 		// execv(exec->argv[0], exec->argv);
-		if ((error = sh_exec_prog(exec, main)) != -1)
+		if ((error = sh_exec_prog(exec, main)) != 0)
 		{
 			sh_exec_print_error(error);
 			exit(0);
@@ -99,7 +99,7 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 			if (exec->redir)
 				sh_redirects_hub(exec, main);
 			// execv(exec->argv[0], exec->argv);
-			if ((error = sh_exec_prog(exec, main)) != -1)
+			if ((error = sh_exec_prog(exec, main)) != 0)
 			{
 				//ft_printf("Error = %i\n", error);
 				sh_exec_print_error(error);
@@ -140,7 +140,7 @@ int16_t	sh_exec_prog(t_exec *exec, t_main *main)
 	error = -1;
 	// ft_printf("Add path\n");
 	sh_path_add(main, exec);
-	ft_printf("argv[0] = %s\n", exec->argv[0]);
+	ft_fprintf(2, "argv[0] = %s\n", exec->argv[0]);
 	//ft_printf("check access\n");
 	if (((error = sh_run_access(exec->argv[0])) == 0) &&
 		(sh_is_builtin(exec->argv[0]) == false))
