@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/13 18:22:50 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/15 14:47:59 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 			// execv(exec->argv[0], exec->argv);
 			if ((error = sh_exec_prog(exec, main)) != -1)
 			{
+				//ft_printf("Error = %i\n", error);
 				sh_exec_print_error(error);
 				exit(0);
 			}
@@ -140,13 +141,14 @@ int16_t	sh_exec_prog(t_exec *exec, t_main *main)
 	// ft_printf("Add path\n");
 	sh_path_add(main, exec);
 	ft_printf("argv[0] = %s\n", exec->argv[0]);
-	// ft_printf("check access\n");
-	if ((sh_run_access(exec->argv[0]) == 0) &&
+	//ft_printf("check access\n");
+	if (((error = sh_run_access(exec->argv[0])) == 0) &&
 		(sh_is_builtin(exec->argv[0]) == false))
 	{
-		// ft_printf("aceess Ok\n");
+		//ft_printf("aceess Ok\n");
 		execve(exec->argv[0], exec->argv, main->envp_curr);
 	}
+	//ft_printf("error = %i\n", error);
 	return (error);
 }
 
