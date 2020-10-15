@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/03 18:21:01 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/15 18:44:44 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,14 @@ typedef struct      s_exec {
 	int				pipefd[2];
 	struct s_exec	*next;
 }					t_exec;
+
+typedef struct	s_cursor
+{
+	uint64_t		line;
+	uint64_t		simvol;
+	struct s_cursor	*prev;
+	struct s_cursor	*next;
+}				t_cursor;
 
 typedef struct		s_main
 {

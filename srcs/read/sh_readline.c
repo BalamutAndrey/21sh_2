@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:16:02 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/15 17:36:04 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/15 18:56:22 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sh_readline(t_main *main)
 	{
 		sh_rl_reset_line(main);
 		sh_rl_check_prompt_start(main);
-		sh_rl_print_prompt(main);
+		sh_print_prompt(main);
 		sh_cursor_math(main);
 		while (fin == true)
 		{
@@ -56,30 +56,35 @@ void	sh_rl_check_prompt_start(t_main *main)
 		main->ks_temp = ft_strnew(MAX_KS_LEN);
 		ft_strcpy(main->ks_temp, main->ks);
 		ft_bzero(main->ks, MAX_KS_LEN);
-		main->ks_temp[main->ks_temp_len] = '\n';
+		if ((ft_strcmp(main->prompt, "slash") != 0) &&
+		(ft_strcmp(main->prompt, "pipe") != 0))
+			main->ks_temp[main->ks_temp_len] = '\n';
+		else if (ft_strcmp(main->prompt, "slash") == 0)
+			main->ks_temp[main->ks_temp_len - 1] = ' ';
 	}
 }
 
-void	sh_rl_print_prompt(t_main *main)
+void	sh_print_prompt(t_main *main)
 {
 	main->prompt_len = 3;
 	if (main->prompt == NULL)
 	{
 		if (main->user)
 		{
-			ft_printf("%s ", main->user);
+			ft_fprintf(STDOUT_FILENO, "%s ", main->user);
 			main->prompt_len = main->prompt_len + ft_strlen(main->user) + 1;
 		}
 		else
 		{
-			ft_printf("%03ix%03i ", main->term_col, main->term_row);
+			ft_fprintf(STDOUT_FILENO, "%03ix%03i ", main->term_col,
+			main->term_row);
 			main->prompt_len = main->prompt_len + 8;
 		}
-		ft_printf("$> ");
+		ft_fprintf(STDOUT_FILENO, "$> ");
 	}
 	else
 	{
 		main->prompt_len = main->prompt_len + ft_strlen(main->prompt);
-		ft_printf("%s> ", main->prompt);
+		ft_fprintf(STDOUT_FILENO, "%s > ", main->prompt);
 	}
 }

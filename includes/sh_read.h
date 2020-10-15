@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 15:21:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/15 17:40:54 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/15 18:07:00 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 void	sh_readline(t_main *main);
 void	sh_rl_reset_line(t_main *main);
 void	sh_rl_check_prompt_start(t_main *main);
-void	sh_rl_print_prompt(t_main *main);
+void	sh_print_prompt(t_main *main);
 
 /*
 * sh_readline_readkey.c
