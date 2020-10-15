@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/15 18:44:44 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/15 19:15:22 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,22 @@ typedef struct		s_hist
 	struct s_hist	*prev;
 }					t_hist;
 
+typedef struct		s_envvar
+{
+	int				start;
+	int				end;
+	int				type; // -1 == base ; 0 == ~ ; 1 == environment variable
+	char			*str;
+	struct s_envvar	*next;
+}					t_envvar;
+
 //
 //      TOKEN
 //
 typedef struct      s_token {
     t_type          type;
-    char*           content;
+    char			*content;
+	t_envvar		*envvar;
     struct s_token	*next;
 }                   t_token;
 
