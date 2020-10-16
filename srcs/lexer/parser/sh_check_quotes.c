@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:14:02 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/02 16:28:12 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/16 19:06:30 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	sh_check_dquotes(t_main *main)
 	count = 0;
 	while(main->ks[i])
 	{
-		if (main->ks[i] == '"')
+		if (main->ks[i] == '\"')
 		{
-			if (i == 0 || main->ks[i - 1] != '\\')
+			if (sh_is_protected(main->ks, i) == 0)
 				count++;
 		}
 		i++;
@@ -49,7 +49,7 @@ void	sh_check_quotes(t_main *main)
 	{
 		if (main->ks[i] == '\'')
 		{
-			if (i == 0 || main->ks[i - 1] != '\\' || count % 2 != 0)
+			if ((count % 2 == 0 && sh_is_protected(main->ks, i) == 0) || count % 2 != 0)
 				count++;
 		}
 		i++;

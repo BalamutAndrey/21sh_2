@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/15 15:01:29 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/16 19:06:47 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,20 +111,29 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 	}
 }
 
+int		sh_find_heredoc_in_exec_struct(t_exec *exec)
+{
+	t_redirect	*new;
+
+	while(new)
+	{
+		if (new->type == DLESS)
+			return (1);
+		new = new->next;
+	}
+	return (0);
+}
+
 void	sh_exec(t_main *main)
 {
 	t_exec	*exec;
 
-//	exec = temp_fill_exec();//тут должно быть exec = main->exec, но его пока нет
 	exec = main->exec_first;
-
 	//For test only:
 	// sh_exec_prog(exec, main);
 	
 	while (exec)
 	{
-//		if (exec->redir)
-//			sh_redirects_hub(exec, main);
 		if (exec->pipe == true || (exec->next && exec->next->pipe == true))
 			sh_exec_piped_commands(exec, main);
 		else

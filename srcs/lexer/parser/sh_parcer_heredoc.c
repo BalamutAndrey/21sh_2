@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 16:42:46 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/02 16:47:45 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/16 19:26:59 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	sh_get_heredoc_content(t_main *main)
 	{
 		tmp->here_end = ft_strlen(main->ks);
 		tmp->content = ft_strsub(main->ks, tmp->here_start + 1, 
-			ft_strlen(main->ks) - tmp->here_start - ft_strlen(tmp->delim) - 1);
+			ft_strlen(main->ks) - tmp->here_start - ft_strlen(tmp->delim));
 	}
 //	ft_erase_delims?? OR in LEXER
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 17:36:00 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/13 18:05:07 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/16 16:18:28 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	sh_exec_print_error(int16_t error);
 */
 void	sh_redirects_hub(t_exec *exec, t_main *main);
 void	sh_set_default_io_value(t_main *main);
-void	sh_redirect_from_heredoc(t_redirect *new, t_main *main);
+void	sh_redirect_from_heredoc(t_exec *exec, t_redirect *new, t_main *main);
 void	sh_add_opened_fd(t_main *main, int nbr);
 
 /*

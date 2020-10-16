@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 17:36:57 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/11 16:00:54 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/16 18:14:31 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,47 @@ void	sh_add_opened_fd(t_main *main, int nbr)
 	}
 }
 
-void	sh_redirect_from_heredoc(t_redirect *new, t_main *main)
+void	sh_redirect_from_heredoc(t_exec *exec, t_redirect *here, t_main *main)
 {
-	ft_printf("Doesn't work yet =(\n");
-//	ft_fprintf(fd[1], "%s", new->filename);
+	pid_t	here_pid;
+	int		here_fd[2];
+
+	pipe(here_fd);
+	here_pid = fork();
+	if (here_pid == 0)
+	{
+		dup2(here_fd[1], STDOUT_FILENO);
+		ft_fprintf(here_fd[1], "%s", here->filename);
+		close(here_fd[0]);
+		exit(0);
+	}
+	else
+	{
+		dup2(here_fd[0], STDIN_FILENO);
+		close(here_fd[1]);
+		close(here_fd[0]);
+		waitpid(here_pid, NULL, 0);
+	}
+
+
+/*	pid_t	cpid;
+	
+	if (exec->pipe == true || (exec->next && exec->next->pipe == true))
+	{
+		close(exec->pipefd[0]);
+		close(exec->pipefd[1]);
+	}
+	cpid = fork();
+	pipe(exec->pipefd);
+	if (cpid == 0)
+	{
+		dup2(exec->pipefd[1], STDOUT_FILENO);
+		ft_fprintf(exec->pipefd[1], new->filename);
+		close(exec->pipefd[0]);
+		exit(0);
+	}
+	else
+		waitpid(cpid, NULL, 0);*/
 }
 
 void	sh_set_default_io_value(t_main *main)
@@ -64,7 +101,7 @@ void	sh_redirects_hub(t_exec *exec, t_main *main)
 		else if (new->type == LESS)
 			sh_redirect_from_file(new, main);
 		else if (new->type == DLESS)
-			sh_redirect_from_heredoc(new, main);
+			sh_redirect_from_heredoc(exec, new, main);
 //		else if (new->type == LESSAND)
 //			sh_redirect_from_ionumber(new, main);
 		new = new->next;

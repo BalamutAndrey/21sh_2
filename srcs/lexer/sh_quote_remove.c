@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 15:00:27 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/15 19:13:20 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/16 19:32:50 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,10 @@ int		sh_dquotes_remove(t_token *token, int i, t_main *main)
 			i = sh_add_envvar(1, i, main, token);
 		else
 			i++;
-//		if (token->content[i] == '\"' && is_protected(token->content, i) == 0)
-//			break;
 	}
 	sh_remove_char(i, token, main);
 	i = sh_dslashes_remove(tmp, i, token, main);
-	return (i);
+	return (i + 1);
 }
 
 int		sh_squotes_remove(t_token *token, int i, t_main *main)
@@ -87,7 +85,7 @@ void	tmp_print_quote_remove(t_token *token)
 {
 	t_envvar	*en;
 	
-	printf("*** GELIZ QUOTE REMOVAL SERVICE ***\n");
+	printf("*** QUOTE REMOVAL SERVICE ***\n");
 	printf("%s\n", token->content);
 	en = token->envvar;
 	while (en)
@@ -113,5 +111,6 @@ void	sh_quote_remove(t_main *main, t_token *token)
 	}
 }
 
-//$PATH $PATH $PATH - выдает лишнюю структуру envvar
-//"123 \" 123" - съедает кавычку и часть второй 123
+// Переписать функции не под token а под строчку и использовать их в Heredoc для 
+// правильного определения EOF снаружи Heredoc и подхвата в нужном месте envvar уже внутри Heredoc
+// HEREDOC ctrl+d == here->delim (ctrl + d == 4 ASCII), проверить чтобы он не попал в токен

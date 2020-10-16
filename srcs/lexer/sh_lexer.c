@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:13:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/15 18:48:38 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/16 19:26:59 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,9 @@ int		sh_lexer(t_main *main)
 	if (main->prompt)
 		sh_remove_token_list(first);
 	main->token = first;
+	sh_quote_remove(main, main->token);
 	if (main->heredoc)
 		sh_add_heredoc_content(main);
-	sh_quote_remove(main, main->token);
 	ft_print_test(first); // PRINT_IS_HERE!!!
 //	sh_lexer_tree_new(main);
 	return (0); 

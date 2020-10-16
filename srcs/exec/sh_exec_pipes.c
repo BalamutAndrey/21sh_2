@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:08:03 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/03 18:20:57 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/16 18:41:59 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ void	sh_stdin_pipe(t_exec *exec, int fd[2], t_main *main)
 
 void	sh_stdout_pipe(t_exec *exec, int fd[2], t_main *main)
 {
-	pid_t	pid;
+	pid_t		pid;
+	t_redirect	*here;
 
+	here = NULL;
 	pid = fork();
 	if (pid == 0)
 	{
