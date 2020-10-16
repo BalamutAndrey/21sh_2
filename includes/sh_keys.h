@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_keys.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 16:56:11 by eboris            #+#    #+#             */
-/*   Updated: 2020/07/18 16:34:08 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/16 19:17:48 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	sh_key_end(t_main *main);
 /*
 ** sh_key_ctrl_d.c
 */
-void	sh_key_ctrl_d(t_main *main);
+bool	sh_key_ctrl_d(t_main *main);
 
 /*
 ** sh_key_shift_left.c

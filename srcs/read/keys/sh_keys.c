@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_keys.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 16:49:25 by eboris            #+#    #+#             */
-/*   Updated: 2020/07/18 16:34:56 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/16 19:16:50 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	sh_keys(t_main *main, uint64_t buf)
 	else if (buf == 0x465B1B)
 		sh_key_end(main);
 	else if (buf == 0x4)
-		sh_key_ctrl_d(main);
+		return (sh_key_ctrl_d(main));
 	else
 		return (sh_keys_2(main, buf));
 	return (true);

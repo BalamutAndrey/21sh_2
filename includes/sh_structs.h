@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/15 19:15:22 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/16 16:52:53 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,8 @@ typedef struct		s_main
 	bool			cursor_sel;
 	uint64_t		cursor_sel_start;
 	uint64_t		cursor_sel_end;
+	t_cursor		*cur_first;
+	t_cursor		*cur_curr;
 	char			*cursor_sel_text;
 	char			*prompt;
 	uint64_t		prompt_len;

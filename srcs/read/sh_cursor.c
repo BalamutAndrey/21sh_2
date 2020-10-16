@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_cursor.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 15:04:38 by eboris            #+#    #+#             */
-/*   Updated: 2020/07/17 16:49:03 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/16 17:07:34 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,23 +89,4 @@ void	sh_cursor_minus(t_main *main)
 		main->cursor--;
 	sh_reprint_ks(main);
 //	sh_cursor_math(main);
-}
-
-void	sh_cursor_math(t_main *main)
-{
-	main->cursor_line = main->ks_len / main->term_col;
-	if (main->cursor < (main->term_col - main->prompt_len))
-	{
-		main->cursor_curr = main->cursor + main->prompt_len;
-		main->cursor_line_curr = 0;
-	}
-	else
-	{
-		main->cursor_line_curr = (main->cursor + main->prompt_len) / main->term_col;
-		main->cursor_curr = (main->cursor + main->prompt_len) % main->term_col;
-	}
-	// if (((main->ks_len + main->prompt_len) % main->term_col) == 0)
-	// {
-	// 	ft_putstr_fd(tgoto(tgetstr("nd", NULL), 0, 5), main->fd);
-	// }
 }

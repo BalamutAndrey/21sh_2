@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/16 19:06:47 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/16 19:49:41 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,8 +154,12 @@ int16_t	sh_exec_prog(t_exec *exec, t_main *main)
 	if (((error = sh_run_access(exec->argv[0])) == 0) &&
 		(sh_is_builtin(exec->argv[0]) == false))
 	{
+		//TEST!!!!
+		tcsetattr(main->fd, TCSANOW, &main->t_start);
 		//ft_printf("aceess Ok\n");
 		execve(exec->argv[0], exec->argv, main->envp_curr);
+		//TEST!!!
+		tcsetattr(main->fd, TCSANOW, &main->t_curr);
 	}
 	//ft_printf("error = %i\n", error);
 	return (error);
