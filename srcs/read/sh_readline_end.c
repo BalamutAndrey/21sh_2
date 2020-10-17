@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:34:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/17 16:33:22 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/17 16:37:38 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ bool	sh_readline_end(t_main *main)
 		ft_strcpy(main->ks, main->ks_temp);
 		ft_strdel(&main->ks_temp);
 	}
-	fin = sh_lexer_start(main);
 	if (main->prompt != NULL)
 	{
 		ft_strdel(&main->hist_end->prev->com);
@@ -32,10 +31,15 @@ bool	sh_readline_end(t_main *main)
 	}
 	else
 	{
-		sh_history_add(main);
+		//sh_history_add(main);
 		main->hist_curr = main->hist_end;
 	}
-	// fin = sh_lexer_start(main);
+	fin = sh_lexer_start(main);
+	
+	if (main->prompt != NULL)
+		sh_history_add(main);
+	
+	
 	if (main->ks_temp != NULL)
 		ft_strdel(&main->ks_temp);
 	return (fin);
