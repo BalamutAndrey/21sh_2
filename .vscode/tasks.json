@@ -11,7 +11,7 @@
                 "~/work/21sh_2/srcs/func/*.c",
                 "~/work/21sh_2/srcs/structs/*.c",
                 "~/work/21sh_2/srcs/term/*.c",
-                // "~/work/21sh_2/srcs/signal/*.c",
+                "~/work/21sh_2/srcs/signal/*.c",
                 "~/work/21sh_2/srcs/errors/*.c",
                 "~/work/21sh_2/srcs/read/*.c",
                 "~/work/21sh_2/srcs/read/keys/*.c",
