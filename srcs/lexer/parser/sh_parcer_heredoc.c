@@ -6,11 +6,23 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 16:42:46 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/16 19:26:59 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/17 16:33:53 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
+
+void	sh_erase_heredoc_content_from_ks(t_main *main, int start, int len)
+{
+	int		i;
+
+	i = 0;
+	while (i < len)
+	{
+		main->ks[start + i] = '\0';
+		i++;
+	}
+}
 
 void	sh_get_heredoc_content(t_main *main)
 {
@@ -28,6 +40,14 @@ void	sh_get_heredoc_content(t_main *main)
 		tmp->here_end = ft_strlen(main->ks);
 		tmp->content = ft_strsub(main->ks, tmp->here_start + 1, 
 			ft_strlen(main->ks) - tmp->here_start - ft_strlen(tmp->delim));
+		sh_erase_heredoc_content_from_ks(main, tmp->here_start, ft_strlen(tmp->content));
+	}
+	else if (ft_strchr(&main->ks[tmp->here_start], 4))
+	{
+		tmp->here_end = ft_strlen(main->ks);
+		tmp->content = ft_strsub(main->ks, tmp->here_start + 1, 
+			ft_strlen(main->ks) - tmp->here_start - 1);
+		sh_erase_heredoc_content_from_ks(main, tmp->here_start, ft_strlen(tmp->content));
 	}
 //	ft_erase_delims?? OR in LEXER
 }
@@ -63,7 +83,7 @@ int		sh_is_heredoc_finished(t_main *main)
 	{
 		ft_strdel(&main->prompt);
 		main->prompt = NULL;
-		sh_print_heredoc(main);////TEMP FUNC
+//		sh_print_heredoc(main);////TEMP FUNC
 	}
 	return (1);
 }
