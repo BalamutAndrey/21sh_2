@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/16 19:49:41 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/17 14:29:21 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,11 +134,13 @@ void	sh_exec(t_main *main)
 	
 	while (exec)
 	{
+		tcsetattr(main->fd, TCSANOW, &main->t_start);
 		if (exec->pipe == true || (exec->next && exec->next->pipe == true))
 			sh_exec_piped_commands(exec, main);
 		else
 			sh_standart_exec(exec, main);
 		exec = exec->next;
+		tcsetattr(main->fd, TCSANOW, &main->t_curr);
 	}
 }
 
@@ -154,12 +156,8 @@ int16_t	sh_exec_prog(t_exec *exec, t_main *main)
 	if (((error = sh_run_access(exec->argv[0])) == 0) &&
 		(sh_is_builtin(exec->argv[0]) == false))
 	{
-		//TEST!!!!
-		tcsetattr(main->fd, TCSANOW, &main->t_start);
 		//ft_printf("aceess Ok\n");
 		execve(exec->argv[0], exec->argv, main->envp_curr);
-		//TEST!!!
-		tcsetattr(main->fd, TCSANOW, &main->t_curr);
 	}
 	//ft_printf("error = %i\n", error);
 	return (error);

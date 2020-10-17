@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 16:20:13 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/12 16:32:11 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/17 13:51:03 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,10 @@ void	sh_pwd(t_exec *exec, t_main *main);
 void	sh_pwd_error(t_main *main);
 void	sh_pwd_check_param(t_exec *exec, t_main *main);
 void	sh_pwd_print_dir(t_main *main, bool param);
+
+/*
+** sh_exit.c
+*/
+void	sh_exit(t_main *main, uint64_t code);
 
 #endif
