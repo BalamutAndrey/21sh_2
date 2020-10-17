@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:34:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/17 17:11:20 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/17 17:20:40 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ bool	sh_readline_end(t_main *main)
 	{
 		ft_strdel(&main->hist_end->prev->com);
 		main->hist_end->prev->com = ft_strdup(main->ks);
-		// ft_strdel(&main->prompt);
+		ft_strdel(&main->prompt);
 	}
 	else
 	{
-		//sh_history_add(main);
+		sh_history_add(main);
 		main->hist_curr = main->hist_end;
 	}
 	
@@ -40,11 +40,18 @@ bool	sh_readline_end(t_main *main)
 	fin = sh_lexer_start(main);
 	
 	// ft_printf("Before history: %s\n", main->ks);
-	if (main->prompt == NULL)
-	{
-		ft_strdel(&main->prompt);
-		sh_history_add(main);
-	}
+	// if (main->prompt == NULL)
+	// {
+	// 	// ft_strdel(&main->prompt);
+	// 	sh_history_add(main);
+	// 	// main->hist_end->prev->com = ft_strdup(main->ks);
+	// 	main->hist_curr = main->hist_end;
+	// }
+	// else
+	// {
+	// 	ft_strdel(&main->prompt);
+	// }
+	
 	
 	// ft_printf("After history: %s\n", main->ks);
 	
