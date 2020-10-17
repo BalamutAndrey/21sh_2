@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 18:42:18 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/15 18:42:46 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/17 19:23:57 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void	sh_remove_char(int i, t_token *token, t_main *main)
 	}
 	ft_strdel(&token->content);
 	token->content = ret;
+	ret = NULL;
 }

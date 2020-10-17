@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 16:42:46 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/17 16:33:53 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/17 18:30:54 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,12 @@ void	sh_get_heredoc_content(t_main *main)
 		tmp->here_end = ft_strlen(main->ks);
 		tmp->content = ft_strsub(main->ks, tmp->here_start + 1, 
 			ft_strlen(main->ks) - tmp->here_start - ft_strlen(tmp->delim));
-		sh_erase_heredoc_content_from_ks(main, tmp->here_start, ft_strlen(tmp->content));
 	}
 	else if (ft_strchr(&main->ks[tmp->here_start], 4))
 	{
 		tmp->here_end = ft_strlen(main->ks);
 		tmp->content = ft_strsub(main->ks, tmp->here_start + 1, 
 			ft_strlen(main->ks) - tmp->here_start - 1);
-		sh_erase_heredoc_content_from_ks(main, tmp->here_start, ft_strlen(tmp->content));
 	}
 //	ft_erase_delims?? OR in LEXER
 }
@@ -88,14 +86,30 @@ int		sh_is_heredoc_finished(t_main *main)
 	return (1);
 }
 
+void	sh_erase_heredoc_from_ks(t_main *main)
+{
+	t_heredoc	*tmp;
+
+	tmp = main->heredoc;
+	while (tmp)
+	{
+		sh_erase_heredoc_content_from_ks(main, tmp->here_start, ft_strlen(tmp->content));
+		tmp = tmp->next;
+	}
+	ft_strdel(&main->hist_end->prev->com);
+	main->hist_end->prev->com = ft_strdup(main->ks);
+}
+
 void	sh_check_heredoc(t_main *main)
 {
 	if (!main->heredoc)
 		sh_create_heredoc_structs(main);
 	if (main->heredoc)
 	{
+		sh_heredoc_delim_correction(main);
 		if (sh_is_heredoc_finished(main) == 0)
 			sh_get_heredoc_content(main);
-		sh_is_heredoc_finished(main);
+		if (sh_is_heredoc_finished(main) == 1)
+			sh_erase_heredoc_from_ks(main);
 	}
 }

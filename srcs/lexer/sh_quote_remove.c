@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 15:00:27 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/17 16:14:09 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/17 19:43:36 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ int		sh_dslashes_remove(int i, int end, t_token *token, t_main *main)
 	while (i < end)
 	{
 		if (token->content[i] == '\\' && token->content[i + 1] == '\\')
+		{
 			sh_remove_char(i, token, main);
+			end--;
+		}
 		i++;
-		end--;
 	}
 	return (end);
 }
@@ -95,11 +97,29 @@ void	tmp_print_quote_remove(t_token *token)
 	}
 }
 
+void	sh_find_envvar(t_token *token, t_main *main)
+{
+	int		i;
+
+	i = 0;
+	while (token->content[i])
+	{
+		if (token->content[i] == '$' && sh_is_protected(token->content, i) == 0)
+			i = sh_add_envvar(1, i, main, token);
+		i++;
+	}
+}
+
 void	sh_quote_remove(t_main *main, t_token *token)
 {
 	while (token)
 	{
-		if (token->type == WORD)
+		if (token->type == DLESS && token->next && token->next->type == WORD)
+		{
+			sh_find_envvar(token->next, main);
+			token = token->next->next;
+		}
+		else if (token->type == WORD)
 		{
 			if (ft_strcmp(token->content, "~") == 0)
 				sh_add_envvar(0, 0, main, token);
@@ -107,7 +127,8 @@ void	sh_quote_remove(t_main *main, t_token *token)
 				sh_find_and_remove_quotes(main, token);
 			tmp_print_quote_remove(token);
 		}
-		token = token->next;
+		if (token)
+			token = token->next;
 	}
 }
 
@@ -118,3 +139,6 @@ void	sh_quote_remove(t_main *main, t_token *token)
 // ПРОВЕРИТЬ что кавычки, слэш и прочее отрабатывают раньше хирдока
 // $PATH && ~ в дереве и экзеке
 // список запущенных процессов в main struct
+// кавычки в хирдоках, УЖС!!!
+
+// НАЙТИ И ЗАМЕНИТЬ $ в содержимом хирдока

@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/15 18:54:43 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/17 18:56:35 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ int		sh_is_it_protected(char *str)
 
 void	sh_parser(t_main *main)
 {
-	if (!main->prompt)
-		sh_check_quotes(main);
-	if (!main->prompt)
+//	if (!main->prompt)
+//		sh_check_quotes(main);
+	if (!main->prompt && !main->heredoc)
 		sh_check_dquotes(main);
-	if (!main->prompt)
+	if (!main->prompt && !main->heredoc)
 	 	sh_check_slash(main); 
 	if (!main->prompt || !ft_strcmp(main->prompt, "Heredoc"))
 	 	sh_check_heredoc(main);

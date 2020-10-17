@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:13:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/17 16:42:11 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/17 19:45:29 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	ft_print_test(t_token *first)
                     "GREATAND", "LESSGREAT", "DLESSDASH", "CLOBBER","LBRACE",
 					"RBRACE", "BANG"};
 	int	i = 1;
-	
+	t_envvar	*t;
 	while (first)
 	{
 		//ft_printf("%s\n", first->content);
@@ -119,9 +119,9 @@ int		sh_lexer(t_main *main)
 	if (main->prompt)
 		sh_remove_token_list(first);
 	main->token = first;
-	sh_quote_remove(main, main->token);
 	if (main->heredoc)
 		sh_add_heredoc_content(main);
+	sh_quote_remove(main, main->token);
 	ft_print_test(first); // PRINT_IS_HERE!!!
 //	sh_lexer_tree_new(main);
 	return (0); 
