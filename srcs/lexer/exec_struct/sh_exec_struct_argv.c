@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 15:46:16 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/04 17:57:03 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/17 19:37:04 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,33 +32,86 @@ u_int64_t	sh_exec_struct_write_argv_num(t_main *main)
 	return (0);
 }
 
-void		sh_exec_struct_write_argv(t_main *main)
+void		sh_exec_struct_write_argv(t_main *main, t_exec *new)
 {
 	t_node		*temp;
 	u_int64_t	n;
 	u_int64_t	i;
 	char		**argv;
+	// t_exec		*t_new;
 
 	temp = main->tree_curr;
+	// t_new = new;
 	n = sh_exec_struct_write_argv_num(main);
-	i = 1;
+	i = 0;
 	if (n != 0)
 	{
 		argv = malloc(sizeof(char*) * n);
 		while (temp != NULL)
 		{
+			// if (temp->node_type == CMDNAME)
+			// {
+			// 	argv[0] = ft_strdup(temp->token->content);
+			// 	if (temp->token->envvar != NULL)
+			// 		sh_exec_struct_write_envvar(temp, t_new, argv[0]);
+			// }
+			// else if (temp->node_type == CMDSUFFIX)
+			// {
+			// 	// ft_printf("* %i %s\n", i, new->envvar->str);
+			// 	argv[i] = ft_strdup(temp->token->content);
+			// 	if (temp->token->envvar != NULL)
+			// 		sh_exec_struct_write_envvar(temp, t_new, argv[i]);
+			// 	i++;
+			// }
 			if (temp->node_type == CMDNAME)
-			{
-				argv[0] = ft_strdup(temp->token->content);
-			}
+				sh_exec_struct_write_argv_add(temp, new, argv, &i);
 			else if (temp->node_type == CMDSUFFIX)
-			{
-				argv[i] = ft_strdup(temp->token->content);
-				i++;
-			}
+				sh_exec_struct_write_argv_add(temp, new, argv, &i);
 			temp = temp->right;
 		}
 		argv[i] = NULL;
 		main->exec_curr->argv = argv;
+		new->envvar_curr = new->envvar;
 	}
+
+	while (new->envvar)
+	{
+		ft_printf("%i %s %i -- %i\n", new->envvar->start, new->envvar->str, new->envvar->end, new->envvar->type);
+		new->envvar = new->envvar->next;
+	}
+}
+
+void		sh_exec_struct_write_argv_add(t_node *temp, t_exec *new,
+			char **argv, u_int64_t *i)
+{
+	u_int64_t	n;
+
+	n = *i;
+	argv[n] = ft_strdup(temp->token->content);
+	if (temp->token->envvar != NULL)
+	{
+		sh_exec_struct_write_envvar(temp, new, argv[n]);
+	}
+	n++;
+	*i = n;
+}
+
+void		sh_exec_struct_write_envvar(t_node *node, t_exec *exec, char *argv)
+{
+	if (exec->envvar == NULL)
+	{
+		exec->envvar = node->token->envvar;
+		exec->envvar_curr = exec->envvar;
+	}
+	else
+	{
+		exec->envvar_curr->next = node->token->envvar;
+		exec->envvar_curr = exec->envvar_curr->next;
+	}
+	while (exec->envvar_curr->next != NULL)
+	{
+		exec->envvar_curr->str = argv;
+		exec->envvar_curr = exec->envvar_curr->next;
+	}
+	exec->envvar_curr->str = argv;
 }

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 18:16:34 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/17 16:09:27 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/17 18:53:08 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ void	sh_sig_ctrl_c(int a)
 		ft_fprintf(STDERR_FILENO, "^C");
 		ft_putstr_fd(tgetstr("do", NULL), main_struct->fd);
 		ft_putstr_fd(tgetstr("cr", NULL), main_struct->fd);
+		if (main_struct->prompt != NULL)
+			ft_strdel(&main_struct->prompt);
+		if (main_struct->ks_temp != NULL)
+			ft_strdel(&main_struct->ks_temp);
 		ft_bzero(main_struct->ks, MAX_KS_LEN);
 		sh_rl_reset_line(main_struct);
 		sh_rl_check_prompt_start(main_struct);
