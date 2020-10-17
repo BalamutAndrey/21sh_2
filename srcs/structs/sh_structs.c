@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 11:47:56 by eboris            #+#    #+#             */
-/*   Updated: 2020/07/23 17:16:59 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/17 15:57:29 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ t_main	*sh_add_main_struct(char **env)
 	new->ks = ft_strnew(MAX_KS_LEN);
 	new->cursor_sel_text = ft_strnew(MAX_KS_LEN);
 	new->ks_temp = NULL;
+	new->heredoc = NULL;
+	new->cpid = -1;
 	sh_write_struct(new);
 	return (new);
 }

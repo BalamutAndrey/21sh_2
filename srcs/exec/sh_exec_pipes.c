@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec_pipes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:08:03 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/16 18:41:59 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/17 16:11:23 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void	sh_std_in_out_pipe(t_exec *exec, int fd[2], int fd2[2], t_main *main)
 	{
 		close(fd[0]);
 		close(fd[1]);
+		main->cpid = pid;
 		waitpid(pid, NULL, 0);
+		main->cpid = -1;
 	}
 }
 
@@ -48,7 +50,9 @@ void	sh_stdin_pipe(t_exec *exec, int fd[2], t_main *main)
 	{
 		close(fd[0]);
 		close(fd[1]);
+		main->cpid = pid;
 		waitpid(pid, NULL, 0);
+		main->cpid = -1;
 	}
 }
 
@@ -66,7 +70,11 @@ void	sh_stdout_pipe(t_exec *exec, int fd[2], t_main *main)
 		sh_standart_exec(exec, main);
 	}
 	else
+	{
+		main->cpid = pid;
 		waitpid(pid, NULL, 0);
+		main->cpid = -1;
+	}
 }
 
 void	fill_pipe(int fd[2], int str_fd[2])

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:57:23 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/12 16:29:39 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/17 16:01:25 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <fcntl.h>
 # include <sys/ioctl.h>
 # include <sys/stat.h>
+# include <sys/types.h>
+# include <signal.h>
 # include "libft.h"
 # include "sh_structs.h"
 # include "sh_errors.h"

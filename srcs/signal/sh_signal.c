@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 17:27:09 by eboris            #+#    #+#             */
-/*   Updated: 2020/08/04 16:44:59 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/17 15:07:26 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	sh_signal_set(void)
 {
 	signal(SIGWINCH, sh_sig_screen_resize);
-	signal(SIGBUS, sh_sig_bus_error);
-	signal(SIGSEGV, sh_sig_bus_error);
-	signal(SIGFPE, sh_sig_bus_error);
+	// signal(SIGBUS, sh_sig_bus_error);
+	// signal(SIGSEGV, sh_sig_bus_error);
+	// signal(SIGFPE, sh_sig_bus_error);
 	signal(SIGINT, sh_sig_ctrl_c);
 }

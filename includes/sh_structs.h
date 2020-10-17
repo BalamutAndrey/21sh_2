@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/16 16:52:53 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/17 15:55:53 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ typedef struct		s_main
     t_node      	*tree_curr;
 	t_exec			*exec_first;
 	t_exec			*exec_curr;
+	int32_t			cpid;
 	t_fds			*opfds;
 	int				defio[3]; //на данный момент значения 0-1-2 принимает в ЭКЗЕКЕ
 }					t_main;

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:16:02 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/15 18:56:22 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/17 15:35:36 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	sh_rl_check_prompt_start(t_main *main)
 		(ft_strcmp(main->prompt, "pipe") != 0))
 			main->ks_temp[main->ks_temp_len] = '\n';
 		else if (ft_strcmp(main->prompt, "slash") == 0)
-			main->ks_temp[main->ks_temp_len - 1] = ' ';
+			main->ks_temp[main->ks_temp_len - 1] = '\0';
 	}
 }
 

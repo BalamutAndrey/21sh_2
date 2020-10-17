@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/17 14:29:21 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/17 15:56:28 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,11 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 			}
 		}
 		else
+		{
+			main->cpid = cpid;
 			waitpid(cpid, NULL, 0);
+			main->cpid = -1;
+		}
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:58:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/15 17:37:44 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/17 15:06:08 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int main(int argc, char **argv, char **env)
 		main_struct = sh_add_main_struct(env);
 		main = main_struct;
 		sh_term_init(main);
-		// sh_signal_set();
+		sh_signal_set();
 		sh_copy_envp(main);
 		sh_path(main);
 		//sh_read_ks(main);
