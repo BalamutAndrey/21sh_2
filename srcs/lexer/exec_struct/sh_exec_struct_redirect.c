@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 15:55:23 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/04 17:46:42 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/18 15:06:16 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ void		sh_exec_struct_redirect(t_main *main)
 		{
 			temp = sh_exec_struct_redirect_new();
 			node = sh_exec_struct_redirect_write(node, temp);
+			
+			ft_printf("\nPrinting redirects env\n");
+			while (temp->envvar)
+			{
+				ft_printf("%i %s %i -- %i\n", temp->envvar->start, temp->envvar->str, temp->envvar->end, temp->envvar->type);
+				temp->envvar = temp->envvar->next;
+			}
+			ft_printf("\nEnd printing redirects env\n\n");
+
 			if (first == NULL)
 			{
 				first = temp;
@@ -57,6 +66,8 @@ t_redirect	*sh_exec_struct_redirect_new(void)
 	new->type = NONE;
 	new->filename = NULL;
 	new->next = NULL;
+	new->envvar = NULL;
+	new->envvar_curr = NULL;
 	return (new);
 }
 
@@ -83,5 +94,31 @@ t_node		*sh_exec_struct_redirect_write(t_node *node, t_redirect *redirect)
 	}
 	node = node->right;
 	redirect->filename = ft_strdup(node->token->content);
+
+	if (node->token->envvar != NULL)
+	{
+		sh_exec_struct_write_redir_envvar(node, redirect, redirect->filename);
+	}
+
 	return (node);
+}
+
+void		sh_exec_struct_write_redir_envvar(t_node *node, t_redirect *exec, char *argv)
+{
+	if (exec->envvar == NULL)
+	{
+		exec->envvar = node->token->envvar;
+		exec->envvar_curr = exec->envvar;
+	}
+	else
+	{
+		exec->envvar_curr->next = node->token->envvar;
+		exec->envvar_curr = exec->envvar_curr->next;
+	}
+	while (exec->envvar_curr->next != NULL)
+	{
+		exec->envvar_curr->str = argv;
+		exec->envvar_curr = exec->envvar_curr->next;
+	}
+	exec->envvar_curr->str = argv;
 }

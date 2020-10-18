@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 17:23:28 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/17 18:46:43 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/18 15:00:34 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void		sh_exec_struct_write_argv_add(t_node *temp, t_exec *new,
 void		sh_exec_struct_redirect(t_main *main);
 t_redirect	*sh_exec_struct_redirect_new(void);
 t_node		*sh_exec_struct_redirect_write(t_node *node, t_redirect *redirect);
+void		sh_exec_struct_write_redir_envvar(t_node *node, t_redirect *exec, char *argv);
 
 #endif

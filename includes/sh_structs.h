@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/17 18:06:09 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/18 14:40:18 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ typedef struct      	s_redirect {
 	int					io_num;
 	t_type				type;
 	char				*filename;
+	t_envvar			*envvar;
+	t_envvar			*envvar_curr;	
 	struct s_redirect	*next;
 }						t_redirect;
 
