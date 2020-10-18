@@ -6,35 +6,60 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:07:59 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/18 14:53:11 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/18 17:44:26 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+char	*ft_check_str_value_strjoin_arg(char *ret, char *temp)
+{
+	char	*val;
+	
+	if (!ret && !temp)
+		return (NULL);
+	if (!ret)
+	{
+		val = ft_strdup(temp);
+		if (!val)
+			ft_fprintf(2, "Malloc error in strjoin_arg\n");
+		return (val);
+	}
+	if (!temp)
+	{	
+		val = ft_strdup(ret);
+		if (!val)
+			ft_fprintf(2, "Malloc error in strjoin_arg\n");
+		return (val);
+	}
+	val = ft_strjoin(ret, temp);
+	if (!val)
+		ft_fprintf(2, "Malloc error in strjoin_arg\n");
+	return (val);
+}
+
 char	*ft_strjoin_arg(const char *s, ...)
 {
 	char	*ret;
 	va_list	ap;
-	int		i;
 	char	*temp;
 	char	*temp_ret;
 
-	i = 0;
 	ret = NULL;
+	temp_ret = NULL;
 	va_start(ap, s);
-	while (s[i] != '\0')
+	while (*s != '\0')
 	{
-		if (s[i] == '%')
+		if (*s == '%')
 		{
 			temp = va_arg(ap, char *);
-			temp_ret = ft_strjoin(ret, temp);
+			temp_ret = ft_check_str_value_strjoin_arg(ret, temp);
 			ft_strdel(&ret);
 			ret = temp_ret;
-			if (s[++i] == 'f')
+			if ((*s + 1) == 'f')
 				ft_strdel(&temp);
 		}
-		i++;
+		s++;
 	}
 	va_end(ap);
 	return (ret);

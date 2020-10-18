@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec_struct_redirect.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 15:55:23 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/18 15:06:16 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/18 16:03:48 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void		sh_exec_struct_redirect(t_main *main)
 			temp = sh_exec_struct_redirect_new();
 			node = sh_exec_struct_redirect_write(node, temp);
 			
-			ft_printf("\nPrinting redirects env\n");
-			while (temp->envvar)
-			{
-				ft_printf("%i %s %i -- %i\n", temp->envvar->start, temp->envvar->str, temp->envvar->end, temp->envvar->type);
-				temp->envvar = temp->envvar->next;
-			}
-			ft_printf("\nEnd printing redirects env\n\n");
+			// ft_printf("\nPrinting redirects env\n");
+			// while (temp->envvar)
+			// {
+			// 	ft_printf("%i %s %i -- %i\n", temp->envvar->start, temp->envvar->str, temp->envvar->end, temp->envvar->type);
+			// 	temp->envvar = temp->envvar->next;
+			// }
+			// ft_printf("\nEnd printing redirects env\n\n");
 
 			if (first == NULL)
 			{

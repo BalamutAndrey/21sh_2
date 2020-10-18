@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:58:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/17 15:06:08 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/18 15:59:49 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main(int argc, char **argv, char **env)
 		// main = malloc(sizeof(t_main));
 		// main->heredoc = NULL;
 		// main->token = NULL;
-		// main->ks = argv[1];
+		// main->ks = ft_strdup(argv[1]);
 		// main->prompt = NULL;
 
 		main_struct = sh_add_main_struct(env);

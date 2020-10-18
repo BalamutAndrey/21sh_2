@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec_struct_argv.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 15:46:16 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/18 15:04:01 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/18 16:03:57 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ void		sh_exec_struct_write_argv(t_main *main, t_exec *new)
 		new->envvar_curr = new->envvar;
 	}
 
-	ft_printf("\nPrinting argvs env\n");
-	while (new->envvar)
-	{
-		ft_printf("%i %s %i -- %i\n", new->envvar->start, new->envvar->str, new->envvar->end, new->envvar->type);
-		new->envvar = new->envvar->next;
-	}
-	ft_printf("\nEnd argvs redirects env\n\n");
+	// ft_printf("\nPrinting argvs env\n");
+	// while (new->envvar)
+	// {
+	// 	ft_printf("%i %s %i -- %i\n", new->envvar->start, new->envvar->str, new->envvar->end, new->envvar->type);
+	// 	new->envvar = new->envvar->next;
+	// }
+	// ft_printf("\nEnd argvs redirects env\n\n");
 
 }
 
