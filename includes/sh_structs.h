@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/18 14:40:18 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/18 15:55:26 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,14 +124,6 @@ typedef struct      s_exec {
 	struct s_exec	*next;
 }					t_exec;
 
-typedef struct	s_cursor
-{
-	uint64_t		line;
-	uint64_t		simvol;
-	struct s_cursor	*prev;
-	struct s_cursor	*next;
-}				t_cursor;
-
 typedef struct		s_main
 {
 	char			*term_name;
@@ -160,9 +152,8 @@ typedef struct		s_main
 	bool			cursor_sel;
 	uint64_t		cursor_sel_start;
 	uint64_t		cursor_sel_end;
-	t_cursor		*cur_first;
-	t_cursor		*cur_curr;
 	char			*cursor_sel_text;
+	uint64_t		curs[MAX_KS_LEN];
 	char			*prompt;
 	uint64_t		prompt_len;
 	t_heredoc	    *heredoc;

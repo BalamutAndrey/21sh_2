@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 15:04:38 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/16 17:07:34 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/18 17:27:27 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,17 @@ void	sh_reprint_ks(t_main *main)
 		ft_putstr_fd(tgoto(tgetstr("do", NULL), 0, 5), main->fd);
 		main->cursor_line_curr++;
 	}
-	while (main->cursor_line_curr > 0)
+	while (main->cursor_line_curr > 1)
 	{
 		sh_delete_ks(main);
 		ft_putstr_fd(tgoto(tgetstr("up", NULL), 0, 5), main->fd);
 		main->cursor_line_curr--;
 	}
+	main->cursor_line_curr--;
 	sh_delete_ks(main);
 //	ft_putstr_fd(tgoto(tgetstr("up", NULL), 0, 5), main->fd);
 //	main->cursor_line_curr--;
-	//sh_cursor_math(main);
+	sh_cursor_math(main);
 	sh_print_prompt(main);
 	//ft_putstr_fd(main->ks, main->fd);
 	i = 0;

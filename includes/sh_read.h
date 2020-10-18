@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 15:21:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/16 17:07:27 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/18 16:09:10 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	sh_cursor_minus(t_main *main);
 ** sh_cursor_math.c
 */
 void	sh_cursor_math(t_main *main);
-void	sh_cursor_add(t_main *main, uint64_t line, uint64_t col);
+void	sh_cursor_math_curr(t_main *main);
 
 /*
 ** sh_history.c

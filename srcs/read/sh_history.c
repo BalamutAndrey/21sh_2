@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_history.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 13:49:25 by eboris            #+#    #+#             */
-/*   Updated: 2020/07/13 13:18:41 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/18 17:15:28 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	sh_history_read(t_main *main, char k)
 				ft_strcpy(main->ks, main->hist_curr->com);
 				main->ks_len = ft_strlen(main->ks);
 				main->cursor = main->ks_len;
+				//
+				sh_cursor_math(main);
 				sh_reprint_ks(main);
 			}
 			else
@@ -92,6 +94,8 @@ void	sh_history_read(t_main *main, char k)
 				ft_strcpy(main->ks, main->hist_curr->com);
 				main->ks_len = ft_strlen(main->ks);
 				main->cursor = main->ks_len;
+				//
+				sh_cursor_math(main);
 				sh_reprint_ks(main);
 			}
 			else
@@ -109,6 +113,8 @@ void	sh_history_read(t_main *main, char k)
 					ft_strcpy(main->ks, main->ks_temp);
 					main->ks_len = ft_strlen(main->ks);
 					main->cursor = main->ks_len;
+					//
+					sh_cursor_math(main);
 					sh_reprint_ks(main);
 				}
 			}
