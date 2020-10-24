@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 15:00:27 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/18 16:33:23 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/24 17:32:18 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int		sh_dquotes_remove(t_token *token, int i, t_main *main)
 				sh_remove_char(i, token, main);
 				i++;
 			}
-		else if (token->content[i] == '$' && sh_is_protected(token->content, i) == 0)
+		else if (token->content[i] == '$' && sh_is_protected(token->content, i) == 0
+			&& ft_isalpha(token->content[i + 1]) == 1)
 			i = sh_add_envvar(1, i, main, token);
 		else
 			i++;
@@ -71,7 +72,8 @@ void	sh_find_and_remove_quotes(t_main *main, t_token *token)
 			i = sh_dquotes_remove(token, i, main);
 		else if (token->content[i] == '\'' && sh_is_protected(token->content, i) == 0)
 			i = sh_squotes_remove(token, i, main);
-		else if (token->content[i] == '$' && sh_is_protected(token->content, i) == 0)
+		else if (token->content[i] == '$' && sh_is_protected(token->content, i) == 0
+			&& ft_isalpha(token->content[i + 1]) == 1)
 			i = sh_add_envvar(1, i, main, token);
 		else if (token->content[i] == '\\')
 		{
@@ -104,7 +106,8 @@ void	sh_find_envvar(t_token *token, t_main *main)
 	i = 0;
 	while (token->content[i])
 	{
-		if (token->content[i] == '$' && sh_is_protected(token->content, i) == 0)
+		if (token->content[i] == '$' && sh_is_protected(token->content, i) == 0
+			&& ft_isalpha(token->content[i + 1]) == 1)
 			i = sh_add_envvar(1, i, main, token);
 		i++;
 	}
@@ -121,7 +124,7 @@ void	sh_quote_remove(t_main *main, t_token *token)
 		}
 		else if (token->type == WORD)
 		{
-			if (ft_strcmp(token->content, "~") == 0)
+			if (token->content[0] == '~' && (token->content[1] == '\0' || token->content[1] == '/'))
 				sh_add_envvar(0, 0, main, token);
 			else
 				sh_find_and_remove_quotes(main, token);

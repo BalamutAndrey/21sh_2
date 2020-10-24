@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 17:36:00 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/16 16:18:28 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/24 18:02:39 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,14 @@ void	sh_path_add(t_main *main, t_exec *temp);
 void	sh_run_write_string_point(t_main *main, t_exec *temp);
 void	sh_run_write_string_home(t_main *main, t_exec *temp);
 void	sh_find_path(t_main *main, t_exec *exec);
+
+void	sh_change_envvars_in_exec(t_main *main, t_exec *exec);
+
+void	sh_change_envvars_in_redirs(t_main *main, t_redirect *redir);
+
+char	*sh_find_envvar_in_env(char **env, t_envvar *envvar);
+char	*sh_get_envvar_from_str(t_envvar *envvar);
+void	sh_envvar_add_shift_to_struct(t_envvar *envvar, char *new_str, int shift);
+
 
 #endif

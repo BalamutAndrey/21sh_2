@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_builtin.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 16:20:13 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/17 13:51:03 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/24 20:12:48 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,18 @@ void	sh_pwd_print_dir(t_main *main, bool param);
 ** sh_exit.c
 */
 void	sh_exit(t_main *main, uint64_t code);
+/*
+** sh_echo.c
+*/
+void	sh_builtin_echo(t_main *main, t_exec *exec);
+int		sh_echo_with_changes(char **str, int j, int flags[2], t_main *main);
+int		sh_echo_get_flags(char **argv, int flags[2]);
+/*
+** sh_echo_spec_symb.c
+*/
+int		sh_echo_is_spec(char *str, int i, t_main *main);
+int		sh_check_octal_nbr(char *str, int i, t_main *main);
+int		sh_is_octal_nbr(char c);
+void	sh_print_spec(char c);
 
 #endif

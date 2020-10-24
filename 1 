@@ -1,0 +1,20 @@
+\a
+Write an <alert>.
+\b
+Write a <backspace>.
+\c
+Suppress the <newline> that otherwise follows the final argument in the output. All characters following the '\c' in the arguments shall be ignored.
+\f
+Write a <form-feed>.
+\n
+Write a <newline>.
+\r
+Write a <carriage-return>.
+\t
+Write a <tab>.
+\v
+Write a <vertical-tab>.
+\\
+Write a backslash character.
+\0num
+Write an 8-bit value that is the zero, one, two, or three-digit octal number num.

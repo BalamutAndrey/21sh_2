@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/18 18:06:36 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/24 20:13:16 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,61 +103,6 @@ int		sh_find_heredoc_in_exec_struct(t_exec *exec)
 	return (0);
 }
 
-char	*sh_find_envvar_in_env(char **env, t_envvar *envvar)
-{
-	int		i;
-	char	*pos;
-	int		len;
-	char	*var;
-	char	*ret;
-
-	i = 0;
-	pos = NULL;
-	len = envvar->end - envvar->start;
-	var = ft_strsub(envvar->str, envvar->start + 1, len - 1);
-	var = ft_strjoin_arg("%f %s", var, "=");
-	while (env[i])
-	{
-		if ((pos = ft_strnstr(env[i], var, ft_strlen(var))) != NULL)
-		{
-			len = ft_strlen(var);
-			ft_strdel(&var);
-			return (&pos[len]);
-		}
-		i++;
-	}
-	return (NULL);
-}
-
-void	sh_change_envvars_in_exec(t_main *main, t_exec *exec, t_envvar *envvar)
-{
-	char	*ret;
-	int		i;
-	char	*env_cont;
-	char	*before_var;
-	char	*after_var;
-	
-	before_var = NULL;
-	after_var = NULL;
-	env_cont = sh_find_envvar_in_env(main->envp_curr, envvar);
-	if (envvar->start > 0)
-		before_var = ft_strsub(envvar->str, 0, envvar->start);
-	if (envvar->end < ft_strlen(envvar->str))
-		after_var = ft_strsub(envvar->str, envvar->end, ft_strlen(envvar->str) - envvar->end);
-	ret = ft_strjoin_arg("%f %s %f", before_var, env_cont, after_var);
-	ft_printf("ret = %s\n", ret);
-
-}
-
-void	sh_change_envvars_in_exec_and_redirs(t_main *main, t_exec *exec)
-{
-	while (exec->envvar)
-	{
-		sh_change_envvars_in_exec(main, exec, exec->envvar);
-		exec->envvar = exec->envvar->next;
-	}
-}
-
 void	sh_exec(t_main *main)
 {
 	t_exec	*exec;
@@ -167,8 +112,10 @@ void	sh_exec(t_main *main)
 	// sh_exec_prog(exec, main);
 	while (exec)
 	{
+//		sh_builtin_echo(main, exec); для теста ЕХО сюда поставлено, по факту - не нужно
+
 		tcsetattr(main->fd, TCSANOW, &main->t_start);
-		sh_change_envvars_in_exec_and_redirs(main, exec); // CD имеет смысл запускать после этого :)
+		sh_change_envvars_in_exec(main, exec); // CD имеет смысл запускать после этого :)
 		if (exec->pipe == true || (exec->next && exec->next->pipe == true))
 			sh_exec_piped_commands(exec, main);
 		else
