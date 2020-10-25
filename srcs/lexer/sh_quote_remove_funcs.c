@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 18:42:18 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/17 19:23:57 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/25 15:27:34 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		sh_is_protected(char *str, int i)
 {
 	int		j;
 	int		ret;
+
 	j = 0;
 	while (i > 0 && str[i - 1] == '\\')
 	{
@@ -42,7 +43,7 @@ void	sh_remove_char(int i, t_token *token, t_main *main)
 			ret[j] = token->content[j];
 			j++;
 		}
-		else 
+		else
 		{
 			ret[j] = token->content[i + 1];
 			j++;

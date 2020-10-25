@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 18:27:49 by geliz             #+#    #+#             */
-/*   Updated: 2020/09/06 16:24:51 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/25 15:23:06 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int		sh_is_operator(char *str)
 		|| !ft_strncmp(str, ">&", 2) || !ft_strncmp(str, "<>", 2)
 		|| !ft_strncmp(str, ">|", 2))
 		return (2);
-	else if (*str == '|' || *str == ';' || *str == '>' || *str == '<' || *str == '&'
-            || *str == '(' || *str == ')')
+	else if (*str == '|' || *str == ';' || *str == '>' || *str == '<' ||
+			*str == '&' || *str == '(' || *str == ')')
 		return (1);
 	else
 		return (0);

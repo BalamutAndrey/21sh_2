@@ -6,13 +6,13 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:08:02 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/17 18:30:54 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/25 19:01:05 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
 
-void	sh_get_heredoc_info(t_main *main, t_heredoc *here)
+void		sh_get_heredoc_info(t_main *main, t_heredoc *here)
 {
 	int		i;
 	char	*str;
@@ -20,14 +20,15 @@ void	sh_get_heredoc_info(t_main *main, t_heredoc *here)
 	if (main->heredoc->here_start == 0)
 		main->heredoc->here_start = ft_strlen(main->ks);
 	i = here->delim_start;
-	while (main->ks[i] && sh_is_whitespace_or_tab(main->ks[i]) == 0 && 
+	while (main->ks[i] && sh_is_whitespace_or_tab(main->ks[i]) == 0 &&
 		sh_is_operator(&main->ks[i]) == 0 && main->ks[i] != '\n')
 		i++;
-	here->delim = ft_strsub(main->ks, here->delim_start, i - here->delim_start);
-	here->delim = ft_strjoin_arg("%s %f", "\n", here->delim);
+	here->delim = sh_strsub(main->ks, here->delim_start,
+		i - here->delim_start, main);
+	here->delim = sh_strjoin_arg(main, "%s %f", "\n", here->delim);
 }
 
-int		sh_find_heredoc(t_main *main, int i)
+int			sh_find_heredoc(t_main *main, int i)
 {
 	while (main->ks[i] != '\0')
 	{
@@ -36,8 +37,9 @@ int		sh_find_heredoc(t_main *main, int i)
 			i += 2;
 			while (main->ks[i] == '\t' || main->ks[i] == ' ')
 				i++;
-			if (main->ks[i] == '\0' || sh_is_operator(&main->ks[i]) || main->ks[i] == '\n')
-				ft_fprintf(2, "Heredoc error, no DELIM_WORD\n");
+			if (main->ks[i] == '\0' || sh_is_operator(&main->ks[i]) ||
+				main->ks[i] == '\n')
+				ft_fprintf(2, "Heredoc error, no DELIM_WORD\n"); //TREE_ERROR?
 			while (main->ks[i] == '\t' || main->ks[i] == ' ')
 				i++;
 			return (i);
@@ -47,11 +49,11 @@ int		sh_find_heredoc(t_main *main, int i)
 	return (-1);
 }
 
-t_heredoc	*sh_create_heredoc_list(int i)
+t_heredoc	*sh_create_heredoc_list(int i, t_main *main)
 {
 	t_heredoc	*tmp;
 
-	tmp = ft_memalloc(sizeof(t_heredoc));
+	tmp = sh_memalloc(sizeof(t_heredoc), main);
 	tmp->next = NULL;
 	tmp->delim = NULL;
 	tmp->content = NULL;
@@ -61,7 +63,7 @@ t_heredoc	*sh_create_heredoc_list(int i)
 	return (tmp);
 }
 
-void	sh_create_heredoc_structs(t_main *main)
+void		sh_create_heredoc_structs(t_main *main)
 {
 	t_heredoc	*tmp;
 	int			i;
@@ -72,7 +74,7 @@ void	sh_create_heredoc_structs(t_main *main)
 	{
 		if (!main->heredoc)
 		{
-			main->heredoc = sh_create_heredoc_list(i);
+			main->heredoc = sh_create_heredoc_list(i, main);
 			main->heredoc->here_start = 0;
 			tmp = main->heredoc;
 		}
@@ -80,10 +82,12 @@ void	sh_create_heredoc_structs(t_main *main)
 		{
 			while (tmp->next)
 				tmp = tmp->next;
-			tmp->next = sh_create_heredoc_list(i);
+			tmp->next = sh_create_heredoc_list(i, main);
 			tmp = tmp->next;
 		}
 		tmp->delim_start = i;
 		sh_get_heredoc_info(main, tmp);
 	}
 }
+
+//HEREDOC NO DELIM WORD ERROR!!!!

@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:10:52 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/15 18:42:50 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/25 15:19:06 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int		sh_add_envvar(int type, int i, t_main *main, t_token *token)
 	new->start = i;
 	new->str = NULL;
 	i++;
-	while (ft_isalpha(token->content[i]) == 1 || ft_isalnum(token->content[i]) == 1)
+	while (ft_isalpha(token->content[i]) == 1 ||
+		ft_isalnum(token->content[i]) == 1)
 		i++;
 	new->end = i;
 	return (i);

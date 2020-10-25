@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 17:36:57 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/24 20:15:38 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/25 18:00:51 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,15 +88,12 @@ void	sh_redirects_hub(t_exec *exec, t_main *main)
 {
 	t_redirect	*new;
 
-	sh_set_default_io_value(main);
+//	sh_set_default_io_value(main);
 	new = exec->redir;
 	while (new)
 	{
 		if (new->envvar)
-		{
 			sh_change_envvars_in_redirs(main, new);
-			printf("HER!\n");
-		}
 		if (new->type == GREAT)
 			sh_redirect_to_file(new, main);
 		else if (new->type == GREATAND)

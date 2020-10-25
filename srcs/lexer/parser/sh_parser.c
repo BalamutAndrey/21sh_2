@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/17 18:56:35 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/25 19:01:05 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,9 @@ bool	sh_lexer_start(t_main *main)
 	ft_putstr_fd(main->ks, main->fd);
 	ft_putstr_fd(tgetstr("do", NULL), main->fd);
 	ft_putstr_fd(tgetstr("cr", NULL), main->fd);
-	//if (main->ks[0] != '\0')
 	sh_parser(main);
-	//main->prompt = ft_strdup("test");
 	return (true);
 }
-
-// сделать функцию is_is_protected проверяющую экранирование! Нужно во всех дочитках!!
-// функции возвращают позицию, где нашли препятствие - для определения очередности 
 
 int		sh_is_it_protected(char *str)
 {
@@ -58,23 +53,14 @@ int		sh_is_it_protected(char *str)
 
 void	sh_parser(t_main *main)
 {
-//	if (!main->prompt)
-//		sh_check_quotes(main);
 	if (!main->prompt && !main->heredoc)
-		sh_check_dquotes(main);
+		sh_check_quotes(main);
 	if (!main->prompt && !main->heredoc)
-	 	sh_check_slash(main); 
+		sh_check_slash(main);
+	if (!main->prompt && !main->heredoc)
+		sh_check_pipe(main);
 	if (!main->prompt || !ft_strcmp(main->prompt, "Heredoc"))
-	 	sh_check_heredoc(main);
-	if (!main->prompt)
-	 	sh_check_pipe(main); 
-//	if (main->prompt)//tmp!!!!!!!!!!!
-//		ft_printf("************READ MORE -- %s\n", main->prompt);
-	// if (!main->prompt)
-	// 	sh_check_braces(main);
-	// if (!main->prompt)
-	// 	sh_check_fbraces(main);
-
+		sh_check_heredoc(main);
 	if (!main->prompt)
 	{
 		sh_lexer(main);
@@ -82,5 +68,4 @@ void	sh_parser(t_main *main)
 		sh_exec_struct_create(main);
 		sh_exec(main);
 	}
-	// 										UPPER FUNC FOR LEXER->TREE
 }

@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 15:55:23 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/18 16:03:48 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/25 17:58:55 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ t_redirect	*sh_exec_struct_redirect_new(void)
 	new->next = NULL;
 	new->envvar = NULL;
 	new->envvar_curr = NULL;
+	new->error = 0;
 	return (new);
 }
 

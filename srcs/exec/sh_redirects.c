@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 15:25:36 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/12 17:34:00 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/25 18:00:49 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	sh_redirect_to_ionumber(t_redirect *new, t_main *main)
 				fd = ft_atoi(new->filename);
 				sh_add_opened_fd(main, fd);
 				dup2(fd, new->io_num);
-				if (new->io_num == 1 || new->io_num == 2)
-					main->defio[new->io_num] = fd;
+//				if (new->io_num == 1 || new->io_num == 2)
+//					main->defio[new->io_num] = fd;
 			}
 		}
 	}
@@ -47,8 +47,8 @@ void	sh_redirect_to_file(t_redirect *new, t_main *main)
 	fd = open(new->filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	sh_add_opened_fd(main, fd);
 	dup2(fd, new->io_num);
-	if (new->io_num == 1 || new->io_num == 2)
-		main->defio[new->io_num] = fd;
+//	if (new->io_num == 1 || new->io_num == 2)
+//		main->defio[new->io_num] = fd;
 }
 
 void	sh_redirect_to_file_append(t_redirect *new, t_main *main)
@@ -59,8 +59,8 @@ void	sh_redirect_to_file_append(t_redirect *new, t_main *main)
 	fd = open(new->filename, O_WRONLY | O_APPEND | O_CREAT, 0644);
 	sh_add_opened_fd(main, fd);
 	dup2(fd, new->io_num);
-	if (new->io_num == 1 || new->io_num == 2)
-		main->defio[new->io_num] = fd;
+//	if (new->io_num == 1 || new->io_num == 2)
+//		main->defio[new->io_num] = fd;
 }
 
 void	sh_redirect_from_file(t_redirect *new, t_main *main)
@@ -71,8 +71,8 @@ void	sh_redirect_from_file(t_redirect *new, t_main *main)
 	fd = open(new->filename, O_RDONLY);
 	sh_add_opened_fd(main, fd);
 	dup2(fd, new->io_num);
-	if (new->io_num == 0)
-		main->defio[new->io_num] = fd;
+//	if (new->io_num == 0)
+//		main->defio[new->io_num] = fd;
 }
 
 void	sh_redirect_from_ionumber(t_redirect *new, t_main *main)

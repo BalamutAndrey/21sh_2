@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/24 20:13:16 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/25 18:00:52 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 		if (exec->redir)
 			sh_redirects_hub(exec, main);
 		// execv(exec->argv[0], exec->argv);
-		if ((error = sh_exec_prog(exec, main)) != 0)
+		if ((error = sh_exec_prog(exec, main)) != 0) //sh_redir_error(exec->redir->error) &&
 		{
 			sh_exec_print_error(error);
 			exit(0);

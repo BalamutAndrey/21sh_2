@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 17:05:36 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/15 18:48:38 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/25 15:44:16 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,13 @@ t_token		*sh_new_token(int type, char *content, t_main *main)
 		token->content = NULL;
 	token->next = NULL;
 	token->envvar = NULL;
-//	if (!token || (content && !token->content))
-//		ERROR
-	(void)main;
 	return (token);
 }
 
-void	sh_remove_token_list(t_token *token)
+void		sh_remove_token_list(t_token *token)
 {
 	t_token		*tmp;
-	
+
 	while (token)
 	{
 		ft_strdel(&token->content);

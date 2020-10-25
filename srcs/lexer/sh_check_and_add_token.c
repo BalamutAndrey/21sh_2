@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 18:30:27 by geliz             #+#    #+#             */
-/*   Updated: 2020/09/26 17:26:27 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/25 15:18:19 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ void	sh_check_type_and_add_token(t_token *token, char *str,
 		token->type = IO_NUMBER;
 		token->content = ft_strsub(str, 0, i);
 	}
-/*	else if (*str == '\n')
-	{
-			token->type = NEWLINE;
-		token->content = ft_strdup("newline");
-	}*/
 	else if (sh_is_operator(str) > 0)
 		sh_add_operator_token(token, str, i);
 	else

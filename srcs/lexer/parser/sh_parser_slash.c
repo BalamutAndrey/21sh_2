@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 18:43:26 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/12 18:34:47 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/25 18:49:13 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sh_check_slash(t_main *main)
 {
 	int		i;
 	int		j;
-	
+
 	i = 0;
 	j = ft_strlen(main->ks);
 	while (j > 0 && main->ks[j - 1] == '\\')
@@ -26,8 +26,8 @@ void	sh_check_slash(t_main *main)
 	}
 	if (i % 2 != 0)
 	{
-		main->prompt = ft_strdup("slash");
-		if (!main->prompt)
-			ft_fprintf(2, "Malloc error\n");
+		main->prompt = sh_strdup("slash", main);
+//		if (!main->prompt)
+//			ft_fprintf(2, "Malloc error\n");
 	}
 }

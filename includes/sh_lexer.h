@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 16:38:41 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/15 18:45:21 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/25 15:48:26 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** sh_lexer.c
 */
 int		sh_lexer(t_main *main);
-int		sh_lexer_hub(t_main *main, t_token *token);
+void	sh_lexer_hub(t_main *main, t_token *token);
 int		sh_check_end_of_token_position(char *str, int *io_nbr_flag);
 int		sh_find_end_of_token(int i, char *str);
 int		sh_is_whitespace_or_tab(char c);
@@ -53,7 +53,11 @@ void	sh_add_heredoc_content(t_main *main);
 **	sh_quote_remove.c
 */
 void	sh_quote_remove(t_main *main, t_token *token);
+void	sh_find_envvar(t_token *token, t_main *main);
 void	sh_find_and_remove_quotes(t_main *main, t_token *token);
+/*
+**	sh_token_quote_remove.c 
+*/
 int		sh_squotes_remove(t_token *token, int i, t_main *main);
 int		sh_dquotes_remove(t_token *token, int i, t_main *main);
 int		sh_dslashes_remove(int i, int end, t_token *token, t_main *main);

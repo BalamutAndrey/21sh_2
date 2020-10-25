@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:13:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/18 18:06:53 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/25 15:26:50 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ int		sh_check_end_of_token_position(char *str, int *io_nbr_flag)
 	int		i;
 
 	i = 0;
-/*	if (str[i] == '\n')
-		while (str[i] == '\n')
-			i++;*/
 	if (ft_isdigit(str[i]) == 1)
 	{
 		while (ft_isdigit(str[i]) == 1)
@@ -59,7 +56,7 @@ int		sh_check_end_of_token_position(char *str, int *io_nbr_flag)
 	return (i);
 }
 
-int		sh_lexer_hub(t_main *main, t_token *token)
+void	sh_lexer_hub(t_main *main, t_token *token)
 {
 	int		i;
 	int		j;
@@ -86,29 +83,33 @@ int		sh_lexer_hub(t_main *main, t_token *token)
 		}
 		j += i;
 	}
-	return (0);
 }
 
-//TEMPORARY FUNC, delete it later :)
+/*
+** TEMPORARY FUNC, delete it later :)
+*/
 void	ft_print_test(t_token *first)
 {
 	char* type[] = {"NONE", "COMPLETE_COMMAND", "LIST", "PIPELINE", "AND_OR",
-                    "COMMAND", "CMDNAME", "CMDSUFFIX", "SEPARATOR", "WORD",
-                    "NEWLINE", "IO_NUMBER", "LESS", "GREAT", "AND_IF",
-                    "OR_IF", "DSEMI", "DLESS", "DGREAT", "LESSAND",
-                    "GREATAND", "LESSGREAT", "DLESSDASH", "CLOBBER","LBRACE",
+					"COMMAND", "CMDNAME", "CMDSUFFIX", "SEPARATOR", "WORD",
+					"NEWLINE", "IO_NUMBER", "LESS", "GREAT", "AND_IF",
+					"OR_IF", "DSEMI", "DLESS", "DGREAT", "LESSAND",
+					"GREATAND", "LESSGREAT", "DLESSDASH", "CLOBBER","LBRACE",
 					"RBRACE", "BANG"};
 	int	i = 1;
 	t_envvar	*t;
+
 	while (first)
 	{
-		//ft_printf("%s\n", first->content);
-		//ft_printf("***%i***\n", first->type);
 		ft_printf("%2i. %s - %i: %s\n", i, first->content, first->type, type[first->type]);
 		first = first->next;
 		i++;
 	}
 }
+
+/*
+**	ft_print_test(first); can use it before return in sh_lexer
+*/
 
 int		sh_lexer(t_main *main)
 {
@@ -122,7 +123,5 @@ int		sh_lexer(t_main *main)
 	if (main->heredoc)
 		sh_add_heredoc_content(main);
 	sh_quote_remove(main, main->token);
-	ft_print_test(first); // PRINT_IS_HERE!!!
-//	sh_lexer_tree_new(main);
-	return (0); 
+	return (0);
 }
