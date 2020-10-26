@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_key_up.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 15:30:56 by eboris            #+#    #+#             */
-/*   Updated: 2020/07/11 14:32:47 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/26 16:07:38 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 void	sh_key_up(t_main *main)
 {
-	sh_history_read(main, 'u');
+	if (main->prompt == NULL)
+	{
+		sh_history_read(main, 'u');
+	}
 }
