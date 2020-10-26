@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_key_ctrl_left.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 16:20:10 by eboris            #+#    #+#             */
-/*   Updated: 2020/07/18 17:18:16 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/26 16:04:29 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	sh_key_ctrl_left(t_main *main)
 {
 	int	i;
 
+	sh_cursor_minus(main);
 	i = main->cursor - 1;
-	while (i != 0 && ((main->ks[i] >= 65 && main->ks[i] <= 90) || (main->ks[i] >= 97 && main->ks[i] <= 122)))
+	while (i != 0 && ((main->ks[i] != ' ') && (main->ks[i] != '\n')))
 	{
 		i--;
 		sh_cursor_minus(main);
 	}
-	sh_cursor_minus(main);
 }
