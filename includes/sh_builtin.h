@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_builtin.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 16:20:13 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/24 20:12:48 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/26 17:32:19 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 /*
 ** sh_cd.c
 */
-void	sh_cd(t_exec *exec, t_main *main);
-void	sh_cd_error(t_main *main);
-void	sh_cd_check_param(t_exec *exec, t_main *main);
-void	sh_cd_change_dir(t_exec *exec, t_main *main, bool param);
-void	sh_chdir_finish(t_exec *exec, t_main *main, bool param, int p);
+char	*sh_cd(t_exec *exec, t_main *main);
+char	*sh_cd_check_param(t_exec *exec, t_main *main);
+char	*sh_cd_change_dir(t_exec *exec, t_main *main, bool param);
+void	sh_chdir_save_argv(t_exec *exec, t_main *main, int8_t p);
+char	*sh_chdir_finish(t_exec *exec, t_main *main, bool param, int p);
 
 /*
 ** sh_cd_path.c

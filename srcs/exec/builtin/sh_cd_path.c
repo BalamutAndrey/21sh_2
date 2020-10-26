@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_cd_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 16:30:04 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/12 16:06:34 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/26 18:01:22 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sh_home_dir(t_exec *exec, t_main *main, int p)
 	char	*temp;
 
 	fin = ft_strmancpy(exec->argv[p], 1);
-	temp = ft_strdup(main->home);
+	temp = sh_strdup(main->home, main);
 	exec->argv[p] = ft_strsdup(temp, fin);
 }
 
@@ -56,5 +56,6 @@ void	sh_no_root_dir(t_exec *exec, t_main *main, int p)
 	temp2 = ft_strdup(main->dir);
 	temp = ft_strsdup(temp2, temp);
 	fin = ft_strsdup(temp, exec->argv[p]);
+	//strdel????????
 	exec->argv[p] = fin;
 }

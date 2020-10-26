@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 17:36:00 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/24 18:02:39 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/26 18:10:51 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 */
 void	sh_exec(t_main *main);
 void	sh_standart_exec(t_exec *exec, t_main *main);
-int16_t	sh_exec_prog(t_exec *exec, t_main *main);
+int16_t	sh_exec_prog(t_exec *exec, t_main *main, char *err_built);
 void	sh_exec_print_error(int16_t error);
 
 /*
@@ -51,7 +51,7 @@ void	sh_std_in_out_pipe(t_exec *exec, int fd[2], int fd2[2], t_main *main);
 */
 int		sh_run_access(char *str);
 bool	sh_is_builtin(char *str);
-bool	sh_is_builtin_fork(char *str);
+bool	sh_is_builtin_nofork(char *str);
 
 /*
 ** sh_access_file.c 
@@ -69,5 +69,9 @@ char	*sh_find_envvar_in_env(char **env, t_envvar *envvar);
 char	*sh_get_envvar_from_str(t_envvar *envvar);
 void	sh_envvar_add_shift_to_struct(t_envvar *envvar, char *new_str, int shift);
 
+/*
+** sh_access_file.c 
+*/
+char    *sh_exec_builtin(t_exec *exec, t_main *main);
 
 #endif

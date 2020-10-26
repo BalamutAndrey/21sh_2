@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_access_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 15:35:21 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/13 17:31:30 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/26 18:07:35 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ int		sh_run_access(char *str)
 	struct stat	buff;
 
 	i = 0;
-	if (sh_is_builtin(str) == true)
-		return (0);
+	if ((sh_is_builtin(str) == true) && (sh_is_builtin_nofork(str) == false))
+		return (6);
+// No fork
+	if ((sh_is_builtin(str) == true) && (sh_is_builtin_nofork(str) == true))
+		return (5);
 	if (access(str, 0) != 0)
 	{
 		// ft_printf("\n Access 0 error \n");
@@ -67,14 +70,16 @@ bool	sh_is_builtin(char *str)
 	return (false);		
 }
 
-bool	sh_is_builtin_fork(char *str)
+bool	sh_is_builtin_nofork(char *str)
 {
-	if ((ft_strncmp(str, "echo ", 5) == 0) ||
-		(ft_strncmp(str, "echo\0", 5) == 0) ||
-		(ft_strncmp(str, "env ", 4) == 0) ||
-		(ft_strncmp(str, "env\0", 4) == 0) ||
-		(ft_strncmp(str, "pwd ", 4) == 0) ||
-		(ft_strncmp(str, "pwd\0", 4) == 0))
+	if ((ft_strncmp(str, "cd ", 5) == 0) ||
+		(ft_strncmp(str, "cd\0", 5) == 0) ||
+		(ft_strncmp(str, "exit ", 5) == 0) ||
+		(ft_strncmp(str, "exit\0", 5) == 0) ||
+		(ft_strncmp(str, "setenv ", 7) == 0) ||
+		(ft_strncmp(str, "setenv\0", 7) == 0) ||
+		(ft_strncmp(str, "unsetenv ", 9) == 0) ||
+		(ft_strncmp(str, "unsetenv\0", 9) == 0))
 	{
 		return (true);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/25 18:00:52 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/26 18:40:52 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,15 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 {
 	pid_t	cpid;
 	int16_t	error;
+	char	*err_built;
 	
+	err_built = NULL;
 	if (exec->pipe == true || (exec->next && exec->next->pipe == true))
 	{
 		if (exec->redir)
 			sh_redirects_hub(exec, main);
 		// execv(exec->argv[0], exec->argv);
-		if ((error = sh_exec_prog(exec, main)) != 0) //sh_redir_error(exec->redir->error) &&
+		if ((error = sh_exec_prog(exec, main, err_built)) != 0) //sh_redir_error(exec->redir->error) &&
 		{
 			sh_exec_print_error(error);
 			exit(0);
@@ -68,24 +70,32 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 	}
 	else
 	{
-		cpid = fork();
-		if (cpid == 0)
+		//SEGA!!!
+		if ((sh_run_access(exec->argv[0]) == 5) && ((err_built = sh_exec_builtin(exec, main)) == NULL))
 		{
-			if (exec->redir)
-				sh_redirects_hub(exec, main);
-			// execv(exec->argv[0], exec->argv);
-			if ((error = sh_exec_prog(exec, main)) != 0)
-			{
-				//ft_printf("Error = %i\n", error);
-				sh_exec_print_error(error);
-				exit(0);
-			}
+			ft_printf("\n%s is Ok\n", exec->argv[0]);
 		}
 		else
-		{
-			main->cpid = cpid;
-			waitpid(cpid, NULL, 0);
-			main->cpid = -1;
+		{	
+			cpid = fork();
+			if (cpid == 0)
+			{
+				if (exec->redir)
+					sh_redirects_hub(exec, main);
+				// execv(exec->argv[0], exec->argv);
+				if ((error = sh_exec_prog(exec, main, err_built)) != 0)
+				{
+					//ft_printf("Error = %i\n", error);
+					sh_exec_print_error(error);
+					exit(0);
+				}
+			}
+			else
+			{
+				main->cpid = cpid;
+				waitpid(cpid, NULL, 0);
+				main->cpid = -1;
+			}
 		}
 	}
 }
@@ -125,7 +135,7 @@ void	sh_exec(t_main *main)
 	}
 }
 
-int16_t	sh_exec_prog(t_exec *exec, t_main *main)
+int16_t	sh_exec_prog(t_exec *exec, t_main *main, char *err_built)
 {
 	int16_t	error;
 
@@ -134,11 +144,23 @@ int16_t	sh_exec_prog(t_exec *exec, t_main *main)
 	sh_path_add(main, exec);
 	ft_fprintf(2, "argv[0] = %s\n", exec->argv[0]);
 	//ft_printf("check access\n");
-	if (((error = sh_run_access(exec->argv[0])) == 0) &&
-		(sh_is_builtin(exec->argv[0]) == false))
+	if (sh_run_access(exec->argv[0]) == 6)
 	{
-		//ft_printf("aceess Ok\n");
+		//test
+		ft_printf("\naccess 6\n");
+		sh_exec_builtin(exec, main);
+	}
+	else if ((error = sh_run_access(exec->argv[0])) == 0)
+	{
+		ft_printf("\nerror built NULL\n");
 		execve(exec->argv[0], exec->argv, main->envp_curr);
+	}
+	else if (err_built != NULL)
+	{
+		ft_printf("\nerror built\n");
+		// test
+		ft_printf("%s", err_built);
+		ft_strdel(&err_built);
 	}
 	//ft_printf("error = %i\n", error);
 	return (error);
