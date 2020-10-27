@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:48:28 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/24 18:10:10 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/27 22:58:05 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ char	*sh_change_envvars_in_exec_struct(t_main *main, t_envvar *envvar)
 		before_var = ft_strsub(envvar->str, 0, envvar->start);
 	if (envvar->end < ft_strlen(envvar->str))
 		after_var = ft_strsub(envvar->str, envvar->end, ft_strlen(envvar->str) - envvar->end);
-	ret = ft_strjoin_arg("%f %s %f", before_var, env_cont, after_var);
+	if (envvar->start == 0 && envvar->str[envvar->end + 1] == '\0' && !env_cont)
+		ret = ft_strnew(0);
+	else
+		ret = ft_strjoin_arg("%f %s %f", before_var, env_cont, after_var);
 	return (ret);
 }
 
