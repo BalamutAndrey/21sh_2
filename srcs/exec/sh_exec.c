@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/26 18:40:52 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/27 16:34:31 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,23 +142,22 @@ int16_t	sh_exec_prog(t_exec *exec, t_main *main, char *err_built)
 	error = -1;
 	// ft_printf("Add path\n");
 	sh_path_add(main, exec);
-	ft_fprintf(2, "argv[0] = %s\n", exec->argv[0]);
+	//ft_fprintf(2, "argv[0] = %s\n", exec->argv[0]);
 	//ft_printf("check access\n");
 	if (sh_run_access(exec->argv[0]) == 6)
 	{
 		//test
-		ft_printf("\naccess 6\n");
+		//ft_printf("\naccess 6\n");
 		sh_exec_builtin(exec, main);
 	}
 	else if ((error = sh_run_access(exec->argv[0])) == 0)
 	{
-		ft_printf("\nerror built NULL\n");
+		//ft_printf("\nerror built NULL\n");
 		execve(exec->argv[0], exec->argv, main->envp_curr);
 	}
 	else if (err_built != NULL)
 	{
-		ft_printf("\nerror built\n");
-		// test
+		//ft_printf("\nerror built\n");
 		ft_printf("%s", err_built);
 		ft_strdel(&err_built);
 	}

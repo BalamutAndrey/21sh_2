@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec_struct_create.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 14:51:20 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/18 15:11:09 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/27 17:27:02 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,20 @@ void	sh_exec_struct_create(t_main *main)
 	sh_exec_struct_go(main, false);
 	if (main->exec_first->next != NULL)
 	{
+		first = main->exec_first;
 		main->exec_first = main->exec_first->next;
 		main->exec_curr = main->exec_first;
 		// sh_exec_struct_pipe(main);
 //		temp_print_exec(main);
 	}
-	// Удалить фирст! 
+	else
+	{
+		// Удалить фирст вместо этого!!!!
+		main->exec_first = NULL;
+	}
+	// MUSOR
+	if (main->ks[0] == '\0')
+		main->exec_first = NULL;
 }
 
 void	sh_exec_struct_go(t_main *main, bool pipe)

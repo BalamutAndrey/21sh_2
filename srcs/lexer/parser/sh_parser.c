@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/25 19:01:05 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/27 16:35:13 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ bool	sh_lexer_start(t_main *main)
 		ft_putstr_fd(tgoto(tgetstr("do", NULL), 0, 5), main->fd);
 		main->cursor_line_curr++;
 	}
-	ft_putstr_fd("Your bunny wrote: ", main->fd);
-	ft_putstr_fd(main->ks, main->fd);
+	//ft_putstr_fd("Your bunny wrote: ", main->fd);
+	//ft_putstr_fd(main->ks, main->fd);
 	ft_putstr_fd(tgetstr("do", NULL), main->fd);
 	ft_putstr_fd(tgetstr("cr", NULL), main->fd);
 	sh_parser(main);
@@ -66,6 +66,9 @@ void	sh_parser(t_main *main)
 		sh_lexer(main);
 		sh_lexer_tree_new(main);
 		sh_exec_struct_create(main);
-		sh_exec(main);
+		if (main->exec_first != NULL)
+			sh_exec(main);
+		//else
+			//Почистить всю фигню !!!
 	}
 }
