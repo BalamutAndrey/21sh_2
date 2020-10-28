@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/27 16:34:31 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/28 17:46:33 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 	}
 	else
 	{
-		//SEGA!!!
+		//SEGA!!!  при пустой строке. Поставил заглушку в sh_parser, сделать нормально!
 		if ((sh_run_access(exec->argv[0]) == 5) && ((err_built = sh_exec_builtin(exec, main)) == NULL))
 		{
-			ft_printf("\n%s is Ok\n", exec->argv[0]);
+			//ft_printf("\n%s is Ok\n", exec->argv[0]);
 		}
 		else
 		{	
@@ -158,7 +158,8 @@ int16_t	sh_exec_prog(t_exec *exec, t_main *main, char *err_built)
 	else if (err_built != NULL)
 	{
 		//ft_printf("\nerror built\n");
-		ft_printf("%s", err_built);
+		// Не работает редирект!
+		ft_fprintf(STDERR_FILENO, "%s", err_built);
 		ft_strdel(&err_built);
 	}
 	//ft_printf("error = %i\n", error);

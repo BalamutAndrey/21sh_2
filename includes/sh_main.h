@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_main.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:57:23 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/24 16:46:49 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/28 17:58:23 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <signal.h>
 # include "libft.h"
 # include "sh_structs.h"
+# include "sh_remove.h"
 # include "sh_errors.h"
 # include "sh_keys.h"
 # include "sh_signal.h"

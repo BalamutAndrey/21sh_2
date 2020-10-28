@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_list.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:15:17 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/02 19:01:41 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/28 16:31:58 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ t_node	*sh_list_separatorop_andor(t_main *main)
 			find->next = NULL;
 			tree_curr = main->tree_curr;
 			temp = sh_list_andor(main);
+
+			// Возможно, лишнее!
+			if (main->tree_first->right == NULL)
+				ft_bzero(main->ks, MAX_KS_LEN);
+
 			main->token_curr = first->next;
 			sep = sh_lexer_create_node(main, NULL, SEPARATOR);
 			sh_lexer_add_node(tree_curr, sep, temp);

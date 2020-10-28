@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 11:47:56 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/17 15:57:29 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/28 17:52:16 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,26 +76,4 @@ void	sh_write_struct(t_main *new)
 			temp = ft_strdup(new->envp[i]);
 			new->user = ft_strmancpy(temp, 5);
 		}
-}
-
-void	sh_remove_struct(t_main **main)
-{
-	t_main	*temp;
-
-	temp = *main;
-	if (temp->term_name != NULL)
-		ft_strdel(&temp->term_name);
-	if (temp->user != NULL)
-		ft_strdel(&temp->user);
-	if (temp->home != NULL)
-		ft_strdel(&temp->home);
-	if (temp->prompt != NULL)
-		ft_strdel(&temp->prompt);
-	if (temp->dir != NULL)
-		ft_strdel(&temp->dir);
-	if (temp->ks != NULL)
-		ft_strdel(&temp->ks);
-	sh_history_delete(temp);
-	free(*main);
-	exit(0);
 }
