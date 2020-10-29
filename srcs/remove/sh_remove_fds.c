@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_remove_envp_curr.c                              :+:      :+:    :+:   */
+/*   sh_remove_fds.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/28 17:53:54 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/29 18:49:29 by eboris           ###   ########.fr       */
+/*   Created: 2020/10/29 18:35:00 by eboris            #+#    #+#             */
+/*   Updated: 2020/10/29 18:36:38 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
 
- void   sh_remove_envp_curr(t_main *main)
- {
-     if (main->envp_curr != NULL)
-     {
-        int i;
+void	sh_remove_fds(t_main *main)
+{
+	t_fds	*temp;
 
-        i = 0;
-        while (main->envp_curr[i] != NULL)
-        {
-            ft_strdel(&main->envp_curr[i]);
-            i++;
-        }
-        free(main->envp_curr);
-        main->envp_curr = NULL;
-     }
- }
- 
+	temp = main->opfds;
+	if (main->opfds != NULL)
+	{
+		while (temp != NULL)
+		{
+			main->opfds = temp->next;
+			free(temp);
+			temp = main->opfds;
+		}
+		main->opfds = NULL;
+	}
+}

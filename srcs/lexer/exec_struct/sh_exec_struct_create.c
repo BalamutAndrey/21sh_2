@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 14:51:20 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/27 17:27:02 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/29 18:29:41 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ t_exec	*sh_exec_struct_new(t_main *main)
 		//malloc error!
 	}
 	new->argv = NULL;
-	new->env = NULL;
+	// new->env = NULL;
 	new->redir = NULL;
 	new->pipe = false;
 	new->pipefd[0] = STDIN_FILENO;

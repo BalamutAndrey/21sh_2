@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/28 17:46:33 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/29 18:42:05 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	temp_fill_exec2(t_exec *tmp, char **argv, bool pipe)
 {
 	tmp->cmd = argv[0];
 	tmp->argv = argv;
-	tmp->env = NULL;
+	// tmp->env = NULL;
 	tmp->redir = NULL;
 	tmp->pipe = pipe;
 	tmp->next = NULL;

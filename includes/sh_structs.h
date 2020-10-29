@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/25 17:57:28 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/29 18:33:44 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ typedef struct      	s_redirect {
 typedef struct      s_exec {
 	char			*cmd;
 	char			**argv;
-	char			**env;
+	// char			**env;
 	t_redirect		*redir;
 	bool			pipe;
 	int				pipefd[2];

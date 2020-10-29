@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 13:49:12 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/17 13:50:25 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/29 18:40:53 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	sh_exit(t_main *main, uint64_t code)
 {
-	(void)main;
-	exit (code);
+	sh_term_restore(main);
+	sh_remove_struct(&main);
+	exit (0);
 }

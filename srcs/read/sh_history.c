@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_history.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 13:49:25 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/25 18:03:40 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/29 17:30:12 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ void	sh_history_read(t_main *main, char k)
 	}
 }
 
+// Лишняя функция
 void	sh_history_delete(t_main *main)
 {
 	if (main->hist != NULL)

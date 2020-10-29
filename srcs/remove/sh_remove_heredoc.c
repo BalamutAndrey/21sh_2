@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_remove_envp_curr.c                              :+:      :+:    :+:   */
+/*   sh_remove_heredoc.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/28 17:53:54 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/29 18:49:29 by eboris           ###   ########.fr       */
+/*   Created: 2020/10/29 17:31:07 by eboris            #+#    #+#             */
+/*   Updated: 2020/10/29 17:53:34 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
 
- void   sh_remove_envp_curr(t_main *main)
- {
-     if (main->envp_curr != NULL)
-     {
-        int i;
+void	sh_remove_heredoc(t_main *main)
+{
+	t_heredoc	*temp;
 
-        i = 0;
-        while (main->envp_curr[i] != NULL)
-        {
-            ft_strdel(&main->envp_curr[i]);
-            i++;
-        }
-        free(main->envp_curr);
-        main->envp_curr = NULL;
-     }
- }
- 
+	temp = main->heredoc;
+	if (main->heredoc != NULL)
+	{
+		while (temp != NULL)
+		{
+			main->heredoc = temp->next;
+			if (temp->delim != NULL)
+				ft_strdel(&temp->delim);
+			if (temp->content != NULL)
+				ft_strdel(&temp->content);
+			free(temp);
+			temp = main->heredoc;
+		}
+		main->heredoc = NULL;
+	}
+}

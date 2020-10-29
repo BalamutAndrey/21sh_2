@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 17:59:21 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/28 18:04:16 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/29 17:54:30 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void    sh_remove_hist(t_main *main)
 		while (temp != NULL)
 		{
 			main->hist = temp->next;
-			ft_strdel(&temp->com);
+			if (temp->com != NULL)
+				ft_strdel(&temp->com);
 			free(temp);
 			temp = main->hist;
 		}

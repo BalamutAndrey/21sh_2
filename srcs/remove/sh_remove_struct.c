@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 17:51:52 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/28 18:10:36 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/29 18:51:12 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,24 @@ void	sh_remove_struct(t_main **main)
 	t_main	*temp;
 
 	temp = *main;
+	sh_remove_struct_string(temp);
+    sh_remove_envp_curr(temp);
+	sh_remove_path(temp);
+	sh_remove_hist(temp);
+	sh_remove_heredoc(temp);
+	sh_remove_token(temp);
+	sh_remove_tree(temp);
+	sh_remove_exec(temp);
+	sh_remove_fds(temp);
+	free(*main);
+	*main = NULL;
+	main = NULL;
+}
+
+void	sh_remove_struct_string(t_main *temp)
+{
 	if (temp->term_name != NULL)
 		ft_strdel(&temp->term_name);
-    sh_remove_envp_curr(main);
-	sh_remove_path(main);
-	sh_remove_hist(main);
 	if (temp->user != NULL)
 		ft_strdel(&temp->user);
 	if (temp->home != NULL)
@@ -32,11 +45,8 @@ void	sh_remove_struct(t_main **main)
 		ft_strdel(&temp->ks);
 	if (temp->ks_temp != NULL)
 		ft_strdel(&temp->ks_temp);
-
-
+	if (temp->cursor_sel_text != NULL)
+		ft_strdel(&temp->cursor_sel_text);
 	if (temp->prompt != NULL)
 		ft_strdel(&temp->prompt);
-	sh_history_delete(temp);
-	free(*main);
-	exit(0);
 }

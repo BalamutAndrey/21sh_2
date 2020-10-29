@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 18:05:12 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/28 18:07:49 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/29 17:54:03 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	sh_remove_path(t_main *main)
 		while (temp != NULL)
 		{
 			main->path = temp->next;
-			ft_strdel(&temp);
+			if (temp->path != NULL)
+				ft_strdel(&temp->path);
 			free(temp);
 			temp = main->path;
 		}
