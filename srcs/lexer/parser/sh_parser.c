@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/27 16:35:13 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 14:19:30 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,27 @@ int		sh_is_it_protected(char *str)
 		return (1);
 }
 
+int		sh_is_str_empty(char *str)
+{
+	int		i;
+
+	i = 0;
+	if (!str)
+		return (1);
+	while (str[i])
+	{
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	sh_parser(t_main *main)
 {
+	int		empty;
+
+	empty = sh_is_str_empty(main->ks);
 	if (!main->prompt && !main->heredoc)
 		sh_check_quotes(main);
 	if (!main->prompt && !main->heredoc)
@@ -61,7 +80,7 @@ void	sh_parser(t_main *main)
 		sh_check_pipe(main);
 	if (!main->prompt || !ft_strcmp(main->prompt, "Heredoc"))
 		sh_check_heredoc(main);
-	if (!main->prompt)
+	if (!main->prompt && empty == 0)
 	{
 		sh_lexer(main);
 		sh_lexer_tree_new(main);
