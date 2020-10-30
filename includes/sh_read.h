@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_read.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 15:21:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/18 16:09:10 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 16:27:02 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	sh_readline_readkey_add(t_main *main, uint64_t buf);
 * sh_readline_end.c
 */
 bool	sh_readline_end(t_main *main);
+void	sh_readline_clear(t_main *main);
 
 /*
 ** sh_isprint.c

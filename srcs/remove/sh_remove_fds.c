@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 18:35:00 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/29 18:36:38 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 14:45:04 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	sh_remove_fds(t_main *main)
 {
 	t_fds	*temp;
 
-	temp = main->opfds;
 	if (main->opfds != NULL)
 	{
+		temp = main->opfds;
 		while (temp != NULL)
 		{
 			main->opfds = temp->next;

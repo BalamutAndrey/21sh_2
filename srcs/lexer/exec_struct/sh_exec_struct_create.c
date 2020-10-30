@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 14:51:20 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/29 18:29:41 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 16:12:01 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,17 +91,21 @@ void	sh_exec_struct_create(t_main *main)
 		first = main->exec_first;
 		main->exec_first = main->exec_first->next;
 		main->exec_curr = main->exec_first;
+		
+		sh_remove_exec_exec(first);
+
 		// sh_exec_struct_pipe(main);
 //		temp_print_exec(main);
 	}
 	else
 	{
 		// Удалить фирст вместо этого!!!!
+		sh_remove_exec(main);
 		main->exec_first = NULL;
 	}
 	// MUSOR
-	if (main->ks[0] == '\0')
-		main->exec_first = NULL;
+	// if (main->ks[0] == '\0')
+	// 	main->exec_first = NULL;
 }
 
 void	sh_exec_struct_go(t_main *main, bool pipe)
@@ -168,15 +172,16 @@ t_exec	*sh_exec_struct_new(t_main *main)
 	{
 		//malloc error!
 	}
+	new->cmd = NULL;
 	new->argv = NULL;
 	// new->env = NULL;
 	new->redir = NULL;
 	new->pipe = false;
 	new->pipefd[0] = STDIN_FILENO;
 	new->pipefd[1] = STDOUT_FILENO;
-	new->next = NULL;
 	new->envvar = NULL;
 	new->envvar_curr = NULL;
+	new->next = NULL;
 	return (new);
 }
 

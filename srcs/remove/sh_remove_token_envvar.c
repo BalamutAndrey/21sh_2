@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 17:42:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/29 17:52:09 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 14:45:54 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	sh_remove_token(t_main *main)
 {
 	t_token	*temp;
 
-	temp = main->token;
 	if (main->token != NULL)
 	{
+		temp = main->token;
 		while (temp != NULL)
 		{
 			main->token = temp->next;
@@ -39,9 +39,9 @@ void	sh_remove_envvar(t_envvar *envvar)
 {
 	t_envvar	*temp;
 
-	temp = envvar;
 	if (envvar != NULL)
 	{
+		temp = envvar;
 		while (temp != NULL)
 		{
 			envvar = temp->next;

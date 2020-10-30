@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_remove_hist.c                                   :+:      :+:    :+:   */
+/*   sh_lexer_tree_error.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/28 17:59:21 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/30 14:45:28 by eboris           ###   ########.fr       */
+/*   Created: 2020/10/30 16:57:19 by eboris            #+#    #+#             */
+/*   Updated: 2020/10/30 17:57:59 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
 
-void    sh_remove_hist(t_main *main)
+void	sh_lexer_tree_error(t_main *main)
 {
-	t_hist	*temp;
-	
-	if (main->hist != NULL)
-	{
-		temp = main->hist;
-		while (temp != NULL)
-		{
-			main->hist = temp->next;
-			if (temp->com != NULL)
-				ft_strdel(&temp->com);
-			free(temp);
-			temp = main->hist;
-		}
-		main->hist = NULL;
-		main->hist_curr = NULL;
-		main->hist_end = NULL;
-	}
+	ft_fprintf(STDERR_FILENO, "\n21sh: syntax error near unexpected token '%s'\n", main->token_curr->content);
+	sh_remove_token(main);
+	sh_remove_tree(main);
+	sh_remove_exec(main);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_io_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:42:30 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/27 16:41:27 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 17:05:13 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,9 +169,11 @@ t_node	*sh_iofile_greatand_filename(t_main *main)
 		}
 		else
 		{
-			// Ошибка лексемы?
-			sh_lexer_del_node(&first);
 			main->token_curr = token;
+			sh_lexer_tree_error(main);
+			// Ошибка лексемы?
+			// sh_lexer_del_node(&first);
+			// main->token_curr = token;
 			return (NULL);
 		}
 	}

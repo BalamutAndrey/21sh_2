@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 17:31:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/29 17:53:34 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 14:45:13 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	sh_remove_heredoc(t_main *main)
 {
 	t_heredoc	*temp;
 
-	temp = main->heredoc;
 	if (main->heredoc != NULL)
 	{
+		temp = main->heredoc;
 		while (temp != NULL)
 		{
 			main->heredoc = temp->next;

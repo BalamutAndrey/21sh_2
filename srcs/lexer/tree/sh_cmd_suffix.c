@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_cmd_suffix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 15:29:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/02 18:50:07 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 18:40:53 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_node	*sh_cmdsuffix(t_main *main)
 	t_node	*temp;
 	
 	if ((main->token_curr == NULL) || (main->token_curr->type == SEPARATOR) ||
-	(main->token_curr->type == PIPELINE))
+	(main->token_curr->type == PIPELINE) || (main->token_curr->type == NEWLINE))
 		return (NULL);
 	if ((sh_is_a_redirect(main->token_curr) == false) && (main->token_curr->type != WORD))
 	{
@@ -45,7 +45,7 @@ t_node	*sh_cmdsuffix(t_main *main)
 		return (NULL);
 	}
 	while ((main->token_curr != NULL) && (main->token_curr->type != SEPARATOR) &&
-	(main->token_curr->type != PIPELINE))
+	(main->token_curr->type != PIPELINE) && (main->token_curr->type != NEWLINE))
 	{
 		if ((sh_is_a_redirect(main->token_curr) == false) && (main->token_curr->type != WORD))
 		{

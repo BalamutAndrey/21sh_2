@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 17:53:54 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/29 18:49:29 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 15:06:53 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
  void   sh_remove_envp_curr(t_main *main)
  {
-     if (main->envp_curr != NULL)
-     {
-        int i;
+    int i;
 
-        i = 0;
+    i = 0;
+    if (main->envp_curr != NULL)
+    {
         while (main->envp_curr[i] != NULL)
         {
             ft_strdel(&main->envp_curr[i]);
@@ -26,6 +26,6 @@
         }
         free(main->envp_curr);
         main->envp_curr = NULL;
-     }
- }
+    }
+}
  

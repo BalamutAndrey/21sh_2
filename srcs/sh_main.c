@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:58:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/28 16:21:18 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 16:23:59 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_main	*main_struct;
 
 int main(int argc, char **argv, char **env)
 {
-    t_main	*main;
+    t_main			*main;
+	extern t_main	*main_struct;
 
 	//ft_printf("Starting 21sh...\n");
 	main_struct = sh_add_main_struct(env);
@@ -35,6 +36,7 @@ int main(int argc, char **argv, char **env)
 		sh_parser(main);
 		sh_lexer(main);
 		sh_lexer_tree_new(main);
+		sh_exit(main, 0);
 	/*	if (!main->prompt)
 		{
 			sh_lexer(main);

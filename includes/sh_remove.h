@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 17:57:04 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/29 18:49:26 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 16:44:15 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	sh_remove_node(t_node *node);
 */
 void	sh_remove_exec(t_main *main);
 void	sh_remove_argv(char **argv);
+void	sh_remove_exec_exec(t_exec *temp);
+void	sh_remove_redirect(t_redirect *redir);
 
 /*
 ** sh_remove_fds.c

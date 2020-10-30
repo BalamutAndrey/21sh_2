@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_readline_end.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:34:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/17 17:26:39 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 16:44:22 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,15 @@ bool	sh_readline_end(t_main *main)
 		main->hist_curr = main->hist_end;
 	}
 	fin = sh_lexer_start(main);
+	sh_readline_clear(main);
+	return (fin);
+}
+
+void	sh_readline_clear(t_main *main)
+{
+	sh_remove_token(main);
+	sh_remove_tree(main);
+	sh_remove_exec(main);
 	if (main->ks_temp != NULL)
 		ft_strdel(&main->ks_temp);
-	return (fin);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_simple_command_command.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 15:03:57 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/03 17:42:39 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 18:13:47 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ t_node	*sh_simplecommand_cmdname(t_main *main)
 	if ((temp = sh_cmdname(main)) == NULL)
 		return (NULL);
 	if ((main->token_curr->next == NULL) || (main->token_curr->next->type == SEPARATOR) ||
-	(main->token_curr->next->type == PIPELINE))
+	(main->token_curr->next->type == PIPELINE) || (main->token_curr->next->type == NEWLINE))
 	{
 //		sh_lexer_add_node(main->tree_curr, NULL, temp);
 		return (temp);
@@ -137,7 +137,7 @@ t_node	*sh_simplecommand_cmdname(t_main *main)
 	else
 	{
 		// Ошибка лексемы !!!
-		sh_lexer_del_node(&temp);
+		sh_lexer_tree_error(main);
 		return (NULL);
 	}
 	return (NULL);

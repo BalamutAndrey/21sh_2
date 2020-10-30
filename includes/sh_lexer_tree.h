@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_lexer_tree.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/27 15:39:46 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 17:02:09 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,11 @@ void	sh_lexer_tree_print(t_node *node, int a);
 t_node	*sh_lexer_create_node(t_main *main, t_token *token, t_type type);
 void	sh_lexer_add_node(t_node *node, t_node *left, t_node *right);
 void	sh_lexer_del_node(t_node **node);
+
+/*
+** sh_lexer_tree_error.c
+*/
+void	sh_lexer_tree_error(t_main *main);
 
 /*
 ** sh_complete_command.c

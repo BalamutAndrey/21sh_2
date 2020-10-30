@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/30 17:50:07 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/30 18:03:28 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ void	sh_parser(t_main *main)
 	{
 		sh_lexer(main);
 		sh_lexer_tree_new(main);
-		sh_exec_struct_create(main);
+		if (main->tree_first != NULL)
+			sh_exec_struct_create(main);
 		if (main->exec_first != NULL)
 			sh_exec(main);
 		//else

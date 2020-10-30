@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec_struct_argv.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 15:46:16 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/18 16:03:57 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/30 15:28:34 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ u_int64_t	sh_exec_struct_write_argv_num(t_main *main)
 		temp = temp->right;
 	}
 	if (n > 0)
-		return (n + 2);
+		return (n + 1);
 	return (0);
 }
 

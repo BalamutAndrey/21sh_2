@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:43:11 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/27 17:29:58 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 15:21:50 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ char    *sh_exec_builtin(t_exec *exec, t_main *main)
 			(ft_strncmp(exec->argv[0], "echo\0", 5) == 0))
 	{
 		sh_builtin_echo(main, exec);
+	}
+	else if ((ft_strncmp(exec->argv[0], "exit ", 5) == 0) ||
+			(ft_strncmp(exec->argv[0], "exit\0", 5) == 0))
+	{
+		sh_exit(main, 0);
 	}
     return (finish);
 }
