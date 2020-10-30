@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 17:36:00 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/30 17:00:23 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/30 18:53:38 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sh_exec_print_error(int16_t error);
 /*
 ** sh_redirects_hub.c
 */
-void	sh_redirects_hub(t_exec *exec, t_main *main);
+int		sh_redirects_hub(t_exec *exec, t_main *main);
 void	sh_set_default_io_value(t_main *main);
 void	sh_redirect_from_heredoc(t_exec *exec, t_redirect *new, t_main *main);
 void	sh_add_opened_fd(t_main *main, int nbr);

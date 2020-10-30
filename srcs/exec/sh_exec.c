@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/30 16:16:24 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/30 19:32:25 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,16 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 	err_built = NULL;
 	if (exec->pipe == true || (exec->next && exec->next->pipe == true))
 	{
-		if (exec->redir)
-			sh_redirects_hub(exec, main);
+	//	if (exec->redir)
+			//sh_redirects_hub(exec, main);
 		// execv(exec->argv[0], exec->argv);
-		if ((error = sh_exec_prog(exec, main, err_built)) != 0) //sh_redir_error(exec->redir->error) &&
+		if (exec->redir && (sh_redirects_hub(exec, main) == 0))
 		{
-			sh_exec_print_error(error);
-			exit(0);
+			if ((error = sh_exec_prog(exec, main, err_built)) != 0) //sh_redir_error(exec->redir->error) &&
+			{
+				sh_exec_print_error(error);
+				exit(0);
+			}
 		}
 	}
 	else
@@ -80,14 +83,17 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 			cpid = fork();
 			if (cpid == 0)
 			{
-				if (exec->redir)
-					sh_redirects_hub(exec, main);
+	//			if (exec->redir)
+	//				sh_redirects_hub(exec, main);
 				// execv(exec->argv[0], exec->argv);
-				if ((error = sh_exec_prog(exec, main, err_built)) != 0)
+				if (exec->redir && (sh_redirects_hub(exec, main) == 0))
 				{
-					//ft_printf("Error = %i\n", error);
-					sh_exec_print_error(error);
-					exit(0);
+					if ((error = sh_exec_prog(exec, main, err_built)) != 0)
+					{
+						//ft_printf("Error = %i\n", error);
+						sh_exec_print_error(error);
+						exit(0);
+					}
 				}
 			}
 			else

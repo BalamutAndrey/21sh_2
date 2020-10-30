@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 17:36:57 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/30 15:20:17 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/30 19:31:16 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	sh_set_default_io_value(t_main *main)
 	main->defio[2] = 2;
 }
 
-void	sh_redirects_hub(t_exec *exec, t_main *main)
+int		sh_redirects_hub(t_exec *exec, t_main *main)
 {
 	t_redirect	*new;
 
@@ -109,4 +109,5 @@ void	sh_redirects_hub(t_exec *exec, t_main *main)
 		if (new->error == 0)
 			new = new->next;
 	}
+	return (new->error);
 }
