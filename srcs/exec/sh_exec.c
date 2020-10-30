@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/29 18:42:05 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 16:16:24 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,18 +149,18 @@ int16_t	sh_exec_prog(t_exec *exec, t_main *main, char *err_built)
 		//test
 		//ft_printf("\naccess 6\n");
 		sh_exec_builtin(exec, main);
-	}
-	else if ((error = sh_run_access(exec->argv[0])) == 0)
-	{
-		//ft_printf("\nerror built NULL\n");
-		execve(exec->argv[0], exec->argv, main->envp_curr);
-	}
+	}	
 	else if (err_built != NULL)
 	{
 		//ft_printf("\nerror built\n");
 		// Не работает редирект!
 		ft_fprintf(STDERR_FILENO, "%s", err_built);
 		ft_strdel(&err_built);
+	}
+	else if ((error = sh_run_access(exec->argv[0])) == 0)
+	{
+		//ft_printf("\nerror built NULL\n");
+		execve(exec->argv[0], exec->argv, main->envp_curr);
 	}
 	//ft_printf("error = %i\n", error);
 	return (error);

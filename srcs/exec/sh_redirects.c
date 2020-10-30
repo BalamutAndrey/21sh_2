@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 15:25:36 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/25 18:00:49 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/30 17:00:03 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,14 @@ void	sh_redirect_from_file(t_redirect *new, t_main *main)
 {
 	int		fd;
 
-	//sh_check_directory_chmod(new->filename) STAT/LSTAT директорию, где будет файл, куда идет редир, да и сам файл
-	fd = open(new->filename, O_RDONLY);
-	sh_add_opened_fd(main, fd);
-	dup2(fd, new->io_num);
+	sh_redirect_check_chmod(main, new);
+	printf("redirect error %i\n", new->error);
+	if (new->error == 0)
+	{
+		fd = open(new->filename, O_RDONLY);
+		sh_add_opened_fd(main, fd);
+		dup2(fd, new->io_num);
+	}
 //	if (new->io_num == 0)
 //		main->defio[new->io_num] = fd;
 }

@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 17:05:36 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/25 15:44:16 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/30 17:55:34 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,9 @@ t_token		*sh_new_token(int type, char *content, t_main *main)
 {
 	t_token	*token;
 
-	token = ft_memalloc(sizeof(t_token));
+	token = sh_memalloc(sizeof(t_token), main);
 	token->type = type;
-	if (content)
-		token->content = ft_strdup(content);
-	else
-		token->content = NULL;
+	token->content = content;
 	token->next = NULL;
 	token->envvar = NULL;
 	return (token);

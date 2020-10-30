@@ -6,13 +6,13 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 16:33:42 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/02 13:05:09 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/30 17:51:04 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
 
-void	sh_add_operator_token_part_two(t_token *token, char *str, int i)
+void	sh_add_operator_token_part_two(t_token *token) //, char *str, int i)
 {
 	if (!ft_strcmp(token->content, ">|"))
 		token->type = CLOBBER;
@@ -34,9 +34,9 @@ void	sh_add_operator_token_part_two(t_token *token, char *str, int i)
 		token->type = GREAT;
 }
 
-void	sh_add_operator_token(t_token *token, char *str, int i)
+void	sh_add_operator_token(t_token *token) //, char *str, int i)
 {
-	token->content = ft_strsub(str, 0, i);
+//	token->content = ft_strsub(str, 0, i);
 	if (!ft_strcmp(token->content, "<<-"))
 		token->type = DLESSDASH;
 	else if (!ft_strcmp(token->content, "&&"))
@@ -56,5 +56,5 @@ void	sh_add_operator_token(t_token *token, char *str, int i)
 	else if (!ft_strcmp(token->content, "<>"))
 		token->type = LESSGREAT;
 	else
-		sh_add_operator_token_part_two(token, str, i);
+		sh_add_operator_token_part_two(token);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 17:36:00 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/26 18:10:51 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/30 17:00:23 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,5 @@ void	sh_envvar_add_shift_to_struct(t_envvar *envvar, char *new_str, int shift);
 */
 char    *sh_exec_builtin(t_exec *exec, t_main *main);
 
+void	sh_redirect_check_chmod(t_main *main, t_redirect *new);
 #endif

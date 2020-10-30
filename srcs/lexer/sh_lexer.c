@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:13:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/30 14:18:40 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/30 17:56:17 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int		sh_check_end_of_token_position(char *str, int *io_nbr_flag)
 			i++;
 		if (sh_is_it_io_redirect_operator(&str[i]) > 0)
 			*io_nbr_flag = 1;
+		else
+			i = sh_find_end_of_token(i, str);
 	}
 	else if ((i = sh_is_operator(str)) > 0)
 		return (i);
@@ -68,20 +70,22 @@ void	sh_lexer_hub(t_main *main, t_token *token)
 	fin = main->heredoc ? main->heredoc->here_start - 1 : ft_strlen(main->ks);
 	while (j < fin)
 	{
+		j += i;
 		while (sh_is_whitespace_or_tab(main->ks[j]))
 			j++;
 		io_nbr_flag = 0;
 		i = sh_check_end_of_token_position(&main->ks[j], &io_nbr_flag);
-		if (i != 0)
-		{
-			if (token->content)
-			{
-				token->next = sh_new_token(0, NULL, main);
+//		if (i != 0)
+//		{
+//			if (token->content)
+//			{
+//				token->next = sh_new_token(0, NULL, main);
+				token->next = sh_check_type_and_add_token(&main->ks[j], i, io_nbr_flag, main);
 				token = token->next;
-			}
-			sh_check_type_and_add_token(token, &main->ks[j], i, io_nbr_flag);
-		}
-		j += i;
+//			}
+//			sh_check_type_and_add_token(token, &main->ks[j], i, io_nbr_flag);
+//		}
+//		j += i;
 	}
 }
 
@@ -111,17 +115,26 @@ void	ft_print_test(t_token *first)
 **	ft_print_test(first); can use it before return in sh_lexer
 */
 
+//void	sh_add_newline_token(t_main *main, t_token *first)
+//{
+
+//}
+
 int		sh_lexer(t_main *main)
 {
 	t_token	*first;
 
 	first = sh_new_token(0, NULL, main);
 	sh_lexer_hub(main, first);
+//	sh_add_newline_token(main, first);
 	if (main->prompt)
 		sh_remove_token_list(first);
-	main->token = first;
+	main->token = first->next;
+	free(first);
+	first = NULL;
 	if (main->heredoc)
 		sh_add_heredoc_content(main);
 	sh_quote_remove(main, main->token);
+	ft_print_test(main->token);
 	return (0);
 }
