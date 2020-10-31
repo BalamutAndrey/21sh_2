@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:06:56 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/30 15:17:13 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/31 19:20:47 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,19 @@ void		sh_get_heredoc_info(t_main *main, t_heredoc *here);
 /*
 ** sh_parser_heredoc_delim_correction.c
 */
-void    sh_heredoc_delim_correction(t_main *main);
-void	sh_find_and_remove_heredoc_quotes(t_heredoc *here, t_main *main);
-void	sh_heredoc_remove_char(int i, t_heredoc *here, t_main *main);
+void		h_heredoc_delim_correction(t_main *main);
+void		sh_find_and_remove_heredoc_quotes(t_heredoc *here, t_main *main);
+void		sh_heredoc_remove_char(int i, t_heredoc *here, t_main *main);
 /*
 ** sh_parser_heredoc_quotes_rm.c
 */
-int		sh_heredoc_squotes_remove(t_heredoc *here, int i, t_main *main);
-int		sh_heredoc_dquotes_remove(t_heredoc *here, int i, t_main *main);
-int		sh_heredoc_dslashes_remove(int i, int end, t_heredoc *here, t_main *main);
+int			sh_heredoc_squotes_remove(t_heredoc *here, int i, t_main *main);
+int			sh_heredoc_dquotes_remove(t_heredoc *here, int i, t_main *main);
+int			sh_heredoc_dslashes_remove(int i, int end, t_heredoc *here,
+				t_main *main);
 /*
 ** sh_parser_pipe.c
 */
-void	sh_check_pipe(t_main *main);
+void		sh_check_pipe(t_main *main);
 
 #endif

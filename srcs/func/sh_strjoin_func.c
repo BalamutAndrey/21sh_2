@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 18:59:17 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/25 19:00:52 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/31 19:11:08 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,14 @@ char	*sh_check_str_value_strjoin_arg(char *ret, char *temp, t_main *main)
 	if (!ret)
 	{
 		val = sh_strdup(temp, main);
-//		if (!val)
-//			ft_fprintf(2, "Malloc error in strjoin_arg\n");
 		return (val);
 	}
 	if (!temp)
 	{
 		val = sh_strdup(ret, main);
-//		if (!val)
-//			ft_fprintf(2, "Malloc error in strjoin_arg\n");
 		return (val);
 	}
 	val = sh_strjoin(ret, temp, main);
-//	if (!val)
-//		ft_fprintf(2, "Malloc error in strjoin_arg\n");
 	return (val);
 }
 

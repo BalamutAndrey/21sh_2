@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 19:22:44 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/24 20:15:38 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/31 18:36:12 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,19 @@ int		sh_check_octal_nbr(char *str, int i, t_main *main)
 {
 	int		j;
 	int		nbr;
+	char	*tmp;
 
 	j = 0;
 	if (!str[j] || sh_is_octal_nbr(str[j]) == 0)
 		return (i + 2);
 	while (sh_is_octal_nbr(str[j]) == 1 && j < 3)
 		j++;
-	nbr = ft_atoi_base(ft_strsub(str, 0, j), 8);
+	tmp = sh_strsub(str, 0, j, main);
+	nbr = ft_atoi_base(tmp, 8);
+	ft_strdel(&tmp);
 	ft_putchar(nbr);
 	return (i + j + 2);
-}	
+}
 
 int		sh_echo_is_spec(char *str, int i, t_main *main)
 {
@@ -65,10 +68,10 @@ int		sh_echo_is_spec(char *str, int i, t_main *main)
 	if (str[n] == 'a' || str[n] == 'b' || str[n] == 'f' ||
 		str[n] == 'n' || str[n] == 'r' || str[n] == 't' ||
 		str[n] == 'v' || str[n] == '\\')
-		{
-			sh_print_spec(str[n]);
-			return (i + 2);
-		}
+	{
+		sh_print_spec(str[n]);
+		return (i + 2);
+	}
 	else if (str[n] == '0')
 		i = sh_check_octal_nbr(&str[n + 1], i, main);
 	else

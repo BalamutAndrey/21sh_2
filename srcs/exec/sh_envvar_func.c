@@ -6,20 +6,21 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:48:25 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/24 18:02:39 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/31 18:17:20 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
 
-void	sh_envvar_add_shift_to_struct(t_envvar *envvar, char *new_str, int shift)
+void	sh_envvar_add_shift_to_struct(t_envvar *envvar, char *new_str,
+	int shift)
 {
 	envvar->next->str = new_str;
 	envvar->next->start += shift;
 	envvar->next->end += shift;
 }
 
-char	*sh_get_envvar_from_str(t_envvar *envvar)
+char	*sh_get_envvar_from_str(t_envvar *envvar, t_main *main)
 {
 	char	*var;
 	int		len;
@@ -30,12 +31,12 @@ char	*sh_get_envvar_from_str(t_envvar *envvar)
 		return (var);
 	}
 	len = envvar->end - envvar->start;
-	var = ft_strsub(envvar->str, envvar->start + 1, len - 1);
-	var = ft_strjoin_arg("%f %s", var, "=");
+	var = sh_strsub(envvar->str, envvar->start + 1, len - 1, main);
+	var = sh_strjoin_arg(main, "%f %s", var, "=");
 	return (var);
 }
 
-char	*sh_find_envvar_in_env(char **env, t_envvar *envvar)
+char	*sh_find_envvar_in_env(char **env, t_envvar *envvar, t_main *main)
 {
 	int		i;
 	char	*pos;
@@ -44,7 +45,7 @@ char	*sh_find_envvar_in_env(char **env, t_envvar *envvar)
 
 	i = 0;
 	pos = NULL;
-	var = sh_get_envvar_from_str(envvar);
+	var = sh_get_envvar_from_str(envvar, main);
 	while (env[i])
 	{
 		if ((pos = ft_strnstr(env[i], var, ft_strlen(var))) != NULL)
@@ -55,5 +56,6 @@ char	*sh_find_envvar_in_env(char **env, t_envvar *envvar)
 		}
 		i++;
 	}
+	ft_strdel(&var);
 	return (NULL);
 }

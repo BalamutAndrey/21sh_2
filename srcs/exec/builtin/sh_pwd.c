@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 17:24:54 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/12 16:08:21 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/31 18:33:32 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	sh_pwd_check_param(t_exec *exec, t_main *main)
 	}
 	else if ((ft_strncmp(exec->argv[1], "-P", 3) == 0) ||
 			(ft_strncmp(exec->argv[1], "--physical", 10) == 0))
-	{	
+	{
 		sh_pwd_print_dir(main, true);
 	}
 	else

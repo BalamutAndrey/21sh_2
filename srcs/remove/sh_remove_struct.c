@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_remove_struct.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 17:51:52 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/29 18:51:12 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/31 19:14:58 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sh_remove_struct(t_main **main)
 
 	temp = *main;
 	sh_remove_struct_string(temp);
-    sh_remove_envp_curr(temp);
+	sh_remove_envp_curr(temp);
 	sh_remove_path(temp);
 	sh_remove_hist(temp);
 	sh_remove_heredoc(temp);

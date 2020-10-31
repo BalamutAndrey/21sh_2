@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 15:06:19 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/30 19:31:01 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/31 18:04:17 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,52 +73,34 @@ void	sh_redirect_error_dir_check(char *dir, t_redirect *new)
 		!(buff.st_mode & S_IWOTH) && !(buff.st_mode & S_IXGRP))
 		new->error = -2;
 }
+
 /*
-void	sh_redirect_less_error_check(t_main *main, t_redirect *new)
-{
-	char		*dir;
-	struct stat	buff;
-
-	dir = sh_redirect_error_find_dir(main, new);
-	sh_redirect_error_dir_check(dir, new);
-
-	if (new->error != 0)
-		sh_redirect_print_error(new->error);
-}
-
-void	sh_redirect_great_error_check(t_main *main, t_redirect *new)
-{
-	char		*dir;
-	struct stat	buff;
-
-	dir = sh_redirect_error_find_dir(main, new);
-	sh_redirect_error_dir_check(dir, new);
-	sh_redirect_error_file_check(new->filename, new);
-	if (new->error == 0 && access(new->filename, F_OK) != 0)
-		new->error = -3;
-	if (new->error == 0)
-		lstat(new->filename, &buff);
-	if (new->error == 0 && !S_ISLNK(buff.st_mode) && !S_ISREG(buff.st_mode))
-		new->error = -4;
-	if (new->error == 0 && S_ISLNK(buff.st_mode))
-		stat(new->filename, &buff);
-	if (new->error == 0 && !(buff.st_mode & S_IRUSR) &&
-		!(buff.st_mode & S_IRGRP) && !(buff.st_mode & S_IROTH))
-		new->error = -2;
-	if (new->error != 0)
-		sh_redirect_print_error(new->error);
-}
+** errors:
+**  1 -- File not exists (not an error for GREAT DGREAT)
+** -1 -- Not a directory
+** -2 -- Permission denied
+** -3 -- No such file or directory
+** -4 -- Not a file or link
 */
+
 void	sh_redirect_error_print(t_redirect *new)
 {
 	if (new->error == -1)
 		ft_fprintf(STDERR_FILENO, "21sh: %s: Not a directory\n", new->filename);
 	if (new->error == -2)
-		ft_fprintf(STDERR_FILENO, "21sh: %s: Permission denied\n", new->filename);
+		ft_fprintf(STDERR_FILENO, "21sh: %s: Permission denied\n",
+		new->filename);
 	if (new->error == -3)
-		ft_fprintf(STDERR_FILENO, "21sh: %s: No such file or directory\n", new->filename);
+		ft_fprintf(STDERR_FILENO, "21sh: %s: No such file or directory\n",
+		new->filename);
 	if (new->error == -4)
-		ft_fprintf(STDERR_FILENO, "21sh: %s: Not a file or link\n", new->filename);	
+		ft_fprintf(STDERR_FILENO, "21sh: %s: Not a file or link\n",
+		new->filename);
+	if (new->error == -5)
+		ft_fprintf(STDERR_FILENO, "21sh: %s: Bad file descriptor\n", new->filename);
+	if (new->error == -6)
+		ft_fprintf(STDERR_FILENO, "21sh: %s: ambiguous redirect\n", new->filename);
+	exit(0);
 }
 
 void	sh_redirect_check_chmod(t_main *main, t_redirect *new)
@@ -127,16 +109,11 @@ void	sh_redirect_check_chmod(t_main *main, t_redirect *new)
 
 	dir = sh_redirect_error_find_dir(main, new);
 	sh_redirect_error_dir_check(dir, new);
-	if (new->error == 0)
+	ft_strdel(&dir);
+	if (new->error >= 0)
 		sh_redirect_error_file_check(new->filename, new);
-	if (new->error != 0)
+	if (new->error < 0)
+	{
 		sh_redirect_error_print(new);
+	}
 }
-
-/*
-** errors:
-** -1 -- Not a directory
-** -2 -- Permission denied
-** -3 -- No such file or directory
-** -4 -- Not a file or link
-*/

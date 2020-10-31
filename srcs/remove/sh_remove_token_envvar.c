@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_remove_token_envvar.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 17:42:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/30 14:45:54 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/31 17:23:51 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ void	sh_remove_envvar(t_envvar *envvar)
 		{
 			envvar = temp->next;
 			if (temp->str != NULL)
-			{
-				ft_strdel(&temp->str);
-			}
+				temp->str = NULL;
+//			{
+//				ft_strdel(&temp->str);
+//			}
 			free(temp);
 			temp = envvar;
 		}

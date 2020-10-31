@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 16:43:31 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/25 19:00:56 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/31 18:13:40 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ char	*sh_strnew(size_t size, t_main *main)
 	str = sh_memalloc(sizeof(char) * (size + 1), main);
 	if (str == NULL)
 		return (NULL);
-	ft_memset(str, 0, size);
 	str[size] = '\0';
 	return (str);
 }

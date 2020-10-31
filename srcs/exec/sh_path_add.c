@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_path_add.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 16:53:48 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/13 17:29:24 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/31 17:45:04 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	sh_path_add(t_main *main, t_exec *temp)
 		sh_run_write_string_point(main, temp);
 	else if (temp->argv[0][0] == '~')
 		sh_run_write_string_home(main, temp);
-	else if ((temp->argv[0][0] != '/') && (sh_is_builtin(temp->argv[0]) == false))
+	else if ((temp->argv[0][0] != '/') &&
+		(sh_is_builtin(temp->argv[0]) == false))
 		sh_find_path(main, temp);
 //	ft_printf("\ncmd = %s\n", temp->cmd_arg[0]);
 }

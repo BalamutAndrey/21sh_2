@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 18:36:28 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/25 18:49:13 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/31 17:36:55 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,5 @@ void	sh_check_pipe(t_main *main)
 
 	j = ft_strlen(main->ks) - 1;
 	if (j > 0 && main->ks[j] == '|' && main->ks[j - 1] != '\\')
-	{
 		main->prompt = sh_strdup("pipe", main);
-//		if (!main->prompt)
-//			ft_fprintf(2, "Malloc error\n");
-	}
 }

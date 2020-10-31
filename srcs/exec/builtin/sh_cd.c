@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sh_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 17:10:08 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/26 18:37:54 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/31 18:35:02 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
-
-
 
 char	*sh_cd(t_exec *exec, t_main *main)
 {
@@ -50,7 +48,7 @@ char	*sh_cd(t_exec *exec, t_main *main)
 char	*sh_cd_check_param(t_exec *exec, t_main *main)
 {
 	char	*fin;
-	
+
 	fin = NULL;
 	if ((ft_strncmp(exec->argv[1], "-L", 3) == 0) ||
 		(ft_strncmp(exec->argv[1], "--logical", 9) == 0))
@@ -59,7 +57,7 @@ char	*sh_cd_check_param(t_exec *exec, t_main *main)
 	}
 	else if ((ft_strncmp(exec->argv[1], "-P", 3) == 0) ||
 			(ft_strncmp(exec->argv[1], "--physical", 10) == 0))
-	{	
+	{
 		fin = sh_cd_change_dir(exec, main, true);
 	}
 	else
@@ -79,7 +77,7 @@ char	*sh_cd_change_dir(t_exec *exec, t_main *main, bool param)
 	if (param == true)
 		p = 2;
 	else
-		p = 1;	
+		p = 1;
 	if (exec->argv[p] != NULL && exec->argv[p][0] != '\0')
 	{
 		if (exec->argv[p][0] == '~')
@@ -98,9 +96,9 @@ char	*sh_cd_change_dir(t_exec *exec, t_main *main, bool param)
 void	sh_chdir_save_argv(t_exec *exec, t_main *main, int8_t p)
 {
 	int16_t	i;
-	
+
 	i = 0;
-	while(exec->argv[i])
+	while (exec->argv[i])
 	{
 		ft_strdel(&exec->argv[i]);
 		i++;
@@ -146,7 +144,7 @@ char	*sh_chdir_finish(t_exec *exec, t_main *main, bool param, int p)
 				temp2 = sh_strdup(exec->argv[p], main);
 			}
 			else
-			{		
+			{
 				temp2 = sh_strdup(main->dir, main);
 			}
 			sh_env_replace(main, temp1, temp2);

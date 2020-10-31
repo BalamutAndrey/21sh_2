@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_remove_exec.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 18:14:16 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/30 16:43:31 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/31 19:13:48 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	sh_remove_argv(char **argv)
 void	sh_remove_redirect(t_redirect *redir)
 {
 	t_redirect	*temp;
-	
+
 	if (redir != NULL)
 	{
 		temp = redir;

@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:08:02 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/25 19:01:05 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/31 15:07:31 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int			sh_find_heredoc(t_main *main, int i)
 				i++;
 			if (main->ks[i] == '\0' || sh_is_operator(&main->ks[i]) ||
 				main->ks[i] == '\n')
-				ft_fprintf(2, "Heredoc error, no DELIM_WORD\n"); //TREE_ERROR?
+				ft_fprintf(2, "Heredoc error, no DELIM_WORD\n"); //sh_error_func
 			while (main->ks[i] == '\t' || main->ks[i] == ' ')
 				i++;
 			return (i);
@@ -89,5 +89,3 @@ void		sh_create_heredoc_structs(t_main *main)
 		sh_get_heredoc_info(main, tmp);
 	}
 }
-
-//HEREDOC NO DELIM WORD ERROR!!!!

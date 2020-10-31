@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 18:43:26 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/25 18:49:13 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/31 17:37:09 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,5 @@ void	sh_check_slash(t_main *main)
 		i++;
 	}
 	if (i % 2 != 0)
-	{
 		main->prompt = sh_strdup("slash", main);
-//		if (!main->prompt)
-//			ft_fprintf(2, "Malloc error\n");
-	}
 }

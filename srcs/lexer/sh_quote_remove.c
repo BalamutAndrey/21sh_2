@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_quote_remove.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 15:00:27 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/27 17:32:47 by eboris           ###   ########.fr       */
+/*   Updated: 2020/10/31 17:29:41 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,6 @@ void	sh_find_and_remove_quotes(t_main *main, t_token *token)
 		}
 		else
 			i++;
-	}
-}
-
-void	tmp_print_quote_remove(t_token *token)
-{
-	t_envvar	*en;
-
-	printf("*** QUOTE REMOVAL SERVICE ***\n");
-	printf("%s\n", token->content);
-	en = token->envvar;
-	while (en)
-	{
-		printf("type = %i, start = %i, end = %i\n", en->type, en->start,
-			en->end);
-		en = en->next;
 	}
 }
 
@@ -84,7 +69,6 @@ void	sh_quote_remove(t_main *main, t_token *token)
 				sh_add_envvar(0, 0, main, token);
 			else
 				sh_find_and_remove_quotes(main, token);
-			// tmp_print_quote_remove(token);
 		}
 		if (token)
 			token = token->next;

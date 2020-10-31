@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/30 19:32:25 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/31 18:43:04 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,21 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 	pid_t	cpid;
 	int16_t	error;
 	char	*err_built;
+	int		redir_err;
 	
 	err_built = NULL;
+	redir_err = 0;
 	if (exec->pipe == true || (exec->next && exec->next->pipe == true))
 	{
 	//	if (exec->redir)
 			//sh_redirects_hub(exec, main);
 		// execv(exec->argv[0], exec->argv);
-		if (exec->redir && (sh_redirects_hub(exec, main) == 0))
+		if (exec->redir)
+			redir_err = sh_redirects_hub(exec, main);
+		if (redir_err >= 0 && (error = sh_exec_prog(exec, main, err_built)) != 0) //sh_redir_error(exec->redir->error) &&
 		{
-			if ((error = sh_exec_prog(exec, main, err_built)) != 0) //sh_redir_error(exec->redir->error) &&
-			{
-				sh_exec_print_error(error);
-				exit(0);
-			}
+			sh_exec_print_error(error);
+			exit(0);
 		}
 	}
 	else
@@ -86,15 +87,15 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 	//			if (exec->redir)
 	//				sh_redirects_hub(exec, main);
 				// execv(exec->argv[0], exec->argv);
-				if (exec->redir && (sh_redirects_hub(exec, main) == 0))
-				{
-					if ((error = sh_exec_prog(exec, main, err_built)) != 0)
+				if (exec->redir)// && (sh_redirects_hub(exec, main) == 0))
+					redir_err = sh_redirects_hub(exec, main);
+				if (redir_err >= 0 && ((error = sh_exec_prog(exec, main, err_built)) != 0))
 					{
-						//ft_printf("Error = %i\n", error);
+//						ft_printf("Error = %i\n", error);
 						sh_exec_print_error(error);
+						sh_remove_struct(&main);
 						exit(0);
 					}
-				}
 			}
 			else
 			{
@@ -119,17 +120,32 @@ int		sh_find_heredoc_in_exec_struct(t_exec *exec)
 	return (0);
 }
 
+void	sh_print_exec(t_exec *exec)
+{
+	int		i;
+
+	i = 0;
+	while (exec)
+	{
+		while (exec->argv[i])
+		{
+			ft_printf("%s\n", exec->argv[i]);
+			i++;
+		}
+		exec = exec->next;
+	}
+}
+
 void	sh_exec(t_main *main)
 {
 	t_exec	*exec;
 
 	exec = main->exec_first;
+//	sh_print_exec(main->exec_first);
 	//For test only:
 	// sh_exec_prog(exec, main);
 	while (exec)
 	{
-//		sh_builtin_echo(main, exec); для теста ЕХО сюда поставлено, по факту - не нужно
-
 		tcsetattr(main->fd, TCSANOW, &main->t_start);
 		sh_change_envvars_in_exec(main, exec); // CD имеет смысл запускать после этого :)
 		if (exec->pipe == true || (exec->next && exec->next->pipe == true))
@@ -146,26 +162,26 @@ int16_t	sh_exec_prog(t_exec *exec, t_main *main, char *err_built)
 	int16_t	error;
 
 	error = -1;
-	// ft_printf("Add path\n");
+//	ft_fprintf(2, "Add path\n");
 	sh_path_add(main, exec);
-	//ft_fprintf(2, "argv[0] = %s\n", exec->argv[0]);
-	//ft_printf("check access\n");
+//	ft_fprintf(2, "argv[0] = %s\n", exec->argv[0]);
+//	ft_fprintf(2, "check access\n");
 	if (sh_run_access(exec->argv[0]) == 6)
 	{
 		//test
-		//ft_printf("\naccess 6\n");
+//		ft_printf("\naccess 6\n");
 		sh_exec_builtin(exec, main);
 	}	
 	else if (err_built != NULL)
 	{
-		//ft_printf("\nerror built\n");
+//		ft_printf("\nerror built\n");
 		// Не работает редирект!
 		ft_fprintf(STDERR_FILENO, "%s", err_built);
 		ft_strdel(&err_built);
 	}
 	else if ((error = sh_run_access(exec->argv[0])) == 0)
 	{
-		//ft_printf("\nerror built NULL\n");
+//		ft_printf("\nerror built NULL\n");
 		execve(exec->argv[0], exec->argv, main->envp_curr);
 	}
 	//ft_printf("error = %i\n", error);

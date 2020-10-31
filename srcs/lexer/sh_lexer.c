@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:13:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/30 19:31:19 by geliz            ###   ########.fr       */
+/*   Updated: 2020/10/31 17:32:54 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ void	sh_lexer_hub(t_main *main, t_token *token)
 			j++;
 		io_nbr_flag = 0;
 		i = sh_check_end_of_token_position(&main->ks[j], &io_nbr_flag);
-		token->next = sh_check_type_and_add_token(&main->ks[j], i, io_nbr_flag, main);
+		token->next = sh_check_type_and_add_token(&main->ks[j], i, io_nbr_flag,
+			main);
 		token = token->next;
 	}
 }
