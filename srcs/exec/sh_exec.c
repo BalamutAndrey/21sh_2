@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/01 18:17:35 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/01 19:01:42 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 		}
 		else
 		{	
+
 			cpid = fork();
 			if (cpid == 0)
 			{
@@ -93,7 +94,7 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 					{
 //						ft_printf("Error = %i\n", error);
 						sh_exec_print_error(error);
-						sh_remove_struct(&main);
+//						sh_remove_struct(&main);
 						exit(0);
 					}
 			}
@@ -146,6 +147,7 @@ void	sh_exec(t_main *main)
 	// sh_exec_prog(exec, main);
 	while (exec)
 	{
+		
 		tcsetattr(main->fd, TCSANOW, &main->t_start);
 		sh_change_envvars_in_exec(main, exec); // CD имеет смысл запускать после этого :)
 		if (exec->pipe == true || (exec->next && exec->next->pipe == true))
