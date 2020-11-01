@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 16:53:48 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/01 17:25:25 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/01 17:34:51 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ void	sh_find_path(t_main *main, t_exec *exec)
 		{
 			ft_strdel(&exec->argv[0]);
 			exec->argv[0] = ft_strdup(str1);
-			ft_strdel(&str1);
 			temp = NULL;
 		}
 		else
 		{
 			temp = temp->next;
 		}
+		ft_strdel(&str1);
 	}
 }
