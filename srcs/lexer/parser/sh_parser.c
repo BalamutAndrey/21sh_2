@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/31 14:15:29 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/01 15:52:05 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 bool	sh_lexer_start(t_main *main)
 {
-	if ((ft_strncmp(main->ks, "exit ", 5) == 0) ||
-			(ft_strncmp(main->ks, "exit\0", 5) == 0))
-	{
-		sh_term_restore(main);
-		sh_remove_struct(&main);
-	}
+	// if ((ft_strncmp(main->ks, "exit ", 5) == 0) ||
+	// 		(ft_strncmp(main->ks, "exit\0", 5) == 0))
+	// {
+	// 	sh_term_restore(main);
+	// 	sh_remove_struct(&main);
+	// }
 	while (main->cursor_line_curr < main->cursor_line)
 	{
 		ft_putstr_fd(tgoto(tgetstr("do", NULL), 0, 5), main->fd);

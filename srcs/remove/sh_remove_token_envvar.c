@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_remove_token_envvar.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 17:42:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/31 17:23:51 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/01 16:19:49 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ void	sh_remove_token(t_main *main)
 			{
 				ft_strdel(&temp->content);
 			}
-			sh_remove_envvar(temp->envvar);
+			// if (temp->envvar != NULL)
+			// {
+			// 	sh_remove_envvar(temp->envvar);
+			// 	temp->envvar = NULL;
+			// }
 			free(temp);
 			temp = main->token;
 		}
@@ -36,22 +40,36 @@ void	sh_remove_token(t_main *main)
 }
 
 void	sh_remove_envvar(t_envvar *envvar)
-{
-	t_envvar	*temp;
+// {
+// 	t_envvar	*temp;
 
-	if (envvar != NULL)
+// 	if (envvar != NULL)
+// 	{
+// 		temp = envvar;
+// 		while (temp != NULL)
+// 		{
+// 			envvar = temp->next;
+// 			if (temp->str != NULL)
+// 				temp->str = NULL;
+// //			{
+// //				ft_strdel(&temp->str);
+// //			}
+// 			free(temp);
+// 			temp = envvar;
+// 		}
+// 	}
+// }
+
+// void	sh_delete_envvars(t_envvar *envvar)
+{
+	t_envvar	*tmp;
+
+	while (envvar)
 	{
-		temp = envvar;
-		while (temp != NULL)
-		{
-			envvar = temp->next;
-			if (temp->str != NULL)
-				temp->str = NULL;
-//			{
-//				ft_strdel(&temp->str);
-//			}
-			free(temp);
-			temp = envvar;
-		}
+		tmp = envvar->next;
+		envvar->str = NULL;
+		envvar->next = NULL;
+		free(envvar);
+		envvar = tmp;
 	}
 }

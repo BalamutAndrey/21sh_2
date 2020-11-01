@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_remove_exec.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 18:14:16 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/31 19:13:48 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/01 16:19:49 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	sh_remove_argv(char **argv)
 			ft_strdel(&argv[i]);
 			i++;
 		}
-		ft_strdel(&argv[i]);
+//		ft_strdel(&argv[i]);
 		free(argv);
 		argv = NULL;
 	}

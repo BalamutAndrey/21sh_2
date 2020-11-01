@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_envvar_in_exec.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:48:28 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/31 18:17:20 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/01 16:00:47 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*sh_change_envvars_in_exec_struct(t_main *main, t_envvar *envvar)
 	if (envvar->end < ft_strlen(envvar->str))
 		after_var = sh_strsub(envvar->str, envvar->end, ft_strlen(envvar->str) -
 			envvar->end, main);
-	if (envvar->start == 0 && envvar->str[envvar->end + 1] == '\0' && !env_cont)
+	if (envvar->start == 0 && envvar->str[envvar->end] == '\0' && !env_cont)
 		ret = sh_strnew(0, main);
 	else
 		ret = sh_strjoin_arg(main, "%f %s %f", before_var, env_cont, after_var);
