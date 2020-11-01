@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:06:56 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/31 19:20:47 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/01 15:20:06 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void		sh_get_heredoc_info(t_main *main, t_heredoc *here);
 /*
 ** sh_parser_heredoc_delim_correction.c
 */
-void		h_heredoc_delim_correction(t_main *main);
+void		sh_heredoc_delim_correction(t_main *main);
 void		sh_find_and_remove_heredoc_quotes(t_heredoc *here, t_main *main);
 void		sh_heredoc_remove_char(int i, t_heredoc *here, t_main *main);
 /*

@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 17:36:00 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/31 19:21:23 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/01 15:18:23 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ void	sh_envvar_add_shift_to_struct(t_envvar *envvar, char *new_str,
 /*
 ** sh_access_file.c
 */
-char	sh_exec_builtin(t_exec *exec, t_main *main);
+char	*sh_exec_builtin(t_exec *exec, t_main *main);
 
 #endif
