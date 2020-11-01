@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:58:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/30 16:23:59 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/01 18:50:44 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ int main(int argc, char **argv, char **env)
 		// main->prompt = NULL;
 		sh_copy_envp(main);
 		//sh_path(main);
-		sh_parser(main);
-		sh_lexer(main);
-		sh_lexer_tree_new(main);
+		// sh_parser(main);
+		// sh_lexer(main);
+		sh_lexer_start(main);
+		//sh_lexer_tree_new(main);
 		sh_exit(main, 0);
 	/*	if (!main->prompt)
 		{

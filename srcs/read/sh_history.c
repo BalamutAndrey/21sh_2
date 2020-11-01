@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 13:49:25 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/29 17:30:12 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/01 19:26:55 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ void	sh_history_read(t_main *main, char k)
 			}
 		}
 	}
+	if (main->ks_temp)
+		ft_strdel(&main->ks_temp);
 }
 
 // Лишняя функция
