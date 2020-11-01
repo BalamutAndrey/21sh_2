@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:13:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/31 17:32:54 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/01 18:17:35 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ int		sh_lexer(t_main *main)
 
 	first = sh_new_token(0, NULL, main);
 	sh_lexer_hub(main, first);
-	if (main->prompt)
-		sh_remove_token_list(first);
+//	if (main->prompt)
+//		sh_remove_token_list(first);
 	main->token = first->next;
 	free(first);
 	first = NULL;
