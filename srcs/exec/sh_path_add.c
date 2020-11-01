@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 16:53:48 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/01 17:16:54 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/01 17:25:25 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,18 @@ void	sh_find_path(t_main *main, t_exec *exec)
 {
 	t_path	*temp;
 	char	*str1;
-	char	*str2;
+	// char	*str2;
 
 	temp = main->path;
 	while (temp)
 	{
-		str2 = ft_strdup(temp->path);
-		str1 = ft_strdup("/");
-		str2 = ft_strsdup(str2, str1);
-		str1 = ft_strdup(exec->argv[0]);
-		str1 = ft_strsdup(str2, str1);
+		// str2 = ft_strdup(temp->path);
+		// str1 = ft_strdup("/");
+		// str2 = ft_strsdup(str2, str1);
+		// str1 = ft_strdup(exec->argv[0]);
+		// str1 = ft_strsdup(str2, str1);
+
+		str1 = sh_strjoin_arg(main, "%s %s %s", temp->path, "/", exec->argv[0]);
 //		ft_printf("\npath = %s\n", str1);
 		if (sh_run_access(str1) == 0)
 		{
