@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_path.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 17:19:22 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/13 17:31:57 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/01 17:04:42 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	sh_path(t_main *main)
 		temp = ft_strmancpy(temp, 5);
 		if ((temp) && (temp[0] != '\0'))
 			main->path = sh_path_write(temp);
+		else if ((temp) && (temp[0] == '\0'))
+			ft_strdel(&temp);
 	}
 
 	// t_path	*temp_path;
@@ -86,7 +88,10 @@ t_path	*sh_path_write(char *param)
 			str = ft_strmbncpy(param, i);
 		else
 			str = ft_strdup(param);
-		param = ft_strmancpy(param, (i + 1));
+		if (param[i] != '\0')
+			param = ft_strmancpy(param, (i + 1));
+		else
+			ft_strdel(&param);
 		if (new)
 			prev = new;
 		new = sh_path_write_struct(prev, &first, str);	

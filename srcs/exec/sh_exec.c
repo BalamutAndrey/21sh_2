@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/31 18:43:04 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/01 16:51:48 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 	else
 	{
 		//SEGA!!!  при пустой строке. Поставил заглушку в sh_parser, сделать нормально!
-		if ((sh_run_access(exec->argv[0]) == 5) && ((err_built = sh_exec_builtin(exec, main)) == NULL))
+		if (exec->argv != NULL && (sh_run_access(exec->argv[0]) == 5) && ((err_built = sh_exec_builtin(exec, main)) == NULL))
 		{
 			//ft_printf("\n%s is Ok\n", exec->argv[0]);
 		}
@@ -89,7 +89,7 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 				// execv(exec->argv[0], exec->argv);
 				if (exec->redir)// && (sh_redirects_hub(exec, main) == 0))
 					redir_err = sh_redirects_hub(exec, main);
-				if (redir_err >= 0 && ((error = sh_exec_prog(exec, main, err_built)) != 0))
+				if (exec->argv != NULL && redir_err >= 0 && ((error = sh_exec_prog(exec, main, err_built)) != 0))
 					{
 //						ft_printf("Error = %i\n", error);
 						sh_exec_print_error(error);
