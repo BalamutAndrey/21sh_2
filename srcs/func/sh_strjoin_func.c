@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 18:59:17 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/31 19:11:08 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/01 17:08:41 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*sh_strjoin_arg(t_main *main, const char *s, ...)
 			temp_ret = sh_check_str_value_strjoin_arg(ret, temp, main);
 			ft_strdel(&ret);
 			ret = temp_ret;
-			if ((*s + 1) == 'f')
+			if (*(s + 1) == 'f')
 				ft_strdel(&temp);
 		}
 		s++;
