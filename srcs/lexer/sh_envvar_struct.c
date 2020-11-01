@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:10:52 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/25 15:19:06 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/01 17:14:51 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		sh_add_envvar(int type, int i, t_main *main, t_token *token)
 
 	if (!token->envvar)
 	{
-		token->envvar = ft_memalloc(sizeof(t_envvar));
+		token->envvar = sh_memalloc(sizeof(t_envvar), main);
 		new = token->envvar;
 	}
 	else
@@ -40,7 +40,7 @@ int		sh_add_envvar(int type, int i, t_main *main, t_token *token)
 		new = token->envvar;
 		while (new->next)
 			new = new->next;
-		new->next = ft_memalloc(sizeof(t_envvar));
+		new->next = sh_memalloc(sizeof(t_envvar), main);
 		new = new->next;
 	}
 	new->next = NULL;

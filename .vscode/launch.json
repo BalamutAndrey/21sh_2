@@ -11,7 +11,7 @@
             "program": "/~/work/21sh_2/21sh",
             //"args": ["1>2 0>&1 ls -l -a -F | wc -c"],
             // "args": ["ls < 2 sss"],
-            "args": ["ls"],
+            "args": ["$PATH $PATH"],
             "stopAtEntry": false,
             "cwd": "/~/work/21sh_2/",
             "environment": [],

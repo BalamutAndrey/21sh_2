@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:48:25 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/31 18:17:20 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/01 17:04:56 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*sh_get_envvar_from_str(t_envvar *envvar, t_main *main)
 
 	if (envvar->type == 0)
 	{
-		var = ft_strdup("HOME=");
+		var = sh_strdup("HOME=", main);
 		return (var);
 	}
 	len = envvar->end - envvar->start;

@@ -21,6 +21,7 @@
                 "~/work/21sh_2/srcs/lexer/tree/*.c",
                 "~/work/21sh_2/srcs/lexer/exec_struct/*.c",
                 "~/work/21sh_2/srcs/exec/builtin/*.c",
+                "~/work/21sh_2/srcs/remove/*.c",
                 "-I",
                 "~/work/21sh_2/includes",
                 "-I",
