@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:34:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/01 19:30:11 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/02 17:50:15 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ bool	sh_readline_end(t_main *main)
 
 	if (main->ks_temp != NULL)
 	{
-		main->ks_temp = ft_strjoin_arg("%f %f", main->ks_temp, main->ks);
+		main->ks_temp = sh_strjoin_arg(main, "%f %f", main->ks_temp, main->ks);
 		main->ks = ft_strnew(MAX_KS_LEN);
 		ft_strcpy(main->ks, main->ks_temp);
 		ft_strdel(&main->ks_temp);
