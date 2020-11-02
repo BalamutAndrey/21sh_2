@@ -47,7 +47,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 		@ar rc $(NAME) $(OBJ)
-		@echo "[\033[37;42;1m$(NAME) COMPILED\033[0m]"
+		@echo "\033[0m\033[36m$(NAME)\033[1m\033[34m OK\033[0m"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		@mkdir -p $(@D)
@@ -55,11 +55,9 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 		@rm -rf $(OBJ_DIR)
-		@echo "[\033[37;41;1m$(NAME) OBJECTS DELETED\033[0m]"
 
 fclean: clean
 		@rm -f $(NAME)
 		@rm -rf $(OBJ_DIR)
-		@echo "[\033[37;41;1m$(NAME) DELETED\033[0m]"
 
 re: fclean all

@@ -70,6 +70,7 @@ int		sh_is_str_empty(char *str)
 void	sh_parser(t_main *main)
 {
 	int		empty;
+	int		here_err;
 
 	empty = sh_is_str_empty(main->ks);
 	if (!main->prompt && !main->heredoc)
@@ -79,8 +80,11 @@ void	sh_parser(t_main *main)
 	if (!main->prompt && !main->heredoc)
 		sh_check_pipe(main);
 	if (!main->prompt || !ft_strcmp(main->prompt, "Heredoc"))
-		sh_check_heredoc(main);
-	if (!main->prompt && empty == 0)
+	{
+		if ((here_err = sh_check_heredoc(main)) == -2)
+			ft_fprintf(2, "Heredoc error no here_end token\n");
+	}
+	if (!main->prompt && empty == 0 && here_err != -2)
 	{
 		sh_lexer(main);
 		sh_lexer_tree_new(main);

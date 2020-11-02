@@ -60,6 +60,8 @@ int		sh_is_heredoc_finished(t_main *main)
 	{
 		if (tmp->here_end == -1)
 		{
+			if (main->prompt)
+				ft_strdel(&main->prompt);
 			main->prompt = sh_strdup("Heredoc", main);
 			return (0);
 		}
@@ -88,10 +90,16 @@ void	sh_erase_heredoc_from_ks(t_main *main)
 	main->hist_end->prev->com = sh_strdup(main->ks, main);
 }
 
-void	sh_check_heredoc(t_main *main)
+int		sh_check_heredoc(t_main *main)
 {
+	int		err;
+
 	if (!main->heredoc)
-		sh_create_heredoc_structs(main);
+	{
+		err = sh_create_heredoc_structs(main);
+		if (err == -2)
+			return (err);
+	}
 	if (main->heredoc)
 	{
 		sh_heredoc_delim_correction(main);
@@ -100,4 +108,5 @@ void	sh_check_heredoc(t_main *main)
 		if (sh_is_heredoc_finished(main) == 1)
 			sh_erase_heredoc_from_ks(main);
 	}
+	return(0);
 }

@@ -31,7 +31,7 @@ void		sh_check_slash(t_main *main);
 /*
 ** sh_parser_heredoc.c
 */
-void		sh_check_heredoc(t_main *main);
+int			sh_check_heredoc(t_main *main);
 void		sh_erase_heredoc_from_ks(t_main *main);
 int			sh_is_heredoc_finished(t_main *main);
 void		sh_get_heredoc_content(t_main *main);
@@ -39,7 +39,7 @@ void		sh_erase_heredoc_content_from_ks(t_main *main, int start, int len);
 /*
 ** sh_parser_heredoc_struct.c
 */
-void		sh_create_heredoc_structs(t_main *main);
+int			sh_create_heredoc_structs(t_main *main);
 t_heredoc	*sh_create_heredoc_list(int i, t_main *main);
 int			sh_find_heredoc(t_main *main, int i);
 void		sh_get_heredoc_info(t_main *main, t_heredoc *here);

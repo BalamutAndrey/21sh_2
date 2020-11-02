@@ -39,7 +39,7 @@ int			sh_find_heredoc(t_main *main, int i)
 				i++;
 			if (main->ks[i] == '\0' || sh_is_operator(&main->ks[i]) ||
 				main->ks[i] == '\n')
-				ft_fprintf(2, "Heredoc error, no DELIM_WORD\n"); //sh_error_func
+				return (-2);//ERROR
 			while (main->ks[i] == '\t' || main->ks[i] == ' ')
 				i++;
 			return (i);
@@ -63,14 +63,14 @@ t_heredoc	*sh_create_heredoc_list(int i, t_main *main)
 	return (tmp);
 }
 
-void		sh_create_heredoc_structs(t_main *main)
+int		sh_create_heredoc_structs(t_main *main)
 {
 	t_heredoc	*tmp;
 	int			i;
 
 	tmp = main->heredoc;
 	i = 0;
-	while ((i = sh_find_heredoc(main, i)) != -1)
+	while ((i = sh_find_heredoc(main, i)) > -1)
 	{
 		if (!main->heredoc)
 		{
@@ -88,4 +88,5 @@ void		sh_create_heredoc_structs(t_main *main)
 		tmp->delim_start = i;
 		sh_get_heredoc_info(main, tmp);
 	}
+	return (i);
 }
