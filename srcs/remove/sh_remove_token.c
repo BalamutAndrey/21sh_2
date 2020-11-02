@@ -1,16 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_remove_token_envvar.c                           :+:      :+:    :+:   */
+/*   sh_remove_token.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 17:42:42 by eboris            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/11/01 20:11:25 by eboris           ###   ########.fr       */
-=======
-/*   Updated: 2020/11/01 18:31:13 by geliz            ###   ########.fr       */
->>>>>>> a927920e29372009cf72348cfc20e424388b07ce
+/*   Updated: 2020/11/02 16:49:49 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,39 +37,4 @@ void	sh_remove_token(t_main *main)
 		main->token = NULL;
 	}
 	main->token_curr = NULL;
-}
-
-void	sh_remove_envvar(t_envvar *envvar)
-// {
-// 	t_envvar	*temp;
-
-// 	if (envvar != NULL)
-// 	{
-// 		temp = envvar;
-// 		while (temp != NULL)
-// 		{
-// 			envvar = temp->next;
-// 			if (temp->str != NULL)
-// 				temp->str = NULL;
-// //			{
-// //				ft_strdel(&temp->str);
-// //			}
-// 			free(temp);
-// 			temp = envvar;
-// 		}
-// 	}
-// }
-
-// void	sh_delete_envvars(t_envvar *envvar)
-{
-	t_envvar	*tmp;
-
-	while (envvar)
-	{
-		tmp = envvar->next;
-		envvar->str = NULL;
-		envvar->next = NULL;
-		free(envvar);
-		envvar = tmp;
-	}
 }

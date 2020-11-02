@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 14:51:20 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/30 16:12:01 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/02 17:34:27 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,7 @@ t_exec	*sh_exec_struct_new(t_main *main)
 	new->pipefd[0] = STDIN_FILENO;
 	new->pipefd[1] = STDOUT_FILENO;
 	new->envvar = NULL;
+	new->envvar_first = NULL;
 	new->envvar_curr = NULL;
 	new->next = NULL;
 	return (new);

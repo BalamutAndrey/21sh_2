@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 15:46:16 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/30 15:28:34 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/02 16:19:25 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,24 +97,4 @@ void		sh_exec_struct_write_argv_add(t_node *temp, t_exec *new,
 	}
 	n++;
 	*i = n;
-}
-
-void		sh_exec_struct_write_envvar(t_node *node, t_exec *exec, char *argv)
-{
-	if (exec->envvar == NULL)
-	{
-		exec->envvar = node->token->envvar;
-		exec->envvar_curr = exec->envvar;
-	}
-	else
-	{
-		exec->envvar_curr->next = node->token->envvar;
-		exec->envvar_curr = exec->envvar_curr->next;
-	}
-	while (exec->envvar_curr->next != NULL)
-	{
-		exec->envvar_curr->str = argv;
-		exec->envvar_curr = exec->envvar_curr->next;
-	}
-	exec->envvar_curr->str = argv;
 }

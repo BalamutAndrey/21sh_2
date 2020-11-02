@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_remove_exec.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 18:14:16 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/01 18:22:35 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/02 17:33:30 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,6 @@ void	sh_remove_exec(t_main *main)
 		{
 			main->exec_first = temp->next;
 			sh_remove_exec_exec(temp);
-			// if (temp->cmd != NULL)
-			// 	ft_strdel(&temp->cmd);
-			// sh_remove_argv(temp->argv);
-			// temp->argv = NULL;
-			// sh_remove_envvar(temp->envvar);
-			// temp->envvar = NULL;
-			// temp->envvar_curr = NULL;
-			// free(temp);
 			temp = main->exec_first;
 		}
 		main->exec_first = NULL;
@@ -48,7 +40,7 @@ void	sh_remove_exec_exec(t_exec *temp)
 		temp->argv = NULL;
 		sh_remove_redirect(temp->redir);
 		temp->redir = NULL;
-		sh_remove_envvar(temp->envvar);
+		sh_remove_envvar(temp->envvar_first);
 		temp->envvar = NULL;
 		temp->envvar_curr = NULL;
 		free(temp);
@@ -85,7 +77,7 @@ void	sh_remove_redirect(t_redirect *redir)
 			redir = temp->next;
 			if (temp->filename != NULL)
 				ft_strdel(&temp->filename);
-			sh_remove_envvar(temp->envvar);
+			sh_remove_envvar(temp->envvar_first);
 			temp->envvar = NULL;
 			temp->envvar_curr = NULL;
 			free(temp);

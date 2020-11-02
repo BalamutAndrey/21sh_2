@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/01 19:01:42 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/02 16:03:17 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,18 +194,18 @@ void	sh_exec_print_error(int16_t error)
 {
 	if (error == 1)
 	{
-		ft_fprintf(STDERR_FILENO, "\n21sh: Access 0 error. Command not found.\n");
+		ft_fprintf(STDERR_FILENO, "21sh: Access 0 error. Command not found.\n");
 	}
 	else if (error == 2)
 	{
-		ft_fprintf(STDERR_FILENO, "\n21sh: Access 1 error.\n");
+		ft_fprintf(STDERR_FILENO, "21sh: Access 1 error.\n");
 	}
 	else if (error == 3)
 	{
-		ft_fprintf(STDERR_FILENO, "\n21sh: Not a file of link.\n");
+		ft_fprintf(STDERR_FILENO, "21sh: Not a file of link.\n");
 	}
 	else if (error == 4)
 	{
-		ft_fprintf(STDERR_FILENO, "\n21sh: Unknown error.\n");
+		ft_fprintf(STDERR_FILENO, "21sh: Unknown error.\n");
 	}
 }

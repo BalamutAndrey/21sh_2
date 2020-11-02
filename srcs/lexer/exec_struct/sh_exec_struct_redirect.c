@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec_struct_redirect.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 15:55:23 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/25 17:58:55 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/02 17:25:57 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,24 +102,4 @@ t_node		*sh_exec_struct_redirect_write(t_node *node, t_redirect *redirect)
 	}
 
 	return (node);
-}
-
-void		sh_exec_struct_write_redir_envvar(t_node *node, t_redirect *exec, char *argv)
-{
-	if (exec->envvar == NULL)
-	{
-		exec->envvar = node->token->envvar;
-		exec->envvar_curr = exec->envvar;
-	}
-	else
-	{
-		exec->envvar_curr->next = node->token->envvar;
-		exec->envvar_curr = exec->envvar_curr->next;
-	}
-	while (exec->envvar_curr->next != NULL)
-	{
-		exec->envvar_curr->str = argv;
-		exec->envvar_curr = exec->envvar_curr->next;
-	}
-	exec->envvar_curr->str = argv;
 }
