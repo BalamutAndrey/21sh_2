@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/01 15:52:05 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/02 18:25:26 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ bool	sh_lexer_start(t_main *main)
 	}
 	//ft_putstr_fd("Your bunny wrote: ", main->fd);
 	//ft_putstr_fd(main->ks, main->fd);
-	ft_putstr_fd(tgetstr("do", NULL), main->fd);
+//	ft_putstr_fd(tgetstr("do", NULL), main->fd);
 	ft_putstr_fd(tgetstr("cr", NULL), main->fd);
 	sh_parser(main);
 	return (true);

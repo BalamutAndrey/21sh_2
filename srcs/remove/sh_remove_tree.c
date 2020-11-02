@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 17:55:15 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/29 18:03:28 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/02 18:36:23 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,14 @@ void	sh_remove_node(t_node *node)
 	if (node->right != NULL)
 	{
 		sh_remove_node(node->right);
+		node->right = NULL;
 	}
 	if (node->left != NULL)
 	{
 		sh_remove_node(node->left);
+		node->left = NULL;
 	}
 	node->token = NULL;
 	free(node);
+	node = NULL;
 }
