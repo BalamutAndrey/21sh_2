@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 16:05:40 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/02 17:34:02 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 18:47:12 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,12 @@ void		sh_exec_struct_write_envvar(t_node *node, t_exec *exec, char *argv)
 {
 	if (exec->envvar == NULL)
 	{
-		// exec->envvar = node->token->envvar;
-		// exec->envvar_curr = exec->envvar;
 		exec->envvar = sh_copy_envvar(node->token->envvar);
 		exec->envvar_curr = exec->envvar;
 		exec->envvar_first = exec->envvar;
 	}
 	else
 	{
-		// exec->envvar_curr->next = node->token->envvar;
-		// exec->envvar_curr = exec->envvar_curr->next;
 		exec->envvar_curr->next = sh_copy_envvar(node->token->envvar);
 		exec->envvar_curr = exec->envvar_curr->next;
 	}
@@ -37,20 +33,17 @@ void		sh_exec_struct_write_envvar(t_node *node, t_exec *exec, char *argv)
 	exec->envvar_curr->str = argv;
 }
 
-void		sh_exec_struct_write_redir_envvar(t_node *node, t_redirect *exec, char *argv)
+void		sh_exec_struct_write_redir_envvar
+	(t_node *node, t_redirect *exec, char *argv)
 {
 	if (exec->envvar == NULL)
 	{
-		// exec->envvar = node->token->envvar;
-		// exec->envvar_curr = exec->envvar;
 		exec->envvar = sh_copy_envvar(node->token->envvar);
 		exec->envvar_curr = exec->envvar;
 		exec->envvar_first = exec->envvar;
 	}
 	else
 	{
-		// exec->envvar_curr->next = node->token->envvar;
-		// exec->envvar_curr = exec->envvar_curr->next;
 		exec->envvar_curr->next = sh_copy_envvar(node->token->envvar);
 		exec->envvar_curr = exec->envvar_curr->next;
 	}
