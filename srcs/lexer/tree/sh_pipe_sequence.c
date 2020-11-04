@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 18:04:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 18:02:38 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 18:23:58 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,7 @@ t_node	*sh_pipesequence(t_main *main)
 			return (temp);
 		else if (temp != NULL)
 		{
-			while (temp)
-			{
-				del = temp->right;
-				sh_lexer_del_node(&temp);
-				temp = del;
-			}
+			sh_lexer_del_all_node(&temp);
 			main->token_curr = curr;
 		}
 	}

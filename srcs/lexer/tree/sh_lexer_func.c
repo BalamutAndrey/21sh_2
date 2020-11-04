@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 16:07:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 16:24:15 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 18:16:17 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,19 @@ void	sh_lexer_add_node(t_node *node, t_node *left, t_node *right)
 void	sh_lexer_del_node(t_node **node)
 {
 	ft_memdel((void **)node);
+}
+
+void	sh_lexer_del_all_node(t_node **node)
+{
+	t_node	*temp;
+	t_node	*temp2;
+
+	temp = *node;
+	while (temp)
+	{
+		temp2 = temp->right;
+		sh_lexer_del_node(&temp);
+		temp = temp2;
+	}
+	*node = NULL;
 }
