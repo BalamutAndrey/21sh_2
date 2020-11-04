@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 11:47:56 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/30 15:13:17 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 16:50:55 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
+
+void	sh_struct_set_default_values(t_main *new)
+{
+	new->prompt = NULL;
+	new->heredoc = NULL;
+	new->token = NULL;
+	new->token_curr = NULL;
+	new->tree_first = NULL;
+	new->tree_curr = NULL;
+	new->exec_first = NULL;
+	new->exec_curr = NULL;
+	new->opfds = NULL;
+	new->cpid = -1;
+}
 
 t_main	*sh_add_main_struct(char **env)
 {
@@ -31,21 +45,11 @@ t_main	*sh_add_main_struct(char **env)
 	sh_history_create(new);
 	new->user = NULL;
 	new->home = NULL;
-	new->dir = ft_strnew(MAX_DIR_LEN);
-	new->ks = ft_strnew(MAX_KS_LEN);
+	new->dir = sh_strnew(MAX_DIR_LEN, new);
+	new->ks = sh_strnew(MAX_KS_LEN, new);
 	new->ks_temp = NULL;
-	new->cursor_sel_text = ft_strnew(MAX_KS_LEN);
-	new->prompt = NULL;
-	new->heredoc = NULL;
-	new->token = NULL;
-	new->token_curr = NULL;
-	new->tree_first = NULL;
-	new->tree_curr = NULL;
-	new->exec_first = NULL;
-	new->exec_curr = NULL;
-	new->opfds = NULL;
-	
-	new->cpid = -1;
+	new->cursor_sel_text = sh_strnew(MAX_KS_LEN, new);
+	sh_struct_set_default_values(new);
 	sh_write_struct(new);
 	return (new);
 }

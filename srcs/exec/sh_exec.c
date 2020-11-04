@@ -3,52 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/02 16:03:17 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 18:30:30 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
-
-void	temp_fill_exec2(t_exec *tmp, char **argv, bool pipe)
-{
-	tmp->cmd = argv[0];
-	tmp->argv = argv;
-	// tmp->env = NULL;
-	tmp->redir = NULL;
-	tmp->pipe = pipe;
-	tmp->next = NULL;
-}
-
-void	temp_add_redirection(t_exec *exec, int io, t_type type, char *filename)
-{
-	t_redirect	*red;
-
-	if (!exec->redir)
-	{
-		exec->redir = ft_memalloc(sizeof(t_redirect));
-		red = exec->redir;
-	}
-	else
-	{
-		red = exec->redir;
-		while (red->next)
-			red = red->next;
-		red->next = ft_memalloc(sizeof(t_redirect));
-		red = red->next;
-	}
-	red->io_num = io;
-	red->type = type;
-	red->filename = filename;
-}
-
-
-/*
-чистить фдшники после каждой команды, проверить с редиректом в начале и середине!!!
-на данный момент при редиректе в начале не работает
-*/
 
 void	sh_standart_exec(t_exec *exec, t_main *main)
 {
@@ -103,6 +65,7 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 				main->cpid = cpid;
 				waitpid(cpid, NULL, 0);
 				main->cpid = -1;
+				ft_strdel(&err_built);
 			}
 		}
 	}
@@ -176,7 +139,7 @@ int16_t	sh_exec_prog(t_exec *exec, t_main *main, char *err_built)
 	}	
 	else if (err_built != NULL)
 	{
-//		ft_printf("\nerror built\n");
+		//ft_printf("\nerror built\n");
 		// Не работает редирект!
 		ft_fprintf(STDERR_FILENO, "%s", err_built);
 		ft_strdel(&err_built);

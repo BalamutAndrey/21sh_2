@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 16:43:31 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/31 18:13:40 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/04 16:16:00 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*sh_memalloc(size_t size, t_main *main)
 
 	res = malloc(size);
 	if (res == NULL)
-		return (NULL); //sh_exit(main);
+		sh_exit(main, 0);
 	ft_memset(res, 0, size);
 	return (res);
 }

@@ -143,7 +143,10 @@ sh_echo.c \
 sh_echo_spec_symb.c \
 sh_env_replace.c \
 sh_exit.c \
-sh_pwd.c
+sh_pwd.c \
+sh_builtin_env.c \
+sh_builtin_setenv.c \
+sh_builtin_unsetenv.c
 FC_NAME=sh_malloc_func.c \
 sh_strjoin_func.c \
 sh_strs.c

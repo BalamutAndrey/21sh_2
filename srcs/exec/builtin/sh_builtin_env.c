@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_key_left.c                                      :+:      :+:    :+:   */
+/*   sh_builtin_env.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/05 15:27:54 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 16:26:23 by geliz            ###   ########.fr       */
+/*   Created: 2020/11/04 17:35:02 by geliz             #+#    #+#             */
+/*   Updated: 2020/11/04 17:38:24 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
 
-void	sh_key_left(t_main *main)
+void	sh_builtin_env(t_main *main)
 {
-	if ((main->cursor <= main->ks_len) && (main->cursor > 0))
+	int		i;
+	char	**env;
+
+	i = 0;
+	if (main->envp_curr)
+		env = main->envp_curr;
+	else
+		return ;
+	while (env[i])
 	{
-		sh_cursor_minus(main);
+		ft_fprintf(STDOUT_FILENO, "%s\n", env[i]);
+		i++;
 	}
 }

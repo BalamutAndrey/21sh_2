@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 15:55:23 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 16:06:37 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/04 18:34:26 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,8 @@ void		sh_exec_struct_redirect(t_main *main)
 	{
 		if (sh_is_a_redirect(node->token) == true)
 		{
-			temp = sh_exec_struct_redirect_new();
+			temp = sh_exec_struct_redirect_new(main);
 			node = sh_exec_struct_redirect_write(node, temp);
-			
-			// ft_printf("\nPrinting redirects env\n");
-			// while (temp->envvar)
-			// {
-			// 	ft_printf("%i %s %i -- %i\n", temp->envvar->start, temp->envvar->str, temp->envvar->end, temp->envvar->type);
-			// 	temp->envvar = temp->envvar->next;
-			// }
-			// ft_printf("\nEnd printing redirects env\n\n");
-
 			if (first == NULL)
 			{
 				first = temp;
@@ -53,15 +44,11 @@ void		sh_exec_struct_redirect(t_main *main)
 	main->exec_curr->redir = first;
 }
 
-t_redirect	*sh_exec_struct_redirect_new(void)
+t_redirect	*sh_exec_struct_redirect_new(t_main *main)
 {
 	t_redirect	*new;
 
-	new = malloc(sizeof(t_redirect));
-	if (new == NULL)
-	{
-		// malloc error!!!
-	}
+	new = sh_memalloc(sizeof(t_redirect), main);
 	new->io_num = -1;
 	new->type = NONE;
 	new->filename = NULL;

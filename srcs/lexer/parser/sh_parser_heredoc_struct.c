@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:08:02 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/31 15:07:31 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/04 16:53:52 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int			sh_find_heredoc(t_main *main, int i)
 				i++;
 			if (main->ks[i] == '\0' || sh_is_operator(&main->ks[i]) ||
 				main->ks[i] == '\n')
-				return (-2);//ERROR
+				return (-2);
 			while (main->ks[i] == '\t' || main->ks[i] == ' ')
 				i++;
 			return (i);
@@ -63,7 +63,7 @@ t_heredoc	*sh_create_heredoc_list(int i, t_main *main)
 	return (tmp);
 }
 
-int		sh_create_heredoc_structs(t_main *main)
+int			sh_create_heredoc_structs(t_main *main)
 {
 	t_heredoc	*tmp;
 	int			i;

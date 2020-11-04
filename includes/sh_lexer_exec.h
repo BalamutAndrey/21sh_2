@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_lexer_exec.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 17:23:28 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/02 17:27:21 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 17:13:59 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		sh_exec_struct_write_argv_add(t_node *temp, t_exec *new,
 ** sh_exec_struct_redirect.c
 */
 void		sh_exec_struct_redirect(t_main *main);
-t_redirect	*sh_exec_struct_redirect_new(void);
+t_redirect	*sh_exec_struct_redirect_new(t_main *main);
 t_node		*sh_exec_struct_redirect_write(t_node *node, t_redirect *redirect);
 
 /*

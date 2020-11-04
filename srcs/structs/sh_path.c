@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_path.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 17:19:22 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/01 17:04:42 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 16:48:11 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,6 @@ void	sh_path(t_main *main)
 		else if ((temp) && (temp[0] == '\0'))
 			ft_strdel(&temp);
 	}
-
-	// t_path	*temp_path;
-	// temp_path = main->path;
-	// ft_printf("Print path:\n");
-	// if (temp_path)
-	// {
-	// 	while (temp_path)
-	// 	{
-	// 		ft_printf("%s\n", temp_path->path);
-	// 		temp_path = temp_path->next;
-	// 	}
-	// }
-	// else
-	// 	ft_printf("No path :-(\n");
 }
 
 void	sh_path_del(t_main *main)
@@ -94,7 +80,7 @@ t_path	*sh_path_write(char *param)
 			ft_strdel(&param);
 		if (new)
 			prev = new;
-		new = sh_path_write_struct(prev, &first, str);	
+		new = sh_path_write_struct(prev, &first, str);
 	}
 	if (param != NULL)
 		ft_strdel(&param);

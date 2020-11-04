@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_keys.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 16:56:11 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/16 19:17:48 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 16:44:14 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	sh_key_down(t_main *main);
 ** sh_key_backspace.c
 */
 void	sh_key_backspace(t_main *main);
+void	sh_key_backspace_string(t_main *main);
 
 /*
 ** sh_key_delete.c
@@ -88,11 +89,15 @@ void	sh_key_opt_c(t_main *main);
 ** sh_key_opt_v.c
 */
 void	sh_key_opt_v(t_main *main);
+uint64_t	sh_key_opt_v_select(t_main *main);
+void		sh_key_opt_v_paste(t_main *main, uint64_t i, char *temp);
 
 /*
 ** sh_key_opt_x.c
 */
 void	sh_key_opt_x(t_main *main);
+void	sh_key_opt_x_clean(t_main *main);
+void	sh_key_opt_x_paste(t_main *main, char *temp);
 
 /*
 ** sh_key_ctrl_left.c

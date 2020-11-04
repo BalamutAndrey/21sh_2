@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 16:42:46 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/31 17:39:07 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/04 16:53:22 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,5 @@ int		sh_check_heredoc(t_main *main)
 		if (sh_is_heredoc_finished(main) == 1)
 			sh_erase_heredoc_from_ks(main);
 	}
-	return(0);
+	return (0);
 }

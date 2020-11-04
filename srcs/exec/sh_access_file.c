@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_access_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 15:35:21 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/26 18:07:35 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 17:34:31 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,13 @@ int		sh_run_access(char *str)
 
 bool	sh_is_builtin(char *str)
 {
-	if ((ft_strncmp(str, "exit ", 5) == 0) ||
-		(ft_strncmp(str, "exit\0", 5) == 0) ||
-		(ft_strncmp(str, "cd ", 3) == 0) ||
-		(ft_strncmp(str, "cd\0", 3) == 0) ||
-		(ft_strncmp(str, "echo ", 5) == 0) ||
-		(ft_strncmp(str, "echo\0", 5) == 0) ||
-		(ft_strncmp(str, "env ", 4) == 0) ||
-		(ft_strncmp(str, "env\0", 4) == 0) ||
-		(ft_strncmp(str, "setenv ", 7) == 0) ||
-		(ft_strncmp(str, "setenv\0", 7) == 0) ||
-		(ft_strncmp(str, "unsetenv ", 9) == 0) ||
-		(ft_strncmp(str, "unsetenv\0", 9) == 0) ||
-		(ft_strncmp(str, "pwd ", 4) == 0) ||
-		(ft_strncmp(str, "pwd\0", 4) == 0))
+	if ((ft_strcmp(str, "exit") == 0) ||
+		(ft_strcmp(str, "cd") == 0) ||
+		(ft_strcmp(str, "echo") == 0) ||
+		(ft_strcmp(str, "env") == 0) ||
+		(ft_strcmp(str, "setenv") == 0) ||
+		(ft_strcmp(str, "unsetenv") == 0) ||
+		(ft_strcmp(str, "pwd") == 0))
 	{
 		return (true);
 	}
@@ -72,14 +65,10 @@ bool	sh_is_builtin(char *str)
 
 bool	sh_is_builtin_nofork(char *str)
 {
-	if ((ft_strncmp(str, "cd ", 5) == 0) ||
-		(ft_strncmp(str, "cd\0", 5) == 0) ||
-		(ft_strncmp(str, "exit ", 5) == 0) ||
-		(ft_strncmp(str, "exit\0", 5) == 0) ||
-		(ft_strncmp(str, "setenv ", 7) == 0) ||
-		(ft_strncmp(str, "setenv\0", 7) == 0) ||
-		(ft_strncmp(str, "unsetenv ", 9) == 0) ||
-		(ft_strncmp(str, "unsetenv\0", 9) == 0))
+	if ((ft_strcmp(str, "cd") == 0) ||
+		(ft_strcmp(str, "exit") == 0) ||
+		(ft_strcmp(str, "setenv") == 0) ||
+		(ft_strcmp(str, "unsetenv") == 0))
 	{
 		return (true);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_builtin.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 16:20:13 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/26 17:32:19 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 19:07:44 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,22 @@ int		sh_echo_is_spec(char *str, int i, t_main *main);
 int		sh_check_octal_nbr(char *str, int i, t_main *main);
 int		sh_is_octal_nbr(char c);
 void	sh_print_spec(char c);
+/*
+** sh_builtin_env.c
+*/
+void	sh_builtin_env(t_main *main);
+/*
+** sh_builtin_setenv.c
+*/
+char	*sh_builtin_setenv(t_exec *exec, t_main *main);
+char	*sh_builtin_setenv_env_find(t_exec *exec, t_main *main);
+void	sh_builtin_setenv_new_env(t_exec *exec, t_main *main, char *tmp, int i);
+void	sh_builtin_setenv_change_env(t_exec *exec, t_main *main, char *tmp, int i);
+/*
+** sh_builtin_unsetenv.c
+*/
+char	*sh_builtin_unsetenv(t_exec *exec, t_main *main);
+void	sh_builtin_unsetenv_delete_one(t_main *main, char *tmp);
+void	sh_builtin_unsetenv_create_new(t_main *main, int pos, int j);
 
 #endif
