@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 15:02:26 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/30 18:31:42 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 17:27:23 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,13 @@ t_node	*sh_simplecommand(t_main *main)
 
 	temp = NULL;
 	if ((temp = sh_simplecommand_cmdprefix_cmdword_cmdsuffix(main)) != NULL)
-	{
 		return (temp);
-	}
 	else if ((temp = sh_simplecommand_cmdprefix_cmdword(main)) != NULL)
-	{
 		return (temp);
-	}
 	else if ((temp = sh_simplecommand_cmdprefix(main)) != NULL)
-	{
 		return (temp);
-	}
 	else if ((temp = sh_simplecommand_cmdname_cmdsuffix(main)) != NULL)
-	{
 		return (temp);
-	}
 	else if ((temp = sh_simplecommand_cmdname(main)) != NULL)
 	{
 		if ((main->token_curr->next != NULL) &&

@@ -99,6 +99,7 @@ sh_io_file.c \
 sh_io_file_greats.c \
 sh_io_here.c \
 sh_io_redirect.c \
+sh_io_redirect_command.c \
 sh_lexer_func.c \
 sh_lexer_tree.c \
 sh_lexer_tree_error.c \

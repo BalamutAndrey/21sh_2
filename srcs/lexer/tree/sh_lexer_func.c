@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_lexer_func.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 16:07:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/20 17:21:54 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 16:24:15 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,12 @@ t_node	*sh_lexer_create_node(t_main *main, t_token *token, t_type type)
 {
 	t_node	*new;
 
-	new = malloc(sizeof(t_node));
-	if (new == NULL)
-	{
-		// Error
-		(void)main;
-	}
-	else
-	{
-		new->node_type = type;
-		new->token = token;
-		new->left = NULL;
-		new->right = NULL;
-		return (new);
-	}
-	// not a right
-	return (NULL);
+	new = sh_memalloc(sizeof(t_node), main);
+	new->node_type = type;
+	new->token = token;
+	new->left = NULL;
+	new->right = NULL;
+	return (new);
 }
 
 void	sh_lexer_add_node(t_node *node, t_node *left, t_node *right)

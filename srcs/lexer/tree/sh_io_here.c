@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_io_here.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 17:22:01 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/02 16:36:42 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 17:25:33 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,8 @@ t_node	*sh_iohere_dless_hereend(t_main *main)
 		}
 		else
 		{
-			// Ошибка лексемы?
-			sh_lexer_del_node(&first);
 			main->token_curr = token;
+			sh_lexer_tree_error(main);
 			return (NULL);
 		}
 	}

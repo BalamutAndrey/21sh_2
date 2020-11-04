@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_redirect_list.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:29:43 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/27 16:37:33 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 17:26:49 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ bool	sh_is_a_redirect(t_token *token)
 		return (false);
 	if ((token->type == LESS) || (token->type == GREAT) ||
 	(token->type == LESSAND) || (token->type == GREATAND) ||
-	(token->type == DLESS) ||	(token->type == DGREAT) ||
+	(token->type == DLESS) || (token->type == DGREAT) ||
 	(token->type == IO_NUMBER))
 	{
 		return (true);

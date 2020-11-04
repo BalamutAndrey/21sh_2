@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/30 17:02:09 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 17:41:40 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -449,10 +449,9 @@ t_node	*sh_cmdprefix_cmdprefix_assignment_word(t_main *main);
 ** sh_cmd_suffix.c
 */
 t_node	*sh_cmdsuffix(t_main *main);
-t_node	*sh_cmdsuffix_ioredirect(t_main *main);
-t_node	*sh_cmdsuffix_cmdsuffix_ioredirect(t_main *main);
+t_node	*sh_cmdsuffix_redir(t_main *main, t_node *first, t_node *curr);
 t_node	*sh_cmdsuffix_word(t_main *main);
-t_node	*sh_cmdsuffix_cmdsuffix_word(t_main *main);
+t_node	*sh_cmdsuffix_redir_while(t_main *main, t_node *curr, t_node *temp);
 
 /*
 ** sh_redirect_list.c
@@ -466,6 +465,11 @@ bool	sh_is_a_redirect(t_token *token);
 ** sh_io_redirect.c
 */
 t_node	*sh_ioredirect(t_main *main);
+t_node	*sh_ioredirect_while(t_main *main, t_node *first, t_node *curr, t_node *temp);
+
+/*
+** sh_io_redirect_command.c
+*/
 t_node	*sh_ioredirect_iofile(t_main *main);
 t_node	*sh_ioredirect_ionumber_iofile(t_main *main);
 t_node	*sh_ioredirect_iohere(t_main *main);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_cmd_name.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 15:50:58 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/20 18:30:13 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/04 16:38:55 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,5 @@ t_node	*sh_cmdname_word(t_main *main)
 	if ((main->token_curr == NULL) || (main->token_curr->type != WORD))
 		return (NULL);
 	temp = sh_lexer_create_node(main, main->token_curr, CMDNAME);
-	//main->token_curr = main->token_curr->next;
 	return (temp);
 }
