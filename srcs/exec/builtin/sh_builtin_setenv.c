@@ -52,7 +52,7 @@ char	*sh_builtin_setenv_env_find(t_exec *exec, t_main *main)
 		return (sh_strdup("21sh: setenv: Too many arguments.\n", main));
 	i = 0;
 	tmp = sh_strjoin_arg(main, "%s %s", exec->argv[1], "=");
-	while (main->envp_curr[i] && ft_strcmp(tmp, main->envp_curr[i]) != 0)
+	while (main->envp_curr[i] && ft_strncmp(tmp, main->envp_curr[i], ft_strlen(tmp)) != 0)
 		i++;
 	if (!main->envp_curr[i])
 		sh_builtin_setenv_new_env(exec, main, tmp, i);

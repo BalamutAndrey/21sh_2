@@ -40,7 +40,7 @@ void	sh_builtin_unsetenv_delete_one(t_main *main, char *tmp)
 
 	i = 0;
 	j = 0;
-	while (main->envp_curr[i] && ft_strcmp(main->envp_curr[i], tmp) != 0)
+	while (main->envp_curr[i] && ft_strncmp(main->envp_curr[i], tmp, ft_strlen(tmp)) != 0)
 		i++;
 	if (!main->envp_curr[i])
 	{
