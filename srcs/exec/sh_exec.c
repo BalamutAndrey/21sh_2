@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/04 18:30:30 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/05 16:37:13 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 		{
 			//ft_printf("\n%s is Ok\n", exec->argv[0]);
 		}
-		else
+		else if (exec->argv != NULL)
 		{	
 
 			cpid = fork();

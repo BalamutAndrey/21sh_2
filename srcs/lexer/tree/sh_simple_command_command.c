@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/06 15:03:57 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 17:57:15 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/05 18:53:21 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ t_node	*sh_simplecommand_cmdprefix_cmdword_cmdsuffix(t_main *main)
 	temp = main->token_curr;
 	if ((prf_cmd = sh_simplecommand_cmdprefix_cmdword(main)) == NULL)
 	{
-		main->token_curr = temp;
+		if (main->token_curr != NULL)
+			main->token_curr = temp;
 		return (NULL);
 	}
 	if ((suff = sh_cmdsuffix(main)) == NULL)
@@ -105,7 +106,8 @@ t_node	*sh_simplecommand_cmdname_cmdsuffix(t_main *main)
 	if ((suffix = sh_cmdsuffix(main)) == NULL)
 	{
 		sh_lexer_del_node(&cmd);
-		main->token_curr = temp;
+		if (main->token != NULL)
+			main->token_curr = temp;
 		return (NULL);
 	}
 	sh_lexer_add_node(cmd, NULL, suffix);
@@ -132,6 +134,7 @@ t_node	*sh_simplecommand_cmdname(t_main *main)
 	}
 	else
 	{
+		sh_lexer_del_node(&temp);
 		sh_lexer_tree_error(main);
 		return (NULL);
 	}

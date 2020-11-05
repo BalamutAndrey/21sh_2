@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:42:30 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 16:31:56 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/05 18:46:16 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_node	*sh_iofile_greatleft_filename(t_main *main)
 		}
 		else
 		{
+			sh_lexer_del_node(&first);
 			main->token_curr = token;
 			sh_lexer_tree_error(main);
 			return (NULL);
@@ -102,6 +103,7 @@ t_node	*sh_iofile_lessand_filename(t_main *main)
 		}
 		else
 		{
+			sh_lexer_del_node(&first);
 			main->token_curr = token;
 			sh_lexer_tree_error(main);
 			return (NULL);
@@ -134,6 +136,7 @@ t_node	*sh_iofile_greatright_filename(t_main *main)
 		}
 		else
 		{
+			sh_lexer_del_node(&first);
 			main->token_curr = token;
 			sh_lexer_tree_error(main);
 			return (NULL);
@@ -166,8 +169,9 @@ t_node	*sh_iofile_greatand_filename(t_main *main)
 		}
 		else
 		{
+			sh_lexer_del_node(&first);
 			main->token_curr = token;
-			sh_lexer_tree_error(main);
+ 			sh_lexer_tree_error(main);
 			return (NULL);
 		}
 	}
