@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 16:02:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/04 16:53:09 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/06 23:49:42 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,6 @@ void	sh_parser(t_main *main)
 		if (main->tree_first != NULL)
 			sh_exec_struct_create(main);
 		if (main->exec_first != NULL)
-			sh_exec(main);
+			sh_exec(main, main->exec_first);
 	}
 }

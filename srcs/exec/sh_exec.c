@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/06 19:32:43 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/07 00:29:24 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int16_t	sh_exec_prog(t_exec *exec, t_main *main, char *err_built)
 	error = -1;
 	sh_path_add(main, exec);
 	if (!exec->argv)
-		execve(NULL, NULL, main->envp_curr);
+		return (-1);
+//		execve(NULL, NULL, main->envp_curr);
 	else if (sh_run_access(exec->argv) == 6)
 		sh_exec_builtin(exec, main);
 	else if (err_built != NULL)
@@ -99,20 +100,23 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 	}
 }
 
-void	sh_exec(t_main *main)
+void	sh_exec(t_main *main, t_exec *exec)
 {
-	t_exec	*exec;
-
-	exec = main->exec_first;
 	while (exec)
 	{
 		tcsetattr(main->fd, TCSANOW, &main->t_start);
 		sh_change_envvars_in_exec(main, exec);
 		if (exec->pipe == true || (exec->next && exec->next->pipe == true))
+		{
 			sh_exec_piped_commands(exec, main);
+			while (exec && (exec->pipe == true || (exec->next && exec->next->pipe == true)))
+				exec = exec->next;
+		}
 		else
+		{
 			sh_standart_exec(exec, main);
-		exec = exec->next;
+			exec = exec->next;
+		}
 		tcsetattr(main->fd, TCSANOW, &main->t_curr);
 	}
 }

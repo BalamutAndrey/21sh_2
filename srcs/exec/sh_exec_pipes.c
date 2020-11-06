@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:08:03 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/31 17:03:16 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/07 00:21:14 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	sh_std_in_out_pipe(t_exec *exec, int fd[2], int fd2[2], t_main *main)
 		close(fd[0]);
 		close(fd[1]);
 		main->cpid = pid;
+		if (exec->next && exec->next->pipe == true)
+			sh_exec_piped_commands(exec->next, main);
 		waitpid(pid, NULL, 0);
 		main->cpid = -1;
 	}
@@ -59,9 +61,7 @@ void	sh_stdin_pipe(t_exec *exec, int fd[2], t_main *main)
 void	sh_stdout_pipe(t_exec *exec, int fd[2], t_main *main)
 {
 	pid_t		pid;
-	t_redirect	*here;
 
-	here = NULL;
 	pid = fork();
 	if (pid == 0)
 	{
@@ -72,6 +72,8 @@ void	sh_stdout_pipe(t_exec *exec, int fd[2], t_main *main)
 	else
 	{
 		main->cpid = pid;
+		if (exec->next && exec->next->pipe == true)
+			sh_exec_piped_commands(exec->next, main);
 		waitpid(pid, NULL, 0);
 		main->cpid = -1;
 	}
@@ -83,7 +85,7 @@ void	fill_pipe(int fd[2], int str_fd[2])
 	fd[1] = str_fd[1];
 }
 
-t_exec	*sh_exec_piped_commands(t_exec *exec, t_main *main)
+void	sh_exec_piped_commands(t_exec *exec, t_main *main)
 {
 	if (exec->pipe == false && exec->next && exec->next->pipe == true)
 	{
@@ -98,5 +100,4 @@ t_exec	*sh_exec_piped_commands(t_exec *exec, t_main *main)
 	}
 	if (exec->pipe == true && (!exec->next || exec->next->pipe == false))
 		sh_stdin_pipe(exec, exec->pipefd, main);
-	return (exec);
 }

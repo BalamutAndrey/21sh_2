@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 17:36:00 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/06 18:20:26 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/07 00:20:57 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*
 ** sh_exec.c
 */
-void	sh_exec(t_main *main);
+void	sh_exec(t_main *main, t_exec *exec);
 void	sh_standart_exec(t_exec *exec, t_main *main);
 int16_t	sh_exec_prog(t_exec *exec, t_main *main, char *err_built);
 void	sh_exec_print_error(int16_t error);
@@ -52,7 +52,7 @@ char	*sh_redirect_error_find_dir(t_main *main, t_redirect *new);
 /*
 ** sh_exec_pipes.c
 */
-t_exec	*sh_exec_piped_commands(t_exec *exec, t_main *main);
+void	sh_exec_piped_commands(t_exec *exec, t_main *main);
 void	fill_pipe(int fd[2], int str_fd[2]);
 void	sh_stdout_pipe(t_exec *exec, int fd[2], t_main *main);
 void	sh_stdin_pipe(t_exec *exec, int fd[2], t_main *main);
