@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 17:36:00 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/01 15:18:23 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/06 18:20:26 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	sh_std_in_out_pipe(t_exec *exec, int fd[2], int fd2[2], t_main *main);
 /*
 ** sh_access_file.c
 */
-int		sh_run_access(char *str);
+int		sh_run_access(char **str);
 bool	sh_is_builtin(char *str);
 bool	sh_is_builtin_nofork(char *str);
 

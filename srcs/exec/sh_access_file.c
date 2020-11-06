@@ -6,41 +6,43 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 15:35:21 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 17:34:31 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/06 18:29:30 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
 
-int		sh_run_access(char *str)
+int		sh_run_access(char **str)
 {
 	int			i;
 	struct stat	buff;
 
 	i = 0;
-	if ((sh_is_builtin(str) == true) && (sh_is_builtin_nofork(str) == false))
+	if (!str)
+		return (0);
+	if ((sh_is_builtin(str[0]) == true) && (sh_is_builtin_nofork(str[0]) == false))
 		return (6);
 // No fork
-	if ((sh_is_builtin(str) == true) && (sh_is_builtin_nofork(str) == true))
+	if ((sh_is_builtin(str[0]) == true) && (sh_is_builtin_nofork(str[0]) == true))
 		return (5);
-	if (access(str, 0) != 0)
+	if (access(str[0], 0) != 0)
 	{
 		// ft_printf("\n Access 0 error \n");
 		return (1);
 	}
-	if (access(str, 1) != 0)
+	if (access(str[0], 1) != 0)
 	{
 		// ft_printf("\n Access 1 error \n");
 		return (2);
 	}
-	lstat(str, &buff);
+	lstat(str[0], &buff);
 	if (!(S_ISLNK(buff.st_mode)) && !(S_ISREG(buff.st_mode)))
 	{
 		// ft_printf("\n Not a file of link \n");
 		return (3);
 	}
 	if (!(S_ISLNK(buff.st_mode)))
-		stat(str, &buff);
+		stat(str[0], &buff);
 	if ((buff.st_mode & S_IXUSR) || (buff.st_mode & S_IXGRP) ||
 			(buff.st_mode & S_IXOTH))
 		return (0);

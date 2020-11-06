@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 19:04:27 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/02 16:29:33 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/06 18:19:52 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_strcat(char *s1, const char *s2)
 
 void	ft_strdel(char **as)
 {
-	if (*as != NULL && as != NULL)
+	if (as != NULL && *as != NULL)
 	{
 		ft_memset(*as, 0, ft_strlen(*as));
 		free(*as);

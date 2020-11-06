@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 16:53:48 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/06 17:47:56 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/06 18:30:35 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	sh_find_path(t_main *main, t_exec *exec)
 
 		str1 = sh_strjoin_arg(main, "%s %s %s", temp->path, "/", exec->argv[0]);
 //		ft_printf("\npath = %s\n", str1);
-		if (sh_run_access(str1) == 0)
+		if (sh_run_access(&str1) == 0)
 		{
 			ft_strdel(&exec->argv[0]);
 			exec->argv[0] = ft_strdup(str1);
