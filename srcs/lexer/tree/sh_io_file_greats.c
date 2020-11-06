@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:43:56 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 17:23:59 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/06 19:37:54 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_node	*sh_iofile_dgreat_filename(t_main *main)
 		}
 		else
 		{
+			sh_lexer_del_node(&first);
 			main->token_curr = token;
 			sh_lexer_tree_error(main);
 			return (NULL);
