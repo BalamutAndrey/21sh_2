@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 17:19:22 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 16:48:11 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/06 17:48:01 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	sh_path(t_main *main)
 		i++;
 	if (main->envp_curr[i])
 	{
-		temp = ft_strdup(main->envp_curr[i]);
+		temp = sh_strdup(main->envp_curr[i], main);
 		temp = ft_strmancpy(temp, 5);
 		if ((temp) && (temp[0] != '\0'))
-			main->path = sh_path_write(temp);
+			main->path = sh_path_write(temp, main);
 		else if ((temp) && (temp[0] == '\0'))
 			ft_strdel(&temp);
 	}
@@ -55,7 +55,7 @@ void	sh_path_del(t_main *main)
 	main->path = NULL;
 }
 
-t_path	*sh_path_write(char *param)
+t_path	*sh_path_write(char *param, t_main *main)
 {
 	t_path	*first;
 	t_path	*new;
@@ -80,19 +80,20 @@ t_path	*sh_path_write(char *param)
 			ft_strdel(&param);
 		if (new)
 			prev = new;
-		new = sh_path_write_struct(prev, &first, str);
+		new = sh_path_write_struct(prev, &first, str, main);
 	}
 	if (param != NULL)
 		ft_strdel(&param);
 	return (first);
 }
 
-t_path	*sh_path_write_struct(t_path *prev, t_path **first, char *str)
+t_path	*sh_path_write_struct(t_path *prev, t_path **first, char *str,
+	t_main *main)
 {
 	t_path	*new;
 
-	new = malloc(sizeof(t_path));
-	new->path = ft_strdup(str);
+	new = sh_memalloc(sizeof(t_path), main);
+	new->path = sh_strdup(str, main);
 	ft_strdel(&str);
 	new->next = NULL;
 	if (prev)

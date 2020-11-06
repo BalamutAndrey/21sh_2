@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/05 16:37:13 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/06 17:22:19 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	sh_standart_exec(t_exec *exec, t_main *main)
 		// execv(exec->argv[0], exec->argv);
 		if (exec->redir)
 			redir_err = sh_redirects_hub(exec, main);
+	sh_path_add(main, exec);
+		
 		if (redir_err >= 0 && (error = sh_exec_prog(exec, main, err_built)) != 0) //sh_redir_error(exec->redir->error) &&
 		{
 			sh_exec_print_error(error);

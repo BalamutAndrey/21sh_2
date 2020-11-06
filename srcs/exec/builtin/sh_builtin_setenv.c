@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 17:38:40 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/04 18:58:54 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/06 17:38:11 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	sh_builtin_setenv_change_env(t_exec *exec, t_main *main, char *tmp,
 	tmp = sh_strjoin_arg(main, "%f %s", tmp, exec->argv[2]);
 	ft_strdel(&main->envp_curr[i]);
 	main->envp_curr[i] = tmp;
+	if (ft_strncmp(main->envp_curr[i], "PATH=", 5) == 0)
+		sh_path(main);
 }
 
 void	sh_builtin_setenv_new_env(t_exec *exec, t_main *main, char *tmp,
@@ -25,14 +27,18 @@ void	sh_builtin_setenv_new_env(t_exec *exec, t_main *main, char *tmp,
 {
 	char	**new_env;
 
-	new_env = sh_memalloc(sizeof(char*) * (i + 1), main);
+	new_env = sh_memalloc(sizeof(char*) * (i + 2), main);
 	new_env[i + 1] = NULL;
 	tmp = sh_strjoin_arg(main, "%f %s", tmp, exec->argv[2]);
 	new_env[i] = tmp;
 	while (--i != -1)
+	{
 		new_env[i] = sh_strdup(main->envp_curr[i], main);
+	}
 	sh_remove_envp_curr(main);
 	main->envp_curr = new_env;
+	if (ft_strncmp(tmp, "PATH=", 5) == 0)
+		sh_path(main);
 }
 
 char	*sh_builtin_setenv_env_find(t_exec *exec, t_main *main)

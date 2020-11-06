@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:53:52 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/04 19:11:22 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/06 17:30:58 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@ void	sh_builtin_unsetenv_create_new(t_main *main, int pos, int j)
 	int		z;
 
 	z = 0;
-	new = sh_memalloc(sizeof(char*) * (j - 1), main);
+	new = sh_memalloc(sizeof(char*) * j, main);
 	new[j - 1] = NULL;
 	j = 0;
 	while (main->envp_curr[j])
 	{
 		if (j == pos)
+		{
 			j++;
+			if (!main->envp_curr[j])
+				break ;
+		}
 		new[z] = sh_strdup(main->envp_curr[j], main);
 		j++;
 		z++;
@@ -43,16 +47,12 @@ void	sh_builtin_unsetenv_delete_one(t_main *main, char *tmp)
 	while (main->envp_curr[i] && ft_strncmp(main->envp_curr[i], tmp, ft_strlen(tmp)) != 0)
 		i++;
 	if (!main->envp_curr[i])
-	{
-		ft_strdel(&tmp);
 		return ;
-	}
 	else
 	{
 		while (main->envp_curr[j])
 			j++;
 		sh_builtin_unsetenv_create_new(main, i, j);
-		ft_strdel(&tmp);
 	}
 }
 
@@ -68,6 +68,9 @@ char	*sh_builtin_unsetenv(t_exec *exec, t_main *main)
 	{
 		tmp = sh_strjoin_arg(main, "%s %s", exec->argv[i], "=");
 		sh_builtin_unsetenv_delete_one(main, tmp);
+		if (ft_strcmp(tmp, "PATH=") == 0)
+			sh_path_del(main);
+		ft_strdel(&tmp);
 		i++;
 	}
 	return (NULL);

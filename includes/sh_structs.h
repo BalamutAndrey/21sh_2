@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/02 17:33:25 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/06 16:29:00 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,9 @@ void				sh_remove_struct(t_main **main);
 */
 void				sh_path(t_main *main);
 void				sh_path_del(t_main *main);
-t_path				*sh_path_write(char *param);
-t_path				*sh_path_write_struct(t_path *prev, t_path **first, char *str);
+t_path				*sh_path_write(char *param, t_main *main);
+t_path				*sh_path_write_struct(t_path *prev, t_path **first,
+					char *str, t_main *main);
+
 
 #endif
