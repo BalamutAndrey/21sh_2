@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 11:47:56 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 16:50:55 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/06 18:10:04 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	sh_struct_set_default_values(t_main *new)
 	new->prompt = NULL;
 	new->heredoc = NULL;
 	new->token = NULL;
+	new->token_first = NULL;
 	new->token_curr = NULL;
 	new->tree_first = NULL;
 	new->tree_curr = NULL;

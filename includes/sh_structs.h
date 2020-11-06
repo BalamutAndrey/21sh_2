@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_structs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/06 16:29:00 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/06 18:26:09 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,13 @@ typedef struct      s_token {
     struct s_token	*next;
 }                   t_token;
 
+typedef struct 		s_token_free
+{
+	t_token				*token;
+	struct s_token_free	*next;
+}					t_token_free;
+
+
 //
 //      AST_TREE
 //
@@ -162,6 +169,7 @@ typedef struct		s_main
 	t_heredoc	    *heredoc;
     t_token			*token;
     t_token     	*token_curr;
+	t_token_free	*token_first;
     t_node      	*tree_first;
     t_node      	*tree_curr;
 	t_exec			*exec_first;

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:13:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/01 19:10:43 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/06 18:56:00 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,6 @@ int		sh_lexer(t_main *main)
 	if (main->heredoc)
 		sh_add_heredoc_content(main);
 	sh_quote_remove(main, main->token);
-	// ft_print_test(main->token);
+//	ft_print_test(main->token);
 	return (0);
 }

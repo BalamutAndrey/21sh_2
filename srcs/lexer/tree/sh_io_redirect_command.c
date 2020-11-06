@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 17:38:58 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 17:39:18 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/06 16:52:21 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ t_node	*sh_ioredirect_ionumber_iofile(t_main *main)
 	else
 	{
 		sh_lexer_del_node(&first);
-		main->token_curr = first_token;
+		if (main->token != NULL)
+			main->token_curr = first_token;
 	}
 	return (NULL);
 }
@@ -97,7 +98,8 @@ t_node	*sh_ioredirect_ionumber_iohere(t_main *main)
 	else
 	{
 		sh_lexer_del_node(&first);
-		main->token_curr = first_token;
+		if (main->token != NULL)
+			main->token_curr = first_token;
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 17:57:04 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/02 16:50:22 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/06 18:44:30 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	sh_remove_heredoc(t_main *main);
 ** sh_remove_token.c
 */
 void	sh_remove_token(t_main *main);
+void	sh_remove_token_lists(t_main *main);
 
 /*
 ** sh_remove_tree.c

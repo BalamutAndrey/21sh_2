@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 16:34:08 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/05 16:14:38 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/06 16:46:44 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ t_node	*sh_ioredirect(t_main *main)
 		while (curr->right != NULL)
 			curr = curr->right;
 	}
-	else if (main->token != NULL)
+	else
 	{
-		sh_lexer_tree_error(main);
+		if (main->token != NULL)
+			sh_lexer_tree_error(main);
 		return (NULL);
 	}
 	return (sh_ioredirect_while(main, first, curr, temp));
