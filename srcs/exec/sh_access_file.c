@@ -14,10 +14,8 @@
 
 int		sh_run_access(char **str)
 {
-	int			i;
 	struct stat	buff;
 
-	i = 0;
 	if (!str)
 		return (0);
 	if ((sh_is_builtin(str[0]) == true) && (sh_is_builtin_nofork(str[0]) == false))

@@ -53,7 +53,6 @@ void	sh_get_heredoc_content(t_main *main)
 int		sh_is_heredoc_finished(t_main *main)
 {
 	t_heredoc	*tmp;
-	char		*str;
 
 	tmp = main->heredoc;
 	while (tmp)

@@ -28,7 +28,7 @@ int		sh_redirect_get_second_io(char *str)
 	return (ret);
 }
 
-void	sh_redirect_to_ionumber(t_redirect *new, t_main *main)
+void	sh_redirect_to_ionumber(t_redirect *new)
 {
 	int		fd;
 
@@ -51,7 +51,7 @@ void	sh_redirect_to_ionumber(t_redirect *new, t_main *main)
 	}
 }
 
-void	sh_redirect_from_ionumber(t_redirect *new, t_main *main)
+void	sh_redirect_from_ionumber(t_redirect *new)
 {
 	int		fd;
 

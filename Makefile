@@ -1,7 +1,7 @@
 NAME=21sh
 
 CC=gcc
-FLAGS=-g# -Wall -Werror -Wextra
+FLAGS=-g -Wall -Wextra #-Werror
 
 SRC_DIR=./srcs
 RL_DIR=./srcs/read

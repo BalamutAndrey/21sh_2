@@ -15,7 +15,6 @@
 void		sh_get_heredoc_info(t_main *main, t_heredoc *here)
 {
 	int		i;
-	char	*str;
 
 	if (main->heredoc->here_start == 0)
 		main->heredoc->here_start = ft_strlen(main->ks);

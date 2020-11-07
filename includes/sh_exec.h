@@ -26,7 +26,7 @@ void	sh_exec_print_error(int16_t error);
 */
 int		sh_redirects_hub(t_exec *exec, t_main *main);
 void	sh_set_default_io_value(t_main *main);
-void	sh_redirect_from_heredoc(t_exec *exec, t_redirect *new, t_main *main);
+void	sh_redirect_from_heredoc(t_redirect *new);
 void	sh_add_opened_fd(t_main *main, int nbr);
 
 /*
@@ -38,8 +38,8 @@ void	sh_redirect_to_file(t_redirect *new, t_main *main);
 /*
 ** sh_redirects_io.c
 */
-void	sh_redirect_from_ionumber(t_redirect *new, t_main *main);
-void	sh_redirect_to_ionumber(t_redirect *new, t_main *main);
+void	sh_redirect_from_ionumber(t_redirect *new);
+void	sh_redirect_to_ionumber(t_redirect *new);
 int		sh_redirect_get_second_io(char *str);
 /*
 ** sh_redirect_check_chmod.c
@@ -81,8 +81,7 @@ char	*sh_change_envvars_in_exec_struct(t_main *main, t_envvar *envvar);
 ** sh_envvar_in_redirs.c
 */
 void	sh_change_envvars_in_redirs(t_main *main, t_redirect *redir);
-void	sh_envvar_change_redir_cont(t_envvar *envvar, t_redirect *redir,
-	char *new_str);
+void	sh_envvar_change_redir_cont(t_redirect *redir, char *new_str);
 char	*sh_change_envvars_in_redir_struct(t_main *main, t_envvar *envvar);
 /*
 ** sh_envvar_func.c

@@ -67,7 +67,10 @@ void	sh_lexer_hub(t_main *main, t_token *token)
 
 	i = 0;
 	j = 0;
-	fin = main->heredoc ? main->heredoc->here_start - 1 : ft_strlen(main->ks);
+	if (main->heredoc)
+		fin = main->heredoc->here_start - 1;
+	else
+		fin = ft_strlen(main->ks);
 	while (j < fin)
 	{
 		j += i;
@@ -93,8 +96,6 @@ void	ft_print_test(t_token *first)
 					"GREATAND", "LESSGREAT", "DLESSDASH", "CLOBBER","LBRACE",
 					"RBRACE", "BANG"};
 	int	i = 1;
-	t_envvar	*t;
-
 	while (first)
 	{
 		ft_printf("%2i. %s - %i: %s\n", i, first->content, first->type, type[first->type]);

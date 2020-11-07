@@ -25,7 +25,7 @@ char	*sh_change_envvars_in_exec_struct(t_main *main, t_envvar *envvar)
 	envvar->type = ft_strlen(env_cont) - (envvar->end - envvar->start);
 	if (envvar->start > 0)
 		before_var = sh_strsub(envvar->str, 0, envvar->start, main);
-	if (envvar->end < ft_strlen(envvar->str))
+	if (envvar->end < (int)ft_strlen(envvar->str))
 		after_var = sh_strsub(envvar->str, envvar->end, ft_strlen(envvar->str) -
 			envvar->end, main);
 	if (envvar->start == 0 && envvar->str[envvar->end] == '\0' && !env_cont)

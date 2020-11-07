@@ -35,7 +35,7 @@ void	sh_remove_char(int i, t_token *token, t_main *main)
 
 	len = ft_strlen(token->content) - 1;
 	j = 0;
-	ret = ft_strnew(len);
+	ret = sh_strnew(len, main);
 	while (j < len)
 	{
 		if (j < i)

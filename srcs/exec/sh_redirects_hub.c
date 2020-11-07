@@ -34,7 +34,7 @@ void	sh_add_opened_fd(t_main *main, int nbr)
 	}
 }
 
-void	sh_redirect_from_heredoc(t_exec *exec, t_redirect *here, t_main *main)
+void	sh_redirect_from_heredoc(t_redirect *here)
 {
 	pid_t	here_pid;
 	int		here_fd[2];
@@ -69,15 +69,15 @@ int		sh_redirects_hub(t_exec *exec, t_main *main)
 		if (new->type == GREAT)
 			sh_redirect_to_file(new, main);
 		else if (new->type == GREATAND)
-			sh_redirect_to_ionumber(new, main);
+			sh_redirect_to_ionumber(new);
 		else if (new->type == DGREAT)
 			sh_redirect_to_file_append(new, main);
 		else if (new->type == LESS)
 			sh_redirect_from_file(new, main);
 		else if (new->type == DLESS)
-			sh_redirect_from_heredoc(exec, new, main);
+			sh_redirect_from_heredoc(new);
 		else if (new->type == LESSAND)
-			sh_redirect_from_ionumber(new, main);
+			sh_redirect_from_ionumber(new);
 		if (new->error >= 0)
 			new = new->next;
 		else
