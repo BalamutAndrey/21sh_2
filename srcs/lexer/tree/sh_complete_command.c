@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_complete_command.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 16:37:32 by eboris            #+#    #+#             */
-/*   Updated: 2020/09/17 18:55:03 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/07 17:16:02 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ t_node	*sh_complete_command_list(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	if (main->token_curr->type == SEPARATOR)
+	{
+		sh_lexer_tree_error(main);
+		return (NULL);
+	}
 	if ((temp = sh_list(main)) != NULL)
 		return (temp);
 	return (NULL);
