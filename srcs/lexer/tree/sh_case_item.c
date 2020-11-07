@@ -50,6 +50,8 @@ t_node	*sh_caseitem_pattern_bracket_linebreak_dsemi_linebreak(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -62,6 +64,8 @@ t_node	*sh_caseitem_pattern_bracket_compoundlist_dsemi_linebreak(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -75,6 +79,8 @@ t_node	*sh_caseitem_bracket_pattern_bracket_linebreak_dsemi_linebreak
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -88,5 +94,7 @@ t_node	*sh_caseitem_bracket_pattern_bracket_compoundlist_dsemi_linebreak
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

@@ -44,6 +44,8 @@ t_node	*sh_ifclause_if_compoundlist_then_compoundlist_elsepart_fi(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -56,5 +58,7 @@ t_node	*sh_ifclause_if_compoundlist_then_compoundlist_fi(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

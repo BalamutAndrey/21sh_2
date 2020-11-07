@@ -43,6 +43,8 @@ t_node	*sh_complete_command_list_separator(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 

@@ -42,6 +42,8 @@ t_node	*sh_sequentialsep_semicolon_linebreak(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -54,5 +56,7 @@ t_node	*sh_sequentialsep_newlinelist(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

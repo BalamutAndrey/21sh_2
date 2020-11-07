@@ -74,5 +74,7 @@ t_node	*sh_iohere_dlessdash_hereend(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

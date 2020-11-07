@@ -42,6 +42,8 @@ t_node	*sh_separatorop_ampersand(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 

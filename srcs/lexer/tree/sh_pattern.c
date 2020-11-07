@@ -42,6 +42,8 @@ t_node	*sh_pattern_word(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -54,5 +56,7 @@ t_node	*sh_pattern_pattern_pipe_word(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

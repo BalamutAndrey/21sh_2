@@ -33,6 +33,8 @@ t_node	*sh_compoundcommand_forclause(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -45,6 +47,8 @@ t_node	*sh_compoundcommand_caseclause(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -57,6 +61,8 @@ t_node	*sh_compoundcommand_ifclause(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -69,6 +75,8 @@ t_node	*sh_compoundcommand_whileclause(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -81,5 +89,7 @@ t_node	*sh_compoundcommand_untilclause(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

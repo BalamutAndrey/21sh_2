@@ -44,6 +44,8 @@ t_node	*sh_compoundlist_term(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -56,6 +58,8 @@ t_node	*sh_compoundlist_newlinelist_term(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -68,6 +72,8 @@ t_node	*sh_compoundlist_term_separator(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -80,5 +86,7 @@ t_node	*sh_compoundlist_newlinelist_term_separator(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

@@ -42,6 +42,8 @@ t_node	*sh_linebreak_newlinelist(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -54,5 +56,7 @@ t_node	*sh_linebreak_empty(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

@@ -42,6 +42,8 @@ t_node	*sh_redirectlist_ioredirect(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -54,6 +56,8 @@ t_node	*sh_redirectlist_redirectlist_ioredirect(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 

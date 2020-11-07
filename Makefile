@@ -51,123 +51,123 @@ RL_KEY_NAME=sh_key_backspace.c \
 		sh_keys.c
 ERR_NAME=sh_term_errors.c 
 PS_NAME=sh_parser.c \
-sh_parser_check_quotes.c \
-sh_parser_heredoc.c \
-sh_parser_heredoc_delim_correction.c \
-sh_parser_heredoc_quotes_rm.c \
-sh_parser_heredoc_struct.c \
-sh_parser_pipe.c \
-sh_parser_slash.c
+		sh_parser_check_quotes.c \
+		sh_parser_heredoc.c \
+		sh_parser_heredoc_delim_correction.c \
+		sh_parser_heredoc_quotes_rm.c \
+		sh_parser_heredoc_struct.c \
+		sh_parser_pipe.c \
+		sh_parser_slash.c
 LX_NAME=sh_add_heredoc_content.c \
-sh_add_operator_token.c \
-sh_check_and_add_token.c \
-sh_envvar_struct.c \
-sh_is_operator.c \
-sh_lexer.c \
-sh_lexer_find_quotes.c \
-sh_quote_remove.c \
-sh_quote_remove_funcs.c \
-sh_token_quote_remove.c \
-sh_token_struct.c
+		sh_add_operator_token.c \
+		sh_check_and_add_token.c \
+		sh_envvar_struct.c \
+		sh_is_operator.c \
+		sh_lexer.c \
+		sh_lexer_find_quotes.c \
+		sh_quote_remove.c \
+		sh_quote_remove_funcs.c \
+		sh_token_quote_remove.c \
+		sh_token_struct.c
 TREE_NAME=sh_and_or.c \
-sh_brace_group.c \
-sh_case_clause.c \
-sh_case_item.c \
-sh_case_item_ns.c \
-sh_case_list.c \
-sh_case_list_ns.c \
-sh_cmd_name.c \
-sh_cmd_prefix.c \
-sh_cmd_suffix.c \
-sh_cmd_word.c \
-sh_command.c \
-sh_complete_command.c \
-sh_compound_command.c \
-sh_compound_command_clause.c \
-sh_compound_list.c \
-sh_do_group.c \
-sh_else_part.c \
-sh_filename.c \
-sh_fname.c \
-sh_for_clause.c \
-sh_function_body.c \
-sh_function_definition.c \
-sh_here_end.c \
-sh_if_clause.c \
-sh_in.c \
-sh_io_file.c \
-sh_io_file_greats.c \
-sh_io_here.c \
-sh_io_redirect.c \
-sh_io_redirect_command.c \
-sh_lexer_func.c \
-sh_lexer_tree.c \
-sh_lexer_tree_error.c \
-sh_linebreak.c \
-sh_list.c \
-sh_name.c \
-sh_newline_list.c \
-sh_pattern.c \
-sh_pipe_sequence.c \
-sh_pipeline.c \
-sh_redirect_list.c \
-sh_separator.c \
-sh_separator_op.c \
-sh_sequential_sep.c \
-sh_simple_command.c \
-sh_simple_command_command.c \
-sh_subshell.c \
-sh_term.c \
-sh_until_clause.c \
-sh_while_clause.c \
-sh_wordlist.c
+		sh_brace_group.c \
+		sh_case_clause.c \
+		sh_case_item.c \
+		sh_case_item_ns.c \
+		sh_case_list.c \
+		sh_case_list_ns.c \
+		sh_cmd_name.c \
+		sh_cmd_prefix.c \
+		sh_cmd_suffix.c \
+		sh_cmd_word.c \
+		sh_command.c \
+		sh_complete_command.c \
+		sh_compound_command.c \
+		sh_compound_command_clause.c \
+		sh_compound_list.c \
+		sh_do_group.c \
+		sh_else_part.c \
+		sh_filename.c \
+		sh_fname.c \
+		sh_for_clause.c \
+		sh_function_body.c \
+		sh_function_definition.c \
+		sh_here_end.c \
+		sh_if_clause.c \
+		sh_in.c \
+		sh_io_file.c \
+		sh_io_file_greats.c \
+		sh_io_here.c \
+		sh_io_redirect.c \
+		sh_io_redirect_command.c \
+		sh_lexer_func.c \
+		sh_lexer_tree.c \
+		sh_lexer_tree_error.c \
+		sh_linebreak.c \
+		sh_list.c \
+		sh_name.c \
+		sh_newline_list.c \
+		sh_pattern.c \
+		sh_pipe_sequence.c \
+		sh_pipeline.c \
+		sh_redirect_list.c \
+		sh_separator.c \
+		sh_separator_op.c \
+		sh_sequential_sep.c \
+		sh_simple_command.c \
+		sh_simple_command_command.c \
+		sh_subshell.c \
+		sh_term.c \
+		sh_until_clause.c \
+		sh_while_clause.c \
+		sh_wordlist.c
 ES_NAME=sh_exec_struct_argv.c \
-sh_exec_struct_create.c \
-sh_exec_struct_redirect.c \
-sh_exec_struct_envvar.c
+		sh_exec_struct_create.c \
+		sh_exec_struct_redirect.c \
+		sh_exec_struct_envvar.c
 EX_NAME=sh_access_file.c \
-sh_envvar_func.c \
-sh_envvar_in_exec.c \
-sh_envvar_in_redirs.c \
-sh_exec.c \
-sh_exec_builtin.c \
-sh_exec_pipes.c \
-sh_path_add.c \
-sh_redirect_check_chmod.c \
-sh_redirects.c \
-sh_redirects_hub.c \
-sh_redirects_io.c
+		sh_envvar_func.c \
+		sh_envvar_in_exec.c \
+		sh_envvar_in_redirs.c \
+		sh_exec.c \
+		sh_exec_builtin.c \
+		sh_exec_pipes.c \
+		sh_path_add.c \
+		sh_redirect_check_chmod.c \
+		sh_redirects.c \
+		sh_redirects_hub.c \
+		sh_redirects_io.c
 EX_BN_NAME=sh_cd.c \
-sh_cd_path.c \
-sh_echo.c \
-sh_echo_spec_symb.c \
-sh_env_replace.c \
-sh_exit.c \
-sh_pwd.c \
-sh_builtin_env.c \
-sh_builtin_setenv.c \
-sh_builtin_unsetenv.c
+		sh_cd_path.c \
+		sh_echo.c \
+		sh_echo_spec_symb.c \
+		sh_env_replace.c \
+		sh_exit.c \
+		sh_pwd.c \
+		sh_builtin_env.c \
+		sh_builtin_setenv.c \
+		sh_builtin_unsetenv.c
 FC_NAME=sh_malloc_func.c \
-sh_strjoin_func.c \
-sh_strs.c
+		sh_strjoin_func.c \
+		sh_strs.c
 RM_NAME=sh_remove_envp_curr.c \
-sh_remove_exec.c \
-sh_remove_fds.c \
-sh_remove_heredoc.c \
-sh_remove_hist.c \
-sh_remove_path.c \
-sh_remove_struct.c \
-sh_remove_token.c \
-sh_remove_tree.c \
-sh_remove_envvar.c
+		sh_remove_exec.c \
+		sh_remove_fds.c \
+		sh_remove_heredoc.c \
+		sh_remove_hist.c \
+		sh_remove_path.c \
+		sh_remove_struct.c \
+		sh_remove_token.c \
+		sh_remove_tree.c \
+		sh_remove_envvar.c
 SG_NAME=sh_bus_error.c \
-sh_ctrl_c.c \
-sh_screen_resize.c \
-sh_signal.c
+		sh_ctrl_c.c \
+		sh_screen_resize.c \
+		sh_signal.c
 STRUCT_NAME=sh_path.c \
-sh_structs.c
+		sh_structs.c
 TERM_NAME=sh_term_check_errors_start.c \
-sh_term_init.c
+		sh_term_init.c
 
 SRC = $(addprefix $(OBJ_DIR)/, $(SRC_NAME:.c=.o))
 RL = $(addprefix $(OBJ_DIR)/, $(RL_NAME:.c=.o))
@@ -198,63 +198,64 @@ $(NAME): $(OBJ)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p obj
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+#	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 $(OBJ_DIR)/%.o: $(RL_DIR)/%.c
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 $(OBJ_DIR)/%.o: $(RL_KEY_DIR)/%.c
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 $(OBJ_DIR)/%.o: $(ERR_DIR)/%.c
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 $(OBJ_DIR)/%.o: $(PS_DIR)/%.c
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 $(OBJ_DIR)/%.o: $(LX_DIR)/%.c
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 $(OBJ_DIR)/%.o: $(TREE_DIR)/%.c
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 $(OBJ_DIR)/%.o: $(ES_DIR)/%.c
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 $(OBJ_DIR)/%.o: $(EX_DIR)/%.c
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 $(OBJ_DIR)/%.o: $(EX_BN_DIR)/%.c
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 $(OBJ_DIR)/%.o: $(FC_DIR)/%.c
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 $(OBJ_DIR)/%.o: $(RM_DIR)/%.c
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 $(OBJ_DIR)/%.o: $(STRUCT_DIR)/%.c
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 $(OBJ_DIR)/%.o: $(TERM_DIR)/%.c
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 $(OBJ_DIR)/%.o: $(SG_DIR)/%.c
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
+	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 clean:
 		@make clean -s -C $(LIB_DIR)

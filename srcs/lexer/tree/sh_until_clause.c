@@ -37,5 +37,7 @@ t_node	*sh_untilclause_until_compoundlist_dogroup(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

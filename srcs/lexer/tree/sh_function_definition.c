@@ -40,5 +40,7 @@ t_node	*sh_functiondefinition_fname_bracket_bracket_linebreak_functionbody
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

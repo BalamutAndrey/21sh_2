@@ -51,6 +51,8 @@ t_node	*sh_forclause_for_name_linebreak_dogroup(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -63,6 +65,8 @@ t_node	*sh_forclause_for_name_linebreak_in_sequentialsep_dogroup(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -76,5 +80,7 @@ t_node	*sh_forclause_for_name_linebreak_in_wordlist_sequentialsep_dogroup
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

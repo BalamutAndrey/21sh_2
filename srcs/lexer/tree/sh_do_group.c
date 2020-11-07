@@ -37,5 +37,7 @@ t_node	*sh_dogroup_do_compoundlist_done(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

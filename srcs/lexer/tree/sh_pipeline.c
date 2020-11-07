@@ -56,5 +56,7 @@ t_node	*sh_pipeline_bang_pipesequence(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

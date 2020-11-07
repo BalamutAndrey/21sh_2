@@ -56,6 +56,8 @@ t_node	*caseitemns_pattern_bracket_linebreak(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -68,6 +70,8 @@ t_node	*caseitemns_pattern_bracket_compoundlist_linebreak(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -80,6 +84,8 @@ t_node	*caseitemns_bracket_pattern_bracket_linebreak(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -92,5 +98,7 @@ t_node	*caseitemns_bracket_pattern_bracket_compoundlist_linebreak(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

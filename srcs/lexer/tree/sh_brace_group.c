@@ -37,5 +37,7 @@ t_node	*sh_bracegroup_lbrace_compoundlist_rbrace(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

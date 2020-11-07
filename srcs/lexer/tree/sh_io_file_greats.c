@@ -56,6 +56,8 @@ t_node	*sh_iofile_lessgreat_filename(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -68,5 +70,7 @@ t_node	*sh_iofile_clobber_filename(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

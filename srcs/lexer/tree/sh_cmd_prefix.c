@@ -71,6 +71,8 @@ t_node	*sh_cmdprefix_cmdprefix_ioredirect(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -83,6 +85,8 @@ t_node	*sh_cmdprefix_assignment_word(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -95,5 +99,7 @@ t_node	*sh_cmdprefix_cmdprefix_assignment_word(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }

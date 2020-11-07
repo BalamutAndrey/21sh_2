@@ -66,6 +66,8 @@ t_node	*sh_command_compoundcommand(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -78,6 +80,8 @@ t_node	*sh_command_compoundcommand_redirectlist(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
 
@@ -90,5 +94,7 @@ t_node	*sh_command_functiondefinition(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
+	(void)temp;
+	(void)main;
 	return (NULL);
 }
