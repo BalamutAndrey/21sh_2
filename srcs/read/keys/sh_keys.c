@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_keys.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 16:49:25 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 16:44:57 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/07 18:41:54 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 bool	sh_keys(t_main *main, uint64_t buf)
 {
-	if (main->cursor_sel == true && buf != 0x44323b315b1b && buf != 0x43323b315b1b
-			&& buf != 0xa7c3 && buf != 0x9a88e2 && buf != 0x8889e2)
-		{
-			main->cursor_sel = false;
-			sh_reprint_ks(main);
-		}
+	if (main->cursor_sel == true && buf != 0x44323b315b1b &&
+		buf != 0x43323b315b1b && buf != 0xa7c3 && buf != 0x9a88e2 &&
+		buf != 0x8889e2)
+	{
+		main->cursor_sel = false;
+		sh_reprint_ks(main);
+	}
 	if (buf == 0xA)
 		return (sh_key_enter(main));
 	else if (buf == 0x445B1B)
@@ -34,12 +35,6 @@ bool	sh_keys(t_main *main, uint64_t buf)
 		sh_key_backspace(main);
 	else if (buf == 0x7E335B1B)
 		sh_key_delete(main);
-	else if (buf == 0x485B1B)
-		sh_key_home(main);
-	else if (buf == 0x465B1B)
-		sh_key_end(main);
-	else if (buf == 0x4)
-		return (sh_key_ctrl_d(main));
 	else
 		return (sh_keys_2(main, buf));
 	return (true);
@@ -65,13 +60,18 @@ bool	sh_keys_2(t_main *main, uint64_t buf)
 		sh_key_opt_q(main);
 	else if (buf == 0xa5c3)
 		sh_key_opt_a(main);
-	// else
-	// {
-	// 	ft_putstr_fd(tgetstr("do", NULL), main->fd);
-	// 	ft_putstr_fd(tgetstr("cr", NULL), main->fd);
-	// 	ft_printf("Key: %llx", buf);
-	// 	ft_putstr_fd(tgetstr("do", NULL), main->fd);
-	// 	ft_putstr_fd(tgetstr("cr", NULL), main->fd);
-	// }
+	else
+		return (sh_keys_3(main, buf));
+	return (true);
+}
+
+bool	sh_keys_3(t_main *main, uint64_t buf)
+{
+	if (buf == 0x485B1B)
+		sh_key_home(main);
+	else if (buf == 0x465B1B)
+		sh_key_end(main);
+	else if (buf == 0x4)
+		return (sh_key_ctrl_d(main));
 	return (true);
 }

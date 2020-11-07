@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 17:12:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/07 18:25:53 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/07 18:36:13 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	sh_key_opt_x_clean(t_main *main)
 		main->ks[i] = '\0';
 		i++;
 		n++;
-//		sh_cursor_minus(main);
 	}
 }
 

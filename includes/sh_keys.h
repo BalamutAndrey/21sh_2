@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_keys.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 16:56:11 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 16:44:14 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/07 18:48:58 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 */
 bool	sh_keys(t_main *main, uint64_t buf);
 bool	sh_keys_2(t_main *main, uint64_t buf);
+bool	sh_keys_3(t_main *main, uint64_t buf);
 
 /*
 ** sh_key_enter.c
@@ -79,6 +80,7 @@ void	sh_key_shift_left(t_main *main);
 ** sh_key_shift_right.c
 */
 void	sh_key_shift_right(t_main *main);
+void	sh_key_shift_right_2(t_main *main);
 
 /*
 ** sh_key_opt_c.c
@@ -103,6 +105,7 @@ void	sh_key_opt_x_paste(t_main *main, char *temp);
 ** sh_key_ctrl_left.c
 */
 void	sh_key_ctrl_left(t_main *main);
+void	sh_key_shift_left_2(t_main *main);
 
 /*
 ** sh_key_ctrl_right.c
