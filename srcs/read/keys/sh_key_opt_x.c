@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_key_opt_x.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 17:12:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 17:18:53 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/07 18:25:53 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	sh_key_opt_x_clean(t_main *main)
 		main->ks[i] = '\0';
 		i++;
 		n++;
-		sh_cursor_minus(main);
+//		sh_cursor_minus(main);
 	}
 }
 
@@ -68,6 +68,7 @@ void	sh_key_opt_x(t_main *main)
 		main->ks_len = ft_strlen(main->ks);
 		ft_strdel(&temp);
 		main->cursor_sel = false;
+		main->cursor = main->cursor_sel_start;
 		sh_reprint_ks(main);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_readline_readkey.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:40:30 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/15 17:43:40 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/07 18:02:19 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	sh_readline_readkey_add(t_main *main, uint64_t buf)
 			temp[i - main->cursor] = main->ks[i];
 		main->ks[main->cursor] = buf;
 		i = main->cursor - 1;
-		while (temp[++i - main->cursor] != '\0')
+		while (temp[(++i) - main->cursor] != '\0')
 			main->ks[i + 1] = temp[i - main->cursor];
 		ft_strdel(&temp);
 	}

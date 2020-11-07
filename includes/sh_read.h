@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 15:21:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/30 16:27:02 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/07 17:39:18 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void	sh_cursor_minus(t_main *main);
 */
 void	sh_cursor_math(t_main *main);
 void	sh_cursor_math_curr(t_main *main);
+void	sh_cursor_math_if(t_main *main, uint64_t *i, uint64_t *l, uint64_t *n);
+void	sh_cursor_math_elseif(t_main *main, uint64_t *i, uint64_t *l, uint64_t *n);
+void	sh_cursor_math_else(uint64_t *i, uint64_t *n);
 
 /*
 ** sh_history.c
