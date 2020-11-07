@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 13:49:25 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/07 17:59:41 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/07 18:56:12 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	sh_history_add(t_main *main)
 	if (main->ks[0] != '\0')
 	{
 		sh_history_newlist(main);
-		main->hist_end->prev->com = ft_strdup(main->ks);
+		main->hist_end->prev->com = sh_strdup(main->ks, main);
 	}
 }
 
@@ -26,8 +26,8 @@ void	sh_history_create(t_main *main)
 	t_hist	*new;
 	t_hist	*end;
 
-	new = malloc(sizeof(t_hist));
-	end = malloc(sizeof(t_hist));
+	new = sh_memalloc(sizeof(t_hist), main);
+	end = sh_memalloc(sizeof(t_hist), main);
 	new->com = NULL;
 	end->com = NULL;
 	new->next = end;
@@ -45,7 +45,7 @@ void	sh_history_newlist(t_main *main)
 	t_hist	*temp;
 
 	temp = main->hist_end->prev;
-	new = malloc(sizeof(t_hist));
+	new = sh_memalloc(sizeof(t_hist), main);
 	new->com = NULL;
 	new->next = main->hist_end;
 	new->prev = temp;
@@ -116,23 +116,4 @@ void	sh_history_read(t_main *main, char k)
 	}
 	if (main->ks_temp)
 		ft_strdel(&main->ks_temp);
-}
-
-// Лишняя функция
-void	sh_history_delete(t_main *main)
-{
-	if (main->hist != NULL)
-	{
-		main->hist_curr = main->hist;
-		while(main->hist_curr != NULL)
-		{
-			main->hist = main->hist_curr->next;
-			if (main->hist_curr->com != NULL)
-			{
-				ft_strdel(&main->hist_curr->com);
-			}
-			free(main->hist_curr);
-			main->hist_curr = main->hist;
-		}
-	}
 }
