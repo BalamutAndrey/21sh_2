@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_read.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 15:21:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/08 12:34:06 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 16:22:45 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	sh_rl_check_prompt_start(t_main *main);
 void	sh_print_prompt(t_main *main);
 
 /*
-* sh_readline_readkey.c
+** sh_readline_readkey.c
 */
 bool	sh_readline_readkey(t_main *main);
 void	sh_readline_readkey_add(t_main *main, uint64_t buf);
 
 /*
-* sh_readline_end.c
+** sh_readline_end.c
 */
 bool	sh_readline_end(t_main *main);
 void	sh_readline_clear(t_main *main);
@@ -53,7 +53,8 @@ void	sh_cursor_minus(t_main *main);
 void	sh_cursor_math(t_main *main);
 void	sh_cursor_math_curr(t_main *main);
 void	sh_cursor_math_if(t_main *main, uint64_t *i, uint64_t *l, uint64_t *n);
-void	sh_cursor_math_elseif(t_main *main, uint64_t *i, uint64_t *l, uint64_t *n);
+void	sh_cursor_math_elseif(t_main *main, uint64_t *i, uint64_t *l,
+		uint64_t *n);
 void	sh_cursor_math_else(uint64_t *i, uint64_t *n);
 
 /*

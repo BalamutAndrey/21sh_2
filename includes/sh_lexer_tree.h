@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_lexer_tree.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/06 18:41:37 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 16:21:02 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -466,7 +466,8 @@ bool	sh_is_a_redirect(t_token *token);
 ** sh_io_redirect.c
 */
 t_node	*sh_ioredirect(t_main *main);
-t_node	*sh_ioredirect_while(t_main *main, t_node *first, t_node *curr, t_node *temp);
+t_node	*sh_ioredirect_while(t_main *main, t_node *first, t_node *curr,
+		t_node *temp);
 
 /*
 ** sh_io_redirect_command.c

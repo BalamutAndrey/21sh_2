@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 16:20:13 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/08 14:48:48 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 16:19:26 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	sh_builtin_env(t_main *main);
 char	*sh_builtin_setenv(t_exec *exec, t_main *main);
 char	*sh_builtin_setenv_env_find(t_exec *exec, t_main *main);
 void	sh_builtin_setenv_new_env(t_exec *exec, t_main *main, char *tmp, int i);
-void	sh_builtin_setenv_change_env(t_exec *exec, t_main *main, char *tmp, int i);
+void	sh_builtin_setenv_change_env(t_exec *exec, t_main *main, char *tmp,
+		int i);
 /*
 ** sh_builtin_unsetenv.c
 */
