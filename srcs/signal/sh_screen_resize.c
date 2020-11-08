@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 17:28:01 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/08 12:47:15 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 13:19:42 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ void	sh_sig_screen_resize(int a)
 	(void)a;
 	sh_ioctl(g_main);
 	ft_putstr_fd(tgetstr("cl", NULL), g_main->fd);
+	sh_cursor_math(g_main);
 	sh_reprint_ks(g_main);
 }

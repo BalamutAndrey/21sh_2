@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 15:04:38 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/08 12:33:24 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 14:11:10 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	sh_reprint_ks_2(t_main *main)
 		}
 		i++;
 	}
+	ft_putchar_fd(' ', main->fd);
 }
 
 void	sh_reprint_ks_3(t_main *main)
