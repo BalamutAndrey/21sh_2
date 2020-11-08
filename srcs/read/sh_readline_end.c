@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:34:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/08 12:26:28 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 13:11:38 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@ bool	sh_readline_end(t_main *main)
 	if (main->ks_temp != NULL)
 	{
 		main->ks_temp = sh_strjoin_arg(main, "%f %f", main->ks_temp, main->ks);
-		main->ks = ft_strnew(MAX_KS_LEN);
+		main->ks = sh_strnew(MAX_KS_LEN, main);
 		ft_strcpy(main->ks, main->ks_temp);
 		ft_strdel(&main->ks_temp);
 	}
 	if (main->prompt != NULL)
 	{
 		ft_strdel(&main->hist_end->prev->com);
-		main->hist_end->prev->com = ft_strdup(main->ks);
+		main->hist_end->prev->com  = sh_strnew(MAX_KS_LEN, main);
+		ft_strncpy(main->hist_end->prev->com, main->ks, MAX_KS_LEN);
 		ft_strdel(&main->prompt);
 	}
 	else

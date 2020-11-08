@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 18:16:34 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/08 13:06:07 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 13:16:20 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ void	sh_sig_ctrl_c_ks(t_main *g_main)
 	ft_bzero(g_main->ks, MAX_KS_LEN);
 	g_main->ks_len = 0;
 	g_main->cursor = 0;
+	sh_cursor_math(g_main);
 	sh_reprint_ks(g_main);
+	g_main->hist_curr = g_main->hist_end;
 }
