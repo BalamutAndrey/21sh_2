@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:15:17 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/06 19:48:56 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 16:40:15 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ t_node	*sh_list_separatorop_andor(t_main *main)
 {
 	t_node	*temp;
 	t_node	*sep;
-	t_node	*tree_curr;
 	t_token	*find;
 	t_token	*first;
 
@@ -53,13 +52,12 @@ t_node	*sh_list_separatorop_andor(t_main *main)
 		{
 			first = find->next;
 			find->next = NULL;
-			tree_curr = main->tree_curr;
 			temp = sh_list_andor(main);
 			if (main->token == NULL)
 				return (NULL);
 			main->token_curr = first->next;
 			sep = sh_lexer_create_node(main, NULL, SEPARATOR);
-			sh_lexer_add_node(tree_curr, sep, temp);
+			sh_lexer_add_node(main->tree_curr, sep, temp);
 			main->tree_curr = sep;
 			return (sh_list(main));
 		}

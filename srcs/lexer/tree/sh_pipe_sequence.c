@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 18:04:07 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/07 16:24:59 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 16:31:59 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,19 @@ t_node	*sh_pipesequence_pipesequence_pipe_linebreak_command(t_main *main)
 		left = sh_pipesequence(main);
 		if (left == NULL)
 		{
-			sh_remove_node(pipe);
-			sh_remove_node(right);
-			if (main->token != NULL)
-				sh_lexer_tree_error(main);
+			sh_pipesequence_error(main, pipe, right);
 			return (NULL);
 		}
 		sh_lexer_add_node(pipe, left, right);
 		return (pipe);
 	}
 	return (NULL);
+}
+
+void	sh_pipesequence_error(t_main *main, t_node *pipe, t_node *right)
+{
+	sh_remove_node(pipe);
+	sh_remove_node(right);
+	if (main->token != NULL)
+		sh_lexer_tree_error(main);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_lexer_tree.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:20:14 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/08 16:21:02 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 17:12:43 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ void	sh_lexer_del_all_node(t_node **node);
 /*
 ** sh_lexer_tree_error.c
 */
-void	sh_lexer_tree_error(t_main *main);
+t_node	*sh_lexer_tree_error(t_main *main);
 
 /*
 ** sh_complete_command.c
@@ -195,6 +195,7 @@ void	sh_lexer_tree_error(t_main *main);
 t_node	*sh_complete_command(t_main *main, t_node *node);
 t_node	*sh_complete_command_list_separator(t_main *main);
 t_node	*sh_complete_command_list(t_main *main);
+bool	sh_separator_check(t_main *main);
 
 /*
 ** sh_list.c
@@ -224,6 +225,7 @@ t_node	*sh_pipeline_bang_pipesequence(t_main *main);
 t_node	*sh_pipesequence(t_main *main);
 t_node	*sh_pipesequence_command(t_main *main);
 t_node	*sh_pipesequence_pipesequence_pipe_linebreak_command(t_main *main);
+void	sh_pipesequence_error(t_main *main, t_node *pipe, t_node *right);
 
 /*
 ** sh_command.c
@@ -450,6 +452,8 @@ t_node	*sh_cmdprefix_cmdprefix_assignment_word(t_main *main);
 ** sh_cmd_suffix.c
 */
 t_node	*sh_cmdsuffix(t_main *main);
+t_node	*sh_cmdsuffix_while(t_main *main, t_node *first, t_node *curr,
+	t_node *temp);
 t_node	*sh_cmdsuffix_redir(t_main *main, t_node *first, t_node *curr);
 t_node	*sh_cmdsuffix_word(t_main *main);
 t_node	*sh_cmdsuffix_redir_while(t_main *main, t_node *curr, t_node *temp);

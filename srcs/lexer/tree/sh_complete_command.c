@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 16:37:32 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/07 17:16:02 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 16:49:36 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ t_node	*sh_complete_command_list(t_main *main)
 	t_node	*temp;
 
 	temp = NULL;
-	if (main->token_curr->type == SEPARATOR)
+	if ((main->token_curr->type == SEPARATOR) ||
+		(sh_separator_check(main) == true))
 	{
 		sh_lexer_tree_error(main);
 		return (NULL);
@@ -65,4 +66,21 @@ t_node	*sh_complete_command_list(t_main *main)
 	if ((temp = sh_list(main)) != NULL)
 		return (temp);
 	return (NULL);
+}
+
+bool	sh_separator_check(t_main *main)
+{
+	t_token	*token;
+
+	token = main->token_curr;
+	while (token->next != NULL)
+	{
+		if (token->type == SEPARATOR && token->next->type == SEPARATOR)
+		{
+			main->token_curr = token;
+			return (true);
+		}
+		token = token->next;
+	}
+	return (false);
 }
