@@ -1,7 +1,7 @@
 NAME=21sh
 
 CC=gcc
-FLAGS=-g -Wall -Wextra #-Werror
+FLAGS=-g -Wall -Wextra -Werror
 
 SRC_DIR=./srcs
 RL_DIR=./srcs/read
@@ -200,7 +200,6 @@ $(NAME): $(OBJ)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p obj
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
-#	@echo "\033[0m\033[36m$(notdir $<)\033[1m\033[34m OK\033[0m"
 	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 $(OBJ_DIR)/%.o: $(RL_DIR)/%.c
