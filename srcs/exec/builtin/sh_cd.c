@@ -6,11 +6,23 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 17:10:08 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/31 18:35:02 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 14:38:51 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
+
+void	sh_cd_no_args(t_exec *exec, t_main *main)
+{
+	char	*tmp;
+
+	tmp = sh_strdup(exec->argv[0], main);
+	sh_remove_argv(exec->argv);
+	exec->argv = sh_memalloc(sizeof(char*) * 3, main);
+	exec->argv[0] = tmp;
+	exec->argv[1] = sh_strdup("~", main);
+	exec->argv[2] = NULL;
+}
 
 char	*sh_cd(t_exec *exec, t_main *main)
 {
@@ -21,6 +33,8 @@ char	*sh_cd(t_exec *exec, t_main *main)
 	i = 0;
 	n = 1;
 	fin = NULL;
+	if (!exec->argv[1])
+		sh_cd_no_args(exec, main);
 	while (exec->argv[n] != NULL)
 	{
 		i++;
@@ -30,20 +44,11 @@ char	*sh_cd(t_exec *exec, t_main *main)
 		fin = sh_strdup(
 		"21sh: cd: too many arguments\nUsage: cd [-L | -P] directory\n", main);
 	else if (i == 2)
-	{
 		fin = sh_cd_check_param(exec, main);
-	}
 	else
-	{
 		fin = sh_cd_change_dir(exec, main, false);
-	}
 	return (fin);
 }
-
-// void	sh_cd_error(t_main *main)
-// {
-// 	ft_fprintf(2, "Usage: cd [-L | -P] directory\n");
-// }
 
 char	*sh_cd_check_param(t_exec *exec, t_main *main)
 {
@@ -107,48 +112,4 @@ void	sh_chdir_save_argv(t_exec *exec, t_main *main, int8_t p)
 	exec->argv = malloc(sizeof(char **) * p + 1);
 	exec->argv[0] = sh_strdup("cd", main);
 	exec->argv[p] = sh_strdup(main->home, main);
-}
-
-// Разобраться в двумя точками в pwd. Ключи попутаны местами или неправильный ключ по дефолту.
-
-char	*sh_chdir_finish(t_exec *exec, t_main *main, bool param, int p)
-{
-	int		fin;
-	char	*temp1;
-	char	*temp2;
-	char	*finish;
-
-	finish = NULL;
-	if ((access(exec->argv[p], 0) == 0) && (access(exec->argv[p], 1) == -1))
-	{
-		finish = sh_strjoin_arg(main,
-			"%s %s %s", "21sh: cd: permission denied: ", exec->argv[p], "\n");
-	}
-	else
-	{
-		fin = chdir(exec->argv[p]);
-		if (fin != 0)
-			finish = sh_strjoin_arg(main, "%s %s %s",
-				"21sh: cd: no such file or directory: ", exec->argv[p], "\n");
-		else
-		{
-			temp1 = sh_strdup("OLDPWD", main);
-			temp2 = sh_strdup(main->dir, main);
-			sh_env_replace(main, temp1, temp2);
-			ft_strdel(&main->dir);
-			main->dir = sh_strnew(MAX_DIR_LEN, main);
-			getcwd(main->dir, MAX_DIR_LEN);
-			temp1 = sh_strdup("PWD", main);
-			if (param == false)
-			{
-				temp2 = sh_strdup(exec->argv[p], main);
-			}
-			else
-			{
-				temp2 = sh_strdup(main->dir, main);
-			}
-			sh_env_replace(main, temp1, temp2);
-		}
-	}
-	return (finish);
 }

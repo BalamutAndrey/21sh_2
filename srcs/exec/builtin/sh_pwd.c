@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 17:24:54 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/31 18:33:32 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 14:50:40 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,9 @@ void	sh_pwd(t_exec *exec, t_main *main)
 		sh_pwd_error(main);
 	}
 	else if (i == 1)
-	{
 		sh_pwd_check_param(exec, main);
-	}
 	else
-	{
 		sh_pwd_print_dir(main, false);
-	}
 }
 
 void	sh_pwd_error(t_main *main)
@@ -83,16 +79,12 @@ void	sh_pwd_print_dir(t_main *main, bool param)
 		}
 		if (temp != NULL)
 		{
-			ft_fprintf(main->fd, "%s\n", temp);
+			ft_fprintf(STDOUT_FILENO, "%s\n", temp);
 			ft_strdel(&temp);
 		}
 		else
-		{
-			ft_fprintf(main->fd, "%s\n", main->dir);
-		}
+			ft_fprintf(STDOUT_FILENO, "%s\n", main->dir);
 	}
 	else if (param == true)
-	{
-		ft_fprintf(main->fd, "%s\n", main->dir);
-	}
+		ft_fprintf(STDOUT_FILENO, "%s\n", main->dir);
 }

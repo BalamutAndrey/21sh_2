@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:08:03 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/07 00:21:14 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 13:14:43 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	fill_pipe(int fd[2], int str_fd[2])
 
 void	sh_exec_piped_commands(t_exec *exec, t_main *main)
 {
+	sh_change_envvars_in_exec(main, exec);
 	if (exec->pipe == false && exec->next && exec->next->pipe == true)
 	{
 		pipe(exec->pipefd);

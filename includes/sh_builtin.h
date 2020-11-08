@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 16:20:13 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 19:07:44 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 14:48:48 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ char	*sh_cd(t_exec *exec, t_main *main);
 char	*sh_cd_check_param(t_exec *exec, t_main *main);
 char	*sh_cd_change_dir(t_exec *exec, t_main *main, bool param);
 void	sh_chdir_save_argv(t_exec *exec, t_main *main, int8_t p);
-char	*sh_chdir_finish(t_exec *exec, t_main *main, bool param, int p);
-
+void	sh_cd_no_args(t_exec *exec, t_main *main);
+/*
+** sh_cd_fin.c
+*/
+char	*sh_chdir_finish(t_exec *exec, t_main *main, bool param, int8_t p);
+void	sh_chdir_and_env(t_main *main, t_exec *exec, bool param, int8_t p);
 /*
 ** sh_cd_path.c
 */

@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/07 00:29:24 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 13:42:29 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,15 +105,16 @@ void	sh_exec(t_main *main, t_exec *exec)
 	while (exec)
 	{
 		tcsetattr(main->fd, TCSANOW, &main->t_start);
-		sh_change_envvars_in_exec(main, exec);
-		if (exec->pipe == true || (exec->next && exec->next->pipe == true))
+		if (exec->next && exec->next->pipe == true)
 		{
 			sh_exec_piped_commands(exec, main);
-			while (exec && (exec->pipe == true || (exec->next && exec->next->pipe == true)))
+			exec = exec->next;
+			while (exec && exec->pipe == true)
 				exec = exec->next;
 		}
 		else
 		{
+			sh_change_envvars_in_exec(main, exec);
 			sh_standart_exec(exec, main);
 			exec = exec->next;
 		}

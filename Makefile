@@ -139,6 +139,7 @@ EX_NAME=sh_access_file.c \
 		sh_redirects_hub.c \
 		sh_redirects_io.c
 EX_BN_NAME=sh_cd.c \
+		sh_cd_fin.c \
 		sh_cd_path.c \
 		sh_echo.c \
 		sh_echo_spec_symb.c \
