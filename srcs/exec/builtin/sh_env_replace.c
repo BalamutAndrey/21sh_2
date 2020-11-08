@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_env_replace.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 16:49:36 by eboris            #+#    #+#             */
-/*   Updated: 2020/07/23 16:59:25 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 15:04:03 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int		sh_env_replace(t_main *new, char *whats, char *to)
 			ft_strdel(&new->envp_curr[i]);
 			whats = ft_strdup(temp);
 			new->envp_curr[i] = ft_strsdup(whats, to);
-			// if (ft_strncmp(temp, "PATH=", 5) == 0)
-			// 	ms_path(new);
 			ft_strdel(&temp);
 			return (1);
 		}
@@ -62,8 +60,6 @@ void	sh_env_replace_new(t_main *new, char *whats, char *to)
 	if (new->envp_curr)
 		sh_env_remove(new);
 	new->envp_curr = env;
-	// if (ft_strncmp(temp, "PATH=", 5) == 0)
-	// 	ms_path(new);
 	ft_strdel(&temp);
 }
 

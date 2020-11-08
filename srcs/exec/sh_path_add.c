@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 16:53:48 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/06 18:30:35 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 15:17:06 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	sh_path_add(t_main *main, t_exec *temp)
 			(sh_is_builtin(temp->argv[0]) == false))
 			sh_find_path(main, temp);
 	}
-//	ft_printf("\ncmd = %s\n", temp->cmd_arg[0]);
 }
 
 void	sh_run_write_string_point(t_main *main, t_exec *temp)
@@ -56,19 +55,11 @@ void	sh_find_path(t_main *main, t_exec *exec)
 {
 	t_path	*temp;
 	char	*str1;
-	// char	*str2;
 
 	temp = main->path;
 	while (temp)
 	{
-		// str2 = ft_strdup(temp->path);
-		// str1 = ft_strdup("/");
-		// str2 = ft_strsdup(str2, str1);
-		// str1 = ft_strdup(exec->argv[0]);
-		// str1 = ft_strsdup(str2, str1);
-
 		str1 = sh_strjoin_arg(main, "%s %s %s", temp->path, "/", exec->argv[0]);
-//		ft_printf("\npath = %s\n", str1);
 		if (sh_run_access(&str1) == 0)
 		{
 			ft_strdel(&exec->argv[0]);

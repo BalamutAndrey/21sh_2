@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:43:11 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 19:09:12 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 15:16:13 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,13 @@ char	*sh_exec_builtin(t_exec *exec, t_main *main)
 
 	finish = NULL;
 	if (ft_strcmp(exec->argv[0], "cd") == 0)
-	{
 		finish = sh_cd(exec, main);
-	}
 	else if (ft_strcmp(exec->argv[0], "pwd") == 0)
-	{
 		sh_pwd(exec, main);
-	}
 	else if (ft_strcmp(exec->argv[0], "echo") == 0)
-	{
 		sh_builtin_echo(main, exec);
-	}
 	else if (ft_strcmp(exec->argv[0], "exit") == 0)
-	{
 		sh_exit(main, 0);
-	}
 	else if (ft_strcmp(exec->argv[0], "setenv") == 0)
 		finish = sh_builtin_setenv(exec, main);
 	else if (ft_strcmp(exec->argv[0], "unsetenv") == 0)

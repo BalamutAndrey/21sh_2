@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:29:08 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/08 13:42:29 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 15:17:35 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int16_t	sh_exec_prog(t_exec *exec, t_main *main, char *err_built)
 	sh_path_add(main, exec);
 	if (!exec->argv)
 		return (-1);
-//		execve(NULL, NULL, main->envp_curr);
 	else if (sh_run_access(exec->argv) == 6)
 		sh_exec_builtin(exec, main);
 	else if (err_built != NULL)

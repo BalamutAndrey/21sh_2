@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 17:24:54 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/08 14:50:40 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 15:14:54 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,9 @@ void	sh_pwd_print_dir(t_main *main, bool param)
 		i = 0;
 		while (main->envp_curr[i] != NULL)
 		{
-			if ((ft_strncmp(main->envp_curr[i], "PWD=", 4) == 0) && temp == NULL)
-			{
-				temp = ft_strdup(main->envp_curr[i]);
-				temp = ft_strmancpy(temp, 4);
-			}
+			if ((ft_strncmp(main->envp_curr[i], "PWD=", 4) == 0) && !temp)
+				temp = sh_strsub(main->envp_curr[i], 4,
+				ft_strlen(main->envp_curr[i]) - 4, main);
 			i++;
 		}
 		if (temp != NULL)

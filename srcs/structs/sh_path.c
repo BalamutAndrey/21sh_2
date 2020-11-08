@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 17:19:22 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/06 17:48:01 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 15:01:52 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,15 @@ void	sh_path_del(t_main *main)
 	main->path = NULL;
 }
 
+char	*sh_path_check_param(char *param, int i)
+{
+	if (param[i] != '\0')
+		param = ft_strmancpy(param, (i + 1));
+	else
+		ft_strdel(&param);
+	return (param);
+}
+
 t_path	*sh_path_write(char *param, t_main *main)
 {
 	t_path	*first;
@@ -74,10 +83,7 @@ t_path	*sh_path_write(char *param, t_main *main)
 			str = ft_strmbncpy(param, i);
 		else
 			str = ft_strdup(param);
-		if (param[i] != '\0')
-			param = ft_strmancpy(param, (i + 1));
-		else
-			ft_strdel(&param);
+		param = sh_path_check_param(param, i);
 		if (new)
 			prev = new;
 		new = sh_path_write_struct(prev, &first, str, main);

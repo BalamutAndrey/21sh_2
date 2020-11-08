@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 15:35:21 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/06 18:29:30 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 15:20:31 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,24 @@ int		sh_run_access(char **str)
 
 	if (!str)
 		return (0);
-	if ((sh_is_builtin(str[0]) == true) && (sh_is_builtin_nofork(str[0]) == false))
+	if ((sh_is_builtin(str[0]) == true) &&
+		(sh_is_builtin_nofork(str[0]) == false))
 		return (6);
-// No fork
-	if ((sh_is_builtin(str[0]) == true) && (sh_is_builtin_nofork(str[0]) == true))
+	if ((sh_is_builtin(str[0]) == true) &&
+		(sh_is_builtin_nofork(str[0]) == true))
 		return (5);
 	if (access(str[0], 0) != 0)
-	{
-		// ft_printf("\n Access 0 error \n");
 		return (1);
-	}
 	if (access(str[0], 1) != 0)
-	{
-		// ft_printf("\n Access 1 error \n");
 		return (2);
-	}
 	lstat(str[0], &buff);
 	if (!(S_ISLNK(buff.st_mode)) && !(S_ISREG(buff.st_mode)))
-	{
-		// ft_printf("\n Not a file of link \n");
 		return (3);
-	}
 	if (!(S_ISLNK(buff.st_mode)))
 		stat(str[0], &buff);
 	if ((buff.st_mode & S_IXUSR) || (buff.st_mode & S_IXGRP) ||
 			(buff.st_mode & S_IXOTH))
 		return (0);
-	// ft_printf("\n End error \n");
 	return (4);
 }
 
@@ -60,7 +51,7 @@ bool	sh_is_builtin(char *str)
 	{
 		return (true);
 	}
-	return (false);		
+	return (false);
 }
 
 bool	sh_is_builtin_nofork(char *str)
@@ -72,5 +63,5 @@ bool	sh_is_builtin_nofork(char *str)
 	{
 		return (true);
 	}
-	return (false);		
+	return (false);
 }

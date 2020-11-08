@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 18:11:10 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/31 18:32:26 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 15:04:24 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ int		sh_echo_with_changes(char **str, int j, int flags[2], t_main *main)
 	}
 	return (j);
 }
-
-// проверить echo $P$123 , возможно $ должен сжирать первую цифру
 
 void	sh_builtin_echo(t_main *main, t_exec *exec)
 {

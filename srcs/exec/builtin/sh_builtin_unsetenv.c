@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:53:52 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/06 17:30:58 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 15:02:28 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	sh_builtin_unsetenv_delete_one(t_main *main, char *tmp)
 
 	i = 0;
 	j = 0;
-	while (main->envp_curr[i] && ft_strncmp(main->envp_curr[i], tmp, ft_strlen(tmp)) != 0)
+	while (main->envp_curr[i] && ft_strncmp(main->envp_curr[i],
+		tmp, ft_strlen(tmp)) != 0)
 		i++;
 	if (!main->envp_curr[i])
 		return ;

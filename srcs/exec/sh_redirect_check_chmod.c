@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 15:06:19 by geliz             #+#    #+#             */
-/*   Updated: 2020/10/31 18:04:17 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 15:19:56 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,6 @@ void	sh_redirect_error_dir_check(char *dir, t_redirect *new)
 		new->error = -2;
 }
 
-/*
-** errors:
-**  1 -- File not exists (not an error for GREAT DGREAT)
-** -1 -- Not a directory
-** -2 -- Permission denied
-** -3 -- No such file or directory
-** -4 -- Not a file or link
-*/
-
 void	sh_redirect_error_print(t_redirect *new)
 {
 	if (new->error == -1)
@@ -97,9 +88,11 @@ void	sh_redirect_error_print(t_redirect *new)
 		ft_fprintf(STDERR_FILENO, "21sh: %s: Not a file or link\n",
 		new->filename);
 	if (new->error == -5)
-		ft_fprintf(STDERR_FILENO, "21sh: %s: Bad file descriptor\n", new->filename);
+		ft_fprintf(STDERR_FILENO, "21sh: %s: Bad file descriptor\n",
+		new->filename);
 	if (new->error == -6)
-		ft_fprintf(STDERR_FILENO, "21sh: %s: ambiguous redirect\n", new->filename);
+		ft_fprintf(STDERR_FILENO, "21sh: %s: ambiguous redirect\n",
+		new->filename);
 	exit(0);
 }
 

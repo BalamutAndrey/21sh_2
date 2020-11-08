@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_lexer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:13:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/06 18:56:00 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 15:35:48 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,44 +84,17 @@ void	sh_lexer_hub(t_main *main, t_token *token)
 	}
 }
 
-/*
-** TEMPORARY FUNC, delete it later :)
-*/
-void	ft_print_test(t_token *first)
-{
-	char* type[] = {"NONE", "COMPLETE_COMMAND", "LIST", "PIPELINE", "AND_OR",
-					"COMMAND", "CMDNAME", "CMDSUFFIX", "SEPARATOR", "WORD",
-					"NEWLINE", "IO_NUMBER", "LESS", "GREAT", "AND_IF",
-					"OR_IF", "DSEMI", "DLESS", "DGREAT", "LESSAND",
-					"GREATAND", "LESSGREAT", "DLESSDASH", "CLOBBER","LBRACE",
-					"RBRACE", "BANG"};
-	int	i = 1;
-	while (first)
-	{
-		ft_printf("%2i. %s - %i: %s\n", i, first->content, first->type, type[first->type]);
-		first = first->next;
-		i++;
-	}
-}
-
-/*
-**	ft_print_test(main->token); can use it before return in sh_lexer
-*/
-
 int		sh_lexer(t_main *main)
 {
 	t_token	*first;
 
 	first = sh_new_token(0, NULL, main);
 	sh_lexer_hub(main, first);
-//	if (main->prompt)
-//		sh_remove_token_list(first);
 	main->token = first->next;
 	free(first);
 	first = NULL;
 	if (main->heredoc)
 		sh_add_heredoc_content(main);
 	sh_quote_remove(main, main->token);
-//	ft_print_test(main->token);
 	return (0);
 }
