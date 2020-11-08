@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 18:14:16 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/02 17:33:30 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 14:44:15 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	sh_remove_argv(char **argv)
 			ft_strdel(&argv[i]);
 			i++;
 		}
-//		ft_strdel(&argv[i]);
 		free(argv);
 		argv = NULL;
 	}

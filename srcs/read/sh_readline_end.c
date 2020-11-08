@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:34:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/08 13:11:38 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 14:43:10 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool	sh_readline_end(t_main *main)
 	if (main->prompt != NULL)
 	{
 		ft_strdel(&main->hist_end->prev->com);
-		main->hist_end->prev->com  = sh_strnew(MAX_KS_LEN, main);
+		main->hist_end->prev->com = sh_strnew(MAX_KS_LEN, main);
 		ft_strncpy(main->hist_end->prev->com, main->ks, MAX_KS_LEN);
 		ft_strdel(&main->prompt);
 	}
@@ -35,8 +35,6 @@ bool	sh_readline_end(t_main *main)
 		sh_history_add(main);
 		main->hist_curr = main->hist_end;
 	}
-	if (main->hist_end->com != NULL)
-		ft_strdel(&main->hist_end->com);
 	fin = sh_lexer_start(main);
 	sh_readline_clear(main);
 	return (fin);
@@ -44,6 +42,8 @@ bool	sh_readline_end(t_main *main)
 
 void	sh_readline_clear(t_main *main)
 {
+	if (main->hist_end->com != NULL)
+		ft_strdel(&main->hist_end->com);
 	sh_remove_token(main);
 	sh_remove_tree(main);
 	sh_remove_exec(main);
