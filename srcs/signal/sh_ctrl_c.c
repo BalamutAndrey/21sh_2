@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_ctrl_c.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 18:16:34 by eboris            #+#    #+#             */
-/*   Updated: 2020/10/17 18:53:08 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 13:06:07 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,37 @@
 
 void	sh_sig_ctrl_c(int a)
 {
-	extern t_main	*main_struct;
+	extern t_main	*g_main;
 
 	(void)a;
-	tcsetattr(main_struct->fd, TCSANOW, &main_struct->t_curr);
-	if (main_struct->cpid != -1)
+	tcsetattr(g_main->fd, TCSANOW, &g_main->t_curr);
+	if (g_main->cpid != -1)
 	{
-		kill(main_struct->cpid, 1);
-		main_struct->cpid = -1;
-		ft_putstr_fd(tgetstr("do", NULL), main_struct->fd);
-		ft_putstr_fd(tgetstr("cr", NULL), main_struct->fd);
+		kill(g_main->cpid, 1);
+		g_main->cpid = -1;
+		ft_putstr_fd(tgetstr("do", NULL), g_main->fd);
+		ft_putstr_fd(tgetstr("cr", NULL), g_main->fd);
 	}
 	else
 	{
-		ft_putstr_fd(tgetstr("do", NULL), main_struct->fd);
-		ft_putstr_fd(tgetstr("cr", NULL), main_struct->fd);
-		ft_fprintf(STDERR_FILENO, "^C");
-		ft_putstr_fd(tgetstr("do", NULL), main_struct->fd);
-		ft_putstr_fd(tgetstr("cr", NULL), main_struct->fd);
-		if (main_struct->prompt != NULL)
-			ft_strdel(&main_struct->prompt);
-		if (main_struct->ks_temp != NULL)
-			ft_strdel(&main_struct->ks_temp);
-		ft_bzero(main_struct->ks, MAX_KS_LEN);
-		sh_rl_reset_line(main_struct);
-		sh_rl_check_prompt_start(main_struct);
-		//sh_print_prompt(main_struct);
-		sh_cursor_math(main_struct);
-		// sh_key_enter(main_struct);
-		sh_reprint_ks(main_struct);
+		sh_sig_ctrl_c_ks(g_main);
 	}
+}
+
+void	sh_sig_ctrl_c_ks(t_main *g_main)
+{
+	while (g_main->cursor_line_curr < g_main->cursor_line)
+	{
+		ft_putstr_fd(tgoto(tgetstr("do", NULL), 0, 5), g_main->fd);
+		g_main->cursor_line_curr++;
+	}
+	ft_putstr_fd(tgoto(tgetstr("do", NULL), 0, 5), g_main->fd);
+	if (g_main->prompt != NULL)
+		ft_strdel(&g_main->prompt);
+	if (g_main->ks_temp != NULL)
+		ft_strdel(&g_main->ks_temp);
+	ft_bzero(g_main->ks, MAX_KS_LEN);
+	g_main->ks_len = 0;
+	g_main->cursor = 0;
+	sh_reprint_ks(g_main);
 }
