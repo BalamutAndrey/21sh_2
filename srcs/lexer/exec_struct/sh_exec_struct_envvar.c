@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 16:05:40 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 18:47:12 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 15:17:33 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void		sh_exec_struct_write_redir_envvar
 	}
 	exec->envvar_curr->str = argv;
 }
-
 
 t_envvar	*sh_create_new_envvar(void)
 {

@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_exit.c                                          :+:      :+:    :+:   */
+/*   sh_exec_struct_new.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/17 13:49:12 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/08 15:45:40 by eboris           ###   ########.fr       */
+/*   Created: 2020/11/08 15:38:39 by eboris            #+#    #+#             */
+/*   Updated: 2020/11/08 15:39:21 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_main.h"
 
-void	sh_exit(t_main *main, uint64_t code)
+t_exec	*sh_exec_struct_new(t_main *main)
 {
-	sh_term_restore(main);
-	sh_remove_struct(&main);
-	exit(code);
+	t_exec	*new;
+
+	new = sh_memalloc(sizeof(t_exec), main);
+	new->cmd = NULL;
+	new->argv = NULL;
+	new->redir = NULL;
+	new->pipe = false;
+	new->pipefd[0] = STDIN_FILENO;
+	new->pipefd[1] = STDOUT_FILENO;
+	new->envvar = NULL;
+	new->envvar_first = NULL;
+	new->envvar_curr = NULL;
+	new->next = NULL;
+	return (new);
 }

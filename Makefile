@@ -124,6 +124,7 @@ TREE_NAME=sh_and_or.c \
 		sh_wordlist.c
 ES_NAME=sh_exec_struct_argv.c \
 		sh_exec_struct_create.c \
+		sh_exec_struct_new.c \
 		sh_exec_struct_redirect.c \
 		sh_exec_struct_envvar.c
 EX_NAME=sh_access_file.c \
@@ -162,8 +163,7 @@ RM_NAME=sh_remove_envp_curr.c \
 		sh_remove_token.c \
 		sh_remove_tree.c \
 		sh_remove_envvar.c
-SG_NAME=sh_bus_error.c \
-		sh_ctrl_c.c \
+SG_NAME=sh_ctrl_c.c \
 		sh_screen_resize.c \
 		sh_signal.c
 STRUCT_NAME=sh_path.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_exec_struct_redirect.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 15:55:23 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 18:34:26 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 15:11:18 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ void		sh_exec_struct_redirect(t_main *main)
 			temp = sh_exec_struct_redirect_new(main);
 			node = sh_exec_struct_redirect_write(node, temp);
 			if (first == NULL)
-			{
-				first = temp;
-				curr = first;
-			}
+				sh_exec_struct_redirect_struct(&first, &temp, &curr, &first);
 			else
 			{
 				curr->next = temp;
@@ -42,6 +39,13 @@ void		sh_exec_struct_redirect(t_main *main)
 		node = node->right;
 	}
 	main->exec_curr->redir = first;
+}
+
+void		sh_exec_struct_redirect_struct
+	(t_redirect **f1, t_redirect **t1, t_redirect **f2, t_redirect **t2)
+{
+	*f1 = *t1;
+	*f2 = *t2;
 }
 
 t_redirect	*sh_exec_struct_redirect_new(t_main *main)
@@ -83,11 +87,7 @@ t_node		*sh_exec_struct_redirect_write(t_node *node, t_redirect *redirect)
 	}
 	node = node->right;
 	redirect->filename = ft_strdup(node->token->content);
-
 	if (node->token->envvar != NULL)
-	{
 		sh_exec_struct_write_redir_envvar(node, redirect, redirect->filename);
-	}
-
 	return (node);
 }

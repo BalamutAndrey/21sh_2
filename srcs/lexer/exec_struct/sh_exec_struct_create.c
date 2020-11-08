@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 14:51:20 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 18:41:49 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 15:44:05 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,14 @@ bool	sh_exec_struct_go_check(t_main *main, t_node *temp, bool pipe)
 		sh_exec_struct_go(main, false);
 		main->tree_curr = temp;
 	}
-	else if ((main->tree_curr->node_type == PIPELINE) &&
+	else
+		sh_exec_struct_go_check_else(main, temp, pipe);
+	return (sep);
+}
+
+void	sh_exec_struct_go_check_else(t_main *main, t_node *temp, bool pipe)
+{
+	if ((main->tree_curr->node_type == PIPELINE) &&
 		(main->tree_curr->right != NULL))
 	{
 		main->tree_curr = temp->right;
@@ -68,7 +75,6 @@ bool	sh_exec_struct_go_check(t_main *main, t_node *temp, bool pipe)
 		sh_exec_struct_write(main, pipe);
 		main->tree_curr = temp;
 	}
-	return (sep);
 }
 
 void	sh_exec_struct_go(t_main *main, bool pipe)
@@ -79,9 +85,7 @@ void	sh_exec_struct_go(t_main *main, bool pipe)
 	sep = false;
 	temp = main->tree_curr;
 	if (temp != NULL)
-	{
 		sep = sh_exec_struct_go_check(main, temp, pipe);
-	}
 	if (main->tree_curr->left != NULL)
 	{
 		if (main->tree_curr->node_type == SEPARATOR)
@@ -97,28 +101,9 @@ void	sh_exec_struct_go(t_main *main, bool pipe)
 	}
 	if ((sep == true) && (temp->left != NULL))
 	{
-		sep = false;
 		main->tree_curr = temp->left;
 		sh_exec_struct_go(main, false);
 	}
-}
-
-t_exec	*sh_exec_struct_new(t_main *main)
-{
-	t_exec	*new;
-
-	new = sh_memalloc(sizeof(t_exec), main);
-	new->cmd = NULL;
-	new->argv = NULL;
-	new->redir = NULL;
-	new->pipe = false;
-	new->pipefd[0] = STDIN_FILENO;
-	new->pipefd[1] = STDOUT_FILENO;
-	new->envvar = NULL;
-	new->envvar_first = NULL;
-	new->envvar_curr = NULL;
-	new->next = NULL;
-	return (new);
 }
 
 void	sh_exec_struct_write(t_main *main, bool pipe)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_lexer_exec.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 17:23:28 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/04 17:13:59 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 15:44:12 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,14 @@
 */
 void	sh_exec_struct_create(t_main *main);
 void	sh_exec_struct_go(t_main *main, bool pipe);
-t_exec	*sh_exec_struct_new(t_main *main);
+bool	sh_exec_struct_go_check(t_main *main, t_node *temp, bool pipe);
+void	sh_exec_struct_go_check_else(t_main *main, t_node *temp, bool pipe);
 void	sh_exec_struct_write(t_main *main, bool pipe);
+
+/*
+** sh_exec_struct_new.c
+*/
+t_exec	*sh_exec_struct_new(t_main *main);
 
 /*
 ** sh_exec_struct_argv.c
@@ -35,6 +41,7 @@ void		sh_exec_struct_write_argv_add(t_node *temp, t_exec *new,
 void		sh_exec_struct_redirect(t_main *main);
 t_redirect	*sh_exec_struct_redirect_new(t_main *main);
 t_node		*sh_exec_struct_redirect_write(t_node *node, t_redirect *redirect);
+void		sh_exec_struct_redirect_struct(t_redirect **f1, t_redirect **t1, t_redirect **f2, t_redirect **t2);
 
 /*
 ** sh_exec_struct_envvar.c
