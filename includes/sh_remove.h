@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_remove.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 17:57:04 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/06 18:44:30 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 16:33:30 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SH_REMOVE_H
 
 /*
-** sh_remove_struct.c 
+** sh_remove_struct.c
 */
 void	sh_remove_struct(t_main **main);
 void	sh_remove_struct_string(t_main *temp);
@@ -22,7 +22,7 @@ void	sh_remove_struct_string(t_main *temp);
 /*
 ** sh_remove_envp_curr.c
 */
-void   sh_remove_envp_curr(t_main *main);
+void	sh_remove_envp_curr(t_main *main);
 
 /*
 ** sh_remove_path.c
@@ -32,7 +32,7 @@ void	sh_remove_path(t_main *main);
 /*
 ** sh_remove_hist.c
 */
-void    sh_remove_hist(t_main *main);
+void	sh_remove_hist(t_main *main);
 
 /*
 ** sh_remove_heredoc.c

@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/08 16:27:40 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 16:32:52 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@
 # define MAX_KS_LEN		256
 # define MAX_DIR_LEN	256
 
-typedef enum    e_type {
-    NONE,
-    COMPLETE_COMMAND,
-    LIST,
-    PIPELINE,
-    AND_OR,
-    COMMAND,
-    CMDNAME,
-    CMDSUFFIX,
-    SEPARATOR,
+typedef enum			e_type {
+	NONE,
+	COMPLETE_COMMAND,
+	LIST,
+	PIPELINE,
+	AND_OR,
+	COMMAND,
+	CMDNAME,
+	CMDSUFFIX,
+	SEPARATOR,
 
-    WORD,
-    NEWLINE,
+	WORD,
+	NEWLINE,
 	IO_NUMBER,
-    LESS,
-    GREAT,
+	LESS,
+	GREAT,
 	AND_IF,
 	OR_IF,
 	DSEMI,
@@ -45,7 +45,7 @@ typedef enum    e_type {
 	LBRACE,
 	RBRACE,
 	BANG
-}               t_type;
+}						t_type;
 
 typedef	struct			s_fds {
 	int					nbr;
@@ -54,7 +54,7 @@ typedef	struct			s_fds {
 
 typedef struct			s_heredoc {
 	char				*delim;
-    char                *content;
+	char				*content;
 	int					delim_start;
 	int					here_start;
 	int					here_end;
@@ -74,38 +74,33 @@ typedef struct			s_hist
 	struct s_hist		*prev;
 }						t_hist;
 
-/*
-** type of envvar 
-** -1 == base ; 0 == ~ ; 1 == environment variable
-*/
-
 typedef struct			s_envvar
 {
 	int					start;
 	int					end;
 	int					type;
 	char				*str;
-	struct s_envvar	*next;
-}					t_envvar;
+	struct s_envvar		*next;
+}						t_envvar;
 
 typedef struct			s_token {
-    t_type				type;
-    char				*content;
+	t_type				type;
+	char				*content;
 	t_envvar			*envvar;
-    struct s_token		*next;
+	struct s_token		*next;
 }						t_token;
 
-typedef struct 			s_token_free
+typedef struct			s_token_free
 {
 	t_token				*token;
 	struct s_token_free	*next;
 }						t_token_free;
 
 typedef struct			s_node {
-    t_type				node_type;
-    t_token				*token;
-    struct s_node		*left;
-    struct s_node		*right;
+	t_type				node_type;
+	t_token				*token;
+	struct s_node		*left;
+	struct s_node		*right;
 }						t_node;
 
 typedef struct			s_redirect {
@@ -163,12 +158,12 @@ typedef struct			s_main
 	uint64_t			curs[MAX_KS_LEN];
 	char				*prompt;
 	uint64_t			prompt_len;
-	t_heredoc		    *heredoc;
-    t_token				*token;
-    t_token     		*token_curr;
+	t_heredoc			*heredoc;
+	t_token				*token;
+	t_token				*token_curr;
 	t_token_free		*token_first;
-    t_node     	 		*tree_first;
-    t_node      		*tree_curr;
+	t_node				*tree_first;
+	t_node				*tree_curr;
 	t_exec				*exec_first;
 	t_exec				*exec_curr;
 	int32_t				cpid;
@@ -178,19 +173,19 @@ typedef struct			s_main
 /*
 ** sh_structs.c
 */
-t_main				*sh_add_main_struct(char **env);
-void				sh_copy_envp(t_main *main);
-void				sh_write_struct(t_main *new);
-void				sh_remove_struct(t_main **main);
+t_main					*sh_add_main_struct(char **env);
+void					sh_copy_envp(t_main *main);
+void					sh_write_struct(t_main *new);
+void					sh_remove_struct(t_main **main);
 
 /*
 ** sh_path.c
 */
-void				sh_path(t_main *main);
-void				sh_path_del(t_main *main);
-t_path				*sh_path_write(char *param, t_main *main);
-char				*sh_path_check_param(char *param, int i);
-t_path				*sh_path_write_struct(t_path *prev, t_path **first,
-					char *str, t_main *main);
-					
+void					sh_path(t_main *main);
+void					sh_path_del(t_main *main);
+t_path					*sh_path_write(char *param, t_main *main);
+char					*sh_path_check_param(char *param, int i);
+t_path					*sh_path_write_struct(t_path *prev, t_path **first,
+						char *str, t_main *main);
+
 #endif
