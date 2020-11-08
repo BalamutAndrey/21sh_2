@@ -6,15 +6,15 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 17:26:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/08 16:32:52 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/08 18:49:36 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH_STRUCTS_H
 # define SH_STRUCTS_H
 
-# define MAX_KS_LEN		256
-# define MAX_DIR_LEN	256
+# define MAX_KS_LEN		1024
+# define MAX_DIR_LEN	1024
 
 typedef enum			e_type {
 	NONE,
