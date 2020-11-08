@@ -25,6 +25,7 @@ SRC_NAME=sh_main.c
 RL_NAME=sh_cursor.c \
 		sh_cursor_math.c \
 		sh_history.c \
+		sh_history_read.c \
 		sh_isprint.c \
 		sh_readline.c \
 		sh_readline_end.c \

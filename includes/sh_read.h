@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 15:21:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/07 17:39:18 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 12:34:06 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ bool	sh_isprint(int64_t c);
 ** sh_cursor.c
 */
 void	sh_reprint_ks(t_main *main);
-void	sh_delete_ks(t_main *main);
+void	sh_reprint_ks_2(t_main *main);
+void	sh_reprint_ks_3(t_main *main);
 void	sh_cursor_plus(t_main *main);
 void	sh_cursor_minus(t_main *main);
 
@@ -61,7 +62,12 @@ void	sh_cursor_math_else(uint64_t *i, uint64_t *n);
 void	sh_history_add(t_main *main);
 void	sh_history_create(t_main *main);
 void	sh_history_newlist(t_main *main);
+
+/*
+** sh_history_read.c
+*/
 void	sh_history_read(t_main *main, char k);
-void	sh_history_delete(t_main *main);
+void	sh_history_read_up(t_main *main);
+void	sh_history_read_down(t_main *main);
 
 #endif

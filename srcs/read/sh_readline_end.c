@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:34:27 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/02 17:50:15 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 12:26:28 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ bool	sh_readline_end(t_main *main)
 		sh_history_add(main);
 		main->hist_curr = main->hist_end;
 	}
+	if (main->hist_end->com != NULL)
+		ft_strdel(&main->hist_end->com);
 	fin = sh_lexer_start(main);
 	sh_readline_clear(main);
 	return (fin);

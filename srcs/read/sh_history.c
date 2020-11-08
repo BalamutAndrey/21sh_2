@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 13:49:25 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/07 18:56:12 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/08 12:27:51 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	sh_history_add(t_main *main)
 	if (main->ks[0] != '\0')
 	{
 		sh_history_newlist(main);
-		main->hist_end->prev->com = sh_strdup(main->ks, main);
+		main->hist_end->prev->com = sh_strnew(MAX_KS_LEN, main);
+		ft_strncpy(main->hist_end->prev->com, main->ks, MAX_KS_LEN);
 	}
 }
 
@@ -52,68 +53,4 @@ void	sh_history_newlist(t_main *main)
 	temp->next = new;
 	main->hist_end->prev = new;
 	main->hist_curr = main->hist_end;
-}
-
-void	sh_history_read(t_main *main, char k)
-{
-	if ((main->ks != NULL) && (main->ks_temp == NULL))
-	{
-		main->ks_temp = ft_strdup(main->ks);
-	}
-	if (k == 'u')
-	{
-		if (main->hist_curr->prev != NULL)
-		{
-			main->hist_curr = main->hist_curr->prev;
-			if (main->hist_curr->com != NULL)
-			{
-				ft_bzero(main->ks, MAX_KS_LEN);
-				ft_strcpy(main->ks, main->hist_curr->com);
-				main->ks_len = ft_strlen(main->ks);
-				main->cursor = main->ks_len;
-				sh_reprint_ks(main);
-			}
-			else
-			{
-				main->hist_curr = main->hist_curr->next;
-			}
-		}
-	}
-	else if (k == 'd')
-	{
-		if (main->hist_curr->next != NULL)
-		{
-			main->hist_curr = main->hist_curr->next;
-			if ((main->hist->prev != NULL) && (main->hist->prev->com == NULL) && (main->hist->next != NULL))
-				main->hist_curr = main->hist_curr->next;
-			if (main->hist_curr->com != NULL)
-			{
-				ft_bzero(main->ks, MAX_KS_LEN);
-				ft_strcpy(main->ks, main->hist_curr->com);
-				main->ks_len = ft_strlen(main->ks);
-				main->cursor = main->ks_len;
-				sh_reprint_ks(main);
-			}
-			else
-			{
-				if (main->ks_temp == NULL)
-				{
-					ft_bzero(main->ks, MAX_KS_LEN);
-					main->ks_len = 0;
-					main->cursor = 0;
-					sh_reprint_ks(main);
-				}
-				else
-				{
-					ft_bzero(main->ks, MAX_KS_LEN);
-					ft_strcpy(main->ks, main->ks_temp);
-					main->ks_len = ft_strlen(main->ks);
-					main->cursor = main->ks_len;
-					sh_reprint_ks(main);
-				}
-			}
-		}
-	}
-	if (main->ks_temp)
-		ft_strdel(&main->ks_temp);
 }
